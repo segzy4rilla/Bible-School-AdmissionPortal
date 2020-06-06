@@ -1,0 +1,1185 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">    <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+    <!-- Title -->
+    <title>ABMTC Document Upload</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="ABTMC.png">
+
+    <!-- These plugins only need for the run this page -->
+    <link rel="stylesheet" href="css/default-assets/smartwizard.css">
+
+    <!-- Master Stylesheet [If you remove this CSS file, your file will be broken undoubtedly.] -->
+    <link rel="stylesheet" href="style.css">
+
+<style>
+    .wizard > .steps .current a{
+        background : orange;
+    }
+    .wizard > .steps .disabled a{
+        border:1px solid orange;
+    }
+    .wizard > .steps .disabled a:hover {
+    background: white;
+    color: #434a54;
+    cursor: default;
+    border: 1px solid orange;
+}
+.wizard > .steps .done a:active {
+    background: orange;
+    color: #434a54;
+    cursor: default;
+    border: 1px solid orange;
+}
+
+.wizard > .steps  a:hover {
+    background: white;
+    color: #434a54;
+    cursor: default;
+    border: 1px solid orange;
+}
+
+.wizard > .steps .current a:hover {
+    background: orange;
+    color: white;
+    cursor: default;
+}
+
+.wizard > .steps .done a {
+    background: orange;
+    color: white;
+    cursor: default;
+
+    &:hover {
+        background: orange;
+        color: white;
+        cursor: default;
+    }
+}
+.wizard > .steps .done a {
+    background: orange;
+    color: white;
+    cursor: default;
+
+    &:hover {
+        background: orange;
+        color: white;
+        cursor: default;
+    }
+}
+
+.wizard > .steps .done a:active {
+    background: white;
+    color: #434a54;
+    cursor: default;
+    border: 1px solid orange;
+}
+.wizard > .steps .done a{
+   background: orange;  
+}
+
+.wizard-form-area ul li a {
+    background: orange;
+    color: #ffffff;
+    display: inline-block;
+    height: 45px;
+    min-width: 150px;
+    line-height: 45px;
+    text-align: center;
+    border-radius: 5px;
+}
+</style>
+</head>
+
+<body>
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="preloader-load"></div>
+    </div>
+    <!-- Preloader -->
+
+    <!-- ======================================
+    ******* Page Wrapper Area Start **********
+    ======================================= -->
+    <div class="ecaps-page-wrapper">
+        <!-- Sidemenu Area -->
+        <div class="ecaps-sidemenu-area">
+            <!-- Desktop Logo -->
+            <div class="ecaps-logo">
+                <a href="index.html"><img class="desktop-logo" style="height:150px; width:90px;" src="ABTMC.png" alt="Desktop Logo"> <img class="small-logo" src="ABTMC.png" alt="Mobile Logo"></a>
+            </div>
+
+            <!-- Side Nav -->
+            <div class="ecaps-sidenav" id="ecapsSideNav">
+                <!-- Side Menu Area -->
+                <div class="side-menu-area">
+                    <!-- Sidebar Menu -->
+                    <nav>
+                        <ul class="sidebar-menu" data-widget="tree">
+                            <li><a href="#"><i class="zmdi zmdi-view-web"></i> <span>Dashboard</span></a></li>
+                            
+                            <!--<li class="treeview">-->
+                            <!--    <a href="javascript:void(0)"><i class="zmdi zmdi-email"></i> <span>Email</span> <i class="fa fa-angle-right"></i></a>-->
+                            <!--    <ul class="treeview-menu">-->
+                            <!--        <li><a href="mail-inbox.html">- Inbox</a></li>-->
+                            <!--        <li><a href="mail-view.html">- Mail View</a></li>-->
+                            <!--        <li><a href="compose-mail.html">- Compose Mail</a></li>-->
+                            <!--    </ul>-->
+                            <!--</li>-->
+                            <!--<li class="treeview">-->
+                            <!--    <a href="javascript:void(0)"><i class="zmdi zmdi-cake"></i> <span>Hot Pages</span> <i class="fa fa-angle-right"></i></a>-->
+                            <!--    <ul class="treeview-menu">-->
+                            <!--        <li><a href="analytic-customer.html">- Customers</a></li>-->
+                            <!--        <li><a href="analytic-report.html">- Reports</a></li>-->
+                            <!--        <li><a href="crm-add-clint.html">- Add Client</a></li>-->
+                            <!--        <li><a href="crm-clint-list.html">- Client List</a></li>-->
+                            <!--        <li><a href="crm-contact.html">- Contacts</a></li>-->
+                            <!--        <li><a href="crm-profile-customer.html">- Profile</a></li>-->
+                            <!--        <li><a href="crm-task.html">- Task</a></li>-->
+                            <!--        <li><a href="crm-leads.html">- Leads</a></li>-->
+                            <!--        <li><a href="cryp-exchange.html">- Exchange</a></li>-->
+                            <!--        <li><a href="crypto-wallet.html">- Wallet</a></li>-->
+                            <!--        <li><a href="crypto-news.html">- News</a></li>-->
+                            <!--        <li><a href="crypto-setting.html">- Setting</a></li>-->
+                            <!--    </ul>-->
+                            <!--</li>-->
+                            <!--<li class="treeview">-->
+                            <!--    <a href="javascript:void(0)"><i class="zmdi zmdi-code"></i> <span>UI Kit</span> <i class="fa fa-angle-right"></i></a>-->
+                            <!--    <ul class="treeview-menu">-->
+                            <!--        <li><a href="alert.html">- Alert</a></li>-->
+                            <!--        <li><a href="avatar.html">- Avatar</a></li>-->
+                            <!--        <li><a href="buttons.html">- Button</a></li>-->
+                            <!--        <li><a href="card.html">- Card</a></li>-->
+                            <!--        <li><a href="notification.html">- Notification</a></li>-->
+                            <!--        <li><a href="general.html">- General</a></li>-->
+                            <!--        <li><a href="progressbar.html">- Progressbar</a></li>-->
+                            <!--        <li><a href="preloader.html">- Preloader</a></li>-->
+                            <!--        <li><a href="tab.html">- Tab</a></li>-->
+                            <!--        <li><a href="dropdown.html">- Dropdown</a></li>-->
+                            <!--        <li><a href="typography.html">- Typography</a></li>-->
+                            <!--    </ul>-->
+                            <!--</li>-->
+                            <!--<li class="treeview">-->
+                            <!--    <a href="javascript:void(0)"><i class="zmdi zmdi-print"></i> <span>Search</span> <i class="fa fa-angle-right"></i></a>-->
+                            <!--    <ul class="treeview-menu">-->
+                            <!--        <li><a href="job.html">- Job News</a></li>-->
+                            <!--        <li><a href="job-description.html">- Description</a></li>-->
+                            <!--        <li><a href="crm-project.html">- Project</a></li>-->
+                            <!--        <li><a href="project-details.html">- Project Details</a></li>-->
+                            <!--    </ul>-->
+                            <!--</li>-->
+                            <!--<li class="treeview">-->
+                            <!--    <a href="javascript:void(0)"><i class="zmdi zmdi-shield-check"></i><span>Advanced</span> <i class="fa fa-angle-right"></i></a>-->
+                            <!--    <ul class="treeview-menu">-->
+                            <!--        <li><a href="blank.html">- Blank Page</a></li>-->
+                            <!--        <li><a href="gallery.html">- Gallery</a></li>-->
+                            <!--        <li><a href="light-box-gallery.html">- Light Box Gallery</a></li>-->
+                            <!--        <li><a href="modals.html">- Modals</a></li>-->
+                            <!--        <li><a href="profile.html">- Profile</a></li>-->
+                            <!--        <li><a href="ribbons.html">- Ribbons</a></li>-->
+                            <!--        <li><a href="sweet-alert.html">- Sweet Alert</a></li>-->
+                            <!--    </ul>-->
+                            <!--</li>-->
+                            <!--<li class="treeview">-->
+                            <!--    <a href="javascript:void(0)"><i class="zmdi zmdi-car"></i> <span>Shop</span> <i class="fa fa-angle-right"></i></a>-->
+                            <!--    <ul class="treeview-menu">-->
+                            <!--        <li><a href="product.html">- Product</a></li>-->
+                            <!--        <li><a href="e-add-product.html">- Add Product</a></li>-->
+                            <!--        <li><a href="product-details.html">- Single Product</a></li>-->
+                            <!--        <li><a href="order.html">- Order</a></li>-->
+                            <!--        <li><a href="cart.html">- Cart</a></li>-->
+                            <!--        <li><a href="checkout.html">- Checkout</a></li>-->
+                            <!--        <li><a href="invoice.html">- Invoice</a></li>-->
+                            <!--    </ul>-->
+                            <!--</li>-->
+                            <!--<li class="treeview">-->
+                            <!--    <a href="javascript:void(0)"><i class="zmdi zmdi-assignment"></i><span>General Pages</span> <i class="fa fa-angle-right"></i></a>-->
+                            <!--    <ul class="treeview-menu">-->
+                            <!--        <li><a href="slider.html">- Slider</a></li>-->
+                            <!--        <li><a href="range-slider.html">- Range Slider</a></li>-->
+                            <!--        <li><a href="contact.html">- Contact</a></li>-->
+                            <!--        <li><a href="login.html">- Login</a></li>-->
+                            <!--        <li><a href="register.html">- Register</a></li>-->
+                            <!--        <li><a href="forget-password.html">- Forget Password</a></li>-->
+                            <!--        <li><a href="lock-screen.html">- Lock Screen</a></li>-->
+                            <!--        <li><a href="404.html">- 404</a></li>-->
+                            <!--    </ul>-->
+                            <!--</li>-->
+                            <!--<li class="treeview">-->
+                            <!--    <a href="javascript:void(0)"><i class="zmdi zmdi-chart"></i><span>Charts</span> <i class="fa fa-angle-right"></i></a>-->
+                            <!--    <ul class="treeview-menu">-->
+                            <!--        <li><a href="chartist.html">- Chartist Chart</a></li>-->
+                            <!--        <li><a href="chart-js.html">- Chart Js</a></li>-->
+                            <!--        <li><a href="morris-chart.html">- Morris Chart</a></li>-->
+                            <!--        <li><a href="apex-chart.html">- Apex Chart</a></li>-->
+                            <!--        <li><a href="c3-charts.html">- C3 Chart</a></li>-->
+                            <!--    </ul>-->
+                            <!--</li>-->
+                            <!--<li class="treeview active">-->
+                            <!--    <a href="javascript:void(0)"><i class="zmdi zmdi-washing-machine"></i><span>Forms</span> <i class="fa fa-angle-right"></i></a>-->
+                            <!--    <ul class="treeview-menu">-->
+                            <!--        <li><a href="basic-form.html">- Basic Form</a></li>-->
+                            <!--        <li><a href="advanced-elements.html">- Elements</a></li>-->
+                            <!--        <li><a href="form-validation.html">- Validation</a></li>-->
+                            <!--        <li class="active"><a href="form-wizard.html">- Form Wizard</a></li>-->
+                            <!--        <li><a href="form-input-mask.html">- Input Mask</a></li>-->
+                            <!--        <li><a href="file-upload.html">- File upload</a></li>-->
+                            <!--        <li><a href="rating.html">- Rating</a></li>-->
+                            <!--    </ul>-->
+                            <!--</li>-->
+                            <!--<li class="treeview">-->
+                            <!--    <a href="javascript:void(0)"><i class="zmdi zmdi-grid"></i><span>Tables</span> <i class="fa fa-angle-right"></i></a>-->
+                            <!--    <ul class="treeview-menu">-->
+                            <!--        <li><a href="basic-table.html">- Basic Table</a></li>-->
+                            <!--        <li><a href="filter-table.html">- Filter Table</a></li>-->
+                            <!--        <li><a href="data-table.html">- Data Table</a></li>-->
+                            <!--        <li><a href="price-table.html">- Price Table</a></li>-->
+                            <!--    </ul>-->
+                            <!--</li>-->
+                            <!--<li class="treeview">-->
+                            <!--    <a href="javascript:void(0)"><i class="zmdi zmdi-time-interval"></i><span>Icons</span> <i class="fa fa-angle-right"></i></a>-->
+                            <!--    <ul class="treeview-menu">-->
+                            <!--        <li><a href="font-awesome.html">- Font-Awsome Icons</a></li>-->
+                            <!--        <li><a href="pe-7-stroke.html">- Pe-7 Stroke Icons</a></li>-->
+                            <!--        <li><a href="matarial-icons.html">- Materialize Icons</a></li>-->
+                            <!--        <li><a href="themify-icons.html">- Themify Icons</a></li>-->
+                            <!--        <li><a href="elegant-icons.html">- Elegant Icons</a></li>-->
+                            <!--        <li><a href="et-line-icons.html">- Et-line Icons</a></li>-->
+                            <!--    </ul>-->
+                            <!--</li>-->
+                            <!--<li class="treeview">-->
+                            <!--    <a href="javascript:void(0)"><i class="zmdi zmdi-google-maps"></i><span>Maps</span> <i class="fa fa-angle-right"></i></a>-->
+                            <!--    <ul class="treeview-menu">-->
+                            <!--        <li><a href="vector-map.html">- Vector Map</a></li>-->
+                            <!--        <li><a href="google-map.html">- Google Map</a></li>-->
+                            <!--    </ul>-->
+                            <!--</li>-->
+                            <!--<li class="treeview">-->
+                            <!--    <a href="javascript:void(0)"><i class="zmdi zmdi-view-list"></i> <span>Multilevel</span> <i class="fa fa-angle-right"></i></a>-->
+                            <!--    <ul class="treeview-menu">-->
+                            <!--        <li><a href="#">Level One</a></li>-->
+                            <!--        <li class="treeview">-->
+                            <!--            <a href="#">Level One <i class="fa fa-angle-right"></i></a>-->
+                            <!--            <ul class="treeview-menu">-->
+                            <!--                <li><a href="#">- Level Two</a></li>-->
+                            <!--                <li><a href="#">- Level Two</a></li>-->
+                            <!--                <li><a href="#">- Level Two</a></li>-->
+                            <!--            </ul>-->
+                            <!--        </li>-->
+                            <!--        <li><a href="#">Level One</a></li>-->
+                            <!--    </ul>-->
+                            <!--</li>-->
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+
+        <!-- Page Content -->
+        <div class="ecaps-page-content">
+            <!-- Top Header Area -->
+            <header class="top-header-area d-flex align-items-center justify-content-between">
+                <div class="left-side-content-area d-flex align-items-center">
+                    <!-- Mobile Logo -->
+                    <div class="mobile-logo mr-3 mr-sm-4">
+                        <a href="index.html"><img src="ABTMC.png" alt="Mobile Logo"></a>
+                    </div>
+
+                    <!-- Triggers -->
+                    <div class="ecaps-triggers mr-1 mr-sm-3">
+                        <div class="menu-collasped" id="menuCollasped">
+                            <i class="zmdi zmdi-menu"></i>
+                        </div>
+                        <div class="mobile-menu-open" id="mobileMenuOpen">
+                            <i class="zmdi zmdi-menu"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="right-side-navbar d-flex align-items-center justify-content-end">
+                    <!-- Mobile Trigger -->
+                    <div class="right-side-trigger" id="rightSideTrigger">
+                        <i class="fa fa-reorder"></i>
+                    </div>
+
+                    <!-- Top Bar Nav -->
+                    <ul class="right-side-content d-flex align-items-center">
+                        <!-- Left Side Nav -->
+                        <li class="hide-phone app-search">
+                            <form role="search" class=""><input type="text" placeholder="Search..." class="form-control"> <button type="submit" class="mr-0"><i class="fa fa-search"></i></button></form>
+                        </li>
+
+                        <li class="nav-item dropdown">
+                            <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-envelope-o" aria-hidden="true"></i></button>
+
+                            <div class="dropdown-menu dropdown-menu-right">
+                                <!-- Top Message Area -->
+                                <div class="top-message-area">
+                                    <!-- Heading -->
+                                    <div class="top-message-heading">
+                                        <div class="heading-title">
+                                            <h6>Messages</h6>
+                                        </div>
+                                        <span>07 New</span>
+                                    </div>
+                                    <div class="message-box" id="messageBox">
+                                        <a href="#" class="dropdown-item">
+                                            <img src="img/member-img/10.png" alt="">
+                                            <span class="message-text">
+                                                <span>Jhon Lina</span>
+                                                <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut, voluptas!</span>
+                                            </span>
+                                        </a>
+                                        <span class="message-heading">New Messages</span>
+                                        <a href="#" class="dropdown-item">
+                                            <img src="img/member-img/11.png" alt="">
+                                            <span class="message-text">
+                                                <span>Google Ads: You'll get a refund soon</span>
+                                                <span>27 min ago</span>
+                                            </span>
+                                        </a>
+                                        <a href="#" class="dropdown-item">
+                                            <img src="img/member-img/7.png" alt="">
+                                            <span class="message-text">
+                                                <span>New Feature: HTTP Method Selection</span>
+                                                <span>56 min ago</span>
+                                            </span>
+                                        </a>
+                                        <a href="#" class="dropdown-item">
+                                            <img src="img/member-img/8.png" alt="">
+                                            <span class="message-text">
+                                                <span>The Complete JavaScript Handbook</span>
+                                                <span>1 hour ago</span>
+                                            </span>
+                                        </a>
+                                        <span class="message-heading">Hot Messages</span>
+                                        <a href="#" class="dropdown-item">
+                                            <img src="img/member-img/9.png" alt="">
+                                            <span class="message-text">
+                                                <span>New comment: ecaps Template</span>
+                                                <span>2 days ago</span>
+                                            </span>
+                                        </a>
+                                        <a href="#" class="dropdown-item">
+                                            <img src="img/member-img/10.png" alt="">
+                                            <span class="message-text">
+                                                <span>6-hour video course on Angular</span>
+                                                <span>3 min ago</span>
+                                            </span>
+                                        </a>
+                                        <a href="#" class="dropdown-item">
+                                            <img src="img/member-img/11.png" alt="">
+                                            <span class="message-text">
+                                                <span>Google Ads: You'll get a refund soon</span>
+                                                <span>27 min ago</span>
+                                            </span>
+                                        </a>
+                                        <a href="#" class="dropdown-item">
+                                            <img src="img/member-img/12.png" alt="">
+                                            <span class="message-text">
+                                                <span>New Feature: HTTP Method Selection</span>
+                                                <span>56 min ago</span>
+                                            </span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+
+                        <li class="nav-item dropdown">
+                            <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-bell-o" aria-hidden="true"></i> <span class="active-status"></span></button>
+                            <div class="dropdown-menu dropdown-menu-right">
+                                <!-- Top Notifications Area -->
+                                <div class="top-notifications-area">
+                                    <!-- Heading -->
+                                    <div class="notifications-heading">
+                                        <div class="heading-title">
+                                            <h6>Notifications</h6>
+                                        </div>
+                                    </div>
+
+                                    <div class="notifications-box" id="notificationsBox">
+                                        <a href="#" class="dropdown-item">
+                                            <img src="img/member-img/1.png" alt="">
+                                            <span class="message-text">
+                                                <span>New Feature: HTTP Method Selection</span>
+                                                <span>56 min ago</span>
+                                            </span>
+                                        </a>
+                                        <a href="#" class="dropdown-item">
+                                            <img src="img/member-img/2.png" alt="">
+                                            <span class="message-text">
+                                                <span>Andrew Done Project</span>
+                                                <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam, quam.</span>
+                                            </span>
+                                        </a>
+                                        <a href="#" class="dropdown-item">
+                                            <img src="img/member-img/3.png" alt="">
+                                            <span class="message-text">
+                                                <span>New Feature: HTTP Method Selection</span>
+                                                <span>56 min ago</span>
+                                            </span>
+                                        </a>
+                                        <a href="#" class="dropdown-item">
+                                            <img src="img/member-img/4.png" alt="">
+                                            <span class="message-text">
+                                                <span>New Feature: HTTP Method Selection</span>
+                                                <span>56 min ago</span>
+                                            </span>
+                                        </a>
+                                        <a href="#" class="dropdown-item">
+                                            <img src="img/member-img/5.png" alt="">
+                                            <span class="message-text">
+                                                <span>New Feature: HTTP Method Selection</span>
+                                                <span>56 min ago</span>
+                                            </span>
+                                        </a>
+                                        <a href="#" class="dropdown-item">
+                                            <img src="img/member-img/6.png" alt="">
+                                            <span class="message-text">
+                                                <span>New Feature: HTTP Method Selection</span>
+                                                <span>56 min ago</span>
+                                            </span>
+                                        </a>
+                                        <a href="#" class="dropdown-item">
+                                            <img src="img/member-img/7.png" alt="">
+                                            <span class="message-text">
+                                                <span>New Feature: HTTP Method Selection</span>
+                                                <span>56 min ago</span>
+                                            </span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+
+                        <li class="nav-item dropdown">
+                            <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="img/member-img/4.png" alt=""></button>
+                            <div class="dropdown-menu header-profile dropdown-menu-right">
+                                <!-- User Profile Area -->
+                                <div class="user-profile-area">
+                                    <a href="#" class="dropdown-item"><i class="zmdi zmdi-account profile-icon" aria-hidden="true"></i> My profile</a>
+                                    <a href="#" class="dropdown-item"><i class="zmdi zmdi-email-open profile-icon" aria-hidden="true"></i> Messages</a>
+                                    <a href="#" class="dropdown-item"><i class="zmdi zmdi-brightness-7 profile-icon" aria-hidden="true"></i> Account settings</a>
+                                    <a href="#" class="dropdown-item"><i class="ti-unlink profile-icon" aria-hidden="true"></i> Sign-out</a>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </header>
+
+            <!-- Main Content Area -->
+            <div class="main-content">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-12 box-margin height-card">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="wizard-form-area">
+                                        <h5 class="card-title">Upload Documents</h5>
+                                        
+                                        <form id="example-form" action="#" method="post">
+                                            <div class="overflow-auto">
+                                                <h3>EDUCATION</h3>
+                                                <section class="overflow-auto">
+                                               <div class="form-group">
+                                                   <h3>Education Certficate</h3>
+                                            <label>Education Certficate (Highest Level)</label>
+                                            <input type="file" name="img1[]" class="file-upload-default" style="display:none;">
+                                            <div class="input-group col-xs-12">
+                                                <input type="text" class="form-control file-upload-info" disabled="" placeholder="Upload Image" name="img1[]">
+                                                <span class="input-group-append">
+                                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#educertficateModal">
+                                        View Document
+                                    </button>
+
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="educertficateModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLabel">Education Certficate</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    Image goes here
+                                                </div>
+                                                <div class="modal-footer">
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                                        <label for="example-textarea">Please comment if there is difficulty in getting this document and explain why</label>
+                                                    <textarea class="form-control" id="example-textarea" rows="5" name="educertificate" readonly="" value=""></textarea>
+                                                    </div>
+                                                </section>
+                                                <h3>MEDICAL REPORT</h3>
+                                                
+                                                <section class="overflow-auto">
+                                                    <h3>Medical Report</h3>
+                                                           <div class="form-group">
+                                                               <br>
+                                                               <center><b>Click On The Images To Download Medical Assessment Forms</b>
+                                                               <br>
+                                                               <br>
+  <br>
+  <br>
+  <br>
+  <a href="medicalassessment2.pdf" download>
+  <img src="medicalassessment2.png" alt="assessmentpreview.png" width="180" height="218"></a>
+  </center>
+                                                               <h6><b>Please note:</b>
+<br>
+<br>
+<b> There is a difference between a lab test and a doctors comment.</b>
+<br>
+<b>- The actual lab test should be uploaded.</b>
+<br>
+<b>- The doctors comments should be written on the Bible School Medical Assessment document upload.</b>
+<br>
+<b>- A Chest X-ray report is an official lab report.</b>
+<br>
+<b>- Mental Health Assessment should be test results from a Mental Status Exam or the doctor signing that you are mentally fit (which is different from being medically fit).</b></h6>
+<br><br>
+<div class="col-12 box-margin">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title">Test Report Examples</h4>
+                                    <!-- Button trigger modal -->
+                                    <h6><b>PLEASE MAKE SURE THAT YOUR REPORT CONFORMS WITH THESE PROVIDED EXAMPLES.</b>
+                                    <br>
+                                    <br>
+                                    <center>
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#blood">
+                                        Example Of Lab Test Report
+                                    </button>
+                                    <p></p>
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#xray">
+                                        Example Chest X-Ray Report
+                                    </button>
+                                    <p></p>
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#xraypic">
+                                        Example Chest X-Ray Picture
+                                    </button>
+                                    <p></p>
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#mental">
+                                        Example Mental Status Exam
+                                    </button>
+                                    <p></p>
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#hiv">
+                                        Example HIV Lab Test
+                                    </button>
+                                    </center>
+
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="blood" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLabel">Lab Test Report</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <img src="CBCTestResults.jpg" alt="Mobile Logo">
+                                                </div>
+                                                <div class="modal-footer">
+                                                   
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal fade" id="xray" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLabel">Chest X-Ray Report</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <img src="xray2.png" alt="Mobile Logo">
+                                                </div>
+                                                <div class="modal-footer">
+                                                   
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal fade" id="xraypic" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLabel">Chest X-Ray Picture</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <img src="chestxray.jpeg" alt="Mobile Logo">
+                                                </div>
+                                                <div class="modal-footer">
+                                                   
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal fade" id="mental" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLabel">Mental Status Exam</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <img src="mental.png" alt="Mobile Logo">
+                                                </div>
+                                                <div class="modal-footer">
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal fade" id="hiv" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLabel">HIV Lab Test</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <img src="hiv.jpg" alt="Mobile Logo">
+                                                </div>
+                                                <div class="modal-footer">
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+<br>
+
+<br>
+                                            <label>Full Blood Count Lab Test Report</label>
+                                            <input type="file" name="img2[]" class="file-upload-default" style="display:none;">
+                                            <div class="input-group col-xs-12">
+                                                <input type="text" class="form-control file-upload-info" disabled="" placeholder="Upload Image" name="img2[]">
+                                                <span class="input-group-append">
+                                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#bloodModal">
+                                       View Document
+                                    </button>
+
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="bloodModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLabel">Full Blood Count Lab Test Report</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    Image goes here
+                                                </div>
+                                                <div class="modal-footer">
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                                        <label for="example-textarea">Please comment if there is difficulty in getting this document and explain why</label>
+                                                    <textarea class="form-control" id="example-textarea" rows="5" name="blooddescrip" readonly="" value=""></textarea>
+                                                    </div>
+                                                          <div class="form-group">
+                                            <label>Urine Routine Examination Lab Test Report</label>
+                                            <input type="file" name="img3[]" class="file-upload-default" style="display:none;">
+                                            <div class="input-group col-xs-12">
+                                                <input type="text" class="form-control file-upload-info" disabled="" placeholder="Upload Image" name="img3[]">
+                                                <span class="input-group-append">
+                                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#urineModal">
+                                       View Document
+                                    </button>
+
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="urineModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLabel">Urine Routine Examination Lab Test Report</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    Image goes here
+                                                </div>
+                                                <div class="modal-footer">
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                                        <label for="example-textarea">Please comment if there is difficulty in getting this document and explain why</label>
+                                                    <textarea class="form-control" id="example-textarea" rows="5" name="urinedescrip" readonly="" value=""></textarea>
+                                                    </div>
+                                                  
+                                                          <div class="form-group">
+                                            <label>Stool Routine Examination Lab Test Report</label>
+                                            <input type="file" name="img4[]" class="file-upload-default" style="display:none;">
+                                            <div class="input-group col-xs-12">
+                                                <input type="text" class="form-control file-upload-info" disabled="" placeholder="Upload Image" name="img4[]">
+                                                <span class="input-group-append">
+                                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#stoolModal">
+                                       View Document
+                                    </button>
+
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="stoolModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLabel">Stool Routine Examination Lab Test Report</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    Image goes here
+                                                </div>
+                                                <div class="modal-footer">
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                                        <label for="example-textarea">Please comment if there is difficulty in getting this document and explain why</label>
+                                                    <textarea class="form-control" id="example-textarea" rows="5" name="stooldescrip" readonly="" value=""></textarea>
+                                                    </div>
+                                                    
+                                                    
+                                                          <div class="form-group">
+                                            <label>Sickling Test Lab Test Report</label>
+                                            <input type="file" name="img5[]" class="file-upload-default" style="display:none;">
+                                            <div class="input-group col-xs-12">
+                                                <input type="text" class="form-control file-upload-info" disabled="" placeholder="Upload Image" name="img5[]">
+                                                <span class="input-group-append">
+                                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#sicklingModal">
+                                       View Document
+                                    </button>
+
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="sicklingModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLabel">Sickling Test Lab Test Report</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    Image goes here
+                                                </div>
+                                                <div class="modal-footer">
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                                        <label for="example-textarea">Please comment if there is difficulty in getting this document and explain why</label>
+                                                    <textarea class="form-control" id="example-textarea" rows="5" name="sicklingdescrip" readonly="" value=""></textarea>
+                                                    </div>
+                                                          <div class="form-group">
+                                            <label>HIV Test Lab Test Report</label>
+                                            <input type="file" name="img6[]" class="file-upload-default" style="display:none;">
+                                            <div class="input-group col-xs-12">
+                                                <input type="text" class="form-control file-upload-info" disabled="" placeholder="Upload Image" name="img6[]">
+                                                <span class="input-group-append">
+                                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#hivtestModal">
+                                       View Document
+                                    </button>
+
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="hivtestModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLabel">HIV Test Lab Test Report</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    Image goes here
+                                                </div>
+                                                <div class="modal-footer">
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                                        <label for="example-textarea">Please comment if there is difficulty in getting this document and explain why</label>
+                                                    <textarea class="form-control" id="example-textarea" rows="5" name="hivdescrip" readonly="" value="" ></textarea>
+                                                    </div>
+                                                          <div class="form-group">
+                                            <label>Picture Of Chest X-Ray</label>
+                                            <input type="file" name="img7[]" class="file-upload-default" style="display:none;">
+                                            <div class="input-group col-xs-12">
+                                                <input type="text" class="form-control file-upload-info" disabled="" placeholder="Upload Image" name="img7[]">
+                                                <span class="input-group-append">
+                                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#chestpicModal">
+                                       View Document
+                                    </button>
+
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="chestpicModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLabel">Picture Of Chest X-Ray</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    Image goes here
+                                                </div>
+                                                <div class="modal-footer">
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                                        <label for="example-textarea">Please comment if there is difficulty in getting this document and explain why</label>
+                                                    <textarea class="form-control" id="example-textarea" rows="5" name="chestimagedescrip" readonly="" value=""></textarea>
+                                                    </div>
+                                                          <div class="form-group">
+                                            <label>Official Chest X-Ray Report</label>
+                                            <input type="file" name="img8[]" class="file-upload-default" style="display:none;">
+                                            <div class="input-group col-xs-12">
+                                                <input type="text" class="form-control file-upload-info" disabled="" placeholder="Upload Image" name="img8[]">
+                                                <span class="input-group-append">
+                                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#chestrepModal">
+                                       View Document
+                                    </button>
+
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="chestrepModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLabel">Official Chest X-Ray Report</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    Image goes here
+                                                </div>
+                                                <div class="modal-footer">
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                                        <label for="example-textarea">Please comment if there is difficulty in getting this document and explain why</label>
+                                                    <textarea class="form-control" id="example-textarea" rows="5" name="chestreportdescrip" readonly="" value=""></textarea>
+                                                    </div>
+                                                          <div class="form-group">
+                                            <label>Mental Health Assessment</label>
+                                            <input type="file" name="img9[]" class="file-upload-default" style="display:none;">
+                                            <div class="input-group col-xs-12">
+                                                <input type="text" class="form-control file-upload-info" disabled="" placeholder="Upload Image" name="img9[]">
+                                                <span class="input-group-append">
+                                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#mentalassModal">
+                                       View Document
+                                    </button>
+
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="mentalassModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLabel">Mental Health Assessment</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    Image goes here
+                                                </div>
+                                                <div class="modal-footer">
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                                        <label for="example-textarea">Please comment if there is difficulty in getting this document and explain why</label>
+                                                    <textarea class="form-control" id="example-textarea" rows="5" name="mentaldescrip" readonly="" value=""></textarea>
+                                                    </div>
+                                                    
+                                                             <div class="form-group">
+                                            <label>Bible School Medical Assessment Form</label>
+                                            <input type="file" name="img10[]" class="file-upload-default" style="display:none;">
+                                            <div class="input-group col-xs-12">
+                                                <input type="text" class="form-control file-upload-info" disabled="" placeholder="Upload Image" name="img10[]">
+                                                <span class="input-group-append">
+                                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#biblemedModal">
+                                       View Document
+                                    </button>
+
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="biblemedModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLabel">Bible School Medical Assessment Form</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    Image goes here
+                                                </div>
+                                                <div class="modal-footer">
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                                        <label for="example-textarea">Please comment if there is difficulty in getting this document and explain why</label>
+                                                    <textarea class="form-control" id="example-textarea" rows="5" name="biblemeddescrip" readonly="" value=""></textarea>
+                                                    </div>    
+                                                </section>
+                                                <h3>RECOMMENDATION</h3>
+                                                <section class="overflow-auto">
+                                                    <h3>Recommendation</h3>
+                                                    <div class="form-group">
+                                            <label>Letter Of Recommendation From Your Pastor</label>
+                                            <br>
+                                            <h6><b>Please note:</b></h6>
+                                            <br>
+                                            <p>Recommendation Letter must have a church letterhead or stamp</p>
+                                            <input type="file" name="img11[]" class="file-upload-default" style="display:none;">
+                                            <div class="input-group col-xs-12">
+                                                <input type="text" class="form-control file-upload-info" disabled="" placeholder="Upload Image" name="img11[]">
+                                                <span class="input-group-append">
+                                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#pastorrecModal">
+                                       View Document
+                                    </button>
+
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="pastorrecModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLabel">Letter Of Recommendation From Your Pastor</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    Image goes here
+                                                </div>
+                                                <div class="modal-footer">
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                                </span>
+                                            </div>
+                                            <span class="help-block"><small>If your church does not have a letterhead or stamp please upload the letter and write the name of your church, pastors name and pastors number in the text below.</small></span>
+                                        </div>
+                                        <div class="form-group">
+                                                        <label for="example-textarea">Please comment if there is difficulty in getting this document and explain why</label>
+                                                    <textarea class="form-control" id="example-textarea" rows="5" name="recommenddescrip" readonly="" value=""></textarea>
+                                                    </div>
+                                                    </section>
+                                                    <h3>POLICE REPORT</h3>
+                                                <section class="overflow-auto">
+                                                    <h3>Police Report</h3>
+                                                <div class="form-group">
+                                            <label>Police Report (International Students Only)</label>
+                                            <input type="file" name="img12[]" class="file-upload-default" style="display:none;">
+                                            <div class="input-group col-xs-12">
+                                                <input type="text" class="form-control file-upload-info" disabled="" placeholder="Upload Image" name="img12[]">
+                                                <span class="input-group-append">
+                                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#policeModal">
+                                       View Document
+                                    </button>
+
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="policeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLabel">Police Report</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    Image goes here
+                                                </div>
+                                                <div class="modal-footer">
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                                        <label for="example-textarea">Please comment if there is difficulty in getting this document and explain why</label>
+                                                    <textarea class="form-control" id="example-textarea" rows="5" name="polreportdescrip" readonly="" value=""></textarea>
+                                                    </div>
+                                                </section>
+                                                
+                                                <h3>FINISH</h3>
+                                                <section class="overflow-auto">
+                                                    <h3>Finish</h3>
+                                                    <div class="form-check">
+                                                     <div class="col-sm-4">
+                                                    I<input type="text" id="example-gridsize" class="form-control" placeholder="Enter full name" name="finishuploaddescrip" readonly="" value="">declare that the answers I have provided are true and accurate to the best of my knowledge. I am fully aware that should I be admitted and it be discovered during my stay as a student that I withheld any relevant information, I will be immediately withdrawn from the school.
+                                                </div>
+                                                    </div>
+                                                    <br>
+                                                    <div class="form-group">
+                                                    <label class="control-label">Signature</label>
+                                                    <input type="email" class="form-control" placeholder="Enter full name" name="signatureupload" readonly="" value="">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="control-label">Date</label>
+                                                    <input type="email" class="form-control" placeholder="Enter date" name="dateupload" readonly="" value="">
+                                                </div>
+                                                </section>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    
+                </div>
+
+                <!-- Footer Area -->
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-12">
+                            <!-- Footer Area -->
+                            <footer class="footer-area d-flex align-items-center flex-wrap">
+                                <!-- Copywrite Text -->
+                                <div class="copywrite-text">
+                                    <p>Created by <a href="#">ABMTC</a></p>
+                                </div>
+                                <!-- Footer Nav -->
+                                <ul class="footer-nav d-flex align-items-center">
+                                    <li><a href="#">About</a></li>
+                                    <li><a href="#">Privacy</a></li>
+                                    <li><a href="#">Purchase</a></li>
+                                </ul>
+                            </footer>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ======================================
+    ********* Page Wrapper Area End ***********
+    ======================================= -->
+
+    <!-- Must needed plugins to the run this Template -->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/bundle.js"></script>
+    <script src="js/default-assets/setting.js"></script>
+    <script src="js/default-assets/fullscreen.js"></script>
+
+    <!-- Active JS -->
+    <script src="js/default-assets/active.js"></script>
+
+    <!-- These plugins only need for the run this page -->
+    <script src="js/jquery.steps.min.js"></script>
+    <script src="js/jquery.form-validator.min.js"></script>
+    <script src="js/default-assets/wizard-form.js"></script>
+    <script src="js/default-assets/file-upload.js"></script>
+    
+    <script src="js/default-assets/modal-classes.js"></script>
+    <script src="js/default-assets/modaleffects.js"></script>
+    
+    
+    
+    
+
+    <script src="js/default-assets/basic-form.js"></script>
+
+</body>
+
+</html>
