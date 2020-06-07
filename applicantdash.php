@@ -1,3 +1,6 @@
+<?php
+session_start()
+?>
 <!doctype html>
 <html lang="en" style="height:100%">
 
@@ -64,6 +67,10 @@
 
                 <div class="right-side-navbar d-flex align-items-center justify-content-end">
                     <!-- Mobile Trigger -->
+                    <p style="
+    padding-right: 23px;
+    padding-top: 10px;
+color: orange"> Welcome: <?php echo $_SESSION['First_Name'] . " ". $_SESSION['Last_Name']  ?></p>
                     <div class="right-side-trigger" id="rightSideTrigger">
                         <i class="fa fa-reorder"></i>
                     </div>
