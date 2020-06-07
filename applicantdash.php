@@ -66,10 +66,9 @@ session_start()
                 </div>
 
                 <div class="right-side-navbar d-flex align-items-center justify-content-end">
-	<p style="
-    padding-right: 23px;
-    padding-top: 10px;
-color: orange"> Welcome: <?php echo $_SESSION['First_Name'] . " ". $_SESSION['Last_Name']  ?></p>
+					<p style="padding-right: 23px;padding-top: 10px;color: orange"> 
+						Welcome: <?php echo $_SESSION['First_Name'] . " ". $_SESSION['Last_Name']  ?>
+					</p>
                     <!-- Mobile Trigger -->
                     <div class="right-side-trigger" id="rightSideTrigger">
                         <i class="fa fa-reorder"></i>
