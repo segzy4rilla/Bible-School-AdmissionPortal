@@ -6,7 +6,7 @@ $dbname = "ABTMC_Portal";
 
 $uniqueid = uniqid();
 
-
+session_start();
 
 try {
     $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
@@ -23,8 +23,18 @@ try {
 
 
     $result = $stmt->fetchAll();
+
+
     if($result){
-        header('Location: ../applicantdash.html');
+        $_SESSION['loggedin'] = true;
+        $_SESSION['User_Id']= $result[0][0];
+        $_SESSION['First_Name']= $result[0][1];
+        $_SESSION['Last_Name']= $result[0][2];
+        $_SESSION['EmailWhatsapp']= $result[0][3];
+        $_SESSION['Password']= $result[0][4];
+        $_SESSION['Nationality']= $result[0][5];
+
+        header('Location: ../applicantdash.php');
     }else{
         header('Location: ../loginabmtc.html');
     }

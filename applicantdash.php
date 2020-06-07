@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!doctype html>
 <html lang="en" style="height:100%">
 
@@ -39,7 +43,7 @@
 
                 <div class="left-side-content-area d-flex align-items-center">
 					<div class="ecaps-logo" style="width:100px">
-						<a href="./applicantdash.html">
+						<a href="applicantdash.php">
 							<img class="desktop-logo" style="min-height:90px; min-width:90px; margin:0px" src="ABTMC.png" alt="Desktop Logo">
 							<img class="small-logo" src="ABTMC.png" alt="Mobile Logo">
 						</a>
@@ -57,7 +61,7 @@
 
                     <!-- Mobile Logo -->
                     <div class="mobile-logo mr-3 mr-sm-4">
-                        <a href="./applicantdash.html"><img src="ABTMC.png" alt="Mobile Logo"></a>
+                        <a href="applicantdash.php"><img src="ABTMC.png" alt="Mobile Logo"></a>
                     </div>
 
                 </div>
@@ -67,6 +71,11 @@
                     <div class="right-side-trigger" id="rightSideTrigger">
                         <i class="fa fa-reorder"></i>
                     </div>
+
+                    <p style="
+    padding-right: 23px;
+    padding-top: 10px;
+color: orange"> Welcome: <?php echo $_SESSION['First_Name'] . " ". $_SESSION['Last_Name']  ?></p>
 					<!-- Three line menu button -->
                     <div class="ecaps-triggers mr-1 mr-sm-3">
                         <div class="menu-collasped" id="menuCollasped">
