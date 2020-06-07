@@ -13,17 +13,17 @@
 
 			if ($validUpload == 1) {
 				if (move_uploaded_file($_FILES["img1"]["tmp_name"][$x], $targetFilePath)) {
-					echo "The file " . basename($_FILES["img1"]["name"][$x]) . " has been uploaded.\n";
+					echo "The file " . basename($_FILES["img1"]["name"][$x]) . " has been uploaded.<br/>";
 				} else {
-					echo "Sorry, there was an error uploading your file.\n";
+					echo "Sorry, there was an error uploading your file.<br/>";
 				}
 			}
 			else {
-				echo "File could not be uploaded due to restricted file type. must be: .jpg, .jpeg, .doxc, .png or .txt \n";
+				echo "File could not be uploaded due to restricted file type. must be: .jpg, .jpeg, .doxc, .png or .txt <br/>";
 			}
 		}
 		catch (Exception $ex){
-			echo "Sorry, there was an error uploading your file.\n";
+			echo "Sorry, there was an error uploading your file.<br/>";
 		}
 	}
 ?>
