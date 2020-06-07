@@ -1,5 +1,11 @@
 <?php 
-	$targetDirectory = "../uploads/";
+	session_start();
+	$userFolder = $_SESSION['User_Id'];
+	$targetDirectory = "../uploads/" .$userFolder ."/";
+	
+	if (!file_exists($targetDirectory)) {
+		mkdir($targetDirectory, 0773, true);
+	}
 
 	for($x=0; $x < count($_FILES['img1']['name']); ++$x){
 		try {
