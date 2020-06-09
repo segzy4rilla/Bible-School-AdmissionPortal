@@ -44,10 +44,16 @@ CREATE TABLE `Documemt_Upload` (
   `DocComment9` varchar(255) DEFAULT NULL,
   `DocComment10` varchar(255) DEFAULT NULL,
   `DocComment11` varchar(255) DEFAULT NULL,
-  `DocComment12` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (User_ID),
-  FOREIGN KEY (User_ID) REFERENCES User_Table(User_ID)
+  `DocComment12` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+ALTER TABLE Documemt_Upload
+ADD PRIMARY KEY(User_ID);
+
+ALTER TABLE `Documemt_Upload` 
+ADD CONSTRAINT `FK_User_ID` 
+FOREIGN KEY (`User_ID`) REFERENCES `User_Table`(`User_ID`) 
+ON DELETE RESTRICT ON UPDATE RESTRICT;
 
 COMMIT;
 
