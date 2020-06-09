@@ -1,35 +1,78 @@
 <?php 
+
+	$servername = "localhost";
+	$username = "root";
+	$password = "";
+	$dbname = "Documemt_Upload";
+
 	session_start();
-	$userFolder = $_SESSION['User_Id'];
+	$userId = $_SESSION['User_Id'];
+	$userFolder = $userId;
 	$targetDirectory = "../uploads/" .$userFolder ."/";
 	
 	if (!file_exists($targetDirectory)) {
 		mkdir($targetDirectory, 0773, true);
 	}
+	
+	$conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+	$idCheck = 'SELECT EXISTS(SELECT * FROM Documemt_Upload WHERE User_ID = '.$userId.')'
+	$idExists = $conn->query($idCheck);
+	
+	if(!$idExists){
+		$idInsert = 'INSERT INTO Documemt_Upload(User_ID) VALUES('.$userId.')'
+		$idInserted = $conn->query($idCheck);		
+	}
+	
+	if(!$idInserted){
+		echo "Sorry, there was an error uploading your file.<br/>";
+	}
+	else {
+		for($x=0; $x < count($_FILES['img1']['name']); ++$x){
+			try {
+				if($_FILES["img1"]["name"][$x] != ""){
+					$targetFilePath = $targetDirectory . basename($_FILES["img1"]["name"][$x]);
+					$imageFileType = strtolower(pathinfo($targetFilePath, PATHINFO_EXTENSION));
+					$validUpload = 0;
 
-	for($x=0; $x < count($_FILES['img1']['name']); ++$x){
-		try {
-			$targetFilePath = $targetDirectory . basename($_FILES["img1"]["name"][$x]);
-			$imageFileType = strtolower(pathinfo($targetFilePath, PATHINFO_EXTENSION));
-			$validUpload = 0;
+					if ($imageFileType == "jpg" || $imageFileType == "docx" || $imageFileType == "png" || $imageFileType == "txt"|| $imageFileType == "jpeg") {
+						$validUpload = 1;
+					}
 
-			if ($imageFileType == "jpg" || $imageFileType == "docx" || $imageFileType == "png" || $imageFileType == "txt"|| $imageFileType == "jpeg") {
-				$validUpload = 1;
-			}
-
-			if ($validUpload == 1) {
-				if (move_uploaded_file($_FILES["img1"]["tmp_name"][$x], $targetFilePath)) {
-					echo "The file " . basename($_FILES["img1"]["name"][$x]) . " has been uploaded.<br/>";
-				} else {
-					echo "Sorry, there was an error uploading your file.<br/>";
+					if ($validUpload == 1) {
+						if (move_uploaded_file($_FILES["img1"]["tmp_name"][$x], $targetFilePath)) {
+							$storeFilepath = 'UPDATE Documemt_Upload SET DocFilepath'.$x.' = '.$targetFilePath.' WHERE User_ID = '.$userId.' '
+							$filepathStored = conn->query($storeFilepath);
+							if($filepathStored){
+								echo "The file " . basename($_FILES["img1"]["name"][$x]) . " has been uploaded.<br/>";
+							}
+							else{
+								echo "Sorry, there was an error uploading your file.<br/>";
+							}
+						} else {
+							echo "Sorry, there was an error uploading your file.<br/>";
+						}
+					}
+					else {
+						echo "File could not be uploaded due to restricted file type. must be: .jpg, .jpeg, .doxc, .png or .txt <br/>";
+					}
+				}
+				else{
+					$comment = $_POST["comment"]["name"][$x];
+					if(trim($comment) != ""){
+						$storeComment = 'UPDATE Documemt_Upload SET DocComment'.$x.' = '.$targetFilePath.' WHERE User_ID = '.$userId.' '
+						$commentStored = conn->query($storeComment);
+						if($commentStored){
+							echo "Your reason for not uploading file" .$x. " has been saved.<br/>";
+						}
+						else{
+							echo "Sorry, there was an error saving your reason for not uploading file.".$x."<br/>";
+						}
+					}
 				}
 			}
-			else {
-				echo "File could not be uploaded due to restricted file type. must be: .jpg, .jpeg, .doxc, .png or .txt <br/>";
+			catch (Exception $ex){
+				echo "Sorry, there was an error uploading your file.<br/>";
 			}
-		}
-		catch (Exception $ex){
-			echo "Sorry, there was an error uploading your file.<br/>";
 		}
 	}
 ?>
