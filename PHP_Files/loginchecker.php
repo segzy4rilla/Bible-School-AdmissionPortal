@@ -27,6 +27,7 @@ try {
 
     if($result){
         $_SESSION['loggedin'] = true;
+        $_SESSION['isAdmin'] = false;
         $_SESSION['User_Id']= $result[0][0];
         $_SESSION['First_Name']= $result[0][1];
         $_SESSION['Last_Name']= $result[0][2];
@@ -36,6 +37,7 @@ try {
 
         header('Location: ../applicantdash.php');
     }else{
+        $_SESSION['loggedin'] = false;
         header('Location: ../loginabmtc.html');
     }
 

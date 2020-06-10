@@ -20,11 +20,11 @@
 		}
 		
 		$conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-		$idCheck = 'SELECT EXISTS(SELECT * FROM Documemt_Upload WHERE User_ID = '.$userId.')'
+        $idCheck = 'SELECT EXISTS(SELECT * FROM Documemt_Upload WHERE User_ID = ' . $userId . ')';
 		$idExists = $conn->query($idCheck);
 		
 		if(!$idExists){
-			$idInsert = 'INSERT INTO Documemt_Upload(User_ID) VALUES('.$userId.')'
+            $idInsert = 'INSERT INTO Documemt_Upload(User_ID) VALUES(' . $userId . ')';
 			$idInserted = $conn->query($idCheck);		
 		}
 		
@@ -45,8 +45,8 @@
 
 						if ($validUpload == 1) {
 							if (move_uploaded_file($_FILES["img1"]["tmp_name"][$x], $targetFilePath)) {
-								$storeFilepath = 'UPDATE Documemt_Upload SET DocFilepath'.$x.' = '.$targetFilePath.' WHERE User_ID = '.$userId.' '
-								$filepathStored = conn->query($storeFilepath);
+                                $storeFilepath = 'UPDATE Documemt_Upload SET DocFilepath' . $x . ' = ' . $targetFilePath . ' WHERE User_ID = ' . $userId . ' ';
+                                $filepathStored = $conn->query($storeFilepath);
 								if($filepathStored){
 									echo "The file " . basename($_FILES["img1"]["name"][$x]) . " has been uploaded.<br/>";
 								}
@@ -64,8 +64,8 @@
 					else{
 						$comment = $_POST["comment"]["name"][$x];
 						if(trim($comment) != ""){
-							$storeComment = 'UPDATE Documemt_Upload SET DocComment'.$x.' = '.$targetFilePath.' WHERE User_ID = '.$userId.' '
-							$commentStored = conn->query($storeComment);
+                            $storeComment = 'UPDATE Documemt_Upload SET DocComment' . $x . ' = ' . $targetFilePath . ' WHERE User_ID = ' . $userId . ' ';
+                            $commentStored = $conn->query($storeComment);
 							if($commentStored){
 								echo "Your reason for not uploading file" .$x. " has been saved.<br/>";
 							}
