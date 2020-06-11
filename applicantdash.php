@@ -1,5 +1,9 @@
 <?php
-session_start()
+session_start();
+
+if ($_SESSION['loggedin'] == false) {
+    header('Location: loginabmtc.html');
+}
 ?>
 <!doctype html>
 <html lang="en" style="height:100%">
@@ -12,7 +16,7 @@ session_start()
     <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
     <!-- Title -->
-    <title>ABMTC - Admin Home</title>
+    <title>ABMTC - Home</title>
 
     <!-- Favicon -->
     <link rel="icon" href="ABTMC.png" s-resize>
@@ -42,7 +46,7 @@ session_start()
 
                 <div class="left-side-content-area d-flex align-items-center">
 					<div class="ecaps-logo" style="width:75px">
-						<a href="admindash.html">
+                        <a href="applicantdash.php">
 							<img class="desktop-logo" style="min-height:70px; min-width:70px; margin:0px 10px 0px 0px" src="ABTMC.png" alt="Desktop Logo">
 							<img class="small-logo" src="ABTMC.png" alt="Mobile Logo">
 						</a>
@@ -60,7 +64,7 @@ session_start()
 
                     <!-- Mobile Logo -->
                     <div class="mobile-logo mr-3 mr-sm-4">
-                        <a href="admindash.html"><img src="ABTMC.png" alt="Mobile Logo"></a>
+                        <a href="applicantdash.php"><img src="ABTMC.png" alt="Mobile Logo"></a>
                     </div>
 
                 </div>
@@ -88,7 +92,7 @@ session_start()
                 <div class="container-fluid" style="height:100%">
                     <div class="row" style="height:100%">
                         <div class="col-lg-12"  style="height:30%">
-							<a href="adminapplicationform.html">
+                            <a href="ABMTCApplicationForm.php">
 								<div class="card" style="margin-bottom:15px;height:100%">
 									<!-- Card body -->
 									<div class="card-body">
@@ -109,17 +113,17 @@ session_start()
 							</a>
                         </div>
                         <div class="col-lg-12"  style="height:30%">
-							<a href="admininterview.html">
+                            <a href="interview.php">
 								<div class="card" style="margin-bottom:15px;height:100%">
 									<!-- Card body -->
 									<div class="card-body">
 										<div class="row">
 											<div class="col">
-												<h5 class="mb-20">Interview Results</h5>                                         
+												<h5 class="mb-20">Interview Test</h5>                                         
 											</div>
 											<div class="col-auto">
 												<div class="clint-icon bg-gradient-danger text-white rounded-circle icon-shape">
-													<i class="fa fa-table"></i>
+													<i class="fa fa-file-text"></i>
 												</div>
 											</div>
 										</div>
@@ -129,18 +133,18 @@ session_start()
 							</a>
                         </div>
                         <div class="col-lg-12"  style="height:30%">
-                            <a href="admindocumentupload.html">
+                            <a href="documentupload.php">
 								<div class="card" style="margin-bottom:15px;height:100%">
 									<!-- Card body -->
 									<div class="card-body">
 										<div class="row">
 											<div class="col">
-												<h5 class="mb-20">Document Uploads</h5>
+												<h5 class="mb-20">Document Upload</h5>
 												
 											</div>
 											<div class="col-auto">
 												<div class="clint-icon bg-gradient-danger text-white rounded-circle icon-shape">
-													<i class="fa fa-folder-open"></i>
+													<i class="fa fa-folder"></i>
 												</div>
 											</div>
 										</div>
