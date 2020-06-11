@@ -562,32 +562,32 @@ if ($_SESSION['loggedin'] == false) {
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="control-label">Name Of Father</label>
-                                                    <input type="number" class="form-control" name="question15"
+                                                    <input type="text" class="form-control" name="question15"
                                                            placeholder="Enter name of your father">
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="control-label">Name Of Mother</label>
-                                                    <input type="number" class="form-control" name="question16"
+                                                    <input type="text" class="form-control" name="question16"
                                                            placeholder="Enter name of your mother">
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="control-label">Name Of Guardian</label>
-                                                    <input type="number" class="form-control" name="question17"
+                                                    <input type="text" class="form-control" name="question17"
                                                            placeholder="Enter name of your guardian">
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="control-label">Profession Of Father</label>
-                                                    <input type="number" class="form-control" name="question18"
+                                                    <input type="text" class="form-control" name="question18"
                                                            placeholder="Enter profession of your father">
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="control-label">Profession Of Mother</label>
-                                                    <input type="number" class="form-control" name="question19"
+                                                    <input type="text" class="form-control" name="question19"
                                                            placeholder="Enter profession of your mother">
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="control-label">Profession Of Guardian</label>
-                                                    <input type="number" class="form-control" name="question20"
+                                                    <input type="text" class="form-control" name="question20"
                                                            placeholder="Enter profession of your guardian">
                                                 </div>
                                                 <div class="form-group">
@@ -679,7 +679,7 @@ if ($_SESSION['loggedin'] == false) {
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="control-label">Name Of Sponsor</label>
-                                                    <input type="number" class="form-control" name="question26"
+                                                    <input type="text" class="form-control" name="question26"
                                                            placeholder="Enter sponsor name">
                                                 </div>
                                                 <div class="form-group">
