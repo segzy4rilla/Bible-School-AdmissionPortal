@@ -27,7 +27,7 @@ if ($_SESSION['loggedin'] == false || !$_SESSION['isAdmin']) {
     <link rel="stylesheet" href="css/default-assets/buttons.bootstrap4.css">
     <link rel="stylesheet" href="css/default-assets/select.bootstrap4.css">
 
-    <!-- Master Stylesheet [If you remove this CSS file, your file will be broken undoubtedly.] -->
+    <!-- Master jbj [If you remove this CSS file, your file will be broken undoubtedly.] -->
     <link rel="stylesheet" href="style.css">
 
 </head>
