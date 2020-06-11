@@ -1,8 +1,8 @@
 <?php
 $servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "ABTMC_Portal";
+$username = "u199045760_ABMTC";
+$password = "ABMTC_PASS";
+$dbname = "u199045760_ABMTC_APP";
 
 session_start();
 $uniqueid = $_SESSION['User_Id'];

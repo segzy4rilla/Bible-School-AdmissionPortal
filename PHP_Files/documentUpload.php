@@ -1,9 +1,9 @@
-<?php 
+<?php
 
-	$servername = "localhost";
-	$username = "root";
-	$password = "";
-	$dbname = "Documemt_Upload";
+$servername = "localhost";
+$username = "u199045760_ABMTC";
+$password = "ABMTC_PASS";
+$dbname = "u199045760_ABMTC_APP";
 
 	session_start();
 	$userId = $_SESSION['User_Id'];
