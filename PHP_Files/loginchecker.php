@@ -2,7 +2,7 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "ABTMC_Portal";
+$dbname = "anagkaz1_wp780";
 
 $uniqueid = uniqid();
 

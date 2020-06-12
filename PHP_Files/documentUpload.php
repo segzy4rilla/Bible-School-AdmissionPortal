@@ -3,7 +3,7 @@
 	$servername = "localhost";
 	$username = "root";
 	$password = "";
-	$dbname = "Documemt_Upload";
+	$dbname = "anagkaz1_wp780";
 
 	session_start();
 	$userId = $_SESSION['User_Id'];
