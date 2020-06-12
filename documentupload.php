@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-if ($_SESSION['loggedin'] == false || !$_SESSION['isAdmin']) {
+if (!$_SESSION['loggedin'] || $_SESSION['isAdmin']) {
     header('Location: loginabmtc.html');
 }
 ?>
