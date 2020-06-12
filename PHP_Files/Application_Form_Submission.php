@@ -163,7 +163,7 @@ Recommended_By,Recommended_By_Specify,Signature,Submission_Date)
     '$question74')";
     // use exec() because no results are returned
     $conn->exec($sql);
-    header('Location: applicantdash.php');
+    header('Location: ../applicantdash.php');
 } catch (PDOException $e) {
     echo $sql . "<br>" . $e->getMessage();
 }
