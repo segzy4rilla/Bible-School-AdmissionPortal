@@ -28,8 +28,8 @@
 			$idInserted = $conn->query($idCheck);		
 		}
 		
-		if(!$idInserted){
-			echo "Sorry, there was an error uploading your file.<br/>";
+		if(!$idInserted && !$idExists){
+			echo "Sorry, there was an error uploading your file. Error Code:AG1<br/>";
 		}
 		else {
 			for($x=0; $x < count($_FILES['img1']['name']); ++$x){
@@ -51,10 +51,10 @@
 									echo "The file " . basename($_FILES["img1"]["name"][$x]) . " has been uploaded.<br/>";
 								}
 								else{
-									echo "Sorry, there was an error uploading your file.<br/>";
+									echo "Sorry, there was an error uploading your file. Error Code:AG2<br/>";
 								}
 							} else {
-								echo "Sorry, there was an error uploading your file.<br/>";
+								echo "Sorry, there was an error uploading your file. Error Code:AG3<br/>";
 							}
 						}
 						else {
@@ -70,13 +70,13 @@
 								echo "Your reason for not uploading file" .$x. " has been saved.<br/>";
 							}
 							else{
-								echo "Sorry, there was an error saving your reason for not uploading file.".$x."<br/>";
+								echo "Sorry, there was an error saving your reason for not uploading file. Error Code:AG4".$x."<br/>";
 							}
 						}
 					}
 				}
 				catch (Exception $ex){
-					echo "Sorry, there was an error uploading your file.<br/>";
+					echo "Sorry, there was an error uploading your file. Error Code:AG5<br/>";
 				}
 			}
 		}
