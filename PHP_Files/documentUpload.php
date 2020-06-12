@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 	$servername = "localhost";
 	$username = "anagkaz1_wp780";

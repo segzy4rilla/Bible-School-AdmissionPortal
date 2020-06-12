@@ -4,6 +4,7 @@ $username = "anagkaz1_wp780";
 $password = "AbMTC2020!!!";
 $dbname = "anagkaz1_wp780";
 
+
 session_start();
 $uniqueid = $_SESSION['User_Id'];
 
@@ -163,7 +164,7 @@ Recommended_By,Recommended_By_Specify,Signature,Submission_Date)
     '$question74')";
     // use exec() because no results are returned
     $conn->exec($sql);
-    header('Location: applicantdash.php');
+    header('Location: ../applicantdash.php');
 } catch (PDOException $e) {
     echo $sql . "<br>" . $e->getMessage();
 }
