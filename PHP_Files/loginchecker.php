@@ -1,8 +1,8 @@
 <?php
-$servername = "localhost";
-$username = "u199045760_ABMTC";
-$password = "ABMTC_PASS";
-$dbname = "u199045760_ABMTC_APP";
+$servername = "localhost:3306";
+$username = "anagkaz1_wp780";
+$password = "AbMTC2020!!!";
+$dbname = "anagkaz1_wp780";
 
 $uniqueid = uniqid();
 
@@ -33,7 +33,9 @@ try {
         $_SESSION['Last_Name']= $result[0][2];
         $_SESSION['EmailWhatsapp']= $result[0][3];
         $_SESSION['Password']= $result[0][4];
-        $_SESSION['Nationality']= $result[0][5];
+        $_SESSION['Application_Form_Submitted'] = $result[0][6];
+        $_SESSION['Interview_Form_Submitted'] = $result[0][7];
+        $_SESSION['Document_Uploads_Submitted'] = $result[0][8];
 
         header('Location: ../applicantdash.php');
     }else{

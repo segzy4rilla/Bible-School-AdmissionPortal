@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jun 06, 2020 at 11:59 PM
+-- Generation Time: Jun 13, 2020 at 12:48 PM
 -- Server version: 10.1.33-MariaDB
 -- PHP Version: 7.2.6
 
@@ -32,19 +32,13 @@ CREATE TABLE `User_Table` (
   `User_ID` varchar(255) NOT NULL,
   `First_Name` varchar(255) DEFAULT NULL,
   `Last_Name` varchar(255) NOT NULL,
-  `Username` varchar(255) NOT NULL,
   `EmailWhatsapp` varchar(255) NOT NULL,
-  `Password` varchar(255) NOT NULL
+  `Password` varchar(255) NOT NULL,
+  `Nationality` varchar(255) NOT NULL,
+  `Application_Form_Submitted` tinyint(1) NOT NULL,
+  `Interview_Form_Submitted` tinyint(1) NOT NULL,
+  `Document_Uploads_Submitted` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `User_Table`
---
-
-INSERT INTO `User_Table` (`User_ID`, `First_Name`, `Last_Name`, `Username`, `EmailWhatsapp`, `Password`) VALUES
-('5edbfd1305901', 'John', 'Doe', 'jaa13', 'john@example.com', 'Duduosun96'),
-('5edc0d91a6c00', '', '', '', '', ''),
-('5edc0e8641eab', 'Godwin', 'Adebimpe', 'james', 'ade.segs@yahoo.com', 'Duduosun96');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

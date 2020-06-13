@@ -1,8 +1,8 @@
 <?php
-$servername = "localhost";
-$username = "u199045760_ABMTC";
-$password = "ABMTC_PASS";
-$dbname = "u199045760_ABMTC_APP";
+$servername = "localhost:3306";
+$username = "anagkaz1_wp780";
+$password = "AbMTC2020!!!";
+$dbname = "anagkaz1_wp780";
 
 $uniqueid = uniqid();
 

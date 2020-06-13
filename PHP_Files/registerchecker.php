@@ -1,8 +1,8 @@
 <?php
-$servername = "localhost";
-$username = "u199045760_ABMTC";
-$password = "ABMTC_PASS";
-$dbname = "u199045760_ABMTC_APP";
+$servername = "localhost:3306";
+$username = "anagkaz1_wp780";
+$password = "AbMTC2020!!!";
+$dbname = "anagkaz1_wp780";
 
 $uniqueid = uniqid();
 
@@ -20,8 +20,8 @@ try {
 
     // set the PDO error mode to exception
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $sql = "INSERT INTO User_Table (User_ID, First_Name,Last_Name,Username,EmailWhatsapp,Password,Nationality)
-  VALUES ('$uniqueid','$firstname', '$lastname','$username','$emailwhatsapp','$password','$nationality')";
+    $sql = "INSERT INTO User_Table (User_ID, First_Name,Last_Name,EmailWhatsapp,Password,Nationality)
+  VALUES ('$uniqueid','$firstname', '$lastname','$emailwhatsapp','$password','$nationality')";
     // use exec() because no results are returned
     $conn->exec($sql);
     header('Location: ../loginabmtc.html');

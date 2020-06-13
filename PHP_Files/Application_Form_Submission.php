@@ -1,15 +1,28 @@
 <?php
-$servername = "localhost";
-$username = "u199045760_ABMTC";
-$password = "ABMTC_PASS";
-$dbname = "u199045760_ABMTC_APP";
+//$servername = "localhost";
+//$username = "anagkaz1_wp780";
+//$password = "AbMTC2020!!!";
+//$dbname = "anagkaz1_wp780";
+
+
+$servername = "localhost:3306";
+$username = "anagkaz1_wp780";
+$password = "AbMTC2020!!!";
+$dbname = "anagkaz1_wp780";
 
 session_start();
 $uniqueid = $_SESSION['User_Id'];
 
 
 try {
+
+
     $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+
+    if ($_SESSION['Application_Form_Submitted'] == 1) {
+        $sql_delete = "DELETE FROM Application_Form WHERE User_ID='$uniqueid'";
+        $conn->exec($sql_delete);
+    }
     $question1 = @$_POST['question1'];
     $question2 = @$_POST['question2'];
     $question3 = @$_POST['question3'];
@@ -161,8 +174,13 @@ Recommended_By,Recommended_By_Specify,Signature,Submission_Date)
     '$question72',
     '$question73',
     '$question74')";
+
+    $sql2 = "UPDATE User_Table SET 	Application_Form_Submitted=TRUE WHERE User_ID='$uniqueid'";
+
     // use exec() because no results are returned
     $conn->exec($sql);
+    $conn->exec($sql2);
+
     header('Location: ../applicantdash.php');
 } catch (PDOException $e) {
     echo $sql . "<br>" . $e->getMessage();
