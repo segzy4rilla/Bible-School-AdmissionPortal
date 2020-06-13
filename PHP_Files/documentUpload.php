@@ -5,6 +5,13 @@
 	$password = "AbMTC2020!!!";
 	$dbname = "anagkaz1_wp780";
 
+//$servername = "localhost";
+//$username = "root";
+//$password = "";
+//$dbname = "ABTMC_Portal";
+
+
+
 	session_start();
 	$userId = $_SESSION['User_Id'];
 	
@@ -22,13 +29,14 @@
 		$conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
         $idCheck = 'SELECT EXISTS(SELECT * FROM Documemt_Upload WHERE User_ID = ' . $userId . ')';
 		$idExists = $conn->query($idCheck);
-		
+
 		if(!$idExists){
             $idInsert = 'INSERT INTO Documemt_Upload(User_ID) VALUES(' . $userId . ')';
-			$idInserted = $conn->query($idCheck);		
-		}
-		
-		if(!$idInserted && !$idExists){
+            $idInserted = $conn->exec($idInsert);
+        }
+
+
+        if (!$idInserted && !$idExists) {
 			echo "Sorry, there was an error uploading your file. Error Code:AG1<br/>";
 		}
 		else {

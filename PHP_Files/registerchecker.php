@@ -1,4 +1,10 @@
 <?php
+
+//$servername = "localhost";
+//$username = "root";
+//$password = "";
+//$dbname = "ABTMC_Portal";
+
 $servername = "localhost:3306";
 $username = "anagkaz1_wp780";
 $password = "AbMTC2020!!!";

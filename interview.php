@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-if ($_SESSION['loggedin'] == false || !$_SESSION['isAdmin']) {
+if ($_SESSION['loggedin'] == false) {
     header('Location: loginabmtc.html');
 }
 ?>
@@ -106,11 +106,9 @@ if ($_SESSION['loggedin'] == false || !$_SESSION['isAdmin']) {
                             <p class="card-description">
                                 Please fill in every question
                             </p>
-                            <button style="display:none" id="timerbutton" onclick="setTimeout(myFunction, 900000)">Try
-                                it
-                            </button>
 
-                            <form action="PHP_Files/submit_interviewanswers.php" method="post" class="forms-sample">
+                            <form action="PHP_Files/submit_interviewanswers.php" id="inerview_form" method="post"
+                                  class="forms-sample">
                                 <div class="form-group">
                                     <label class="control-label">Are you a born again Christian?</label>
                                     <div class="custom-control custom-radio">
@@ -453,6 +451,10 @@ if ($_SESSION['loggedin'] == false || !$_SESSION['isAdmin']) {
     startTimer();
 
     function startTimer() {
+        if (document.getElementById('timer').innerHTML == "00:00:00") {
+            alert("Submitting Results");
+            document.getElementById('inerview_form').submit();
+        }
         var presentTime = document.getElementById('timer').innerHTML;
         var timeArray = presentTime.split(/[:]+/);
         var h = timeArray[0];

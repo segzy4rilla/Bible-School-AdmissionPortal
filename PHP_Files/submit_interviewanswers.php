@@ -4,6 +4,10 @@ $username = "anagkaz1_wp780";
 $password = "AbMTC2020!!!";
 $dbname = "anagkaz1_wp780";
 
+//$servername = "localhost";
+//$username = "root";
+//$password = "";
+//$dbname = "ABTMC_Portal";
 $uniqueid = uniqid();
 
 session_start();
@@ -37,7 +41,7 @@ try {
   VALUES ('$question_1','$question_2','$question_3','$question_4','$userid','$question_5','$question_6','$question_7','$question_8','$question_9','$question_10','$question_11','$question_12','$question_13','$question_14','$question_15','$question_16')";
     // use exec() because no results are returned
     $conn->exec($sql);
-    header('Location: ../applicantdash.html');
+    header('Location: ../applicantdash.php');
 } catch(PDOException $e) {
     echo $sql . "<br>" . $e->getMessage();
 }
