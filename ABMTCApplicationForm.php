@@ -907,14 +907,12 @@ if ($_SESSION['loggedin'] == false) {
                                                     Before</label>
 
                                                 <div class="custom-control custom-radio">
-                                                    <input type="radio" id="radioarrest1" name="question44" value="Yes"
-                                                           class="custom-control-input">
+                                                    <input type="radio" id="radioarrest1" name="question44" value="Yes" class="custom-control-input">
                                                     <label class="custom-control-label" for="radioarrest1">Yes</label>
                                                 </div>
                                                 <div class="custom-control custom-radio">
-                                                    <label class="custom-control-label" for="radionarrest2">No</label>
-                                                    <input type="radio" id="radionarrest2" name="question44" value="No"
-                                                           class="custom-control-input">
+													<input type="radio" id="radioarrest2" name="question44" value="No" class="custom-control-input">
+                                                    <label class="custom-control-label" for="radioarrest2">No</label>
                                                 </div>
 
                                                 <label class="control-label">If Yes, Please Explain</label>
@@ -1231,8 +1229,8 @@ if ($_SESSION['loggedin'] == false) {
                                                 <div class="form-group">
                                                     <div class="checkbox checkbox-primary d-inline">
                                                         <input type="checkbox" name="question62[]" value="None"
-                                                               id="checkbox-p-2none">
-                                                        <label for="checkbox-p-2none" class="cr">None</label>
+                                                               id="checkbox-p-2none2">
+                                                        <label for="checkbox-p-2none2" class="cr">None</label>
                                                     </div>
                                                 </div>
 
