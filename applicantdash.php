@@ -132,10 +132,10 @@ if ($_SESSION['loggedin'] == false) {
 								</div>
 							</a>
                         </div>
-                        <!--<div class="col-lg-12"  style="height:30%">
-                            <a href="documentupload.php">
+                        <div class="col-lg-12"  style="height:30%">
+                            <a href="#">
 								<div class="card" style="margin-bottom:15px;height:100%">
-									<!-- Card body
+									<!-- Card body -->
 									<div class="card-body">
 										<div class="row">
 											<div class="col">
@@ -152,7 +152,7 @@ if ($_SESSION['loggedin'] == false) {
 									</div>
 								</div>
 							</a>
-                        </div>-->
+                        </div>
                     </div>
                     
 
