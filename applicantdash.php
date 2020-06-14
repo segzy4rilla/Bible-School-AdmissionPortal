@@ -104,7 +104,8 @@ if ($_SESSION['Application_Form_Submitted'] == 1) {
                             if ($app_comp) {
                                 echo '<a href="">';
                             } else {
-                                echo '<a href="ABMTCApplicationForm.php">';
+								echo '<a href="">';
+                                //echo '<a href="ABMTCApplicationForm.php">';
                             }
                             ?>
                             <div class="card" style="margin-bottom:15px;height:100%">
