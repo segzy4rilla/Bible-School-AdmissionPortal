@@ -525,7 +525,8 @@ if (!$_SESSION['loggedin'] || $_SESSION['isAdmin']) {
                                                 <div class="form-group">
                                                     <label for="example-textarea">Please comment if there is difficulty
                                                         in getting this document and explain why</label>
-                                                    <textarea class="form-control" name="comment[]" form="example-form" rows="5" name="biblemeddescrip"></textarea>
+                                                    <textarea class="form-control" name="comment[]" form="example-form"
+                                                              rows="5" name="biblemeddescrip"></textarea>
                                                 </div>
                                             </section>
                                             <h3>RECOMMENDATION</h3>
