@@ -44,8 +44,25 @@ try {
 
         header('Location: ../applicantdash.php');
     }else{
-        $_SESSION['loggedin'] = false;
-        header('Location: ../loginabmtc.html');
+
+        $sql = "SELECT * FROM Admin_User where Username= :emwhat AND Password = :pwd";
+        $stmt = $conn->prepare($sql);
+        $stmt->bindParam(':emwhat', $email_whatsapp, PDO::PARAM_STR_CHAR);
+        $stmt->bindParam(':pwd', $password, PDO::PARAM_STR_CHAR);
+        $stmt->execute();
+        $result = $stmt->fetchAll();
+
+        if ($result) {
+            $_SESSION['loggedin'] = true;
+            $_SESSION['isAdmin'] = true;
+            header('Location: ../summarytable.php');
+
+        } else {
+            $_SESSION['loggedin'] = false;
+            header('Location: ../loginabmtc.html');
+
+        }
+
     }
 
 }catch(Exception $ex){

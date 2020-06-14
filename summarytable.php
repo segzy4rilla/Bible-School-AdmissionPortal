@@ -1,9 +1,9 @@
 <?php
 session_start();
-//
-//if ($_SESSION['loggedin'] == false || !$_SESSION['isAdmin']) {
-//    header('Location: loginabmtc.html');
-//}
+
+if ($_SESSION['loggedin'] == false || $_SESSION['isAdmin'] == false) {
+    header('Location: loginabmtc.html');
+}
 
 require("dbconfig/config.php");
 
