@@ -1,9 +1,15 @@
 <?php
 session_start();
+//
+//if ($_SESSION['loggedin'] == false || !$_SESSION['isAdmin']) {
+//    header('Location: loginabmtc.html');
+//}
 
-if ($_SESSION['loggedin'] == false || !$_SESSION['isAdmin']) {
-    header('Location: loginabmtc.html');
-}
+require("dbconfig/config.php");
+
+$query = "select * from User_Table";
+$result = $con->query($query);
+
 ?>
 <!doctype html>
 <html lang="en">
@@ -44,7 +50,8 @@ if ($_SESSION['loggedin'] == false || !$_SESSION['isAdmin']) {
 ======================================= -->
 <div class="ecaps-page-wrapper">
     <!-- Sidemenu Area -->
-    <div class="ecaps-sidemenu-area">
+    <div
+    ">
         <!-- Desktop Logo -->
         <div class="ecaps-logo">
             <a href="applicantdash.html">
@@ -53,19 +60,7 @@ if ($_SESSION['loggedin'] == false || !$_SESSION['isAdmin']) {
             </a>
         </div>
 
-        <!-- Side Nav -->
-        <div class="ecaps-sidenav" id="ecapsSideNav">
-            <!-- Side Menu Area -->
-            <div class="side-menu-area">
-                <!-- Sidebar Menu -->
-                <nav>
-                    <ul class="sidebar-menu" data-widget="tree">
 
-
-                    </ul>
-                </nav>
-            </div>
-        </div>
     </div>
 
     <!-- Page Content -->
@@ -275,8 +270,9 @@ if ($_SESSION['loggedin'] == false || !$_SESSION['isAdmin']) {
                                     <table id="datatable-buttons" class="table table-striped dt-responsive nowrap w-100">
                                         <thead>
                                         <tr>
+                                            <th>Index</th>
                                             <th>Applicants Name</th>
-                                            <th>Country Of Residence</th>
+                                            <th>Nationality</th>
                                             <th>Applicants Form</th>
                                             <th>Interview Test</th>
                                             <th>Uploaded Documents</th>
@@ -286,14 +282,36 @@ if ($_SESSION['loggedin'] == false || !$_SESSION['isAdmin']) {
 
 
                                         <tbody>
-                                        <tr>
-                                            <td>James Buabin</td>
-                                            <td>Trinidad</td>
-                                            <td>Edinburgh</td>
-                                            <td>61</td>
-                                            <td>2011/04/25</td>
+                                        <?php
+                                        $count = 0;
+                                        while ($row = $result->fetch_assoc()) {
 
-                                        </tr>
+                                            echo "<td>" . ++$count . "</td>";
+                                            echo "<td>" . $row['First_Name'] . " " . $row['Last_Name'] . "</td>";
+                                            echo "<td>" . $row['Nationality'] . "</td>";
+
+                                            if ($row['Application_Form_Submitted'] == 1) {
+                                                echo "<td>" . "Completed" . "</td>";
+                                            } else {
+                                                echo "<td>" . "Incomplete" . "</td>";
+                                            }
+
+                                            if ($row['Interview_Form_Submitted'] == 1) {
+                                                echo "<td>" . "Completed" . "</td>";
+                                            } else {
+                                                echo "<td>" . "Incomplete" . "</td>";
+                                            }
+                                            if ($row['Document_Uploads_Submitted'] == 1) {
+                                                echo "<td>" . "Completed" . "</td>";
+                                            } else {
+                                                echo "<td>" . "Incomplete" . "</td>";
+                                            }
+
+
+                                        }
+
+                                        ?>
+
 
                                         </tbody>
                                     </table>
