@@ -4,7 +4,8 @@
 	$username = "anagkaz1_wp780";
 	$password = "AbMTC2020!!!";
 	$dbname = "anagkaz1_wp780";
-
+	$responseMsg = "";
+	
 //$servername = "localhost";
 //$username = "root";
 //$password = "";
