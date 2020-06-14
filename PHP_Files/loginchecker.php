@@ -1,13 +1,13 @@
 <?php
-$servername = "localhost:3306";
-$username = "anagkaz1_wp780";
-$password = "AbMTC2020!!!";
-$dbname = "anagkaz1_wp780";
+//$servername = "localhost:3306";
+//$username = "anagkaz1_wp780";
+//$password = "AbMTC2020!!!";
+//$dbname = "anagkaz1_wp780";
 
-//$servername = "localhost";
-//$username = "root";
-//$password = "";
-//$dbname = "ABTMC_Portal";
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "ABTMC_Portal";
 
 $uniqueid = uniqid();
 
@@ -59,6 +59,7 @@ try {
 
         } else {
             $_SESSION['loggedin'] = false;
+            $_SESSION['isAdmin'] = false;
             header('Location: ../loginabmtc.html');
 
         }

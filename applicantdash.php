@@ -4,6 +4,15 @@ session_start();
 if ($_SESSION['loggedin'] == false) {
     header('Location: loginabmtc.html');
 }
+
+$int_comp = false;
+$app_comp = false;
+if ($_SESSION['Interview_Form_Submitted'] == 1) {
+    $int_comp = true;
+}
+if ($_SESSION['Application_Form_Submitted'] == 1) {
+    $app_comp = true;
+}
 ?>
 <!doctype html>
 <html lang="en" style="height:100%">
@@ -23,7 +32,6 @@ if ($_SESSION['loggedin'] == false) {
 
     <!-- Master Stylesheet [If you remove this CSS file, your file will be broken undoubtedly.] -->
     <link rel="stylesheet" href="style.css">
-
 </head>
 
 <body style="height:90%">
@@ -92,13 +100,25 @@ if ($_SESSION['loggedin'] == false) {
                 <div class="container-fluid" style="height:100%">
                     <div class="row" style="height:100%">
                         <div class="col-lg-12"  style="height:30%">
-                            <a href="ABMTCApplicationForm.php">
-								<div class="card" style="margin-bottom:15px;height:100%">
+                            <?php
+                            if ($app_comp) {
+                                echo '<a href="">';
+                            } else {
+                                echo '<a href="ABMTCApplicationForm.php">';
+                            }
+                            ?>
+                            <div class="card" style="margin-bottom:15px;height:100%">
 									<!-- Card body -->
 									<div class="card-body">
 										<div class="row">
 											<div class="col">
-												<h5 class="mb-20">Application Form</h5>
+                                                <?php
+                                                if (!$app_comp) {
+                                                    echo "<h5 class='mb-20'>Application Form (Incomplete)</h5>";
+                                                } else {
+                                                    echo "<h5 class='mb-20'>Application Form (Completed and Submitted)</h5>";
+                                                }
+                                                ?>
 												<span class="text-dark mb-0"></span>
 											</div>
 											<div class="col-auto">
@@ -113,13 +133,26 @@ if ($_SESSION['loggedin'] == false) {
 							</a>
                         </div>
                         <div class="col-lg-12"  style="height:30%">
-                            <a href="interview.php">
+                            <?php
+                            if ($int_comp) {
+                                echo '<a href="">';
+
+                            } else {
+                                echo '<a href="interview.php">';
+                            }
+                            ?>
 								<div class="card" style="margin-bottom:15px;height:100%">
 									<!-- Card body -->
 									<div class="card-body">
 										<div class="row">
 											<div class="col">
-												<h5 class="mb-20">Interview Test</h5>                                         
+                                                <?php
+                                                if (!$int_comp) {
+                                                    echo "<h5 class='mb-20'>Interview Test (Incomplete)</h5>";
+                                                } else {
+                                                    echo "<h5 class='mb-20'>Interview Test (Completed and Submitted)</h5>";
+                                                }
+                                                ?>
 											</div>
 											<div class="col-auto">
 												<div class="clint-icon bg-gradient-danger text-white rounded-circle icon-shape">

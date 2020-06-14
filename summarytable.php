@@ -285,7 +285,7 @@ $result = $con->query($query);
                                         <?php
                                         $count = 0;
                                         while ($row = $result->fetch_assoc()) {
-
+                                            echo "<tr>";
                                             echo "<td>" . ++$count . "</td>";
                                             echo "<td>" . $row['First_Name'] . " " . $row['Last_Name'] . "</td>";
                                             echo "<td>" . $row['Nationality'] . "</td>";
@@ -306,7 +306,7 @@ $result = $con->query($query);
                                             } else {
                                                 echo "<td>" . "Incomplete" . "</td>";
                                             }
-
+                                            echo "</tr>";
 
                                         }
 
