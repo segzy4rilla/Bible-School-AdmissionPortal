@@ -1,13 +1,13 @@
 <?php
-$servername = "localhost:3306";
-$username = "anagkaz1_wp780";
-$password = "AbMTC2020!!!";
-$dbname = "anagkaz1_wp780";
+//$servername = "localhost:3306";
+//$username = "anagkaz1_wp780";
+//$password = "AbMTC2020!!!";
+//$dbname = "anagkaz1_wp780";
 
-//$servername = "localhost";
-//$username = "root";
-//$password = "";
-//$dbname = "ABTMC_Portal";
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "ABTMC_Portal";
 
 //$servername = "localhost:3306";
 //$username = "anagkaz1_wp780";
@@ -27,6 +27,8 @@ try {
         $sql_delete = "DELETE FROM Application_Form WHERE User_ID='$uniqueid'";
         $conn->exec($sql_delete);
     }
+
+
     $question1 = @$_POST['question1'];
     $question2 = @$_POST['question2'];
     $question3 = @$_POST['question3'];
@@ -182,8 +184,11 @@ Recommended_By,Recommended_By_Specify,Signature,Submission_Date)
     $sql2 = "UPDATE User_Table SET 	Application_Form_Submitted=TRUE WHERE User_ID='$uniqueid'";
 
     // use exec() because no results are returned
+
     $conn->exec($sql);
     $conn->exec($sql2);
+    $_SESSION['Application_Form_Submitted'] = 1;
+    echo '<script>alert("Application Form Submitted Successfully")</script>';
 
     header('Location: ../applicantdash.php');
 } catch (PDOException $e) {

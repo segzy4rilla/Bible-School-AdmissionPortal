@@ -5,13 +5,6 @@
 	$password = "AbMTC2020!!!";
 	$dbname = "anagkaz1_wp780";
 	$responseMsg = "";
-	
-//$servername = "localhost";
-//$username = "root";
-//$password = "";
-//$dbname = "ABTMC_Portal";
-
-
 
 	session_start();
 	$userId = $_SESSION['User_Id'];

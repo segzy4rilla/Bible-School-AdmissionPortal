@@ -1,13 +1,13 @@
 <?php
-$servername = "localhost:3306";
-$username = "anagkaz1_wp780";
-$password = "AbMTC2020!!!";
-$dbname = "anagkaz1_wp780";
-//
-//$servername = "localhost";
-//$username = "root";
-//$password = "";
-//$dbname = "ABTMC_Portal";
+//$servername = "localhost:3306";
+//$username = "anagkaz1_wp780";
+//$password = "AbMTC2020!!!";
+//$dbname = "anagkaz1_wp780";
+
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "ABTMC_Portal";
 
 $uniqueid = uniqid();
 
@@ -44,8 +44,26 @@ try {
 
         header('Location: ../applicantdash.php');
     }else{
-        $_SESSION['loggedin'] = false;
-        header('Location: ../loginabmtc.html');
+
+        $sql = "SELECT * FROM Admin_User where Username= :emwhat AND Password = :pwd";
+        $stmt = $conn->prepare($sql);
+        $stmt->bindParam(':emwhat', $email_whatsapp, PDO::PARAM_STR_CHAR);
+        $stmt->bindParam(':pwd', $password, PDO::PARAM_STR_CHAR);
+        $stmt->execute();
+        $result = $stmt->fetchAll();
+
+        if ($result) {
+            $_SESSION['loggedin'] = true;
+            $_SESSION['isAdmin'] = true;
+            header('Location: ../summarytable.php');
+
+        } else {
+            $_SESSION['loggedin'] = false;
+            $_SESSION['isAdmin'] = false;
+            header('Location: ../loginabmtc.html');
+
+        }
+
     }
 
 }catch(Exception $ex){
