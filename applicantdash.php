@@ -92,7 +92,7 @@ if ($_SESSION['loggedin'] == false) {
                 <div class="container-fluid" style="height:100%">
                     <div class="row" style="height:100%">
                         <div class="col-lg-12"  style="height:30%">
-                            <a href="ABMTCApplicationForm.php">
+                            <a href="">
 								<div class="card" style="margin-bottom:15px;height:100%">
 									<!-- Card body -->
 									<div class="card-body">

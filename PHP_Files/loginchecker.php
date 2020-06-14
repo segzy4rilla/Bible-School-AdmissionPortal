@@ -59,6 +59,7 @@ try {
 
         } else {
             $_SESSION['loggedin'] = false;
+            $_SESSION['isAdmin'] = false;
             header('Location: ../loginabmtc.html');
 
         }
