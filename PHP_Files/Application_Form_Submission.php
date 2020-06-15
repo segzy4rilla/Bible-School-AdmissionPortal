@@ -1,19 +1,6 @@
 <?php
-//$servername = "localhost:3306";
-//$username = "anagkaz1_wp780";
-//$password = "AbMTC2020!!!";
-//$dbname = "anagkaz1_wp780";
 
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "ABTMC_Portal";
-
-//$servername = "localhost:3306";
-//$username = "anagkaz1_wp780";
-//$password = "AbMTC2020!!!";
-//$dbname = "anagkaz1_wp780";
-
+include "dbconfig.php";
 session_start();
 $uniqueid = $_SESSION['User_Id'];
 

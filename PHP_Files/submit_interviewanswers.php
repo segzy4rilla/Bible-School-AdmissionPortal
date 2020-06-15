@@ -1,12 +1,8 @@
 <?php
 
 $responseMsg = "";
+include "dbconfig.php";
 include "alertAndRedirect.php";
-$servername = "localhost:3306";
-$username = "anagkaz1_wp780";
-$password = "AbMTC2020!!!";
-$dbname = "anagkaz1_wp780";
-
 $uniqueid = uniqid();
 
 session_start();
@@ -53,7 +49,7 @@ try {
 	
 } catch(PDOException $e) {
     $responseMsg = "Interview did not submit sucessfully: ". $e->getMessage();
-    AlertAndRedirect($responseMsg, "applicantdash.php");
+    AlertAndRedirect($responseMsg, "../applicantdash.php");
 }
 $conn = null;
 ?>

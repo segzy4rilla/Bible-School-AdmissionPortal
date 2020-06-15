@@ -1,11 +1,6 @@
 <?php
 
-	$servername = "localhost:3306";
-	$username = "anagkaz1_wp780";
-	$password = "AbMTC2020!!!";
-	$dbname = "anagkaz1_wp780";
-	$responseMsg = "";
-
+	include "dbconfig.php";
 	session_start();
 	$userId = $_SESSION['User_Id'];
 	
