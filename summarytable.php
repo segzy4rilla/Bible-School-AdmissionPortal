@@ -307,7 +307,6 @@ $result = $con->query($query);
                                                 echo "<td>" . "Incomplete" . "</td>";
                                             }
                                             echo "</tr>";
-
                                         }
 
                                         ?>
