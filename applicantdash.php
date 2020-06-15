@@ -102,9 +102,9 @@ if ($_SESSION['Application_Form_Submitted'] == 1) {
                         <div class="col-lg-12"  style="height:30%">
                             <?php
                             if ($app_comp) {
-                                echo '<a href="">';
+                                echo '<a href="#">';
                             } else {
-								echo '<a href="">';
+								echo '<a href="#">';
                                 //echo '<a href="ABMTCApplicationForm.php">';
                             }
                             ?>
