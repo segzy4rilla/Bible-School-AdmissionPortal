@@ -785,6 +785,89 @@ if ($_SESSION['loggedin'] == false || !$_SESSION['isAdmin']) {
                                                     </div>
                                                 </div>
 
+                                                <div class="form-group">
+                                                    <label class="control-label">How did you hear about the Bible School?</label>
+                                                    <div class="custom-control custom-radio">
+                                                        <input type="radio" id="howhear1" name="question75"
+                                                               
+                                                               class="custom-control-input" disabled>
+                                                        <label class="custom-control-label" for="howhear1">Ghana Healing Jesus Campaign</label>
+                                                    </div>
+                                                    <div class="custom-control custom-radio">
+                                                        <input type="radio" id="howhear2" name="question75"
+                                                               
+                                                               class="custom-control-input" disabled>
+                                                        <label class="custom-control-label" for="howhear2">Other Healing Jesus Campaign</label>
+                                                    </div>
+                                                    <div class="custom-control custom-radio">
+                                                        <input type="radio" id="howhear3" name="question75"
+                                                               
+                                                               class="custom-control-input" disabled>
+                                                        <label class="custom-control-label" for="howhear3">Mountain of the Lord 2019</label>
+                                                    </div>
+                                                    <div class="custom-control custom-radio">
+                                                        <input type="radio" id="howhear4" name="question75"
+                                                               
+                                                               class="custom-control-input" disabled>
+                                                        <label class="custom-control-label" for="howhear4">Give Thyself Wholly 2019</label>
+                                                    </div>
+                                                    <div class="custom-control custom-radio">
+                                                        <input type="radio" id="howhear5" name="question75"
+                                                               
+                                                               class="custom-control-input" disabled>
+                                                        <label class="custom-control-label" for="howhear5">Hamattan Bible Seminar 2020</label>
+                                                    </div>
+                                                    <div class="custom-control custom-radio">
+                                                        <input type="radio" id="howhear6" name="question75"
+                                                               
+                                                               class="custom-control-input" disabled>
+                                                        <label class="custom-control-label" for="howhear6">Takoradi Conference 2019</label>
+                                                    </div>
+                                                    <div class="custom-control custom-radio">
+                                                        <input type="radio" id="howhear7" name="question75"
+                                                              
+                                                               class="custom-control-input" disabled>
+                                                        <label class="custom-control-label" for="howhear7">Other Conference</label>
+                                                    </div>
+                                                    <div class="custom-control custom-radio">
+                                                        <input type="radio" id="howhear8" name="question75"
+                                                               
+                                                               class="custom-control-input" disabled>
+                                                        <label class="custom-control-label" for="howhear8">Bible School Website</label>
+                                                    </div>
+                                                    <div class="custom-control custom-radio">
+                                                        <input type="radio" id="howhear9" name="question75"
+                                                               
+                                                               class="custom-control-input" disabled>
+                                                        <label class="custom-control-label" for="howhear9">TV</label>
+                                                    </div>
+                                                    <div class="custom-control custom-radio">
+                                                        <input type="radio" id="howhear10" name="question75"
+                                                               
+                                                               class="custom-control-input" disabled>
+                                                        <label class="custom-control-label" for="howhear10">Social Media</label>
+                                                    </div>
+                                                    <div class="custom-control custom-radio">
+                                                        <input type="radio" id="howhear11" name="question75"
+                                                              
+                                                               class="custom-control-input" disabled>
+                                                        <label class="custom-control-label" for="howhear11">Radio</label>
+                                                    </div>
+                                                    <div class="custom-control custom-radio">
+                                                        <input type="radio" id="howhear12" name="question75"
+                                                               
+                                                               class="custom-control-input" disabled>
+                                                        <label class="custom-control-label" for="howhear12">UD-OLGC Church</label>
+                                                    </div>
+                                                    <div class="custom-control custom-radio">
+                                                        <input type="radio" id="howhear13" name="question75"
+                                                               
+                                                               class="custom-control-input" disabled>
+                                                        <label class="custom-control-label" for="howhear13">Other Church</label>
+                                                    </div>
+
+                                                </div>
+
                                             </section>
                                             <h3>CHURCH</h3>
                                             <section class="overflow-auto">
