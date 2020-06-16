@@ -17,7 +17,7 @@ try {
 
     // set the PDO error mode to exception
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $sql = "INSERT INTO User_Table (User_ID, First_Name,Last_Name,EmailWhatsapp,Password,Nationality)
+    $sql = "INSERT INTO Applicant_Table (User_ID, First_Name,Last_Name,EmailWhatsapp,Password,Nationality)
   VALUES ('$uniqueid','$firstname', '$lastname','$emailwhatsapp','$password','$nationality')";
     // use exec() because no results are returned
     $conn->exec($sql);

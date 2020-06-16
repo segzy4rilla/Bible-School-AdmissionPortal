@@ -11,7 +11,7 @@ try {
 
     $email_whatsapp = $_POST['email/whatsapp'];
     $password = $_POST['password'];
-    $sql ="SELECT * FROM User_Table where EmailWhatsapp= :emwhat AND Password = :pwd";
+    $sql = "SELECT * FROM Applicant_Table where EmailWhatsapp= :emwhat AND Password = :pwd";
     $stmt = $conn->prepare($sql);
     $stmt->bindParam(':emwhat', $email_whatsapp, PDO::PARAM_STR_CHAR);
     $stmt->bindParam(':pwd', $password, PDO::PARAM_STR_CHAR);
