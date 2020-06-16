@@ -168,7 +168,7 @@ Recommended_By,Recommended_By_Specify,Signature,Submission_Date)
     '$question73',
     '$question74')";
 
-    $sql2 = "UPDATE User_Table SET 	Application_Form_Submitted=TRUE WHERE User_ID='$uniqueid'";
+    $sql2 = "UPDATE Applicant_Table SET 	Application_Form_Submitted=TRUE WHERE User_ID='$uniqueid'";
 
     // use exec() because no results are returned
 

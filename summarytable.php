@@ -7,7 +7,7 @@ if ($_SESSION['loggedin'] == false || $_SESSION['isAdmin'] == false) {
 
 require("dbconfig/config.php");
 
-$query = "select * from User_Table";
+$query = "select * from Applicant_Table";
 $result = $con->query($query);
 
 ?>
