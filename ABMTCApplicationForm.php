@@ -626,11 +626,12 @@ if ($_SESSION['loggedin'] == false) {
                                                         <label class="custom-control-label"
                                                                for="radioownhouse1">Yes</label>
                                                     </div>
+
                                                     <div class="custom-control custom-radio">
-                                                        <input type="radio" id="radioownhouse1" name="question22"
+                                                        <input type="radio" id="radioownhouse2" name="question22"
                                                                value="No" class="custom-control-input">
                                                         <label class="custom-control-label"
-                                                               for="radioownhouse1">No</label>
+                                                               for="radioownhouse2">No</label>
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
@@ -642,9 +643,9 @@ if ($_SESSION['loggedin'] == false) {
                                                         <label class="custom-control-label" for="radiorent1">Yes</label>
                                                     </div>
                                                     <div class="custom-control custom-radio">
-                                                        <input type="radio" id="radiorent1" name="question23" value="No"
+                                                        <input type="radio" id="radiorent2" name="question23" value="No"
                                                                class="custom-control-input">
-                                                        <label class="custom-control-label" for="radiorent1">No</label>
+                                                        <label class="custom-control-label" for="radiorent2">No</label>
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
@@ -656,9 +657,9 @@ if ($_SESSION['loggedin'] == false) {
                                                         <label class="custom-control-label" for="radiocar1">Yes</label>
                                                     </div>
                                                     <div class="custom-control custom-radio">
-                                                        <input type="radio" id="radiocar1" name="question24" value="No"
+                                                        <input type="radio" id="radiocar2" name="question24" value="No"
                                                                class="custom-control-input">
-                                                        <label class="custom-control-label" for="radiocar1">No</label>
+                                                        <label class="custom-control-label" for="radiocar2">No</label>
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
@@ -671,10 +672,10 @@ if ($_SESSION['loggedin'] == false) {
                                                                for="radiobusiness1">Yes</label>
                                                     </div>
                                                     <div class="custom-control custom-radio">
-                                                        <input type="radio" id="radiobusiness1" name="question25"
+                                                        <input type="radio" id="radiobusiness2" name="question25"
                                                                value="No" class="custom-control-input">
                                                         <label class="custom-control-label"
-                                                               for="radiobusiness1">No</label>
+                                                               for="radiobusiness2">No</label>
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
@@ -774,7 +775,93 @@ if ($_SESSION['loggedin'] == false) {
                                                         <label class="custom-control-label" for="radiomonth6">2021 4th
                                                             Quarter (October/November/December)</label>
                                                     </div>
+
                                                 </div>
+
+                                                <div class="form-group">
+                                                    <label class="control-label">How did you hear about the Bible School?</label>
+                                                    <div class="custom-control custom-radio">
+                                                        <input type="radio" id="howhear1" name="question75"
+                                                               value="Ghana Healing Jesus Campaign"
+                                                               class="custom-control-input">
+                                                        <label class="custom-control-label" for="howhear1">Ghana Healing Jesus Campaign</label>
+                                                    </div>
+                                                    <div class="custom-control custom-radio">
+                                                        <input type="radio" id="howhear2" name="question75"
+                                                               value="Other Healing Jesus Campaign"
+                                                               class="custom-control-input">
+                                                        <label class="custom-control-label" for="howhear2">Other Healing Jesus Campaign</label>
+                                                    </div>
+                                                    <div class="custom-control custom-radio">
+                                                        <input type="radio" id="howhear3" name="question75"
+                                                               value="Mountain of the Lord 2019"
+                                                               class="custom-control-input">
+                                                        <label class="custom-control-label" for="howhear3">Mountain of the Lord 2019</label>
+                                                    </div>
+                                                    <div class="custom-control custom-radio">
+                                                        <input type="radio" id="howhear4" name="question75"
+                                                               value="Give Thyself Wholly 2019"
+                                                               class="custom-control-input">
+                                                        <label class="custom-control-label" for="howhear4">Give Thyself Wholly 2019</label>
+                                                    </div>
+                                                    <div class="custom-control custom-radio">
+                                                        <input type="radio" id="howhear5" name="question75"
+                                                               value="Hamattan Bible Seminar 2020"
+                                                               class="custom-control-input">
+                                                        <label class="custom-control-label" for="howhear5">Hamattan Bible Seminar 2020</label>
+                                                    </div>
+                                                    <div class="custom-control custom-radio">
+                                                        <input type="radio" id="howhear6" name="question75"
+                                                               value="Takoradi Conference 2019"
+                                                               class="custom-control-input">
+                                                        <label class="custom-control-label" for="howhear6">Takoradi Conference 2019</label>
+                                                    </div>
+                                                    <div class="custom-control custom-radio">
+                                                        <input type="radio" id="howhear7" name="question75"
+                                                               value="Other Conference"
+                                                               class="custom-control-input">
+                                                        <label class="custom-control-label" for="howhear7">Other Conference</label>
+                                                    </div>
+                                                    <div class="custom-control custom-radio">
+                                                        <input type="radio" id="howhear8" name="question75"
+                                                               value="Bible School Website"
+                                                               class="custom-control-input">
+                                                        <label class="custom-control-label" for="howhear8">Bible School Website</label>
+                                                    </div>
+                                                    <div class="custom-control custom-radio">
+                                                        <input type="radio" id="howhear9" name="question75"
+                                                               value="TV"
+                                                               class="custom-control-input">
+                                                        <label class="custom-control-label" for="howhear9">TV</label>
+                                                    </div>
+                                                    <div class="custom-control custom-radio">
+                                                        <input type="radio" id="howhear10" name="question75"
+                                                               value="Social Media"
+                                                               class="custom-control-input">
+                                                        <label class="custom-control-label" for="howhear10">Social Media</label>
+                                                    </div>
+                                                    <div class="custom-control custom-radio">
+                                                        <input type="radio" id="howhear11" name="question75"
+                                                               value="Radio"
+                                                               class="custom-control-input">
+                                                        <label class="custom-control-label" for="howhear11">Radio</label>
+                                                    </div>
+                                                    <div class="custom-control custom-radio">
+                                                        <input type="radio" id="howhear12" name="question75"
+                                                               value="UD-OLGC Church"
+                                                               class="custom-control-input">
+                                                        <label class="custom-control-label" for="howhear12">UD-OLGC Church</label>
+                                                    </div>
+                                                    <div class="custom-control custom-radio">
+                                                        <input type="radio" id="howhear13" name="question75"
+                                                               value="Other Church"
+                                                               class="custom-control-input">
+                                                        <label class="custom-control-label" for="howhear13">Other Church</label>
+                                                    </div>
+
+                                                </div>
+
+                                                        
 
                                             </section>
                                             <h3>CHURCH</h3>
@@ -1381,6 +1468,8 @@ Please make sure that you have obtained or done the following, before leaving yo
                                                            placeholder="">
                                                 </div>
                                             </section>
+
+
 
                                             <h3>FINISH</h3>
                                             <section class="overflow-auto">
