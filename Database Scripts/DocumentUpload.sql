@@ -20,7 +20,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `Documemt_Upload` (
-  `User_ID` varchar(255) NOT NULL,
+  `EmailWhatsapp` varchar(255) NOT NULL,
   `DocFilepath1` varchar(255) DEFAULT NULL,
   `DocFilepath2` varchar(255) DEFAULT NULL,
   `DocFilepath3` varchar(255) DEFAULT NULL,
@@ -48,11 +48,11 @@ CREATE TABLE `Documemt_Upload` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 ALTER TABLE Documemt_Upload
-ADD PRIMARY KEY(User_ID);
+ADD PRIMARY KEY(EmailWhatsapp);
 
 ALTER TABLE `Documemt_Upload` 
-ADD CONSTRAINT `FK_User_ID` 
-FOREIGN KEY (`User_ID`) REFERENCES `Applicant_Table`(`User_ID`)
+ADD CONSTRAINT `FK_EmailWhatsapp` 
+FOREIGN KEY (`EmailWhatsapp`) REFERENCES `Applicant_Table`(`EmailWhatsapp`)
 ON DELETE RESTRICT ON UPDATE RESTRICT;
 
 COMMIT;
