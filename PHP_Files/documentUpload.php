@@ -1,14 +1,21 @@
 <?php
 
 	include "dbconfig.php";
-	session_start();
-	$userId = $_SESSION['User_Id'];
+	include "alertAndRedirect.php";
+	include_once "escapeQuotes.php";
 	
-	if($userId == ""){
-		echo "Invalid login session, please log out and back in again.<br/>";
+	$alertMessage = "";
+	$redirectUrl = "../applicantdash.php";
+	
+	session_start();
+	$emailWhatsApp = $_SESSION['EmailWhatsapp'];
+	$emailWhatsAppWithQuotes = "'".$emailWhatsApp."'";
+	
+	if($emailWhatsApp == ""){
+		$alertMessage = $alertMessage. "Invalid login session, please log out and back in again.";
 	}
 	else{
-		$userFolder = $userId;
+		$userFolder = $emailWhatsApp;
 		$targetDirectory = "../uploads/" .$userFolder ."/";
 		
 		if (!file_exists($targetDirectory)) {
@@ -16,23 +23,25 @@
 		}
 		
 		$conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-        $idCheck = 'SELECT EXISTS(SELECT * FROM Documemt_Upload WHERE User_ID = ' . $userId . ')';
-		$idExists = $conn->query($idCheck);
-
-		if(!$idExists){
-            $idInsert = 'INSERT INTO Documemt_Upload(User_ID) VALUES(' . $userId . ')';
-            $idInserted = $conn->exec($idInsert);
+        $emailWhatsAppCheck = $conn->prepare('SELECT * FROM Documemt_Upload WHERE EXISTS(SELECT * FROM Documemt_Upload WHERE EmailWhatsapp = ' . $emailWhatsAppWithQuotes . ')');
+		$emailWhatsAppCheck->execute();
+		$emailWhatsAppExists = $emailWhatsAppCheck->fetchAll();
+		
+		$emailWhatsAppInserted = false;
+		if(!$emailWhatsAppExists){
+            $emailWhatsAppInsert = $conn->prepare('INSERT INTO Documemt_Upload(EmailWhatsapp) VALUES(' . $emailWhatsAppWithQuotes . ')');
+			$emailWhatsAppInserted = $emailWhatsAppInsert->execute();
         }
 
-
-        if (!$idInserted && !$idExists) {
-			echo "Sorry, there was an error uploading your file. Error Code:AG1<br/>";
+        if (!$emailWhatsAppInserted && !$emailWhatsAppExists) {
+			$alertMessage = $alertMessage. "Sorry, there was an error uploading your file. Error Code:AG1";
 		}
 		else {
 			for($x=0; $x < count($_FILES['img1']['name']); ++$x){
 				try {
 					if($_FILES["img1"]["name"][$x] != ""){
 						$targetFilePath = $targetDirectory . basename($_FILES["img1"]["name"][$x]);
+						$targetFilePathWithQuotes = "'".$targetFilePath."'";
 						$imageFileType = strtolower(pathinfo($targetFilePath, PATHINFO_EXTENSION));
 						$validUpload = 0;
 
@@ -42,40 +51,44 @@
 
 						if ($validUpload == 1) {
 							if (move_uploaded_file($_FILES["img1"]["tmp_name"][$x], $targetFilePath)) {
-                                $storeFilepath = 'UPDATE Documemt_Upload SET DocFilepath' . $x . ' = ' . $targetFilePath . ' WHERE User_ID = ' . $userId . ' ';
-                                $filepathStored = $conn->query($storeFilepath);
+                                $storeFilepath = $conn->prepare('UPDATE Documemt_Upload SET DocFilepath' . ($x+1) . ' = ' . $targetFilePathWithQuotes . ' WHERE EmailWhatsapp = ' . $emailWhatsAppWithQuotes);
+                                $filepathStored = $storeFilepath->execute();
+								
 								if($filepathStored){
-									echo "The file " . basename($_FILES["img1"]["name"][$x]) . " has been uploaded.<br/>";
+									$alertMessage = $alertMessage. "The file " . basename($_FILES["img1"]["name"][$x]) . " has been uploaded.";
 								}
 								else{
-									echo "Sorry, there was an error uploading your file. Error Code:AG2<br/>";
+									$alertMessage = $alertMessage. "Sorry, there was an error uploading file".($x+1)." Error Code:AG2";
 								}
 							} else {
-								echo "Sorry, there was an error uploading your file. Error Code:AG3<br/>";
+								$alertMessage = $alertMessage. "Sorry, there was an error uploading file".($x+1)." Error Code:AG3";
 							}
 						}
 						else {
-							echo "File could not be uploaded due to restricted file type. must be: .jpg, .jpeg, .doxc, .png or .txt <br/>";
+							$alertMessage = $alertMessage. "File could not be uploaded due to restricted file type. must be: .jpg, .jpeg, .doxc, .png or .txt ";
 						}
 					}
 					else{
-						$comment = $_POST["comment"]["name"][$x];
+						$comment = $_POST["comment"][$x];
 						if(trim($comment) != ""){
-                            $storeComment = 'UPDATE Documemt_Upload SET DocComment' . $x . ' = ' . $targetFilePath . ' WHERE User_ID = ' . $userId . ' ';
-                            $commentStored = $conn->query($storeComment);
+							$comment = EscapeQuotes($comment);
+							$commentWithQuotes = "'".$comment."'";
+                            $storeComment = $conn->prepare('UPDATE Documemt_Upload SET DocComment'.($x+1).' = ' . $commentWithQuotes . ' WHERE EmailWhatsapp = ' . $emailWhatsAppWithQuotes);
+                            $commentStored = $storeComment->execute();
 							if($commentStored){
-								echo "Your reason for not uploading file" .$x. " has been saved.<br/>";
+								$alertMessage = $alertMessage. "Your explanation for the missing file" .($x+1). " has been saved.";
 							}
 							else{
-								echo "Sorry, there was an error saving your reason for not uploading file. Error Code:AG4".$x."<br/>";
+								$alertMessage = $alertMessage. "Sorry, there was an error saving your explanation for the missing file".($x+1)."explanation: ".$commentWithQuotes.". Error Code:AG4";
 							}
 						}
 					}
 				}
 				catch (Exception $ex){
-					echo "Sorry, there was an error uploading your file. Error Code:AG5<br/>";
+					$alertMessage = $alertMessage. "Sorry, there was an error uploading your file. Error Code:AG5";
 				}
 			}
 		}
 	}
+	AlertAndRedirect($alertMessage, $redirectUrl);
 ?>
