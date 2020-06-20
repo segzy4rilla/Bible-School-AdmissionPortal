@@ -2,13 +2,14 @@
 
 	include "dbconfig.php";
 	session_start();
-	$userId = $_SESSION['User_Id'];
+	$emailWhatsApp = $_SESSION['EmailWhatsapp'];
+	$emailWhatsAppWithQuotes = "'".$emailWhatsApp."'";
 	
-	if($userId == ""){
+	if($emailWhatsApp == ""){
 		echo "Invalid login session, please log out and back in again.<br/>";
 	}
 	else{
-		$userFolder = $userId;
+		$userFolder = $emailWhatsApp;
 		$targetDirectory = "../uploads/" .$userFolder ."/";
 		
 		if (!file_exists($targetDirectory)) {
@@ -16,16 +17,17 @@
 		}
 		
 		$conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-        $idCheck = 'SELECT EXISTS(SELECT * FROM Documemt_Upload WHERE User_ID = ' . $userId . ')';
-		$idExists = $conn->query($idCheck);
-
-		if(!$idExists){
-            $idInsert = 'INSERT INTO Documemt_Upload(User_ID) VALUES(' . $userId . ')';
-            $idInserted = $conn->exec($idInsert);
+        $emailWhatsAppCheck = $conn->prepare('SELECT * FROM Documemt_Upload WHERE EXISTS(SELECT * FROM Documemt_Upload WHERE EmailWhatsapp = ' . $emailWhatsAppWithQuotes . ')');
+		$emailWhatsAppCheck->execute();
+		$emailWhatsAppExists = $emailWhatsAppCheck->fetchAll();
+		
+		$emailWhatsAppInserted = false;
+		if(!$emailWhatsAppExists){
+            $emailWhatsAppInsert = $conn->prepare('INSERT INTO Documemt_Upload(EmailWhatsapp) VALUES(' . $emailWhatsAppWithQuotes . ')');
+			$emailWhatsAppInserted = $emailWhatsAppInsert->execute();
         }
 
-
-        if (!$idInserted && !$idExists) {
+        if (!$emailWhatsAppInserted && !$emailWhatsAppExists) {
 			echo "Sorry, there was an error uploading your file. Error Code:AG1<br/>";
 		}
 		else {
@@ -33,6 +35,7 @@
 				try {
 					if($_FILES["img1"]["name"][$x] != ""){
 						$targetFilePath = $targetDirectory . basename($_FILES["img1"]["name"][$x]);
+						$targetFilePathWithQuotes = "'".$targetFilePath."'";
 						$imageFileType = strtolower(pathinfo($targetFilePath, PATHINFO_EXTENSION));
 						$validUpload = 0;
 
@@ -42,16 +45,18 @@
 
 						if ($validUpload == 1) {
 							if (move_uploaded_file($_FILES["img1"]["tmp_name"][$x], $targetFilePath)) {
-                                $storeFilepath = 'UPDATE Documemt_Upload SET DocFilepath' . $x . ' = ' . $targetFilePath . ' WHERE User_ID = ' . $userId . ' ';
-                                $filepathStored = $conn->query($storeFilepath);
+                                $storeFilepath = $conn->prepare('UPDATE Documemt_Upload SET DocFilepath' . ($x+1) . ' = ' . $targetFilePathWithQuotes . ' WHERE EmailWhatsapp = ' . $emailWhatsAppWithQuotes);
+                                $filepathStored = $storeFilepath->execute();
+								echo 'UPDATE Documemt_Upload SET DocFilepath' . ($x+1) . ' = ' . $targetFilePathWithQuotes . ' WHERE EmailWhatsapp = ' . $emailWhatsAppWithQuotes;
+								
 								if($filepathStored){
 									echo "The file " . basename($_FILES["img1"]["name"][$x]) . " has been uploaded.<br/>";
 								}
 								else{
-									echo "Sorry, there was an error uploading your file. Error Code:AG2<br/>";
+									echo "Sorry, there was an error uploading file".($x+1)." Error Code:AG2<br/>";
 								}
 							} else {
-								echo "Sorry, there was an error uploading your file. Error Code:AG3<br/>";
+								echo "Sorry, there was an error uploading file".($x+1)." Error Code:AG3<br/>";
 							}
 						}
 						else {
@@ -61,13 +66,13 @@
 					else{
 						$comment = $_POST["comment"]["name"][$x];
 						if(trim($comment) != ""){
-                            $storeComment = 'UPDATE Documemt_Upload SET DocComment' . $x . ' = ' . $targetFilePath . ' WHERE User_ID = ' . $userId . ' ';
-                            $commentStored = $conn->query($storeComment);
+                            $storeComment = $conn->prepare('UPDATE Documemt_Upload SET DocComment' . ($x+1) . ' = ' . $targetFilePathWithQuotes . ' WHERE EmailWhatsapp = ' . $emailWhatsAppWithQuotes);
+                            $commentStored = $storeComment->execute();
 							if($commentStored){
-								echo "Your reason for not uploading file" .$x. " has been saved.<br/>";
+								echo "Your reason for not uploading file" .($x+1). " has been saved.<br/>";
 							}
 							else{
-								echo "Sorry, there was an error saving your reason for not uploading file. Error Code:AG4".$x."<br/>";
+								echo "Sorry, there was an error saving your reason for not uploading file. Error Code:AG4".($x+1)."<br/>";
 							}
 						}
 					}

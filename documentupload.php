@@ -594,11 +594,11 @@ if (!$_SESSION['loggedin'] || $_SESSION['isAdmin']) {
                                                 <br>
                                                 <div class="form-group">
                                                     <label class="control-label">Signature</label>
-                                                    <input type="email" class="form-control" placeholder="Enter full name" name="signatureupload">
+                                                    <input type="text" class="form-control" placeholder="Enter full name" name="signatureupload">
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="control-label">Date</label>
-                                                    <input type="email" class="form-control" placeholder="Enter date" name="dateupload">
+                                                    <input type="date" class="form-control" placeholder="Enter date" name="dateupload">
                                                 </div>
                                             </section>
                                         </div>

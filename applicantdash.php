@@ -167,7 +167,7 @@ if ($_SESSION['Application_Form_Submitted'] == 1) {
 							</a>
                         </div>
                         <div class="col-lg-12"  style="height:30%">
-                            <a href="#">
+                            <a href="DocumentUpload.php">
 								<div class="card" style="margin-bottom:15px;height:100%">
 									<!-- Card body -->
 									<div class="card-body">
