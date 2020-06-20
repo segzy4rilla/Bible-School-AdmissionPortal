@@ -27,89 +27,254 @@ if ($_SESSION['loggedin'] == false) {
     <!-- Master Stylesheet [If you remove this CSS file, your file will be broken undoubtedly.] -->
     <link rel="stylesheet" href="style.css">
 
-    <style>
-        .wizard > .steps .current a {
-            background: orange;
-        }
+    <style type="text/css">
+      @import url("https://fonts.googleapis.com/css?family=Roboto:300i,400,400i,500,700,900");
+    </style>
 
-        .wizard > .steps .disabled a {
-            border: 1px solid orange;
-        }
 
-        .wizard > .steps .disabled a:hover {
-            background: white;
-            color: #434a54;
-            cursor: default;
-            border: 1px solid orange;
-        }
+<style>
+  .header__btn {
+  transition-property: all;
+  transition-duration: 0.2s;
+  transition-timing-function: linear;
+  transition-delay: 0s;
+  padding: 10px 20px;
+  display: inline-block;
+  margin-right: 10px;
+  background-color: #fff;
+  border: 1px solid #2c2c2c;
+  border-radius: 3px;
+  cursor: pointer;
+  outline: none;
+}
+.header__btn:last-child {
+  margin-right: 0;
+}
+.header__btn:hover, .header__btn.js-active {
+  color: #fff;
+  background-color: #2c2c2c;
+}
 
-        .wizard > .steps .done a:active {
-            background: orange;
-            color: #434a54;
-            cursor: default;
-            border: 1px solid orange;
-        }
+.header {
+  max-width: 600px;
+  margin: 50px auto;
+  text-align: center;
+}
 
-        .wizard > .steps a:hover {
-            background: white;
-            color: #434a54;
-            cursor: default;
-            border: 1px solid orange;
-        }
+.header__title {
+  margin-bottom: 30px;
+  font-size: 2.1rem;
+}
 
-        .wizard > .steps .current a:hover {
-            background: orange;
-            color: white;
-            cursor: default;
-        }
+.content__title {
+  margin-bottom: 40px;
+  font-size: 20px;
+  text-align: center;
+}
 
-        .wizard > .steps .done a {
-            background: orange;
-            color: white;
-            cursor: default;
+.content__title--m-sm {
+  margin-bottom: 10px;
+}
 
-        &
-        :hover {
-            background: orange;
-            color: white;
-            cursor: default;
-        }
+.multisteps-form__progress {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+}
 
-        }
-        .wizard > .steps .done a {
-            background: orange;
-            color: white;
-            cursor: default;
+.multisteps-form__progress-btn {
+  transition-property: all;
+  transition-duration: 0.15s;
+  transition-timing-function: linear;
+  transition-delay: 0s;
+  position: relative;
+  padding-top: 20px;
+  color: rgba(108, 117, 125, 0.7);
+  text-indent: -9999px;
+  border: none;
+  background-color: transparent;
+  outline: none !important;
+  cursor: pointer;
+}
+@media (min-width: 500px) {
+  .multisteps-form__progress-btn {
+    text-indent: 0;
+  }
+}
+.multisteps-form__progress-btn:before {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  display: block;
+  width: 13px;
+  height: 13px;
+  content: '';
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  transition: all 0.15s linear 0s, -webkit-transform 0.15s cubic-bezier(0.05, 1.09, 0.16, 1.4) 0s;
+  transition: all 0.15s linear 0s, transform 0.15s cubic-bezier(0.05, 1.09, 0.16, 1.4) 0s;
+  transition: all 0.15s linear 0s, transform 0.15s cubic-bezier(0.05, 1.09, 0.16, 1.4) 0s, -webkit-transform 0.15s cubic-bezier(0.05, 1.09, 0.16, 1.4) 0s;
+  border: 2px solid currentColor;
+  border-radius: 50%;
+  background-color: #fff;
+  box-sizing: border-box;
+  z-index: 3;
+}
+.multisteps-form__progress-btn:after {
+  position: absolute;
+  top: 5px;
+  left: calc(-50% - 13px / 2);
+  transition-property: all;
+  transition-duration: 0.15s;
+  transition-timing-function: linear;
+  transition-delay: 0s;
+  display: block;
+  width: 100%;
+  height: 2px;
+  content: '';
+  background-color: currentColor;
+  z-index: 1;
+}
+.multisteps-form__progress-btn:first-child:after {
+  display: none;
+}
+.multisteps-form__progress-btn.js-active {
+  color: #ffa500;
+}
+.multisteps-form__progress-btn.js-active:before {
+  -webkit-transform: translateX(-50%) scale(1.2);
+          transform: translateX(-50%) scale(1.2);
+  background-color: currentColor;
+}
 
-        &
-        :hover {
-            background: orange;
-            color: white;
-            cursor: default;
-        }
+.multisteps-form__form {
+  position: relative;
+}
 
-        }
+.multisteps-form__panel {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 0;
+  opacity: 0;
+  visibility: hidden;
+}
+.multisteps-form__panel.js-active {
+  height: auto;
+  opacity: 1;
+  visibility: visible;
+}
+.multisteps-form__panel[data-animation="scaleOut"] {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+}
+.multisteps-form__panel[data-animation="scaleOut"].js-active {
+  transition-property: all;
+  transition-duration: 0.2s;
+  transition-timing-function: linear;
+  transition-delay: 0s;
+  -webkit-transform: scale(1);
+          transform: scale(1);
+}
+.multisteps-form__panel[data-animation="slideHorz"] {
+  left: 50px;
+}
+.multisteps-form__panel[data-animation="slideHorz"].js-active {
+  transition-property: all;
+  transition-duration: 0.25s;
+  transition-timing-function: cubic-bezier(0.2, 1.13, 0.38, 1.43);
+  transition-delay: 0s;
+  left: 0;
+}
+.multisteps-form__panel[data-animation="slideVert"] {
+  top: 30px;
+}
+.multisteps-form__panel[data-animation="slideVert"].js-active {
+  transition-property: all;
+  transition-duration: 0.2s;
+  transition-timing-function: linear;
+  transition-delay: 0s;
+  top: 0;
+}
+.multisteps-form__panel[data-animation="fadeIn"].js-active {
+  transition-property: all;
+  transition-duration: 0.3s;
+  transition-timing-function: linear;
+  transition-delay: 0s;
+}
+.multisteps-form__panel[data-animation="scaleIn"] {
+  -webkit-transform: scale(0.9);
+          transform: scale(0.9);
+}
+.multisteps-form__panel[data-animation="scaleIn"].js-active {
+  transition-property: all;
+  transition-duration: 0.2s;
+  transition-timing-function: linear;
+  transition-delay: 0s;
+  -webkit-transform: scale(1);
+          transform: scale(1);
+}
+</style>
 
-        .wizard > .steps .done a:active {
-            background: white;
-            color: #434a54;
-            cursor: default;
-            border: 1px solid orange;
-        }
+<style type="text/css">
+  .scrollpage1{
+    overflow-y: scroll;
+      }
+      .scrollpage1{
+    overflow-y: scroll;
+      }
+</style>
 
-        .wizard > .steps .done a {
-            background: orange;
-        }
+<style>
+  label.is-invalid {
+  color: #ff0022;
+}
+/* Icons */
+.hide {
+  display: none;
+}
 
-        .wizard-form-area ul li a {
-            background: orange;
-            color: #ffffff;
-            display: inline-block;
-            height: 45px;
-            min-width: 150px;
-            line-height: 45px;
-            text-align: center;
-            border-radius: 5px;
+.icon.validation {
+  width: 13px;
+  height: 13px;
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  border-radius: 50%;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  font-size: 0.4rem;
+  text-align: center;
+  line-height: 0.9rem;
+  color: #fff;
+}
+
+.icon.success {
+  background: #00aa11;
+}
+
+.icon.error {
+  background: #ff0022;
+}
+
+.success {
+  color: #00aa11;
+}
+
+/* Fields */
+.input-wrap.is-invalid input, .input-wrap.is-invalid select, .input-wrap.is-invalid textarea {
+  border: 1px solid #ff0022;
+}
+
+/* Helper/Error */
+.is-helpful {
+  color: #999;
+  font-size: 0.8rem;
+  margin-top: 0.5rem;
+}
+
+.is-helpful.error-message {
+  color: #ff0022;
 }
 </style>
 </head>
@@ -182,34 +347,84 @@ if ($_SESSION['loggedin'] == false) {
                     <div class="col-12 box-margin height-card">
                         <div class="card">
                             <div class="card-body">
-                                <div class="wizard-form-area">
-                                    <h5 class="card-title">Application Form</h5>
+                                <div class="content">
+  <!--content inner-->
+  <div class="">
+    <div class="container overflow-hidden">
+      <!--multisteps-form-->
+      <div class="multisteps-form">
+        <br><br>
+        <!--progress bar-->
+        <div class="row">
+          <div class="col-12 col-lg-12 ml-auto mr-auto mb-4">
+            <div class="multisteps-form__progress">
 
-                                    <form id="example-form" action="PHP_Files/Application_Form_Submission.php"
-                                          method="POST">
-                                        <div class="overflow-auto">
-                                            <h3>GENERAL</h3>
-                                            <section class="overflow-auto">
-                                                <h3></h3>
-                                                <div class="form-group">
+              <button class="multisteps-form__progress-btn js-active" style="cursor: default;" type="button" title="User Info" disabled>GENERAL</button>
+              <button class="multisteps-form__progress-btn" style="cursor: default;" type="button" title="Address" disabled>CHURCH</button>
+              <button class="multisteps-form__progress-btn" style="cursor: default;" type="button" title="Order Info" disabled>CALLING</button>
+              <button class="multisteps-form__progress-btn" style="cursor: default;" type="button" title="Comments" disabled>SOCIAL AND PAST</button>
+              <button class="multisteps-form__progress-btn" style="cursor: default;" type="button" title="Comments" disabled>HEALTH STATUS</button>
+              <button class="multisteps-form__progress-btn" style="cursor: default;" type="button" title="Comments" disabled>CRIMINAL HISTORY</button>
+              <button class="multisteps-form__progress-btn" style="cursor: default;" type="button" title="Comments" disabled>NATIONALITY</button>
+              <button class="multisteps-form__progress-btn" style="cursor: default;" style="font-size: 13px;" type="button" title="Comments" disabled>RECOMMENDED BY</button>
+              <button class="multisteps-form__progress-btn" style="cursor: default;" type="button" title="Comments" disabled>FINISH</button>
+            </div>
+          </div>
+        </div>
+        <!--form panels-->
+        <div class="row">
+          <div class="col-12 col-lg-12 m-auto">
+            <form class="multisteps-form__form" id="myForm" action="PHP_Files/Application_Form_Submission.php"
+                                          method="POST" onsubmit="return submitClick();">
+              <!--single form panel-->
+              <div class="multisteps-form__panel shadow p-4 rounded bg-white js-active" data-animation="scaleIn" disabled>
+                <h3 class="multisteps-form__title">GENERAL</h3>
+                <br>
+                <div class="multisteps-form__content">
+                  
+                    <div id="demo-form" data-parsley-validate="" class="scrollpage1" style="height: 300px;">
+                <div class="relative input-wrap is-required">
+                  <div class="form-group">
                                                     <label class="control-label">First Name</label>
-                                                    <input type="text" name="question1" class="form-control"
-                                                           placeholder="Enter first name" aria-required="true">
+                                                    <input type="text" name="question1" class="form-control required"
+                                                           placeholder="Enter first name" aria-required="true" >
+                                                           
                                                 </div>
+                                                </div>
+                                                <div class="relative input-wrap is-required">
                                                 <div class="form-group">
+                                       
                                                     <label class="control-label">Last Name</label>
-                                                    <input type="text" name="question2" class="form-control"
-                                                           placeholder="Enter last name" aria-required="true">
-                                                </div>
+                                                    <input type="text" name="question2" class="form-control required"
+                                                           placeholder="Enter last name" aria-required="true" required="">
 
+                                                           <span class="icon validation small success hide">
+                  <span class="fa fa-check"></span>
+                </span>
+                <span class="icon validation small error hide">
+                  <span class="fa fa-remove"></span>
+                </span>
+                <div class="is-helpful" data-helper="Validates if not empty." data-error="Please enter your first name."></div>
+                                                </div>
+                                              </div>
+                                                
+                                              <div class="relative input-wrap is-required">  
                                                 <div class="form-group">
                                                     <label>Date Of Birth</label>
 
-                                                    <input class="form-control rounded-0 form-control-md" type="date"
-                                                           value="2011-08-19" id="example-date-input" name="question3"
-                                                           aria-required="true">
-
+                                                    <input class="form-control rounded-0 form-control-md required" type="date" required
+                                                           value="2011-08-19" id="example-date-input" name="question3 required"
+                                                           aria-required="true" required="">
+                                                      <span class="icon validation small success hide">
+                    <span class="fa fa-check"></span>
+                  </span>
+                  <span class="icon validation small error hide">
+                    <span class="fa fa-remove"></span>
+                  </span>
+                  <div class="is-helpful" data-helper="You must be at least 13." data-error="You must be at least 13."></div>
                                                 </div>
+                                              </div>
+
                                                 <div class="form-group">
                                                     <label class="control-label">Sex</label>
                                                     <div class="custom-control custom-radio">
@@ -227,18 +442,36 @@ if ($_SESSION['loggedin'] == false) {
                                                                for="customRadio2">Female</label>
                                                     </div>
                                                 </div>
+                                                <div class="relative input-wrap is-required">
                                                 <div class="form-group">
                                                     <label class="control-label">Age</label>
                                                     <input type="number" name="question5" class="form-control"
-                                                           placeholder="Enter age">
+                                                           placeholder="Enter age" required>
                                                 </div>
-
+                                                <span class="icon validation small success hide">
+                  <span class="fa fa-check"></span>
+                </span>
+                <span class="icon validation small error hide">
+                  <span class="fa fa-remove"></span>
+                </span>
+                <div class="is-helpful" data-helper="Validates if not empty." data-error="Please enter your first name."></div>
+              </div>
+                                              <div class="relative input-wrap is-required">
                                                 <div class="form-group">
                                                     <label class="control-label">Nationality At Birth</label>
-                                                    <input type="text" class="form-control" name="question6"
-                                                           placeholder="Enter birth nationality">
+                                                    <input type="text" class="form-control required" name="question6"
+                                                           placeholder="Enter birth nationality" required>
                                                 </div>
+                                                <span class="icon validation small success hide">
+                  <span class="fa fa-check"></span>
+                </span>
+                <span class="icon validation small error hide">
+                  <span class="fa fa-remove"></span>
+                </span>
+                <div class="is-helpful" data-helper="Validates if not empty." data-error="Please enter your first name."></div>
 
+              </div>
+                                              <div class="relative input-wrap is-required">
                                                 <div class="form-group">
                                                     <label class="control-label">Is Your Church Part Of UD-OLGC?</label>
                                                     <div class="custom-control custom-radio">
@@ -252,11 +485,15 @@ if ($_SESSION['loggedin'] == false) {
                                                         <label class="custom-control-label" for="customUD2">No</label>
                                                     </div>
                                                 </div>
+                                                
+
+              </div>  
+                                              <div class="relative input-wrap is-required">
                                                 <div class="form-group">
                                                     <label class="control-label">Marital Status</label>
                                                     <div class="form-group">
-
-                                                        <select class="form-control rounded-0" name="question8"
+                                                       <div class="relative input-wrap is-required"> 
+                                                        <select class="form-control rounded-0 required" name="question8"
                                                                 id="exampleSelect1">
                                                             <option>Married</option>
                                                             <option>Single</option>
@@ -265,16 +502,28 @@ if ($_SESSION['loggedin'] == false) {
                                                             <option>Other</option>
                                                         </select>
                                                     </div>
+                                                   <span class="icon validation small success hide">
+                  <span class="fa fa-check"></span>
+                </span>
+                <span class="icon validation small error hide">
+                  <span class="fa fa-remove"></span>
+                </span>
+                <div class="is-helpful" data-helper="Validates if not empty." data-error="Please enter your first name."></div>
 
+              </div>    
                                                 </div>
+                                              </div>
+                                                 
 
 
                                                 <div class="form-group">
                                                     <label class="control-label">Country Of Residence</label>
+                                                    <div class="relative input-wrap is-required"> 
                                                     <select class="form-control" name="question9"
-                                                            id="exampleSelectGender">
-                                                        <option value="AF">Afghanistan</option>
-                                                        <option value="AX">Åland Islands</option>
+                                                            id="countrylist" required>
+                                                            <option value="0">--Select A Country--</option>
+                                                        <option value="1">Afghanistan</option>
+                                                        <option value="2">Åland Islands</option>
                                                         <option value="AL">Albania</option>
                                                         <option value="DZ">Algeria</option>
                                                         <option value="AS">American Samoa</option>
@@ -531,70 +780,101 @@ if ($_SESSION['loggedin'] == false) {
                                                         <option value="ZW">Zimbabwe</option>
                                                     </select>
                                                 </div>
-
+                                              </div>
+                                                <div class="relative input-wrap is-required">
                                                 <div class="form-group">
                                                     <label class="control-label">Residential Address</label>
-                                                    <input type="text" class="form-control" name="question10"
-                                                           placeholder="Enter residential address">
+                                                    <input type="text" class="form-control required" name="question10"
+                                                           placeholder="Enter residential address" required="">
                                                 </div>
+                                              </div>
 
+                                              <div class="relative input-wrap is-required">
                                                 <div class="form-group">
                                                     <label class="control-label">Email Address</label>
-                                                    <input type="text" class="form-control" name="question11"
+                                                    <input type="text" class="form-control required" name="question11"
                                                            placeholder="Enter email address">
                                                 </div>
-
-                                                <div class="form-group">
-                                                    <label class="control-label">WhatsApp Number</label>
-                                                    <input type="text" class="form-control" name="question12"
-                                                           placeholder="Enter whatsapp number">
                                                 </div>
 
+                                                <div class="relative input-wrap is-required">
+                                                <div class="form-group">
+                                                    <label class="control-label">WhatsApp Number</label>
+                                                    <input type="text" class="form-control required" name="question12"
+                                                           placeholder="Enter whatsapp number">
+                                                </div>
+                                              </div>
+
+                                              <div class="relative input-wrap is-required">
                                                 <div class="form-group">
                                                     <label class="control-label">Profession</label>
                                                     <input type="text" class="form-control" name="question13"
                                                            placeholder="Enter profession">
                                                 </div>
+                                              </div>
+
+                                              <div class="relative input-wrap is-required">
                                                 <div class="form-group">
                                                     <label class="control-label">What Work Are You Doing Currently?</label>
-                                                    <input type="text" class="form-control" name="question14"
+                                                    <input type="text" class="form-control required" name="question14"
                                                            placeholder="Enter current work">
                                                 </div>
+                                              </div>
+
+                                              <div class="relative input-wrap is-required">
                                                 <div class="form-group">
                                                     <label class="control-label">Name Of Father</label>
-                                                    <input type="text" class="form-control" name="question15"
+                                                    <input type="text" class="form-control required" name="question15"
                                                            placeholder="Enter name of your father">
                                                 </div>
+                                              </div>
+
+                                              <div class="relative input-wrap is-required">
                                                 <div class="form-group">
                                                     <label class="control-label">Name Of Mother</label>
-                                                    <input type="text" class="form-control" name="question16"
+                                                    <input type="text" class="form-control required" name="question16"
                                                            placeholder="Enter name of your mother">
                                                 </div>
+                                              </div>
+
+                                              <div class="relative input-wrap is-required">
                                                 <div class="form-group">
                                                     <label class="control-label">Name Of Guardian</label>
-                                                    <input type="text" class="form-control" name="question17"
+                                                    <input type="text" class="form-control required" name="question17"
                                                            placeholder="Enter name of your guardian">
                                                 </div>
+                                              </div>
+
+                                              <div class="relative input-wrap is-required">
                                                 <div class="form-group">
                                                     <label class="control-label">Profession Of Father</label>
-                                                    <input type="text" class="form-control" name="question18"
+                                                    <input type="text" class="form-control required" name="question18"
                                                            placeholder="Enter profession of your father">
                                                 </div>
+                                              </div>
+
+                                              <div class="relative input-wrap is-required">
                                                 <div class="form-group">
                                                     <label class="control-label">Profession Of Mother</label>
-                                                    <input type="text" class="form-control" name="question19"
+                                                    <input type="text" class="form-control required" name="question19"
                                                            placeholder="Enter profession of your mother">
                                                 </div>
+                                              </div>
+
+                                                <div class="relative input-wrap is-required">
                                                 <div class="form-group">
                                                     <label class="control-label">Profession Of Guardian</label>
-                                                    <input type="text" class="form-control" name="question20"
+                                                    <input type="text" class="form-control required" name="question20"
                                                            placeholder="Enter profession of your guardian">
                                                 </div>
+                                              </div>
+
+                                              <div class="relative input-wrap is-required">
                                                 <div class="form-group">
                                                     <label class="control-label">Where Do You Live?</label>
                                                     <div class="custom-control custom-radio">
-                                                        <input type="radio" id="radiocity1" name="question21"
-                                                               value="City" class="custom-control-input">
+                                                        <input type="radio" oninvalid="alert('You must fill out the form!');" id="radiocity1" name="question21 "
+                                                               value="City" class="custom-control-input required" required>
                                                         <label class="custom-control-label"
                                                                for="radiocity1">City</label>
                                                     </div>
@@ -617,12 +897,15 @@ if ($_SESSION['loggedin'] == false) {
                                                                for="radioslum1">Slum</label>
                                                     </div>
                                                 </div>
+                                              </div>
+
+                                              <div class="relative input-wrap is-required">
                                                 <div class="form-group">
                                                     <label class="control-label">Do Your Parents/Guardian Own A
                                                         House?</label>
                                                     <div class="custom-control custom-radio">
                                                         <input type="radio" id="radioownhouse1" name="question22"
-                                                               value="Yes" class="custom-control-input">
+                                                               value="Yes" class="custom-control-input required">
                                                         <label class="custom-control-label"
                                                                for="radioownhouse1">Yes</label>
                                                     </div>
@@ -634,12 +917,15 @@ if ($_SESSION['loggedin'] == false) {
                                                                for="radioownhouse2">No</label>
                                                     </div>
                                                 </div>
+                                              </div>
+
+                                              <div class="relative input-wrap is-required">
                                                 <div class="form-group">
                                                     <label class="control-label">Are Your Parents/Guardian Renting A
                                                         House?</label>
                                                     <div class="custom-control custom-radio">
                                                         <input type="radio" id="radiorent1" name="question23"
-                                                               value="Yes" class="custom-control-input">
+                                                               value="Yes" class="custom-control-input required">
                                                         <label class="custom-control-label" for="radiorent1">Yes</label>
                                                     </div>
                                                     <div class="custom-control custom-radio">
@@ -648,12 +934,15 @@ if ($_SESSION['loggedin'] == false) {
                                                         <label class="custom-control-label" for="radiorent2">No</label>
                                                     </div>
                                                 </div>
+                                              </div>
+
+                                              <div class="relative input-wrap is-required">
                                                 <div class="form-group">
                                                     <label class="control-label">Do Your Parents/Guardian Own A
                                                         Car?</label>
                                                     <div class="custom-control custom-radio">
                                                         <input type="radio" id="radiocar1" name="question24" value="Yes"
-                                                               class="custom-control-input">
+                                                               class="custom-control-input required">
                                                         <label class="custom-control-label" for="radiocar1">Yes</label>
                                                     </div>
                                                     <div class="custom-control custom-radio">
@@ -662,12 +951,15 @@ if ($_SESSION['loggedin'] == false) {
                                                         <label class="custom-control-label" for="radiocar2">No</label>
                                                     </div>
                                                 </div>
+                                              </div>
+
+                                              <div class="relative input-wrap is-required">
                                                 <div class="form-group">
                                                     <label class="control-label">Do Your Parents/Guardian Own A
                                                         Business?</label>
                                                     <div class="custom-control custom-radio">
                                                         <input type="radio" id="radiobusiness1" name="question25"
-                                                               value="Yes" class="custom-control-input">
+                                                               value="Yes" class="custom-control-input required">
                                                         <label class="custom-control-label"
                                                                for="radiobusiness1">Yes</label>
                                                     </div>
@@ -678,31 +970,46 @@ if ($_SESSION['loggedin'] == false) {
                                                                for="radiobusiness2">No</label>
                                                     </div>
                                                 </div>
+                                              </div>
+
+                                              <div class="relative input-wrap is-required">
                                                 <div class="form-group">
                                                     <label class="control-label">Name Of Sponsor</label>
-                                                    <input type="text" class="form-control" name="question26"
+                                                    <input type="text" class="form-control required" name="question26"
                                                            placeholder="Enter sponsor name">
                                                 </div>
+                                              </div>
+
+                                              <div class="relative input-wrap is-required">
                                                 <div class="form-group">
                                                     <label class="control-label">Sponsor Phone Number</label>
-                                                    <input type="number" class="form-control" name="question27"
+                                                    <input type="number" class="form-control required" name="question27"
                                                            placeholder="Enter sponsor phone number">
                                                 </div>
+                                              </div>
+
+                                              <div class="relative input-wrap is-required">
                                                 <div class="form-group">
                                                     <label class="control-label">Next Of Kin</label>
-                                                    <input type="text" class="form-control" name="question28"
+                                                    <input type="text" class="form-control required" name="question28"
                                                            placeholder="Enter next of kin">
                                                 </div>
+                                              </div>
+
+                                              <div class="relative input-wrap is-required">
                                                 <div class="form-group">
                                                     <label class="control-label">Next Of Kin Contact Number</label>
-                                                    <input type="number" class="form-control" name="question29"
+                                                    <input type="number" class="form-control required" name="question29"
                                                            placeholder="Enter next of kin contact number">
                                                 </div>
+                                              </div>
+
+                                              <div class="relative input-wrap is-required">
                                                 <div class="form-group">
                                                     <label class="control-label">Select Course You Would Like To
                                                         Do?</label>
                                                     <div class="custom-control custom-radio">
-                                                        <input type="radio" id="radiocourse1" name="question30"
+                                                        <input type="radio" id="radiocourse1" name="question30 required"
                                                                value="9 Months Ordinary Program"
                                                                class="custom-control-input">
                                                         <label class="custom-control-label" for="radiocourse1">9 Months
@@ -730,11 +1037,14 @@ if ($_SESSION['loggedin'] == false) {
                                                             Advanced Program</label>
                                                     </div>
                                                 </div>
+                                              </div>
+
+                                              <div class="relative input-wrap is-required">
                                                 <div class="form-group">
                                                     <label class="control-label">What month would you like to start
                                                         Bible school?</label>
                                                     <div class="custom-control custom-radio">
-                                                        <input type="radio" id="radiomonth1" name="question31"
+                                                        <input type="radio" id="radiomonth1" name="question31 required"
                                                                value="2020 3rd Quarter (July/August/September)"
                                                                class="custom-control-input">
                                                         <label class="custom-control-label" for="radiomonth1">2020 3rd
@@ -777,11 +1087,13 @@ if ($_SESSION['loggedin'] == false) {
                                                     </div>
 
                                                 </div>
+                                              </div>
 
+                                              <div class="relative input-wrap is-required">
                                                 <div class="form-group">
                                                     <label class="control-label">How did you hear about the Bible School?</label>
                                                     <div class="custom-control custom-radio">
-                                                        <input type="radio" id="howhear1" name="question75"
+                                                        <input type="radio" id="howhear1" name="question75 required"
                                                                value="Ghana Healing Jesus Campaign"
                                                                class="custom-control-input">
                                                         <label class="custom-control-label" for="howhear1">Ghana Healing Jesus Campaign</label>
@@ -858,16 +1170,38 @@ if ($_SESSION['loggedin'] == false) {
                                                                class="custom-control-input">
                                                         <label class="custom-control-label" for="howhear13">Other Church</label>
                                                     </div>
+                                                  </div>
 
                                                 </div>
+                                              </div>
 
-                                                        
+                                                
 
-                                            </section>
-                                            <h3>CHURCH</h3>
-                                            <section class="overflow-auto">
-                                                <h3>Church</h3>
-                                                <div class="form-group">
+                
+                
+                 
+                </div>
+                <div class="card">
+                            <div class="card-body">
+                                <div class="content">
+                                                <div class="button-row d-flex mt-4">
+                                                  <!-- <button class="btn">
+                                                  <div class="btn">Here is my clickable div</div>
+                                               </button> -->
+
+                    <button class="btn btn-primary ml-auto js-btn-next" type="button" title="Next">Next</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+              </div>
+
+              <!--single form panel-->
+              <div class="multisteps-form__panel shadow p-4 rounded bg-white" data-animation="scaleIn">
+                <h3 class="multisteps-form__title">CHURCH</h3>
+                <div class="multisteps-form__content">
+                  <div id="demo-form2" data-parsley-validate="" class="scrollpage1" style="height: 300px;">
+                    <div class="form-group">
                                                     <label class="control-label">Are you born again?</label>
                                                     <div class="custom-control custom-radio">
                                                         <input type="radio" id="radioborn1" name="question32"
@@ -894,31 +1228,46 @@ if ($_SESSION['loggedin'] == false) {
                                                     </div>
                                                 </div>
 
-
+                                                <div class="relative input-wrap is-required">
                                                 <div class="form-group">
                                                     <label>Which Church Do You Fellowship With?</label>
-                                                    <input type="text" class="form-control" name="question34"
+                                                    <input type="text" class="form-control required" name="question34"
                                                            aria-describedby="emailHelp" placeholder="Enter church name">
                                                 </div>
+                                              </div>
+                                              <div class="relative input-wrap is-required">
                                                 <div class="form-group">
                                                     <label>Which Role Do You Play In Your Church?</label>
-                                                    <input type="text" class="form-control" name="question35"
+                                                    <input type="text" class="form-control required" name="question35"
                                                            placeholder="Enter church role">
                                                 </div>
+                                              </div>
+                                              <div class="relative input-wrap is-required"> 
                                                 <div class="form-group">
                                                     <label>If You Are A Pastor, Please Indicate How Long You Have Been
                                                         Pastoring?</label>
-                                                    <input type="text" class="form-control" name="question36"
+                                                    <input type="text" class="form-control required" name="question36"
                                                            placeholder="Enter how long you have been pastoring">
                                                 </div>
-                                            </section>
-                                            <h3>CALLING</h3>
-                                            <section class="overflow-auto">
-                                                <h3>Assessment Of Calling</h3>
-                                                <label for="exampleTextarea1">Why Do You Want To Come To The Bible
+                                              </div>
+                  </div>
+                  <div class="button-row d-flex mt-4">
+                    <button class="btn btn-primary js-btn-prev" type="button" title="Prev">Prev</button>
+                    <button class="btn btn-primary ml-auto js-btn-next" type="button" title="Next">Next</button>
+                  </div>
+                </div>
+              </div>
+              <!--single form panel-->
+              <div class="multisteps-form__panel shadow p-4 rounded bg-white" data-animation="scaleIn">
+                <h3 class="multisteps-form__title">CALLING</h3>
+                <div class="multisteps-form__content">
+                  <div class="scrollpage1" style="height: 300px;">
+                    <div class="relative input-wrap is-required"> 
+                    <label for="exampleTextarea1">Why Do You Want To Come To The Bible
                                                     School?</label>
-                                                <textarea class="form-control" id="exampleTextarea1" name="question37"
+                                                <textarea class="form-control required" id="exampleTextarea1" name="question37"
                                                           rows="3"></textarea>
+                                                        </div>
                                                 <br>
 
                                                 <label for="exampleTextarea1">Do You Have A Calling From God?</label>
@@ -939,12 +1288,20 @@ if ($_SESSION['loggedin'] == false) {
                                                           rows="3">
 
                                              </textarea>
-                                            </section>
+                  </div>
+                  <div class="button-row d-flex mt-4">
+                    <button class="btn btn-primary js-btn-prev" type="button" title="Prev">Prev</button>
+                    <button class="btn btn-primary ml-auto js-btn-next" type="button" title="Next">Next</button>
+                  </div>
+                </div>
+              </div>
+              
+              <!--single form panel-->
+              <div class="multisteps-form__panel shadow p-4 rounded bg-white" data-animation="scaleIn">
+                <h5 class="multisteps-form__title">SOCIAL AND PAST HISTORY BACKGROUND</h5>
 
-                                            <h3>SOCIAL AND PAST</h3>
-                                            <section class="overflow-auto">
-                                                <h3>Social And Past History Background</h3>
-                                                <label for="exampleTextarea1">Do You Use Narcortic Drugs (Cocaine,
+                <div class="scrollpage1" style="height: 300px;">
+                  <label for="exampleTextarea1">Do You Use Narcortic Drugs (Cocaine,
                                                     Heroin, Marijuana etc)</label>
 
                                                 <div class="custom-control custom-radio">
@@ -998,7 +1355,7 @@ if ($_SESSION['loggedin'] == false) {
                                                     <label class="custom-control-label" for="radioarrest1">Yes</label>
                                                 </div>
                                                 <div class="custom-control custom-radio">
-													<input type="radio" id="radioarrest2" name="question44" value="No" class="custom-control-input">
+                                                    <input type="radio" id="radioarrest2" name="question44" value="No" class="custom-control-input">
                                                     <label class="custom-control-label" for="radioarrest2">No</label>
                                                 </div>
 
@@ -1223,13 +1580,18 @@ if ($_SESSION['loggedin'] == false) {
                                                           rows="3">
 
                                              </textarea>
+                  </div>
+                    <div class="button-row d-flex mt-4 col-12">
+                      <button class="btn btn-primary js-btn-prev" type="button" title="Prev">Prev</button>
+                      <button class="btn btn-primary ml-auto js-btn-next" type="button" title="Next">Next</button>
+                  </div>
+                </div>
 
-                                            </section>
-                                            <h3>HEALTH STATUS</h3>
-                                            <section class="overflow-auto">
-                                                <h3>Medical History</h3>
-
-                                                <label class="control-label">Tick Which Of The Following Diseases You
+                <!--single form panel-->
+              <div class="multisteps-form__panel shadow p-4 rounded bg-white" data-animation="scaleIn">
+                <h3 class="multisteps-form__title">HEALTH STATUS</h3>
+                <div class="scrollpage1" style="height: 300px;">
+                  <label class="control-label">Tick Which Of The Following Diseases You
                                                     Have Been Treated For In The Past;</label>
 
                                                 <div class="form-group">
@@ -1394,10 +1756,18 @@ if ($_SESSION['loggedin'] == false) {
                                                         <label class="custom-control-label" for="radioaller2">No</label>
                                                     </div>
                                                 </div>
-                                            </section>
-                                            <h3>CRIMINAL HISTORY</h3>
-                                            <section class="overflow-auto">
-                                                <div class="form-group">
+                  </div>
+                    <div class="button-row d-flex mt-4 col-12">
+                      <button class="btn btn-primary js-btn-prev" type="button" title="Prev">Prev</button>
+                      <button class="btn btn-primary ml-auto js-btn-next" type="button" title="Next">Next</button>
+                  </div>
+                </div>
+
+                <!--single form panel-->
+              <div class="multisteps-form__panel shadow p-4 rounded bg-white" data-animation="scaleIn">
+                <h3 class="multisteps-form__title">CRIMINAL HISTORY</h3>
+                <div class="scrollpage1" style="height: 300px;">
+                  <div class="form-group">
                                                     <label class="control-label">Have You Had Any Problems With The
                                                         Law?</label>
                                                     <div class="custom-control custom-radio">
@@ -1416,10 +1786,19 @@ if ($_SESSION['loggedin'] == false) {
                                                     <input type="text" class="form-control" name="question70"
                                                            placeholder="">
                                                 </div>
-                                            </section>
-                                            <h3>NATIONALITY</h3>
-                                            <section class="overflow-auto">
-                                                <div class="form-group">
+                  </div>
+                    <div class="button-row d-flex mt-4 col-12">
+                      <button class="btn btn-primary js-btn-prev" type="button" title="Prev">Prev</button>
+                      <button class="btn btn-primary ml-auto js-btn-next" type="button" title="Next">Next</button>
+
+                  </div>
+                </div>
+
+                <!--single form panel-->
+              <div class="multisteps-form__panel shadow p-4 rounded bg-white" data-animation="scaleIn">
+                <h3 class="multisteps-form__title">NATIONALITY</h3>
+                <div class="scrollpage1" style="height: 300px;">
+                  <div class="form-group">
                                                     <label for="exampleTextarea1">Requirements For International
                                                         Students</label>
                                                     <textarea class="form-control" id="exampleTextarea1" rows="9"
@@ -1446,11 +1825,18 @@ Please make sure that you have obtained or done the following, before leaving yo
 6. Start Prophylactic Anti Malaria Medications two weeks before leaving your country. Please obtain enough dosages to continue for another 6 weeks whilst in Ghana.
                                             </textarea>
                                                 </div>
-                                            </section>
-                                            <h3>RECOMMENDED BY</h3>
-                                            <section class="overflow-auto">
+                  </div>
+                    <div class="button-row d-flex mt-4 col-12">
+                      <button class="btn btn-primary js-btn-prev" type="button" title="Prev">Prev</button>
+                      <button class="btn btn-primary ml-auto js-btn-next" type="button" title="Next">Next</button>
+                  </div>
+                </div>
 
-                                                <div class="form-group">
+                <!--single form panel-->
+              <div class="multisteps-form__panel shadow p-4 rounded bg-white" data-animation="scaleIn">
+                <h4 class="multisteps-form__title">RECOMMENDED BY</h4>
+                <div class="scrollpage1" style="height: 300px;">
+                  <div class="form-group">
 
                                                     <label for="example-select">I Am Recommended By</label>
                                                     <select class="form-control" name="question71" id="example-select">
@@ -1467,36 +1853,53 @@ Please make sure that you have obtained or done the following, before leaving yo
                                                     <input type="text" name="question72" class="form-control"
                                                            placeholder="">
                                                 </div>
-                                            </section>
+                  </div>
+                    <div class="button-row d-flex mt-4 col-12">
+                      <button class="btn btn-primary js-btn-prev" type="button" title="Prev">Prev</button>
+                      <button class="btn btn-primary ml-auto js-btn-next" type="button" title="Next">Next</button>
+                  </div>
+                </div>
 
-
-
-                                            <h3>FINISH</h3>
-                                            <section class="overflow-auto">
-                                                <h3>Finish</h3>
-                                                <div class="form-check">
+                <!--single form panel-->
+              <div class="multisteps-form__panel shadow p-4 rounded bg-white" data-animation="scaleIn">
+                <h3 class="multisteps-form__title">FINISH</h3>
+                <div class="scrollpage1" style="height: 300px;">
+                  <div class="form-check">
                                                     <label class="ckbox">
-                                                        <input type="checkbox">
                                                         <span></span>
                                                         <span class="text-dark submit-text"> I <div class="form-group">
-                                                        
-                                                        <input type="text" name="question73" class="form-control"
+                                                        <div class="relative input-wrap is-required">
+                                                        <input type="text" name="question73" class="form-control required"
                                                                placeholder="">
+                                                             </div>
                                                     </div> certify that the information given above is true and correct to the best of my knowledge.</span>
                                                         <br>
                                                         <br>
-
-                                                        <div class="form-group">
+                                                        <div class="relative input-wrap is-required">
+                                                        <div class="form-group ">
                                                             <label>Date</label>
-                                                            <input type="text" name="question74" class="form-control"
+                                                            <input type="text" name="question74" class="form-control required"
                                                                    placeholder="">
                                                         </div>
+                                                      </div>
                                                     </label>
                                                 </div>
-                                            </section>
-                                        </div>
-                                    </form>
-                                </div>
+                  </div>
+                    <div class="button-row d-flex mt-4 col-12">
+                      <button class="btn btn-primary js-btn-prev" type="button" title="Prev">Prev</button>
+                      <button id="clickable" class="btn btn-primary ml-auto toggle-disabled" type="submit" title="Send" disabled>Submit</button>
+                  </div>
+                </div>          
+                               
+              <!--single form panel-->
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- partial -->
                             </div>
                         </div>
                     </div>
@@ -1549,6 +1952,700 @@ Please make sure that you have obtained or done the following, before leaving yo
 <script src="js/jquery.form-validator.min.js"></script>
 <script src="js/default-assets/wizard-form.js"></script>
 <script src="js/default-assets/file-upload.js"></script>
+
+<script>
+  //DOM elements
+const DOMstrings = {
+  stepsBtnClass: 'multisteps-form__progress-btn',
+  stepsBtns: document.querySelectorAll(`.multisteps-form__progress-btn`),
+  stepsBar: document.querySelector('.multisteps-form__progress'),
+  stepsForm: document.querySelector('.multisteps-form__form'),
+  stepsFormTextareas: document.querySelectorAll('.multisteps-form__textarea'),
+  stepFormPanelClass: 'multisteps-form__panel',
+  stepFormPanels: document.querySelectorAll('.multisteps-form__panel'),
+  stepPrevBtnClass: 'js-btn-prev',
+  stepNextBtnClass: 'js-btn-next' };
+
+
+//remove class from a set of items
+const removeClasses = (elemSet, className) => {
+
+  elemSet.forEach(elem => {
+
+    elem.classList.remove(className);
+
+  });
+
+};
+
+//return exect parent node of the element
+const findParent = (elem, parentClass) => {
+
+  let currentNode = elem;
+
+  while (!currentNode.classList.contains(parentClass)) {
+    currentNode = currentNode.parentNode;
+  }
+
+  return currentNode;
+
+};
+
+//get active button step number
+const getActiveStep = elem => {
+  return Array.from(DOMstrings.stepsBtns).indexOf(elem);
+};
+
+//set all steps before clicked (and clicked too) to active
+const setActiveStep = activeStepNum => {
+
+  //remove active state from all the state
+  removeClasses(DOMstrings.stepsBtns, 'js-active');
+
+  //set picked items to active
+  DOMstrings.stepsBtns.forEach((elem, index) => {
+
+    if (index <= activeStepNum) {
+      elem.classList.add('js-active');
+    }
+
+  });
+};
+
+//get active panel
+const getActivePanel = () => {
+
+  let activePanel;
+
+  DOMstrings.stepFormPanels.forEach(elem => {
+
+    if (elem.classList.contains('js-active')) {
+
+      activePanel = elem;
+
+    }
+
+  });
+
+  return activePanel;
+
+};
+
+//open active panel (and close unactive panels)
+const setActivePanel = activePanelNum => {
+
+  //remove active class from all the panels
+  removeClasses(DOMstrings.stepFormPanels, 'js-active');
+
+  //show active panel
+  DOMstrings.stepFormPanels.forEach((elem, index) => {
+    if (index === activePanelNum) {
+
+      elem.classList.add('js-active');
+
+      setFormHeight(elem);
+
+    }
+  });
+
+};
+
+//set form height equal to current panel height
+const formHeight = activePanel => {
+
+  const activePanelHeight = activePanel.offsetHeight;
+
+  DOMstrings.stepsForm.style.height = `${activePanelHeight}px`;
+
+};
+
+const setFormHeight = () => {
+  const activePanel = getActivePanel();
+
+  formHeight(activePanel);
+};
+
+//STEPS BAR CLICK FUNCTION
+DOMstrings.stepsBar.addEventListener('click', e => {
+
+  //check if click target is a step button
+  const eventTarget = e.target;
+
+  if (!eventTarget.classList.contains(`${DOMstrings.stepsBtnClass}`)) {
+    return;
+  }
+
+  //get active button step number
+  const activeStep = getActiveStep(eventTarget);
+
+  //set all steps before clicked (and clicked too) to active
+  setActiveStep(activeStep);
+
+  //open active panel
+  setActivePanel(activeStep);
+});
+
+//PREV/NEXT BTNS CLICK
+DOMstrings.stepsForm.addEventListener('click', e => {
+
+  const eventTarget = e.target;
+
+  //check if we clicked on `PREV` or NEXT` buttons
+  if (!(eventTarget.classList.contains(`${DOMstrings.stepPrevBtnClass}`) || eventTarget.classList.contains(`${DOMstrings.stepNextBtnClass}`)))
+  {
+    return;
+  }
+
+  //find active panel
+  const activePanel = findParent(eventTarget, `${DOMstrings.stepFormPanelClass}`);
+
+  let activePanelNum = Array.from(DOMstrings.stepFormPanels).indexOf(activePanel);
+
+  //set active step and active panel onclick
+  if (eventTarget.classList.contains(`${DOMstrings.stepPrevBtnClass}`)) {
+    activePanelNum--;
+
+  } else {
+
+    activePanelNum++;
+
+  }
+
+  setActiveStep(activePanelNum);
+  setActivePanel(activePanelNum);
+
+});
+
+//SETTING PROPER FORM HEIGHT ONLOAD
+window.addEventListener('load', setFormHeight, false);
+
+//SETTING PROPER FORM HEIGHT ONRESIZE
+window.addEventListener('resize', setFormHeight, false);
+
+//changing animation via animation select !!!YOU DON'T NEED THIS CODE (if you want to change animation type, just change form panels data-attr)
+
+const setAnimationType = newType => {
+  DOMstrings.stepFormPanels.forEach(elem => {
+    elem.dataset.animation = newType;
+  });
+};
+
+//selector onchange - changing animation
+const animationSelect = document.querySelector('.pick-animation__select');
+
+animationSelect.addEventListener('change', () => {
+  const newAnimationType = animationSelect.value;
+
+  setAnimationType(newAnimationType);
+});
+</script>
+
+<script src='https://rawgit.com/guillaumepotier/Parsley.js/2.2.0-rc4/dist/parsley.js'></script>
+
+<script type="text/javascript">
+  $(document).ready(function () {
+
+
+  
+});
+</script>
+
+<script>
+    $(document).on('change keyup', '.required', function(e){
+   let Disabled = true;
+    $(".required").each(function() {
+
+      let value = this.value
+      if ((value)&&(value.trim() !=''))
+          {
+            Disabled = false
+          }else{
+            Disabled = true
+            return false
+          }
+    });
+   
+   if(Disabled){
+        $('.toggle-disabled').prop("disabled", true);
+      }else{
+        $('.toggle-disabled').prop("disabled", false);
+      }
+ })
+  </script>
+
+
+  <!-- Disable button for page 1 -->
+  <script type="text/javascript">
+    document.getElementById('clickable').addEventListener('click', clickDiv);
+
+function clickDiv() {
+    // document.getElementById('clickable').innerHTML = "Clicked and Changed"; // Changes text inside div one time only when clicked
+    $('#demo-form .btn').on('click', function () {
+    $('#demo-form').parsley().validate();
+    validateFront();
+  });
+
+  var validateFront = function () {
+    if (true === $('#demo-form').parsley().isValid()) {
+      $('.bs-callout-info').removeClass('hidden');
+      $('.bs-callout-warning').addClass('hidden');
+    } else {
+      $('.bs-callout-info').addClass('hidden');
+      $('.bs-callout-warning').removeClass('hidden');
+    }
+  };
+}
+  </script>
+
+  <!-- Disable and enable button for page 2 -->
+
+  <script>
+    // Heavily commented so you can you whichever chunks you need
+// Please use and improve your forms 
+
+var $inputWrapper = '.input-wrap',
+  $invalidClass = 'is-invalid',
+  $validClass = 'is-valid',
+  $optionalClass = 'is-optional',
+  $requiredClass = 'is-required',
+  $helperClass = '.is-helpful',
+  $errorClass = 'error-message',
+  
+  $validEmail = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,13}$/i,
+  $validWebsite = /^[A-Z._-]+.[A-Z0-9.-]+\.[A-Z]{2,13}$/i,
+  $validPhone = /^[0-9-.()]{3,15}$/,
+  
+  $date = new Date();
+   
+/*
+ * Validation Functions
+ */
+
+// There are three kinds of validation
+// Valid, invalid, and neutral
+// Because markValid sets the success icon, neutral is needed to
+// remove the error icon for optional fields
+function markValid(field) {
+  var $field_wrapper = field.parents($inputWrapper);
+
+  $field_wrapper.addClass($validClass).removeClass($invalidClass);    
+
+  $(field).parents($inputWrapper).siblings('.error-message').slideUp(200, function() {
+    $(this).addClass('hide');
+  });
+
+  field.parents($inputWrapper).siblings($helperClass).removeClass($errorClass);
+  field.parents($inputWrapper).siblings('.error-message').removeClass($errorClass);
+
+  setIcon(field, 'valid');
+  setField(field, $field_wrapper, 'valid');
+  helperUp(field);
+}
+
+function markInvalid(field, error_message) {
+  var $field_wrapper = field.parents($inputWrapper);
+
+  if ($field_wrapper.hasClass($requiredClass) || ($field_wrapper.hasClass($optionalClass) && field.val() != '')) {
+    setIcon(field, 'invalid');
+    setError(field, error_message);
+    setField(field, $field_wrapper, 'invalid');
+  }
+}
+
+function markNeutral(field) {
+  $(field).closest($inputWrapper).addClass($validClass).removeClass($invalidClass);
+  $('label[for="' + field.attr('id') + '"]').addClass($validClass).removeClass($invalidClass);
+  $(field).siblings('.icon.success').removeClass('show').addClass('hide');
+  $(field).siblings('.icon.error').removeClass('show').addClass('hide');
+}
+
+function setIcon(field, validation_type) {
+  var $iconSuccess = $(field).siblings('.icon.success');
+  var $iconError = $(field).siblings('.icon.error');
+
+  if (validation_type === 'valid') {
+    $iconSuccess.removeClass('hide');
+    $iconError.addClass('hide');
+  } else if (validation_type === 'invalid') {
+    $iconSuccess.addClass('hide');
+    $iconError.removeClass('hide');
+  }
+}
+
+// Used for selects because the icons are in a different location
+// due to layout changes
+function setIconMulti(iconSuccess, iconError, validation_type) {
+  if (validation_type === 'valid') {
+    iconSuccess.removeClass('hide');
+    iconError.addClass('hide');
+  } else if (validation_type === 'invalid') {
+    iconSuccess.addClass('hide');
+    iconError.removeClass('hide');
+  }
+}
+
+function setError(field, error_message) {
+  field.closest($inputWrapper).siblings($helperClass).html(error_message);
+  field.closest($inputWrapper).siblings($helperClass).addClass('error-message').removeClass('hide');
+}
+
+function setField(field, field_wrapper, validation_type) {
+  if (validation_type === 'valid') {
+    field_wrapper.addClass($validClass).removeClass($invalidClass);
+    field_wrapper.siblings('label').addClass($validClass).removeClass($invalidClass);
+  } else if (validation_type === 'invalid') {
+    field_wrapper.addClass($invalidClass).removeClass($validClass);
+    field_wrapper.siblings('label').addClass($invalidClass).removeClass($validClass);
+  }
+}
+
+/*
+ * Specific Checker Functions
+ */
+
+function checkPasswordRequirements(input, event) {
+  var errors = 4;
+
+  if (input.val().match(/[a-z]/) != null) {
+    errors--;
+    $('.help_text_pwd1').addClass('success');
+  } else if (input.val().match(/[a-z]/) === null) {
+    errors++;
+    $('.help_text_pwd1').removeClass('success');
+  }
+
+  if (input.val().match(/[A-Z]/) != null) {
+    errors--;
+    $('.help_text_pwd2').addClass('success');
+  } else if (input.val().toLowerCase() === input.val()) {
+    errors++;
+    $('.help_text_pwd2').removeClass('success');
+  }
+
+  if (input.val().match(/[0-9]/) != null) {
+    errors--;
+    $('.help_text_pwd3').addClass('success');
+  } else if (input.val().match(/[0-9]/) === null) {
+    errors++;
+    $('.help_text_pwd3').removeClass('success');
+  }
+
+  if (input.val().length >= 8) {
+    errors--;
+    $('.help_text_pwd4').addClass('success');
+  } else if (input.val().length < 8) {
+    errors++;
+    $('.help_text_pwd4').removeClass('success');
+  } 
+
+  if (errors > 0) {
+    if (event.type === 'blur') {
+      markInvalid(input, 'Please choose a valid password.');
+    }
+  } else if (errors <= 0) {
+    markValid(input);
+  }
+}
+
+function validatePasswordPair(first, second) {
+  if (first.val() === second.val()) {
+    markValid(second);
+  } else {
+    if (second.val().length >= 8) {
+      markInvalid(second, 'Both passwords must match.');
+    }
+  }
+}
+
+
+/*
+ * Helper Text
+ */
+
+function helperDown(field, help_div, message) {
+  help_div.html(message);
+  help_div.removeClass($errorClass);
+  help_div.slideDown(400);
+}
+
+function helperUp(field) {
+  field.parents($inputWrapper).siblings($helperClass).slideUp(400);
+}
+
+
+/*
+ * Event Triggers
+ */
+
+$('input, textarea').on('focus', function() {
+  markNeutral($(this));
+  var $helpText = $(this).closest($inputWrapper).siblings($helperClass);
+  
+  if ($(this).closest($inputWrapper).hasClass('password-set')) {
+    var $message =  '<ul>' +
+            '<li><div class="help_text_pwd1">(a-z) lowercase</div></li>' +
+            '<li><div class="help_text_pwd2">(A-Z) UPPERCASE</div></li>' +
+            '<li><div class="help_text_pwd3">(0-9) number</div></li>' +
+            '<li><div class="help_text_pwd4">8 characters</div></li>' +
+            '</ul>';
+  } else {
+    var $message = $helpText.attr('data-helper');
+  }
+  
+  helperDown($(this), $helpText, $message);
+});
+
+$('input:not("input[type=url], input[type=password], input[name=email], input[type=tel]"), textarea').on('blur', function() {
+  if ($(this).val() === '' && $(this).closest($inputWrapper).hasClass($requiredClass)) {
+    markInvalid($(this), $(this).closest($inputWrapper).siblings($helperClass).attr('data-error'));
+  } else {
+    helperUp($(this));
+  }
+});
+
+$('input:not("input[type=url], input[type=password], input[name=email], input[type=tel]"), textarea').on('keyup', function(event) {
+  if ($(this).val() !== '') {
+    markValid($(this));
+  }
+});
+
+// This will handle single selects
+// and groups of selects with n number of selects in them.
+// Whichever selects are contained within the $inputWrapper class
+// will validate as a group, only if each has been changed
+// at least once.
+$('select').on('change', function () {
+  var $currentSelect = $(this),
+    $selects = $('select ', $currentSelect.closest($inputWrapper)),
+    $numSelects = $selects.length;
+  
+  if ($numSelects > 1) { // handle multiple selects
+    if (!$currentSelect.hasClass('changed')) {
+      $currentSelect.addClass('changed');
+    }
+    
+    var $selectsValues = [];
+    var $numChanges = $('.changed ', $currentSelect.closest($inputWrapper)).length;
+    
+    if ($numChanges === $numSelects) {
+      $selects.each(function() {
+        if ($(this).val() === '') {
+          $selectsValues.push('empty'); // need a value to push to the array (can't use 'empty' in markup if '' is needed elsewhere)
+        } else {
+          $selectsValues.push($(this).val());
+        }
+      });
+
+      var $numEmpty = 0;
+
+      for (i = 0; i < $selectsValues.length; i++) {
+        if ($selectsValues[i] === 'empty') {
+          $numEmpty++;
+        }
+      }
+
+      var $iconSuccess = $('.icon.success', $(this).closest($inputWrapper)),
+        $iconError = $('.icon.error', $(this).closest($inputWrapper));
+      
+      if ($numEmpty > 0) {
+        setIconMulti($iconSuccess, $iconError, 'invalid');
+        setField($currentSelect, $currentSelect.closest($inputWrapper), 'invalid');
+      } else {
+        setIconMulti($iconSuccess, $iconError, 'valid');
+        setField($currentSelect, $currentSelect.closest($inputWrapper), 'valid');
+      }
+    }
+  
+  } else { // handle single selects
+    if ($(this).val() === '') {
+      markInvalid($(this), 'Please make a selection');
+    } else {
+      markValid($(this));
+    }
+  }
+}); 
+
+// Email validation
+$('input[name=email]').on('keyup blur', function (event) {
+  if ($(this).parents($inputWrapper).hasClass($optionalClass) && $(this).val() === '') {
+    markNeutral($(this));
+  } else {
+    var $checkEmail = $(this).val().match($validEmail);
+
+    if (event.type === 'blur') {
+      if ($(this).val() === '') {
+        markInvalid($(this), $(this).parents($inputWrapper).siblings($helperClass).attr('data-error'));
+      } else if ($checkEmail === null) {
+        markInvalid($(this), 'Please enter a valid email');
+      } else {
+        markValid($(this));
+        helperText($(this), $helpText, $message, event);
+      }
+    } else {
+      if ($checkEmail !== null) {
+        markValid($(this));
+      }
+    }
+  }
+});
+
+// PASSWORDS
+// These are all separated out, based on the type of password field and the event type
+// It's more code and repetitive, but it's much more readable
+
+// Bind initial password choice on blur
+$('input[name=password1]').on('blur', function (event) {
+  if ($(this).val().length === 0) {
+    markInvalid($(this), 'Please choose a password.');
+  } else {
+    checkPasswordRequirements($(this), event);
+  }
+});
+
+// Bind initial password choice while typing
+$('input[name=password1]').on('keyup change', function (event) {
+  if ($(this).val().length === 0) {
+    markInvalid($(this), 'Please choose a password');
+  } else {
+    checkPasswordRequirements($(this), event);
+  }
+});
+
+// Bind password confirmation field on blur
+$('input[name=password2]').on('blur', function (event) {
+  if ($(this).val().length === 0) {
+    markInvalid($(this), 'Please confirm your password');
+  } else {
+    validatePasswordPair($('.password-set').children('input[type="password"]'), $(this));
+  }
+});
+
+// Bind password confirmation field while typing
+$('input[name=password2]').on('keyup change', function (event) {
+  if ($('.password-set').hasClass('is-invalid')) {
+    markInvalid($(this), 'Your password does not meet the requirements. Please fix it before confirming.');
+  } else {
+    validatePasswordPair($('.password-set').children('input[type="password"]'), $(this));
+  }
+});
+
+// Bind current password on blur
+$('input[name=password-old]').on('blur', function (event) {
+  if ($(this).val().length === 0) {
+    markInvalid($(this), 'Please enter your password');
+  } else if ($(this).val().length < 8) {
+    markInvalid($(this), 'Please enter a valid password');
+  }
+});
+
+// Bind current password while typing
+$('input[name=password-old]').on('keyup change', function (event) {
+  if ($(this).val().length >= 8) {
+    markValid($(this));
+  }
+});
+
+// URLs
+$('input[name=website]').on('keyup blur', function(event) {
+  if ($(this).parents($inputWrapper).hasClass($optionalClass) && $(this).val() === '') {
+    markNeutral($(this));
+    helperUp($(this));
+  } else {
+    var $checkWebsite = $(this).val().match($validWebsite);
+
+    if (event.type === 'blur') {
+      if ($checkWebsite === null) {
+        markInvalid($(this), 'Please enter a valid website address (www.example.com)');
+      } else {
+        markValid($(this));
+      }
+    } else {
+      if ($checkWebsite !== null) {
+        markValid($(this));
+      }
+    }
+  }
+});
+
+// Phone
+$('input[type=tel]').on('keyup blur', function(event) {
+  if ($(this).parents($inputWrapper).hasClass($optionalClass) && $(this).val() === '') {
+    markNeutral($(this));
+  } else {
+    var $checkPhone = $(this).val().match($validPhone);
+
+    if (event.type === 'blur') {
+      if ($checkPhone === null) {
+        markInvalid($(this), 'Please enter a valid phone number');
+      } else {
+        markValid($(this));
+        helperText($(this), $helpText, $message, event);
+      }
+    } else {
+      if ($checkPhone != null) {
+        markValid($(this));
+      }
+    }
+  }
+});
+
+// Make sure they are at least 13 years old
+$('input[name=birthdate]').on('blur', function() {
+  var $year = parseInt($(this).val().substr(0,4));
+  var $month = parseInt($(this).val().substr(5,2));
+  var $day = parseInt($(this).val().substr(8,2));
+  
+  if (($year + 13) > parseInt($date.getFullYear())) {
+    if ($month < (parseInt($date.getMonth()) + 1)) {
+      if ($day < parseInt($date.getFullYear())) {
+        markInvalid($(this), 'Sorry, you must be at least 13')
+      } else {
+        markValid($(this));
+      }
+    } else {
+      markValid($(this));
+    }
+  } else {
+    markValid($(this));
+  }
+});
+
+// Set the default date to January 1st, 13 years ago
+$(function() {
+  var $thirteen = $date.getFullYear() - 13;
+  $('input[name=birthdate]').val($thirteen + '-01-01');
+});
+
+$('input[type=color]').on('click change focus hover', function() {
+  markValid($(this));
+});
+  </script>
+
+<!--   <script type="text/javascript">
+
+    function submitClick() {
+    if (formValidation()) {
+      alert("Thank you for your time! Your details have been submitted!");
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  function formValidation() {
+    flag = true;
+
+    if ((document.myForm.question21[0].checked == false) && (document.myForm.question21[1].checked == false)) {
+      alert("IT WORKS!");
+      flag = false;
+    }
+    return flag;
+  }
+
+
+  </script> -->
+
+  
 
 </body>
 
