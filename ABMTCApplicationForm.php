@@ -30,6 +30,11 @@ if ($_SESSION['loggedin'] == false) {
     <style type="text/css">
       @import url("https://fonts.googleapis.com/css?family=Roboto:300i,400,400i,500,700,900");
     </style>
+    <style type="text/css">
+    .hide {
+  display: none;
+}
+</style>
 
 
 <style>
@@ -473,7 +478,7 @@ if ($_SESSION['loggedin'] == false) {
               </div>
                                               <div class="relative input-wrap is-required">
                                                 <div class="form-group">
-                                                    <label class="control-label">Is Your Church Part Of UD-OLGC?</label>
+                                                    <label class="control-label">Is Your Church Part Of UD-OLGC (Lighthouse/FLC Church)?</label>
                                                     <div class="custom-control custom-radio">
                                                         <input type="radio" id="customUD" name="question7" value="Yes"
                                                                class="custom-control-input">
@@ -494,12 +499,13 @@ if ($_SESSION['loggedin'] == false) {
                                                     <div class="form-group">
                                                        <div class="relative input-wrap is-required"> 
                                                         <select class="form-control rounded-0 required" name="question8"
-                                                                id="exampleSelect1">
-                                                            <option>Married</option>
-                                                            <option>Single</option>
-                                                            <option>Divorced</option>
-                                                            <option>Widowed</option>
-                                                            <option>Other</option>
+                                                                id="MaritalStat">
+                                                            <option value="0">--Select Marital Status--</option>    
+                                                            <option value="1">Married</option>
+                                                            <option value="2">Single</option>
+                                                            <option value="3">Divorced</option>
+                                                            <option value="4">Widowed</option>
+                                                            <option value="5">Other</option>
                                                         </select>
                                                     </div>
                                                    <span class="icon validation small success hide">
@@ -524,260 +530,260 @@ if ($_SESSION['loggedin'] == false) {
                                                             <option value="0">--Select A Country--</option>
                                                         <option value="1">Afghanistan</option>
                                                         <option value="2">Åland Islands</option>
-                                                        <option value="AL">Albania</option>
-                                                        <option value="DZ">Algeria</option>
-                                                        <option value="AS">American Samoa</option>
-                                                        <option value="AD">Andorra</option>
-                                                        <option value="AO">Angola</option>
-                                                        <option value="AI">Anguilla</option>
-                                                        <option value="AQ">Antarctica</option>
-                                                        <option value="AG">Antigua and Barbuda</option>
-                                                        <option value="AR">Argentina</option>
-                                                        <option value="AM">Armenia</option>
-                                                        <option value="AW">Aruba</option>
-                                                        <option value="AU">Australia</option>
-                                                        <option value="AT">Austria</option>
-                                                        <option value="AZ">Azerbaijan</option>
-                                                        <option value="BS">Bahamas</option>
-                                                        <option value="BH">Bahrain</option>
-                                                        <option value="BD">Bangladesh</option>
-                                                        <option value="BB">Barbados</option>
-                                                        <option value="BY">Belarus</option>
-                                                        <option value="BE">Belgium</option>
-                                                        <option value="BZ">Belize</option>
-                                                        <option value="BJ">Benin</option>
-                                                        <option value="BM">Bermuda</option>
-                                                        <option value="BT">Bhutan</option>
-                                                        <option value="BO">Bolivia, Plurinational State of</option>
-                                                        <option value="BQ">Bonaire, Sint Eustatius and Saba</option>
-                                                        <option value="BA">Bosnia and Herzegovina</option>
-                                                        <option value="BW">Botswana</option>
-                                                        <option value="BV">Bouvet Island</option>
-                                                        <option value="BR">Brazil</option>
-                                                        <option value="IO">British Indian Ocean Territory</option>
-                                                        <option value="BN">Brunei Darussalam</option>
-                                                        <option value="BG">Bulgaria</option>
-                                                        <option value="BF">Burkina Faso</option>
-                                                        <option value="BI">Burundi</option>
-                                                        <option value="KH">Cambodia</option>
-                                                        <option value="CM">Cameroon</option>
-                                                        <option value="CA">Canada</option>
-                                                        <option value="CV">Cape Verde</option>
-                                                        <option value="KY">Cayman Islands</option>
-                                                        <option value="CF">Central African Republic</option>
-                                                        <option value="TD">Chad</option>
-                                                        <option value="CL">Chile</option>
-                                                        <option value="CN">China</option>
-                                                        <option value="CX">Christmas Island</option>
-                                                        <option value="CC">Cocos (Keeling) Islands</option>
-                                                        <option value="CO">Colombia</option>
-                                                        <option value="KM">Comoros</option>
-                                                        <option value="CG">Congo</option>
-                                                        <option value="CD">Congo, the Democratic Republic of the
+                                                        <option value="3">Albania</option>
+                                                        <option value="4">Algeria</option>
+                                                        <option value="5">American Samoa</option>
+                                                        <option value="6">Andorra</option>
+                                                        <option value="7">Angola</option>
+                                                        <option value="8">Anguilla</option>
+                                                        <option value="9">Antarctica</option>
+                                                        <option value="10">Antigua and Barbuda</option>
+                                                        <option value="11">Argentina</option>
+                                                        <option value="12">Armenia</option>
+                                                        <option value="13">Aruba</option>
+                                                        <option value="14">Australia</option>
+                                                        <option value="15">Austria</option>
+                                                        <option value="16">Azerbaijan</option>
+                                                        <option value="17">Bahamas</option>
+                                                        <option value="18">Bahrain</option>
+                                                        <option value="19">Bangladesh</option>
+                                                        <option value="20">Barbados</option>
+                                                        <option value="21">Belarus</option>
+                                                        <option value="22">Belgium</option>
+                                                        <option value="23">Belize</option>
+                                                        <option value="24">Benin</option>
+                                                        <option value="25">Bermuda</option>
+                                                        <option value="26">Bhutan</option>
+                                                        <option value="27">Bolivia, Plurinational State of</option>
+                                                        <option value="28">Bonaire, Sint Eustatius and Saba</option>
+                                                        <option value="29">Bosnia and Herzegovina</option>
+                                                        <option value="30">Botswana</option>
+                                                        <option value="31">Bouvet Island</option>
+                                                        <option value="32">Brazil</option>
+                                                        <option value="33">British Indian Ocean Territory</option>
+                                                        <option value="34">Brunei Darussalam</option>
+                                                        <option value="35">Bulgaria</option>
+                                                        <option value="36">Burkina Faso</option>
+                                                        <option value="37">Burundi</option>
+                                                        <option value="38">Cambodia</option>
+                                                        <option value="39">Cameroon</option>
+                                                        <option value="40">Canada</option>
+                                                        <option value="41">Cape Verde</option>
+                                                        <option value="42">Cayman Islands</option>
+                                                        <option value="43">Central African Republic</option>
+                                                        <option value="44">Chad</option>
+                                                        <option value="45">Chile</option>
+                                                        <option value="46">China</option>
+                                                        <option value="47">Christmas Island</option>
+                                                        <option value="48">Cocos (Keeling) Islands</option>
+                                                        <option value="49">Colombia</option>
+                                                        <option value="50">Comoros</option>
+                                                        <option value="51">Congo</option>
+                                                        <option value="52">Congo, the Democratic Republic of the
                                                         </option>
-                                                        <option value="CK">Cook Islands</option>
-                                                        <option value="CR">Costa Rica</option>
-                                                        <option value="CI">Côte d'Ivoire</option>
-                                                        <option value="HR">Croatia</option>
-                                                        <option value="CU">Cuba</option>
-                                                        <option value="CW">Curaçao</option>
-                                                        <option value="CY">Cyprus</option>
-                                                        <option value="CZ">Czech Republic</option>
-                                                        <option value="DK">Denmark</option>
-                                                        <option value="DJ">Djibouti</option>
-                                                        <option value="DM">Dominica</option>
-                                                        <option value="DO">Dominican Republic</option>
-                                                        <option value="EC">Ecuador</option>
-                                                        <option value="EG">Egypt</option>
-                                                        <option value="SV">El Salvador</option>
-                                                        <option value="GQ">Equatorial Guinea</option>
-                                                        <option value="ER">Eritrea</option>
-                                                        <option value="EE">Estonia</option>
-                                                        <option value="ET">Ethiopia</option>
-                                                        <option value="FK">Falkland Islands (Malvinas)</option>
-                                                        <option value="FO">Faroe Islands</option>
-                                                        <option value="FJ">Fiji</option>
-                                                        <option value="FI">Finland</option>
-                                                        <option value="FR">France</option>
-                                                        <option value="GF">French Guiana</option>
-                                                        <option value="PF">French Polynesia</option>
-                                                        <option value="TF">French Southern Territories</option>
-                                                        <option value="GA">Gabon</option>
-                                                        <option value="GM">Gambia</option>
-                                                        <option value="GE">Georgia</option>
-                                                        <option value="DE">Germany</option>
-                                                        <option value="GH">Ghana</option>
-                                                        <option value="GI">Gibraltar</option>
-                                                        <option value="GR">Greece</option>
-                                                        <option value="GL">Greenland</option>
-                                                        <option value="GD">Grenada</option>
-                                                        <option value="GP">Guadeloupe</option>
-                                                        <option value="GU">Guam</option>
-                                                        <option value="GT">Guatemala</option>
-                                                        <option value="GG">Guernsey</option>
-                                                        <option value="GN">Guinea</option>
-                                                        <option value="GW">Guinea-Bissau</option>
-                                                        <option value="GY">Guyana</option>
-                                                        <option value="HT">Haiti</option>
-                                                        <option value="HM">Heard Island and McDonald Islands</option>
-                                                        <option value="VA">Holy See (Vatican City State)</option>
-                                                        <option value="HN">Honduras</option>
-                                                        <option value="HK">Hong Kong</option>
-                                                        <option value="HU">Hungary</option>
-                                                        <option value="IS">Iceland</option>
-                                                        <option value="IN">India</option>
-                                                        <option value="ID">Indonesia</option>
-                                                        <option value="IR">Iran, Islamic Republic of</option>
-                                                        <option value="IQ">Iraq</option>
-                                                        <option value="IE">Ireland</option>
-                                                        <option value="IM">Isle of Man</option>
-                                                        <option value="IL">Israel</option>
-                                                        <option value="IT">Italy</option>
-                                                        <option value="JM">Jamaica</option>
-                                                        <option value="JP">Japan</option>
-                                                        <option value="JE">Jersey</option>
-                                                        <option value="JO">Jordan</option>
-                                                        <option value="KZ">Kazakhstan</option>
-                                                        <option value="KE">Kenya</option>
-                                                        <option value="KI">Kiribati</option>
-                                                        <option value="KP">Korea, Democratic People's Republic of
+                                                        <option value="53">Cook Islands</option>
+                                                        <option value="54">Costa Rica</option>
+                                                        <option value="55">Côte d'Ivoire</option>
+                                                        <option value="56">Croatia</option>
+                                                        <option value="57">Cuba</option>
+                                                        <option value="58">Curaçao</option>
+                                                        <option value="59">Cyprus</option>
+                                                        <option value="60">Czech Republic</option>
+                                                        <option value="61">Denmark</option>
+                                                        <option value="62">Djibouti</option>
+                                                        <option value="63">Dominica</option>
+                                                        <option value="64">Dominican Republic</option>
+                                                        <option value="65">Ecuador</option>
+                                                        <option value="66">Egypt</option>
+                                                        <option value="67">El Salvador</option>
+                                                        <option value="68">Equatorial Guinea</option>
+                                                        <option value="69">Eritrea</option>
+                                                        <option value="70">Estonia</option>
+                                                        <option value="71">Ethiopia</option>
+                                                        <option value="72">Falkland Islands (Malvinas)</option>
+                                                        <option value="73">Faroe Islands</option>
+                                                        <option value="74">Fiji</option>
+                                                        <option value="75">Finland</option>
+                                                        <option value="76">France</option>
+                                                        <option value="77">French Guiana</option>
+                                                        <option value="78">French Polynesia</option>
+                                                        <option value="79">French Southern Territories</option>
+                                                        <option value="80">Gabon</option>
+                                                        <option value="81">Gambia</option>
+                                                        <option value="82">Georgia</option>
+                                                        <option value="83">Germany</option>
+                                                        <option value="84">Ghana</option>
+                                                        <option value="85">Gibraltar</option>
+                                                        <option value="86">Greece</option>
+                                                        <option value="87">Greenland</option>
+                                                        <option value="88">Grenada</option>
+                                                        <option value="89">Guadeloupe</option>
+                                                        <option value="90">Guam</option>
+                                                        <option value="91">Guatemala</option>
+                                                        <option value="92">Guernsey</option>
+                                                        <option value="93">Guinea</option>
+                                                        <option value="94">Guinea-Bissau</option>
+                                                        <option value="95">Guyana</option>
+                                                        <option value="96">Haiti</option>
+                                                        <option value="97">Heard Island and McDonald Islands</option>
+                                                        <option value="98">Holy See (Vatican City State)</option>
+                                                        <option value="99">Honduras</option>
+                                                        <option value="100">Hong Kong</option>
+                                                        <option value="101">Hungary</option>
+                                                        <option value="102">Iceland</option>
+                                                        <option value="103">India</option>
+                                                        <option value="104">Indonesia</option>
+                                                        <option value="105">Iran, Islamic Republic of</option>
+                                                        <option value="106">Iraq</option>
+                                                        <option value="107">Ireland</option>
+                                                        <option value="108">Isle of Man</option>
+                                                        <option value="109">Israel</option>
+                                                        <option value="110">Italy</option>
+                                                        <option value="111">Jamaica</option>
+                                                        <option value="112">Japan</option>
+                                                        <option value="113">Jersey</option>
+                                                        <option value="114">Jordan</option>
+                                                        <option value="115">Kazakhstan</option>
+                                                        <option value="116">Kenya</option>
+                                                        <option value="117">Kiribati</option>
+                                                        <option value="118">Korea, Democratic People's Republic of
                                                         </option>
-                                                        <option value="KR">Korea, Republic of</option>
-                                                        <option value="KW">Kuwait</option>
-                                                        <option value="KG">Kyrgyzstan</option>
-                                                        <option value="LA">Lao People's Democratic Republic</option>
-                                                        <option value="LV">Latvia</option>
-                                                        <option value="LB">Lebanon</option>
-                                                        <option value="LS">Lesotho</option>
-                                                        <option value="LR">Liberia</option>
-                                                        <option value="LY">Libya</option>
-                                                        <option value="LI">Liechtenstein</option>
-                                                        <option value="LT">Lithuania</option>
-                                                        <option value="LU">Luxembourg</option>
-                                                        <option value="MO">Macao</option>
-                                                        <option value="MK">Macedonia, the former Yugoslav Republic of
+                                                        <option value="119">Korea, Republic of</option>
+                                                        <option value="120">Kuwait</option>
+                                                        <option value="121">Kyrgyzstan</option>
+                                                        <option value="122">Lao People's Democratic Republic</option>
+                                                        <option value="123">Latvia</option>
+                                                        <option value="124">Lebanon</option>
+                                                        <option value="125">Lesotho</option>
+                                                        <option value="126">Liberia</option>
+                                                        <option value="127">Libya</option>
+                                                        <option value="128">Liechtenstein</option>
+                                                        <option value="129">Lithuania</option>
+                                                        <option value="130">Luxembourg</option>
+                                                        <option value="131">Macao</option>
+                                                        <option value="132">Macedonia, the former Yugoslav Republic of
                                                         </option>
-                                                        <option value="MG">Madagascar</option>
-                                                        <option value="MW">Malawi</option>
-                                                        <option value="MY">Malaysia</option>
-                                                        <option value="MV">Maldives</option>
-                                                        <option value="ML">Mali</option>
-                                                        <option value="MT">Malta</option>
-                                                        <option value="MH">Marshall Islands</option>
-                                                        <option value="MQ">Martinique</option>
-                                                        <option value="MR">Mauritania</option>
-                                                        <option value="MU">Mauritius</option>
-                                                        <option value="YT">Mayotte</option>
-                                                        <option value="MX">Mexico</option>
-                                                        <option value="FM">Micronesia, Federated States of</option>
-                                                        <option value="MD">Moldova, Republic of</option>
-                                                        <option value="MC">Monaco</option>
-                                                        <option value="MN">Mongolia</option>
-                                                        <option value="ME">Montenegro</option>
-                                                        <option value="MS">Montserrat</option>
-                                                        <option value="MA">Morocco</option>
-                                                        <option value="MZ">Mozambique</option>
-                                                        <option value="MM">Myanmar</option>
-                                                        <option value="NA">Namibia</option>
-                                                        <option value="NR">Nauru</option>
-                                                        <option value="NP">Nepal</option>
-                                                        <option value="NL">Netherlands</option>
-                                                        <option value="NC">New Caledonia</option>
-                                                        <option value="NZ">New Zealand</option>
-                                                        <option value="NI">Nicaragua</option>
-                                                        <option value="NE">Niger</option>
-                                                        <option value="NG">Nigeria</option>
-                                                        <option value="NU">Niue</option>
-                                                        <option value="NF">Norfolk Island</option>
-                                                        <option value="MP">Northern Mariana Islands</option>
-                                                        <option value="NO">Norway</option>
-                                                        <option value="OM">Oman</option>
-                                                        <option value="PK">Pakistan</option>
-                                                        <option value="PW">Palau</option>
-                                                        <option value="PS">Palestinian Territory, Occupied</option>
-                                                        <option value="PA">Panama</option>
-                                                        <option value="PG">Papua New Guinea</option>
-                                                        <option value="PY">Paraguay</option>
-                                                        <option value="PE">Peru</option>
-                                                        <option value="PH">Philippines</option>
-                                                        <option value="PN">Pitcairn</option>
-                                                        <option value="PL">Poland</option>
-                                                        <option value="PT">Portugal</option>
-                                                        <option value="PR">Puerto Rico</option>
-                                                        <option value="QA">Qatar</option>
-                                                        <option value="RE">Réunion</option>
-                                                        <option value="RO">Romania</option>
-                                                        <option value="RU">Russian Federation</option>
-                                                        <option value="RW">Rwanda</option>
-                                                        <option value="BL">Saint Barthélemy</option>
-                                                        <option value="SH">Saint Helena, Ascension and Tristan da
+                                                        <option value="133">Madagascar</option>
+                                                        <option value="134">Malawi</option>
+                                                        <option value="135">Malaysia</option>
+                                                        <option value="136">Maldives</option>
+                                                        <option value="137">Mali</option>
+                                                        <option value="138">Malta</option>
+                                                        <option value="139">Marshall Islands</option>
+                                                        <option value="140">Martinique</option>
+                                                        <option value="141">Mauritania</option>
+                                                        <option value="142">Mauritius</option>
+                                                        <option value="143">Mayotte</option>
+                                                        <option value="144">Mexico</option>
+                                                        <option value="145">Micronesia, Federated States of</option>
+                                                        <option value="146">Moldova, Republic of</option>
+                                                        <option value="147">Monaco</option>
+                                                        <option value="148">Mongolia</option>
+                                                        <option value="149">Montenegro</option>
+                                                        <option value="150">Montserrat</option>
+                                                        <option value="151">Morocco</option>
+                                                        <option value="152">Mozambique</option>
+                                                        <option value="153">Myanmar</option>
+                                                        <option value="154">Namibia</option>
+                                                        <option value="155">Nauru</option>
+                                                        <option value="156">Nepal</option>
+                                                        <option value="157">Netherlands</option>
+                                                        <option value="158">New Caledonia</option>
+                                                        <option value="159">New Zealand</option>
+                                                        <option value="160">Nicaragua</option>
+                                                        <option value="161">Niger</option>
+                                                        <option value="162">Nigeria</option>
+                                                        <option value="163">Niue</option>
+                                                        <option value="164">Norfolk Island</option>
+                                                        <option value="165">Northern Mariana Islands</option>
+                                                        <option value="166">Norway</option>
+                                                        <option value="167">Oman</option>
+                                                        <option value="168">Pakistan</option>
+                                                        <option value="169">Palau</option>
+                                                        <option value="170">Palestinian Territory, Occupied</option>
+                                                        <option value="171">Panama</option>
+                                                        <option value="172">Papua New Guinea</option>
+                                                        <option value="173">Paraguay</option>
+                                                        <option value="174">Peru</option>
+                                                        <option value="175">Philippines</option>
+                                                        <option value="176">Pitcairn</option>
+                                                        <option value="177">Poland</option>
+                                                        <option value="178">Portugal</option>
+                                                        <option value="179">Puerto Rico</option>
+                                                        <option value="180">Qatar</option>
+                                                        <option value="181">Réunion</option>
+                                                        <option value="182">Romania</option>
+                                                        <option value="183">Russian Federation</option>
+                                                        <option value="184">Rwanda</option>
+                                                        <option value="185">Saint Barthélemy</option>
+                                                        <option value="186">Saint Helena, Ascension and Tristan da
                                                             Cunha
                                                         </option>
-                                                        <option value="KN">Saint Kitts and Nevis</option>
-                                                        <option value="LC">Saint Lucia</option>
-                                                        <option value="MF">Saint Martin (French part)</option>
-                                                        <option value="PM">Saint Pierre and Miquelon</option>
-                                                        <option value="VC">Saint Vincent and the Grenadines</option>
-                                                        <option value="WS">Samoa</option>
-                                                        <option value="SM">San Marino</option>
-                                                        <option value="ST">Sao Tome and Principe</option>
-                                                        <option value="SA">Saudi Arabia</option>
-                                                        <option value="SN">Senegal</option>
-                                                        <option value="RS">Serbia</option>
-                                                        <option value="SC">Seychelles</option>
-                                                        <option value="SL">Sierra Leone</option>
-                                                        <option value="SG">Singapore</option>
-                                                        <option value="SX">Sint Maarten (Dutch part)</option>
-                                                        <option value="SK">Slovakia</option>
-                                                        <option value="SI">Slovenia</option>
-                                                        <option value="SB">Solomon Islands</option>
-                                                        <option value="SO">Somalia</option>
-                                                        <option value="ZA">South Africa</option>
-                                                        <option value="GS">South Georgia and the South Sandwich
+                                                        <option value="187">Saint Kitts and Nevis</option>
+                                                        <option value="188">Saint Lucia</option>
+                                                        <option value="189">Saint Martin (French part)</option>
+                                                        <option value="190">Saint Pierre and Miquelon</option>
+                                                        <option value="191">Saint Vincent and the Grenadines</option>
+                                                        <option value="192">Samoa</option>
+                                                        <option value="193">San Marino</option>
+                                                        <option value="194">Sao Tome and Principe</option>
+                                                        <option value="195">Saudi Arabia</option>
+                                                        <option value="196">Senegal</option>
+                                                        <option value="197">Serbia</option>
+                                                        <option value="198">Seychelles</option>
+                                                        <option value="199">Sierra Leone</option>
+                                                        <option value="200">Singapore</option>
+                                                        <option value="201">Sint Maarten (Dutch part)</option>
+                                                        <option value="202">Slovakia</option>
+                                                        <option value="203">Slovenia</option>
+                                                        <option value="204">Solomon Islands</option>
+                                                        <option value="205">Somalia</option>
+                                                        <option value="206">South Africa</option>
+                                                        <option value="207">South Georgia and the South Sandwich
                                                             Islands
                                                         </option>
-                                                        <option value="SS">South Sudan</option>
-                                                        <option value="ES">Spain</option>
-                                                        <option value="LK">Sri Lanka</option>
-                                                        <option value="SD">Sudan</option>
-                                                        <option value="SR">Suriname</option>
-                                                        <option value="SJ">Svalbard and Jan Mayen</option>
-                                                        <option value="SZ">Swaziland</option>
-                                                        <option value="SE">Sweden</option>
-                                                        <option value="CH">Switzerland</option>
-                                                        <option value="SY">Syrian Arab Republic</option>
-                                                        <option value="TW">Taiwan, Province of China</option>
-                                                        <option value="TJ">Tajikistan</option>
-                                                        <option value="TZ">Tanzania, United Republic of</option>
-                                                        <option value="TH">Thailand</option>
-                                                        <option value="TL">Timor-Leste</option>
-                                                        <option value="TG">Togo</option>
-                                                        <option value="TK">Tokelau</option>
-                                                        <option value="TO">Tonga</option>
-                                                        <option value="TT">Trinidad and Tobago</option>
-                                                        <option value="TN">Tunisia</option>
-                                                        <option value="TR">Turkey</option>
-                                                        <option value="TM">Turkmenistan</option>
-                                                        <option value="TC">Turks and Caicos Islands</option>
-                                                        <option value="TV">Tuvalu</option>
-                                                        <option value="UG">Uganda</option>
-                                                        <option value="UA">Ukraine</option>
-                                                        <option value="AE">United Arab Emirates</option>
-                                                        <option value="GB">United Kingdom</option>
-                                                        <option value="US">United States</option>
-                                                        <option value="UM">United States Minor Outlying Islands</option>
-                                                        <option value="UY">Uruguay</option>
-                                                        <option value="UZ">Uzbekistan</option>
-                                                        <option value="VU">Vanuatu</option>
-                                                        <option value="VE">Venezuela, Bolivarian Republic of</option>
-                                                        <option value="VN">Viet Nam</option>
-                                                        <option value="VG">Virgin Islands, British</option>
-                                                        <option value="VI">Virgin Islands, U.S.</option>
-                                                        <option value="WF">Wallis and Futuna</option>
-                                                        <option value="EH">Western Sahara</option>
-                                                        <option value="YE">Yemen</option>
-                                                        <option value="ZM">Zambia</option>
-                                                        <option value="ZW">Zimbabwe</option>
+                                                        <option value="208">South Sudan</option>
+                                                        <option value="209">Spain</option>
+                                                        <option value="210">Sri Lanka</option>
+                                                        <option value="211">Sudan</option>
+                                                        <option value="212">Suriname</option>
+                                                        <option value="213">Svalbard and Jan Mayen</option>
+                                                        <option value="214">Swaziland</option>
+                                                        <option value="215">Sweden</option>
+                                                        <option value="216">Switzerland</option>
+                                                        <option value="217">Syrian Arab Republic</option>
+                                                        <option value="218">Taiwan, Province of China</option>
+                                                        <option value="219">Tajikistan</option>
+                                                        <option value="220">Tanzania, United Republic of</option>
+                                                        <option value="221">Thailand</option>
+                                                        <option value="222">Timor-Leste</option>
+                                                        <option value="223">Togo</option>
+                                                        <option value="224">Tokelau</option>
+                                                        <option value="225">Tonga</option>
+                                                        <option value="226">Trinidad and Tobago</option>
+                                                        <option value="227">Tunisia</option>
+                                                        <option value="228">Turkey</option>
+                                                        <option value="229">Turkmenistan</option>
+                                                        <option value="230">Turks and Caicos Islands</option>
+                                                        <option value="231">Tuvalu</option>
+                                                        <option value="232">Uganda</option>
+                                                        <option value="233">Ukraine</option>
+                                                        <option value="234">United Arab Emirates</option>
+                                                        <option value="235">United Kingdom</option>
+                                                        <option value="236">United States</option>
+                                                        <option value="237">United States Minor Outlying Islands</option>
+                                                        <option value="238">Uruguay</option>
+                                                        <option value="239">Uzbekistan</option>
+                                                        <option value="240">Vanuatu</option>
+                                                        <option value="241">Venezuela, Bolivarian Republic of</option>
+                                                        <option value="242">Viet Nam</option>
+                                                        <option value="243">Virgin Islands, British</option>
+                                                        <option value="244">Virgin Islands, U.S.</option>
+                                                        <option value="245">Wallis and Futuna</option>
+                                                        <option value="246">Western Sahara</option>
+                                                        <option value="247">Yemen</option>
+                                                        <option value="248">Zambia</option>
+                                                        <option value="249">Zimbabwe</option>
                                                     </select>
                                                 </div>
                                               </div>
@@ -873,8 +879,8 @@ if ($_SESSION['loggedin'] == false) {
                                                 <div class="form-group">
                                                     <label class="control-label">Where Do You Live?</label>
                                                     <div class="custom-control custom-radio">
-                                                        <input type="radio" oninvalid="alert('You must fill out the form!');" id="radiocity1" name="question21 "
-                                                               value="City" class="custom-control-input required" required>
+                                                        <input type="radio" id="radiocity1" name="question21"
+                                                               value="City" class="custom-control-input required">
                                                         <label class="custom-control-label"
                                                                for="radiocity1">City</label>
                                                     </div>
@@ -1009,7 +1015,7 @@ if ($_SESSION['loggedin'] == false) {
                                                     <label class="control-label">Select Course You Would Like To
                                                         Do?</label>
                                                     <div class="custom-control custom-radio">
-                                                        <input type="radio" id="radiocourse1" name="question30 required"
+                                                        <input type="radio" id="radiocourse1" name="question30"
                                                                value="9 Months Ordinary Program"
                                                                class="custom-control-input">
                                                         <label class="custom-control-label" for="radiocourse1">9 Months
@@ -1044,7 +1050,7 @@ if ($_SESSION['loggedin'] == false) {
                                                     <label class="control-label">What month would you like to start
                                                         Bible school?</label>
                                                     <div class="custom-control custom-radio">
-                                                        <input type="radio" id="radiomonth1" name="question31 required"
+                                                        <input type="radio" id="radiomonth1" name="question31"
                                                                value="2020 3rd Quarter (July/August/September)"
                                                                class="custom-control-input">
                                                         <label class="custom-control-label" for="radiomonth1">2020 3rd
@@ -1093,7 +1099,7 @@ if ($_SESSION['loggedin'] == false) {
                                                 <div class="form-group">
                                                     <label class="control-label">How did you hear about the Bible School?</label>
                                                     <div class="custom-control custom-radio">
-                                                        <input type="radio" id="howhear1" name="question75 required"
+                                                        <input type="radio" id="howhear1" name="question75"
                                                                value="Ghana Healing Jesus Campaign"
                                                                class="custom-control-input">
                                                         <label class="custom-control-label" for="howhear1">Ghana Healing Jesus Campaign</label>
@@ -1273,21 +1279,25 @@ if ($_SESSION['loggedin'] == false) {
                                                 <label for="exampleTextarea1">Do You Have A Calling From God?</label>
                                                 <div class="custom-control custom-radio">
                                                     <input type="radio" id="radiocalling1" name="question38" value="Yes"
-                                                           class="custom-control-input">
+                                                           class="custom-control-input" onclick="show1a();">
                                                     <label class="custom-control-label" for="radiocalling1">Yes</label>
                                                 </div>
                                                 <div class="custom-control custom-radio">
                                                     <input type="radio" id="radiocalling2" name="question38" value="No"
-                                                           class="custom-control-input">
+                                                           class="custom-control-input" onclick="show1();">
                                                     <label class="custom-control-label" for="radiocalling2">No</label>
                                                 </div>
 
-                                                <label class="control-label">If Yes, Please Expain</label>
+                                                <div id="hidecall" class="hide">
+
+                                                <label class="control-label">If Yes, Please Explain</label>
 
                                                 <textarea class="form-control" name="question39" id="exampleTextarea1"
                                                           rows="3">
 
                                              </textarea>
+
+                                           </div>
                   </div>
                   <div class="button-row d-flex mt-4">
                     <button class="btn btn-primary js-btn-prev" type="button" title="Prev">Prev</button>
@@ -1306,14 +1316,16 @@ if ($_SESSION['loggedin'] == false) {
 
                                                 <div class="custom-control custom-radio">
                                                     <input type="radio" id="radionardrugs1" name="question40"
-                                                           value="Yes" class="custom-control-input">
+                                                           value="Yes" class="custom-control-input" onclick="show2a();">
                                                     <label class="custom-control-label" for="radionardrugs1">Yes</label>
                                                 </div>
                                                 <div class="custom-control custom-radio">
                                                     <input type="radio" id="radionardrugs2" name="question40" value="No"
-                                                           class="custom-control-input">
+                                                           class="custom-control-input" onclick="show2();">
                                                     <label class="custom-control-label" for="radionardrugs2">No</label>
                                                 </div>
+
+                                                <div id="hidenardrug" class="hide">
 
                                                 <label class="control-label">If Yes, Please Explain</label>
 
@@ -1322,6 +1334,8 @@ if ($_SESSION['loggedin'] == false) {
 
                                              </textarea>
 
+                                           </div>
+
                                                 <br>
 
                                                 <label for="exampleTextarea1">Have You Ever Used Narcortic Drugs In The
@@ -1329,14 +1343,16 @@ if ($_SESSION['loggedin'] == false) {
 
                                                 <div class="custom-control custom-radio">
                                                     <input type="radio" id="radionardrugspast1" name="question42"
-                                                           value="Yes" class="custom-control-input">
+                                                           value="Yes" class="custom-control-input" onclick="show3a();">
                                                     <label class="custom-control-label" for="radionardrugspast1">Yes</label>
                                                 </div>
                                                 <div class="custom-control custom-radio">
                                                     <input type="radio" id="radionardrugspast2" name="question42"
-                                                           value="No" class="custom-control-input">
+                                                           value="No" class="custom-control-input" onclick="show3();">
                                                     <label class="custom-control-label" for="radionardrugspast2">No</label>
                                                 </div>
+
+                                                <div id="nardrugpast" class="hide">
 
                                                 <label class="control-label">If Yes, Please Explain</label>
 
@@ -1345,19 +1361,23 @@ if ($_SESSION['loggedin'] == false) {
 
                                              </textarea>
 
+                                           </div>
+
                                                 <br>
 
                                                 <label for="exampleTextarea1">Have You Been Arrested By The Police
                                                     Before</label>
 
                                                 <div class="custom-control custom-radio">
-                                                    <input type="radio" id="radioarrest1" name="question44" value="Yes" class="custom-control-input">
+                                                    <input type="radio" id="radioarrest1" name="question44" value="Yes" class="custom-control-input" onclick="show4a();">
                                                     <label class="custom-control-label" for="radioarrest1">Yes</label>
                                                 </div>
                                                 <div class="custom-control custom-radio">
-                                                    <input type="radio" id="radioarrest2" name="question44" value="No" class="custom-control-input">
+                                                    <input type="radio" id="radioarrest2" name="question44" value="No" class="custom-control-input" onclick="show4();">
                                                     <label class="custom-control-label" for="radioarrest2">No</label>
                                                 </div>
+
+                                                <div id="poarrest" class="hide">
 
                                                 <label class="control-label">If Yes, Please Explain</label>
 
@@ -1366,6 +1386,8 @@ if ($_SESSION['loggedin'] == false) {
 
                                              </textarea>
 
+                                           </div>
+
                                                 <br>
 
                                                 <label for="exampleTextarea1">Have You Been Prosecuted In Court
@@ -1373,14 +1395,16 @@ if ($_SESSION['loggedin'] == false) {
 
                                                 <div class="custom-control custom-radio">
                                                     <input type="radio" id="radioprose1" name="question46" value="Yes"
-                                                           class="custom-control-input">
+                                                           class="custom-control-input" onclick="show5a();">
                                                     <label class="custom-control-label" for="radioprose1">Yes</label>
                                                 </div>
                                                 <div class="custom-control custom-radio">
                                                     <input type="radio" id="radioprose2" name="question46" value="No"
-                                                           class="custom-control-input">
+                                                           class="custom-control-input" onclick="show5();">
                                                     <label class="custom-control-label" for="radioprose2">No</label>
                                                 </div>
+
+                                                <div id="proscourt" class="hide">
 
                                                 <label class="control-label">If Yes, Please Explain</label>
 
@@ -1389,20 +1413,24 @@ if ($_SESSION['loggedin'] == false) {
 
                                              </textarea>
 
+                                           </div>
+
                                                 <br>
 
                                                 <label for="exampleTextarea1">Have You Been To Jail Before?</label>
 
                                                 <div class="custom-control custom-radio">
                                                     <input type="radio" id="radiojail1" name="question48" value="Yes"
-                                                           class="custom-control-input">
+                                                           class="custom-control-input" onclick="show6a();">
                                                     <label class="custom-control-label" for="radiojail1">Yes</label>
                                                 </div>
                                                 <div class="custom-control custom-radio">
                                                     <input type="radio" id="radiojail2" name="question48" value="No"
-                                                           class="custom-control-input">
+                                                           class="custom-control-input" onclick="show6();">
                                                     <label class="custom-control-label" for="radiojail2">No</label>
                                                 </div>
+
+                                                <div id="jailbef" class="hide">
 
                                                 <label class="control-label">If Yes, Please Explain</label>
 
@@ -1410,6 +1438,8 @@ if ($_SESSION['loggedin'] == false) {
                                                           rows="3">
 
                                              </textarea>
+
+                                           </div>
 
                                                 <br>
 
@@ -1419,13 +1449,15 @@ if ($_SESSION['loggedin'] == false) {
                                                 <div class="custom-control custom-radio">
                                                     <input type="radio" id="radioalcholic1" name="question50"
                                                            value="Yes" class="custom-control-input">
-                                                    <label class="custom-control-label" for="radioalcholic1">Yes</label>
+                                                    <label class="custom-control-label" for="radioalcholic1" onclick="show7a();">Yes</label>
                                                 </div>
                                                 <div class="custom-control custom-radio">
                                                     <input type="radio" id="radioalcholic2" name="question50" value="No"
-                                                           class="custom-control-input">
+                                                           class="custom-control-input" onclick="show7();">
                                                     <label class="custom-control-label" for="radioalcholic2">No</label>
                                                 </div>
+
+                                                <div id="drinkpast" class="hide">
 
                                                 <label class="control-label">If Yes, Please Explain</label>
 
@@ -1433,6 +1465,8 @@ if ($_SESSION['loggedin'] == false) {
                                                           rows="3">
 
                                              </textarea>
+
+                                           </div>
 
                                                 <br>
 
@@ -1521,14 +1555,16 @@ if ($_SESSION['loggedin'] == false) {
 
                                                 <div class="custom-control custom-radio">
                                                     <input type="radio" id="radiorob1" name="question56" value="Yes"
-                                                           class="custom-control-input">
+                                                           class="custom-control-input" onclick="show8a();">
                                                     <label class="custom-control-label" for="radiorob1">Yes</label>
                                                 </div>
                                                 <div class="custom-control custom-radio">
                                                     <input type="radio" id="radiorob2" name="question56" value="No"
-                                                           class="custom-control-input">
+                                                           class="custom-control-input" onclick="show8();">
                                                     <label class="custom-control-label" for="radiorob2">No</label>
                                                 </div>
+
+                                                <div id="armrob" class="hide">
 
                                                 <label class="control-label">If Yes, Please Explain</label>
 
@@ -1537,20 +1573,24 @@ if ($_SESSION['loggedin'] == false) {
 
                                              </textarea>
 
+                                           </div>
+
                                                 <br>
 
                                                 <label for="exampleTextarea1">Revolution/Rebel</label>
 
                                                 <div class="custom-control custom-radio">
                                                     <input type="radio" id="radiorev1" name="question58" value="Yes"
-                                                           class="custom-control-input">
+                                                           class="custom-control-input" onclick="show9a();">
                                                     <label class="custom-control-label" for="radiorev1">Yes</label>
                                                 </div>
                                                 <div class="custom-control custom-radio">
                                                     <input type="radio" id="radiorev2" name="question58" value="No"
-                                                           class="custom-control-input">
+                                                           class="custom-control-input" onclick="show9();">
                                                     <label class="custom-control-label" for="radiorev2">No</label>
                                                 </div>
+
+                                                <div id="revreb" class="hide">
 
                                                 <label class="control-label">If Yes, Please Explain</label>
 
@@ -1559,20 +1599,24 @@ if ($_SESSION['loggedin'] == false) {
 
                                              </textarea>
 
+                                           </div>
+
                                                 <br>
 
                                                 <label for="exampleTextarea1">Prostitution</label>
 
                                                 <div class="custom-control custom-radio">
                                                     <input type="radio" id="radiopros1" name="question60" value="Yes"
-                                                           class="custom-control-input">
+                                                           class="custom-control-input" onclick="show10a();">
                                                     <label class="custom-control-label" for="radiopros1">Yes</label>
                                                 </div>
                                                 <div class="custom-control custom-radio">
                                                     <input type="radio" id="radiopros2" name="question60" value="No"
-                                                           class="custom-control-input">
+                                                           class="custom-control-input" onclick="show10();">
                                                     <label class="custom-control-label" for="radiopros2">No</label>
                                                 </div>
+
+                                                <div id="pros" class="hide">
 
                                                 <label class="control-label">If Yes, Please Explain</label>
 
@@ -1580,6 +1624,8 @@ if ($_SESSION['loggedin'] == false) {
                                                           rows="3">
 
                                              </textarea>
+
+                                           </div>
                   </div>
                     <div class="button-row d-flex mt-4 col-12">
                       <button class="btn btn-primary js-btn-prev" type="button" title="Prev">Prev</button>
@@ -1592,7 +1638,7 @@ if ($_SESSION['loggedin'] == false) {
                 <h3 class="multisteps-form__title">HEALTH STATUS</h3>
                 <div class="scrollpage1" style="height: 300px;">
                   <label class="control-label">Tick Which Of The Following Diseases You
-                                                    Have Been Treated For In The Past;</label>
+                                                    Have Been Treated For In The Past:</label>
 
                                                 <div class="form-group">
                                                     <div class="checkbox checkbox-primary d-inline">
@@ -1728,20 +1774,24 @@ if ($_SESSION['loggedin'] == false) {
                                                         Surgeries?</label>
                                                     <div class="custom-control custom-radio">
                                                         <input type="radio" id="radiosug1" name="question66" value="Yes"
-                                                               class="custom-control-input">
+                                                               class="custom-control-input" onclick="show13a();">
                                                         <label class="custom-control-label" for="radiosug1">Yes</label>
                                                     </div>
                                                     <div class="custom-control custom-radio">
                                                         <input type="radio" id="radiosug2" name="question66" value="No"
-                                                               class="custom-control-input">
+                                                               class="custom-control-input" onclick="show13();">
                                                         <label class="custom-control-label" for="radiosug2">No</label>
                                                     </div>
                                                 </div>
+
+                                                <div id="majsur" class="hide">
                                                 <div class="form-group">
                                                     <label>If Yes, Please Specify</label>
                                                     <input type="text" class="form-control" name="question67"
                                                            placeholder="">
                                                 </div>
+
+                                              </div>
                                                 <div class="form-group">
                                                     <label class="control-label">Do You Have Any Allergies?</label>
                                                     <div class="custom-control custom-radio">
@@ -1772,20 +1822,23 @@ if ($_SESSION['loggedin'] == false) {
                                                         Law?</label>
                                                     <div class="custom-control custom-radio">
                                                         <input type="radio" id="radiolaw1" name="question69" value="Yes"
-                                                               class="custom-control-input">
+                                                               class="custom-control-input" onclick="show11a();">
                                                         <label class="custom-control-label" for="radiolaw1">Yes</label>
                                                     </div>
                                                     <div class="custom-control custom-radio">
                                                         <input type="radio" id="radiolaw2" name="question69" value="No"
-                                                               class="custom-control-input">
+                                                               class="custom-control-input" onclick="show11();">
                                                         <label class="custom-control-label" for="radiolaw2">No</label>
                                                     </div>
                                                 </div>
+
+                                                <div id="lawprob" class="hide">
                                                 <div class="form-group">
                                                     <label>If Yes, Please Specify</label>
                                                     <input type="text" class="form-control" name="question70"
                                                            placeholder="">
                                                 </div>
+                                              </div>
                   </div>
                     <div class="button-row d-flex mt-4 col-12">
                       <button class="btn btn-primary js-btn-prev" type="button" title="Prev">Prev</button>
@@ -1839,20 +1892,23 @@ Please make sure that you have obtained or done the following, before leaving yo
                   <div class="form-group">
 
                                                     <label for="example-select">I Am Recommended By</label>
-                                                    <select class="form-control" name="question71" id="example-select">
-                                                        <option>My Local Church Pastor</option>
-                                                        <option>General Overseer</option>
-                                                        <option>Senior Associate</option>
-                                                        <option>Pastor</option>
-                                                        <option>Bishop</option>
-                                                        <option>Other</option>
+                                                    <select class="form-control" name="question71" id="RecommendedBy">
+                                                        <option value="0" onclick="show12();">--Select Recommended By--</option>
+                                                        <option value="1" onclick="show12();">My Local Church Pastor</option>
+                                                        <option value="2" onclick="show12();">General Overseer</option>
+                                                        <option value="3" onclick="show12();">Senior Associate</option>
+                                                        <option value="4" onclick="show12();">Pastor</option>
+                                                        <option value="5" onclick="show12();">Bishop</option>
+                                                        <option value="6" onclick="show12a();">Other</option>
                                                     </select>
                                                 </div>
+                                                
                                                 <div class="form-group">
                                                     <label>If You Selected Other, Please Specify</label>
                                                     <input type="text" name="question72" class="form-control"
                                                            placeholder="">
                                                 </div>
+                                              
                   </div>
                     <div class="button-row d-flex mt-4 col-12">
                       <button class="btn btn-primary js-btn-prev" type="button" title="Prev">Prev</button>
@@ -2620,6 +2676,367 @@ $('input[type=color]').on('click change focus hover', function() {
   markValid($(this));
 });
   </script>
+
+  <script>
+function submitClick() {
+
+  var cost = 0;
+  var selGender = document.querySelector("[name=question4]:checked");
+  var selUD = document.querySelector("[name=question7]:checked");
+  var selLive = document.querySelector("[name=question21]:checked");
+  var selPargua = document.querySelector("[name=question22]:checked");
+  var selParguaHouse = document.querySelector("[name=question23]:checked");
+  var selParguaCar = document.querySelector("[name=question24]:checked");
+  var selParguaBus = document.querySelector("[name=question25]:checked");
+  var selCor = document.querySelector("[name=question30]:checked");
+  var selMon = document.querySelector("[name=question31]:checked");
+  var selHearSchool = document.querySelector("[name=question75]:checked");
+  var selBornAgain = document.querySelector("[name=question32]:checked");
+  var selYouCalled = document.querySelector("[name=question33]:checked");
+  var selCallGod = document.querySelector("[name=question38]:checked");
+  var selNarDrugs = document.querySelector("[name=question40]:checked");
+  var selNarDrugsPast = document.querySelector("[name=question42]:checked");
+  var selArrestPolice = document.querySelector("[name=question44]:checked");
+  var selProsCourt = document.querySelector("[name=question46]:checked");
+  var selBeenJail = document.querySelector("[name=question48]:checked");
+  var selDrinkPast = document.querySelector("[name=question50]:checked");
+  var selVirgin = document.querySelector("[name=question54]:checked");
+  var selArmRob = document.querySelector("[name=question56]:checked");
+  var selRevReb = document.querySelector("[name=question58]:checked");
+  var selProst = document.querySelector("[name=question60]:checked");
+  var selMedCon = document.querySelector("[name=question64]:checked");
+  var selRegMed = document.querySelector("[name=question65]:checked");
+  var selMajSur = document.querySelector("[name=question66]:checked");
+  var selAller = document.querySelector("[name=question68]:checked");
+  var selProbLaw = document.querySelector("[name=question69]:checked");
+
+  
+
+  if (!selGender) {
+    alert("General: Sex - Male, Female Is Incomplete");
+    return false;
+  }
+  if (!selUD) {
+    alert("General: Is Your Church Part Of UD-OLGC Is Incomplete");
+    return false;
+  }
+  if (!selLive) {
+    alert("General: Where Do You Live Is Incomplete");
+    return false;
+  }
+  if (!selPargua) {
+    alert("General: Do Your Parents/Guardian Own A House Is Incomplete");
+    return false;
+  }
+  if (!selParguaHouse) {
+    alert("General: Are Your Parents/Guardian Renting A House Is Incomplete");
+    return false;
+  }
+  if (!selParguaCar) {
+    alert("General: Do Your Parents/Guardian Own A Car Is Incomplete");
+    return false;
+  }
+  if (!selParguaBus) {
+    alert("General: Do Your Parents/Guardian Own A Business Is Incomplete");
+    return false;
+  }
+  if (!selCor) {
+    alert("General: Select Course You Would Like To Do Is Incomplete");
+    return false;
+  }
+  if (!selMon) {
+    alert("General: What month would you like to start Bible school Is Incomplete");
+    return false;
+  }
+  if (!selHearSchool) {
+    alert("General: How did you hear about the Bible School Is Incomplete");
+    return false;
+  }
+  if (!selBornAgain) {
+    alert("Church: Are you born again Is Incomplete");
+    return false;
+  }
+  if (!selYouCalled) {
+    alert("Church: Do you believe you are called Is Incomplete");
+    return false;
+  }
+  if (!selCallGod) {
+    alert("Calling: Do You Have A Calling From God Is Incomplete");
+    return false;
+  }
+  if (!selNarDrugs) {
+    alert("Social And Past History Background: Do You Use Narcortic Drugs (Cocaine, Heroin, Marijuana etc) Is Incomplete");
+    return false;
+  }
+  if (!selNarDrugsPast) {
+    alert("Social And Past History Background: Have You Ever Used Narcortic Drugs In The Past Is Incomplete");
+    return false;
+  }
+  if (!selArrestPolice) {
+    alert("Social And Past History Background: Have You Been Arrested By The Police Before Is Incomplete");
+    return false;
+  }
+  if (!selBeenJail) {
+    alert("Social And Past History Background: Have You Been To Jail Before Is Incomplete");
+    return false;
+  }
+  if (!selDrink) {
+    alert("Social And Past History Background: Have You Taken Alcholic Drinks In The Past Is Incomplete");
+    return false;
+  }
+  if (!selVirgin) {
+    alert("Social And Past History Background: Are You A Virgin Is Incomplete");
+    return false;
+  }
+  if (!selArmRob) {
+    alert("Social And Past History Background: Armed Robbery Is Incomplete");
+    return false;
+  }
+  if (!selRevReb) {
+    alert("Social And Past History Background: Revolution/Rebel Is Incomplete");
+    return false;
+  }
+  if (!selProst) {
+    alert("Social And Past History Background: Prostitution Is Incomplete");
+    return false;
+  }
+  if (!selMedCon) {
+    alert("Health Status: Do You Have Any Serious Medical Condition Is Incomplete");
+    return false;
+  }
+  if (!selRegMed) {
+    alert("Health Status: Are You On Any Regular Medication Is Incomplete");
+    return false;
+  }
+  if (!selMajSur) {
+    alert("Health Status: Have You Had Any Major Surgeries Is Incomplete");
+    return false;
+  }
+  if (!selAller) {
+    alert("Health Status: Do You Have Any Allergies Is Incomplete");
+    return false;
+  }
+  if (!selProbLaw) {
+    alert("Criminal: Have You Had Any Problems With The Law Is Incomplete");
+    return false;
+  }
+
+
+
+ // cost = (+selPet.value) * (+selColour.value);
+
+ // return true; // submits
+}
+</script>
+
+<script>
+ function submitClick(){
+ var India = document.getElementById('checkbox-p-2forn').checked;
+ var France = document.getElementById('checkbox-p-2ad').checked;
+ var Japan = document.getElementById('checkbox-p-2ab').checked;
+ var Sweden = document.getElementById('checkbox-p-2mas').checked;
+ var Trini = document.getElementById('checkbox-p-2porno').checked;
+ var Germany = document.getElementById('checkbox-p-2homo').checked;
+ var Spain = document.getElementById('checkbox-p-2les').checked;
+ var China = document.getElementById('checkbox-p-2none').checked;
+ 
+ 
+ 
+ 
+ 
+ if(India==false && France == false && Japan==false && Sweden==false && Trini==false && Germany==false && Spain==false && China==false){
+ alert('Social And Past History: Background Indicate Which Of The Following You have Been Involved In Is Incomplete');
+ return false;
+ }
+ else{
+ return true;
+ }
+ }
+</script>
+
+<script>
+ function submitClick(){
+ var India2 = document.getElementById('checkbox-p-2asthma').checked;
+ var France2 = document.getElementById('checkbox-p-2allergy').checked;
+ var Japan2 = document.getElementById('checkbox-p-2otherallergy').checked;
+ var Sweden2 = document.getElementById('checkbox-p-2drugallergy').checked;
+ var Trini2 = document.getElementById('checkbox-p-2diabetes').checked;
+ var Germany2 = document.getElementById('checkbox-p-2hypertension').checked;
+ var Spain2 = document.getElementById('checkbox-p-2tb').checked;
+ var China2 = document.getElementById('checkbox-p-2mental').checked;
+ var Nigeria2 = document.getElementById('checkbox-p-2illness').checked;
+ var Ghana2 = document.getElementById('checkbox-p-2epilepsy').checked;
+ var Chad2 = document.getElementById('checkbox-p-2illness').checked;
+ var UK2 = document.getElementById('checkbox-p-2epilepsy').checked;
+ 
+ 
+ 
+ 
+ 
+ if(India2==false && France2 == false && Japan2==false && Sweden2==false && Trini2==false && Germany2==false && Spain2==false && China2==false && Nigeria2==false && Ghana2==false && Chad2==false && UK2==false){
+ alert('Health And Status: Tick Which Of The Following Diseases You Have Been Treated For In The Past is Incomplete');
+ return false;
+ }
+ else{
+ return true;
+ }
+ }
+</script>
+
+<script type="text/javascript">
+        function submitClick() {
+            var e = document.getElementById("MaritalStat");
+            var optionSelIndex = e.options[e.selectedIndex].value;
+            var optionSelectedText = e.options[e.selectedIndex].text;
+            if (optionSelIndex == 0) {
+                alert("General: Marital Status Is Incomplete");
+                return false;
+            }
+            else {
+             return true;
+            }
+        }
+    </script>
+
+<script type="text/javascript">
+        function submitClick() {
+            var e = document.getElementById("countrylist");
+            var optionSelIndex = e.options[e.selectedIndex].value;
+            var optionSelectedText = e.options[e.selectedIndex].text;
+            if (optionSelIndex == 0) {
+                alert("General: Country Of Residence Is Incomplete");
+                return false;
+            }
+            else {
+             return true;
+            }
+        }
+    </script>
+
+<script type="text/javascript">
+        function submitClick() {
+            var e = document.getElementById("RecommendedBy");
+            var optionSelIndex = e.options[e.selectedIndex].value;
+            var optionSelectedText = e.options[e.selectedIndex].text;
+            if (optionSelIndex == 0) {
+                alert("Recommended By: I Am Recommended By Is Incomplete");
+                return false;
+            }
+            else {
+             return true;
+            }
+        }
+    </script>    
+
+
+    <script>
+      function show1(){
+  document.getElementById('hidecall').style.display ='none';
+}
+function show1a(){
+  document.getElementById('hidecall').style.display = 'block';
+}
+
+    function show2(){
+  document.getElementById('hidenardrug').style.display ='none';
+}
+
+function show2a(){
+  document.getElementById('hidenardrug').style.display ='block';
+}
+
+  function show3(){
+  document.getElementById('nardrugpast').style.display ='none';
+}
+
+function show3a(){
+  document.getElementById('nardrugpast').style.display ='block';
+}
+
+function show4(){
+  document.getElementById('poarrest').style.display ='none';
+}
+
+function show4a(){
+  document.getElementById('poarrest').style.display ='block';
+}
+
+function show5(){
+  document.getElementById('proscourt').style.display ='none';
+}
+
+function show5a(){
+  document.getElementById('proscourt').style.display ='block';
+}
+
+function show6(){
+  document.getElementById('jailbef').style.display ='none';
+}
+
+function show6a(){
+  document.getElementById('jailbef').style.display ='block';
+}
+
+function show7(){
+  document.getElementById('drinkpast').style.display ='none';
+}
+
+function show7a(){
+  document.getElementById('drinkpast').style.display ='block';
+}
+
+function show8(){
+  document.getElementById('armrob').style.display ='none';
+}
+
+function show8a(){
+  document.getElementById('armrob').style.display ='block';
+}
+
+function show9(){
+  document.getElementById('revreb').style.display ='none';
+}
+
+function show9a(){
+  document.getElementById('revreb').style.display ='block';
+}
+
+function show10(){
+  document.getElementById('pros').style.display ='none';
+}
+
+function show10a(){
+  document.getElementById('pros').style.display ='block';
+}
+
+function show11(){
+  document.getElementById('lawprob').style.display ='none';
+}
+
+function show11a(){
+  document.getElementById('lawprob').style.display ='block';
+}
+
+function show12(){
+  document.getElementById('recby').style.display ='none';
+}
+
+function show12a(){
+  document.getElementById('recby').style.display ='block';
+}
+
+function show13(){
+  document.getElementById('majsur').style.display ='none';
+}
+
+function show13a(){
+  document.getElementById('majsur').style.display ='block';
+}
+
+    </script>     
+
+
+  
 
 <!--   <script type="text/javascript">
 
