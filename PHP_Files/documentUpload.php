@@ -84,11 +84,49 @@
 						}
 					}
 				}
-				catch (Exception $ex){
+				catch (\Exception $ex){
 					$alertMessage = $alertMessage. "Sorry, there was an error uploading your file. Error Code:AG5";
 				}
 			}
 		}
 	}
+	
+	try{
+		$getUploads = $conn->prepare("SELECT * FROM Documemt_Upload WHERE EmailWhatsapp =  ".$emailWhatsAppWithQuotes);
+		$getUploads->execute();
+		$docs = $getUploads->fetch();
+		$count = 0;
+		$excuses = false;
+		
+		for($y = 1; $y < 13; ++$y){
+			if(!empty($docs['DocFilepath'.$x]) || !empty($docs['DocComment'.$x])){
+				$count += 1;
+				if(empty($docs['DocFilepath'.$x]) && !empty($docs['DocComment'.$x])){
+					$excuses = true;
+				}
+			}
+		}
+		
+		$status = "Incomplete";
+		
+		if($count = 12){
+			if(!$excuses){
+				$status = "'Complete'";
+			}
+			else{
+				$status = "'Query'";
+			}
+		}
+		
+		$query = $conn->prepare("UPDATE Applicant_Table SET Document_Uploads_Status = ".$status." WHERE EmailWhatsapp = ".$emailWhatsAppWithQuotes);
+		$result = $query->execute();
+		if(!$result){
+			$alertMessage = $alertMessage. "Sorry, there was an error updating you document upload status. Error Code:AG6";
+		}
+	}
+	catch (\Exception $ex){
+		$alertMessage = $alertMessage. "Sorry, there was an error updating you document upload status. Error Code:AG7";
+	}
+	
 	AlertAndRedirect($alertMessage, $redirectUrl);
 ?>

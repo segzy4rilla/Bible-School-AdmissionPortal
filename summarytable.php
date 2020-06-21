@@ -301,11 +301,7 @@ $result = $con->query($query);
                                             } else {
                                                 echo "<td>" . "Incomplete" . "</td>";
                                             }
-                                            if ($row['Document_Uploads_Submitted'] == 1) {
-                                                echo "<td>" . "Completed" . "</td>";
-                                            } else {
-                                                echo "<td>" . "Incomplete" . "</td>";
-                                            }
+											echo "<td>" . $row['Document_Uploads_Status'] . "</td>";
                                             echo "</tr>";
                                         }
 
