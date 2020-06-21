@@ -37,7 +37,7 @@ CREATE TABLE `Applicant_Table` (
   `Nationality` varchar(255) NOT NULL,
   `Application_Form_Submitted` tinyint(1) NOT NULL,
   `Interview_Form_Submitted` tinyint(1) NOT NULL,
-  `Document_Uploads_Submitted` tinyint(1) NOT NULL,
+  `Document_Uploads_Status` varchar(20) DEFAULT "Incomplete" NOT NULL,
   `Timestamp` timestamp(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
