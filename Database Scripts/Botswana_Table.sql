@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jun 19, 2020 at 08:36 AM
+-- Generation Time: Jun 21, 2020 at 09:34 PM
 -- Server version: 10.1.33-MariaDB
 -- PHP Version: 7.2.6
 
@@ -25,10 +25,10 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Excel_Table`
+-- Table structure for table `Botswana_Table`
 --
 
-CREATE TABLE `Excel_Table` (
+CREATE TABLE `Botswana_Table` (
   `First Name` varchar(13) DEFAULT NULL,
   `Last Name` varchar(13) DEFAULT NULL,
   `Country` varchar(8) DEFAULT NULL,
@@ -43,10 +43,10 @@ CREATE TABLE `Excel_Table` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `Excel_Table`
+-- Dumping data for table `Botswana_Table`
 --
 
-INSERT INTO `Excel_Table` (`First Name`, `Last Name`, `Country`, `Email_Address`, `Phone_Number`, `Church`, `Denomination`, `Created_an_ABMTC_Account`, `Sent Email`, `Sent Whatsapp Message`, `Response`) VALUES
+INSERT INTO `Botswana_Table` (`First Name`, `Last Name`, `Country`, `Email_Address`, `Phone_Number`, `Church`, `Denomination`, `Created_an_ABMTC_Account`, `Sent Email`, `Sent Whatsapp Message`, `Response`) VALUES
 ('Tshenolo', 'Othusitse', 'Botswana', 'othusitserichardtebogo@gmail.com', '77915747', 'Glory Miracle Tabernacle', '', '', '', '', ''),
 ('Kalantle', 'Nfana', 'Botswana', 'nanceemosmme@yahoo.com', '71622184', 'Liberty Church ', '', '', '', '', ''),
 ('LORAKO', 'Bampheletse', 'Botswana', 'lorakobampheletse@gmail.com', '76170518', 'Living Rock church', '', '', '', '', ''),
@@ -214,7 +214,8 @@ INSERT INTO `Excel_Table` (`First Name`, `Last Name`, `Country`, `Email_Address`
 ('Regomoditswe', 'Maja', 'Botswana', 'regomoditswemaja@gmail.com', '+267 76315486', 'Glory Land Bible Church ', '', '', '', '', ''),
 ('Pako', 'Phillimon', 'Botswana', 'pako.phillimon@gmail.com', '+26771739546', 'Africa Evangelical Church Botswana (AEC)', '', '', '', '', ''),
 ('Lancelot', 'Morupisi', 'Botswana', 'Lancelotmorupisi@gmail.com', '+267 74952311/72927896', 'Christian Assemblies Church in Botswana', '', '', '', '', ''),
-('Dikatso', 'Monene', 'Botswana', 'dvdmonex@mail.com', '+267 72782855', 'Open Baptist Church Botswana', '', '', '', '', '');
+('Dikatso', 'Monene', 'Botswana', 'dvdmonex@mail.com', '+267 72782855', 'Open Baptist Church Botswana', '', '', '', '', ''),
+('GODWIN', 'A', 'NIGERIA', 'aamir.pervaiz83@gmail.com', '07400557697', NULL, NULL, '', NULL, NULL, NULL);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
