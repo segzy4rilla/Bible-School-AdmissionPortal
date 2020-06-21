@@ -111,8 +111,7 @@ $applicantDetails = $getApplicantDetails->fetch();
                             if ($app_comp) {
                                 echo '<a href="#">';
                             } else {
-								echo '<a href="#">';
-                                //echo '<a href="ABMTCApplicationForm.php">';
+                                echo '<a href="ABMTCApplicationForm.php">';
                             }
                             ?>
                             <div class="card" style="margin-bottom:15px;height:100%">
