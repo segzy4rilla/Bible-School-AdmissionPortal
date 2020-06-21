@@ -1,4 +1,6 @@
 <?php
+
+include "PHP_Files/dbconfig.php";
 session_start();
 
 if ($_SESSION['loggedin'] == false) {
@@ -13,6 +15,11 @@ if ($_SESSION['Interview_Form_Submitted'] == 1) {
 if ($_SESSION['Application_Form_Submitted'] == 1) {
     $app_comp = true;
 }
+
+$conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+$getApplicantDetails = $conn->prepare("SELECT * FROM Applicant_Table WHERE EmailWhatsapp = '".$_SESSION['EmailWhatsapp']."'");
+$getApplicantDetails->execute();
+$applicantDetails = $getApplicantDetails->fetch();
 ?>
 <!doctype html>
 <html lang="en" style="height:100%">
@@ -104,8 +111,7 @@ if ($_SESSION['Application_Form_Submitted'] == 1) {
                             if ($app_comp) {
                                 echo '<a href="#">';
                             } else {
-								echo '<a href="#">';
-                                //echo '<a href="ABMTCApplicationForm.php">';
+                                echo '<a href="ABMTCApplicationForm.php">';
                             }
                             ?>
                             <div class="card" style="margin-bottom:15px;height:100%">
@@ -173,8 +179,9 @@ if ($_SESSION['Application_Form_Submitted'] == 1) {
 									<div class="card-body">
 										<div class="row">
 											<div class="col">
-												<h5 class="mb-20">Document Upload</h5>
-												
+												<?php
+													echo "<h5 class='mb-20'>Document Upload (".$applicantDetails['Document_Uploads_Status'].")</h5>";
+												?>
 											</div>
 											<div class="col-auto">
 												<div class="clint-icon bg-gradient-danger text-white rounded-circle icon-shape">

@@ -54,10 +54,7 @@
                                 $storeFilepath = $conn->prepare('UPDATE Documemt_Upload SET DocFilepath' . ($x+1) . ' = ' . $targetFilePathWithQuotes . ' WHERE EmailWhatsapp = ' . $emailWhatsAppWithQuotes);
                                 $filepathStored = $storeFilepath->execute();
 								
-								if($filepathStored){
-									$alertMessage = $alertMessage. "The file " . basename($_FILES["img1"]["name"][$x]) . " has been uploaded.";
-								}
-								else{
+								if(!$filepathStored){
 									$alertMessage = $alertMessage. "Sorry, there was an error uploading file".($x+1)." Error Code:AG2";
 								}
 							} else {
@@ -75,10 +72,7 @@
 							$commentWithQuotes = "'".$comment."'";
                             $storeComment = $conn->prepare('UPDATE Documemt_Upload SET DocComment'.($x+1).' = ' . $commentWithQuotes . ' WHERE EmailWhatsapp = ' . $emailWhatsAppWithQuotes);
                             $commentStored = $storeComment->execute();
-							if($commentStored){
-								$alertMessage = $alertMessage. "Your explanation for the missing file" .($x+1). " has been saved.";
-							}
-							else{
+							if(!$commentStored){
 								$alertMessage = $alertMessage. "Sorry, there was an error saving your explanation for the missing file".($x+1)."explanation: ".$commentWithQuotes.". Error Code:AG4";
 							}
 						}
@@ -99,17 +93,20 @@
 		$excuses = false;
 		
 		for($y = 1; $y < 13; ++$y){
-			if(!empty($docs['DocFilepath'.$x]) || !empty($docs['DocComment'.$x])){
+			$doc = trim($docs['DocFilepath'.$x]);
+			$ex = trim($docs['DocComment'.$x]);
+			
+			if(!empty($doc) || !empty($ex)){
 				$count += 1;
-				if(empty($docs['DocFilepath'.$x]) && !empty($docs['DocComment'.$x])){
+				if(empty($doc) && !empty($ex)){
 					$excuses = true;
 				}
 			}
 		}
 		
-		$status = "Incomplete";
+		$status = "'Incomplete'";
 		
-		if($count = 12){
+		if($count == 12){
 			if(!$excuses){
 				$status = "'Complete'";
 			}
@@ -126,6 +123,10 @@
 	}
 	catch (\Exception $ex){
 		$alertMessage = $alertMessage. "Sorry, there was an error updating you document upload status. Error Code:AG7";
+	}
+	
+	if(empty($alertMessage)){
+		$alertMessage = "Upload successful";
 	}
 	
 	AlertAndRedirect($alertMessage, $redirectUrl);
