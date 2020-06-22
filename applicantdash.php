@@ -173,7 +173,7 @@ $applicantDetails = $getApplicantDetails->fetch();
 							</a>
                         </div>
                         <div class="col-lg-12"  style="height:30%">
-                            <a href="DocumentUpload.php">
+                            <a href="documentUpload.php">
 								<div class="card" style="margin-bottom:15px;height:100%">
 									<!-- Card body -->
 									<div class="card-body">
