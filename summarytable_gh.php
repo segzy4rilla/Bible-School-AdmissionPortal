@@ -4,10 +4,10 @@ session_start();
 if ($_SESSION['loggedin'] == false || $_SESSION['isAdmin'] == false) {
     header('Location: loginabmtc.html');
 }
-require("PHP_Files/Update_Tables.php");
+require("PHP_Files/Update_Ghana_Tables.php");
 require("dbconfig/config.php");
 
-$query = "select * from Botswana_Table";
+$query = "select * from Ghana_Table";
 $result = $con->query($query);
 
 ?>
