@@ -88,6 +88,19 @@ try {
     $question74 = @$_POST['question74'];
 
 
+    $disease_list = "";
+
+    for ($i = 0; $i < count($question62); $i++) {
+        $disease_list = $disease_list . " " . $question62[$i];
+    }
+
+    $crminal_record = "";
+
+    for ($i = 0; $i < count($question55); $i++) {
+        $crminal_record = $crminal_record . " " . $question55[$i];
+    }
+
+
 //    // set the PDO error mode to exception
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $sql = "INSERT INTO Application_Form (User_ID, First_Name,Last_Name,Date_Of_Birth,Sex,Age,Nationality_At_Birth,Church_Part_Of_UD,Marital_Status,Country_Of_Residence,Residential_Address,Email_Address,
@@ -147,14 +160,14 @@ Recommended_By,Recommended_By_Specify,Signature,Submission_Date)
     '$question50',
     '$question51',
     '$question54',
-    '$question55',
+    '$crminal_record',
     '$question56',
     '$question57',
     '$question58',
     '$question59',
     '$question60',
     '$question61',
-    '$question62',
+    '$disease_list',
     '$question63',
     '$question64',
     '$question65',
@@ -176,7 +189,6 @@ Recommended_By,Recommended_By_Specify,Signature,Submission_Date)
     $conn->exec($sql2);
     $_SESSION['Application_Form_Submitted'] = 1;
     echo '<script>alert("Application Form Submitted Successfully")</script>';
-
     header('Location: ../applicantdash.php');
 } catch (PDOException $e) {
     echo $sql . "<br>" . $e->getMessage();
