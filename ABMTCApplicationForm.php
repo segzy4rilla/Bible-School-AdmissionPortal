@@ -2219,12 +2219,12 @@ animationSelect.addEventListener('change', () => {
    let Disabled = true;
     $(".required").each(function() {
 
-      let value = this.value
+        let value = this.value;
       if ((value)&&(value.trim() !=''))
           {
             Disabled = false
           }else{
-            Disabled = true
+          Disabled = true;
             return false
           }
     });
@@ -2718,7 +2718,8 @@ function submitClick() {
   var selAller = document.querySelector("[name=question68]:checked");
   var selProbLaw = document.querySelector("[name=question69]:checked");
 
-  
+
+    alert(selGender);
 
   if (!selGender) {
     alert("General: Sex - Male, Female Is Incomplete");
