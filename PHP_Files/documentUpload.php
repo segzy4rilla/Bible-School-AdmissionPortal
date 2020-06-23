@@ -16,7 +16,7 @@
 	}
 	else{
 		$userFolder = $emailWhatsApp;
-		$targetDirectory = "../uploads/" .$userFolder ."/";
+		$targetDirectory = "../../uploads/" .$userFolder ."/";
 		
 		if (!file_exists($targetDirectory)) {
 			mkdir($targetDirectory, 0773, true);
