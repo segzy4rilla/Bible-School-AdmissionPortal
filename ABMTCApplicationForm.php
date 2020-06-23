@@ -418,7 +418,7 @@ if ($_SESSION['loggedin'] == false) {
                                                     <label>Date Of Birth</label>
 
                                                     <input class="form-control rounded-0 form-control-md required" type="date" required
-                                                           value="2011-08-19" id="example-date-input" name="question3 required"
+                                                           value="2011-08-19" id="example-date-input" name="question3"
                                                            aria-required="true" required="">
                                                       <span class="icon validation small success hide">
                     <span class="fa fa-check"></span>
