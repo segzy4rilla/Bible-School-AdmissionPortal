@@ -418,7 +418,7 @@ if ($_SESSION['loggedin'] == false) {
                                                     <label>Date Of Birth</label>
 
                                                     <input class="form-control rounded-0 form-control-md required" type="date" required
-                                                           value="2011-08-19" id="example-date-input" name="question3"
+                                                           value="2011-08-19" id="example-date-input" name="question3 required"
                                                            aria-required="true" required="">
                                                       <span class="icon validation small success hide">
                     <span class="fa fa-check"></span>
@@ -461,21 +461,209 @@ if ($_SESSION['loggedin'] == false) {
                 </span>
                 <div class="is-helpful" data-helper="Validates if not empty." data-error="Please enter your first name."></div>
               </div>
-                                              <div class="relative input-wrap is-required">
-                                                <div class="form-group">
-                                                    <label class="control-label">Nationality At Birth</label>
-                                                    <input type="text" class="form-control required" name="question6"
-                                                           placeholder="Enter birth nationality" required>
-                                                </div>
-                                                <span class="icon validation small success hide">
-                  <span class="fa fa-check"></span>
-                </span>
-                <span class="icon validation small error hide">
-                  <span class="fa fa-remove"></span>
-                </span>
-                <div class="is-helpful" data-helper="Validates if not empty." data-error="Please enter your first name."></div>
+                                              
+              <div class="form-group">
+              <label class="control-label">Nationality At Birth</label>
 
-              </div>
+              <select class="form-control" name="question6" id="nationatbirth">
+                                                        <option value="0">--Select Nationality At Birth--</option>
+                                                      <option value="2">Afghan</option>
+                                                      <option value="3">Albanian</option>
+                                                      <option value="4">Algerian</option>
+                                                      <option value="5">American</option>
+                                                      <option value="6">Andorran</option>
+                                                      <option value="7">Angolan</option>
+                                                      <option value="8">Antiguans</option>
+                                                      <option value="9">Argentinean</option>
+                                                      <option value="10">Armenian</option>
+                                                      <option value="11">Australian</option>
+                                                      <option value="12">Austrian</option>
+                                                      <option value="13">Azerbaijani</option>
+                                                      <option value="14">Bahamian</option>
+                                                      <option value="15">Bahraini</option>
+                                                      <option value="16">Bangladeshi</option>
+                                                      <option value="17">Barbadian</option>
+                                                      <option value="18">Barbudans</option>
+                                                      <option value="19">Batswana</option>
+                                                      <option value="20">Belarusian</option>
+                                                      <option value="21">Belgian</option>
+                                                      <option value="22">Belizean</option>
+                                                      <option value="23">Beninese</option>
+                                                      <option value="24">Bhutanese</option>
+                                                      <option value="25">Bolivian</option>
+                                                      <option value="26">Bosnian</option>
+                                                      <option value="27">Brazilian</option>
+                                                      <option value="28">British</option>
+                                                      <option value="29">Bruneian</option>
+                                                      <option value="30">Bulgarian</option>
+                                                      <option value="31">Burkinabe</option>
+                                                      <option value="32">Burmese</option>
+                                                      <option value="33">Burundian</option>
+                                                      <option value="34">Cambodian</option>
+                                                      <option value="35">Cameroonian</option>
+                                                      <option value="36">Canadian</option>
+                                                      <option value="37">Cape Verdean</option>
+                                                      <option value="38">Central African</option>
+                                                      <option value="39">Chadian</option>
+                                                      <option value="40">Chilean</option>
+                                                      <option value="41">Chinese</option>
+                                                      <option value="42">Colombian</option>
+                                                      <option value="43">Comoran</option>
+                                                      <option value="44">Congolese</option>
+                                                      <option value="45">Costa Rican</option>
+                                                      <option value="46">Croatian</option>
+                                                      <option value="47">Cuban</option>
+                                                      <option value="48">Cypriot</option>
+                                                      <option value="49">Czech</option>
+                                                      <option value="50">Danish</option>
+                                                      <option value="51">Djibouti</option>
+                                                      <option value="52">Dominican</option>
+                                                      <option value="53">Dutch</option>
+                                                      <option value="54">East Timorese</option>
+                                                      <option value="55">Ecuadorean</option>
+                                                      <option value="56">Egyptian</option>
+                                                      <option value="57">Emirian</option>
+                                                      <option value="58">Equatorial Guinean</option>
+                                                      <option value="59">Eritrean</option>
+                                                      <option value="60">Estonian</option>
+                                                      <option value="61">Ethiopian</option>
+                                                      <option value="62">Fijian</option>
+                                                      <option value="63">Filipino</option>
+                                                      <option value="64">Finnish</option>
+                                                      <option value="65">French</option>
+                                                      <option value="66">Gabonese</option>
+                                                      <option value="67">Gambian</option>
+                                                      <option value="68">Georgian</option>
+                                                      <option value="69">German</option>
+                                                      <option value="70">Ghanaian</option>
+                                                      <option value="71">Greek</option>
+                                                      <option value="72">Grenadian</option>
+                                                      <option value="73">Guatemalan</option>
+                                                      <option value="74">Guinea-Bissauan</option>
+                                                      <option value="75">Guinean</option>
+                                                      <option value="76">Guyanese</option>
+                                                      <option value="77">Haitian</option>
+                                                      <option value="78">Herzegovinian</option>
+                                                      <option value="79">Honduran</option>
+                                                      <option value="80">Hungarian</option>
+                                                      <option value="81">Icelander</option>
+                                                      <option value="82">Indian</option>
+                                                      <option value="83">Indonesian</option>
+                                                      <option value="84">Iranian</option>
+                                                      <option value="85">Iraqi</option>
+                                                      <option value="86">Irish</option>
+                                                      <option value="87">Israeli</option>
+                                                      <option value="88">Italian</option>
+                                                      <option value="89">Ivorian</option>
+                                                      <option value="90">Jamaican</option>
+                                                      <option value="91">Japanese</option>
+                                                      <option value="92">Jordanian</option>
+                                                      <option value="93">Kazakhstani</option>
+                                                      <option value="94">Kenyan</option>
+                                                      <option value="95">Kittian and Nevisian</option>
+                                                      <option value="96">Kuwaiti</option>
+                                                      <option value="97">Kyrgyz</option>
+                                                      <option value="98">Laotian</option>
+                                                      <option value="99">Latvian</option>
+                                                      <option value="100">Lebanese</option>
+                                                      <option value="101">Liberian</option>
+                                                      <option value="102">Libyan</option>
+                                                      <option value="103">Liechtensteiner</option>
+                                                      <option value="104">Lithuanian</option>
+                                                      <option value="105">Luxembourger</option>
+                                                      <option value="106">Macedonian</option>
+                                                      <option value="107">Malagasy</option>
+                                                      <option value="108">Malawian</option>
+                                                      <option value="109">Malaysian</option>
+                                                      <option value="110">Maldivan</option>
+                                                      <option value="111">Malian</option>
+                                                      <option value="112">Maltese</option>
+                                                      <option value="113">Marshallese</option>
+                                                      <option value="114">Mauritanian</option>
+                                                      <option value="115">Mauritian</option>
+                                                      <option value="116">Mexican</option>
+                                                      <option value="117">Micronesian</option>
+                                                      <option value="118">Moldovan</option>
+                                                      <option value="119">Monacan</option>
+                                                      <option value="120">Mongolian</option>
+                                                      <option value="121">Moroccan</option>
+                                                      <option value="122">Mosotho</option>
+                                                      <option value="123">Motswana</option>
+                                                      <option value="124">Mozambican</option>
+                                                      <option value="125">Namibian</option>
+                                                      <option value="126">Nauruan</option>
+                                                      <option value="127">Nepalese</option>
+                                                      <option value="128">New Zealander</option>
+                                                      <option value="129">Ni-Vanuatu</option>
+                                                      <option value="130">Nicaraguan</option>
+                                                      <option value="131">Nigerien</option>
+                                                      <option value="132">North Korean</option>
+                                                      <option value="133">Northern Irish</option>
+                                                      <option value="134">Norwegian</option>
+                                                      <option value="135">Omani</option>
+                                                      <option value="136">Pakistani</option>
+                                                      <option value="137">Palauan</option>
+                                                      <option value="138">Panamanian</option>
+                                                      <option value="139">Papua New Guinean</option>
+                                                      <option value="140">Paraguayan</option>
+                                                      <option value="141">Peruvian</option>
+                                                      <option value="142">Polish</option>
+                                                      <option value="143">Portuguese</option>
+                                                      <option value="144">Qatari</option>
+                                                      <option value="145">Romanian</option>
+                                                      <option value="146">Russian</option>
+                                                      <option value="147">Rwandan</option>
+                                                      <option value="148">Saint Lucian</option>
+                                                      <option value="149">Salvadoran</option>
+                                                      <option value="150">Samoan</option>
+                                                      <option value="151">San Marinese</option>
+                                                      <option value="152">Sao Tomean</option>
+                                                      <option value="153">Saudi</option>
+                                                      <option value="154">Scottish</option>
+                                                      <option value="155">Senegalese</option>
+                                                      <option value="156">Serbian</option>
+                                                      <option value="157">Seychellois</option>
+                                                      <option value="158">Sierra Leonean</option>
+                                                      <option value="159">Singaporean</option>
+                                                      <option value="160">Slovakian</option>
+                                                      <option value="161">Slovenian</option>
+                                                      <option value="162">Solomon Islander</option>
+                                                      <option value="163">Somali</option>
+                                                      <option value="164">South African</option>
+                                                      <option value="165">South Korean</option>
+                                                      <option value="166">Spanish</option>
+                                                      <option value="167">Sri Lankan</option>
+                                                      <option value="168">Sudanese</option>
+                                                      <option value="169">Surinamer</option>
+                                                      <option value="170">Swazi</option>
+                                                      <option value="171">Swedish</option>
+                                                      <option value="172">Swiss</option>
+                                                      <option value="173">Syrian</option>
+                                                      <option value="174">Taiwanese</option>
+                                                      <option value="175">Tajik</option>
+                                                      <option value="176">Tanzanian</option>
+                                                      <option value="177">Thai</option>
+                                                      <option value="178">Togolese</option>
+                                                      <option value="179">Tongan</option>
+                                                      <option value="180">Trinidadian or Tobagonian</option>
+                                                      <option value="181">Tunisian</option>
+                                                      <option value="182">Turkish</option>
+                                                      <option value="183">Tuvaluan</option>
+                                                      <option value="184">Ugandan</option>
+                                                      <option value="185">Ukrainian</option>
+                                                      <option value="186">Uruguayan</option>
+                                                      <option value="187">Uzbekistani</option>
+                                                      <option value="188">Venezuelan</option>
+                                                      <option value="189">Vietnamese</option>
+                                                      <option value="190">Welsh</option>
+                                                      <option value="191">Yemenite</option>
+                                                      <option value="192">Zambian</option>
+                                                      <option value="193">Zimbabwean</option>
+                                                    </select>
+                                                  </div>
+
+                                                    <br>
+
                                               <div class="relative input-wrap is-required">
                                                 <div class="form-group">
                                                     <label class="control-label">Is Your Church Part Of UD-OLGC (Lighthouse/FLC Church)?</label>
@@ -1862,7 +2050,7 @@ if ($_SESSION['loggedin'] == false) {
                   <div class="form-group">
                                                     <label for="exampleTextarea1">Scroll Through Requirements For International
                                                         Students</label>
-                                                    <textarea class="form-control" id="exampleTextarea1" rows="9"
+                                                    <textarea class="form-control" id="exampleTextarea1" rows="11"
                                                               disabled>
 
 Requirements For All Students: 
@@ -2219,12 +2407,12 @@ animationSelect.addEventListener('change', () => {
    let Disabled = true;
     $(".required").each(function() {
 
-        let value = this.value;
+      let value = this.value
       if ((value)&&(value.trim() !=''))
           {
             Disabled = false
           }else{
-          Disabled = true;
+            Disabled = true
             return false
           }
     });
@@ -2718,8 +2906,7 @@ function submitClick() {
   var selAller = document.querySelector("[name=question68]:checked");
   var selProbLaw = document.querySelector("[name=question69]:checked");
 
-
-    alert(selGender);
+  
 
   if (!selGender) {
     alert("General: Sex - Male, Female Is Incomplete");
@@ -2839,55 +3026,55 @@ function submitClick() {
 </script>
 
 <script>
- function submitClick(){
- var India = document.getElementById('checkbox-p-2forn').checked;
- var France = document.getElementById('checkbox-p-2ad').checked;
- var Japan = document.getElementById('checkbox-p-2ab').checked;
- var Sweden = document.getElementById('checkbox-p-2mas').checked;
- var Trini = document.getElementById('checkbox-p-2porno').checked;
- var Germany = document.getElementById('checkbox-p-2homo').checked;
- var Spain = document.getElementById('checkbox-p-2les').checked;
- var China = document.getElementById('checkbox-p-2none').checked;
+ // function submitClick(){
+ // var India = document.getElementById('checkbox-p-2forn').checked;
+ // var France = document.getElementById('checkbox-p-2ad').checked;
+ // var Japan = document.getElementById('checkbox-p-2ab').checked;
+ // var Sweden = document.getElementById('checkbox-p-2mas').checked;
+ // var Trini = document.getElementById('checkbox-p-2porno').checked;
+ // var Germany = document.getElementById('checkbox-p-2homo').checked;
+ // var Spain = document.getElementById('checkbox-p-2les').checked;
+ // var China = document.getElementById('checkbox-p-2none').checked;
  
  
  
  
  
- if(India==false && France == false && Japan==false && Sweden==false && Trini==false && Germany==false && Spain==false && China==false){
- alert('Social And Past History: Background Indicate Which Of The Following You have Been Involved In Is Incomplete');
- return false;
- }
- }
+ // if(India==false && France == false && Japan==false && Sweden==false && Trini==false && Germany==false && Spain==false && China==false){
+ // alert('Social And Past History: Background Indicate Which Of The Following You have Been Involved In Is Incomplete');
+ // return false;
+ // }
+ // }
 </script>
 
 <script>
- function submitClick(){
- var India2 = document.getElementById('checkbox-p-2asthma').checked;
- var France2 = document.getElementById('checkbox-p-2allergy').checked;
- var Japan2 = document.getElementById('checkbox-p-2otherallergy').checked;
- var Sweden2 = document.getElementById('checkbox-p-2drugallergy').checked;
- var Trini2 = document.getElementById('checkbox-p-2diabetes').checked;
- var Germany2 = document.getElementById('checkbox-p-2hypertension').checked;
- var Spain2 = document.getElementById('checkbox-p-2tb').checked;
- var China2 = document.getElementById('checkbox-p-2mental').checked;
- var Nigeria2 = document.getElementById('checkbox-p-2illness').checked;
- var Ghana2 = document.getElementById('checkbox-p-2epilepsy').checked;
- var Chad2 = document.getElementById('checkbox-p-2illness').checked;
- var UK2 = document.getElementById('checkbox-p-2epilepsy').checked;
+ // function submitClick(){
+ // var India2 = document.getElementById('checkbox-p-2asthma').checked;
+ // var France2 = document.getElementById('checkbox-p-2allergy').checked;
+ // var Japan2 = document.getElementById('checkbox-p-2otherallergy').checked;
+ // var Sweden2 = document.getElementById('checkbox-p-2drugallergy').checked;
+ // var Trini2 = document.getElementById('checkbox-p-2diabetes').checked;
+ // var Germany2 = document.getElementById('checkbox-p-2hypertension').checked;
+ // var Spain2 = document.getElementById('checkbox-p-2tb').checked;
+ // var China2 = document.getElementById('checkbox-p-2mental').checked;
+ // var Nigeria2 = document.getElementById('checkbox-p-2illness').checked;
+ // var Ghana2 = document.getElementById('checkbox-p-2epilepsy').checked;
+ // var Chad2 = document.getElementById('checkbox-p-2illness').checked;
+ // var UK2 = document.getElementById('checkbox-p-2epilepsy').checked;
  
  
  
  
  
- if(India2==false && France2 == false && Japan2==false && Sweden2==false && Trini2==false && Germany2==false && Spain2==false && China2==false && Nigeria2==false && Ghana2==false && Chad2==false && UK2==false){
- alert('Health And Status: Tick Which Of The Following Diseases You Have Been Treated For In The Past is Incomplete');
- return false;
- }
+ // if(India2==false && France2 == false && Japan2==false && Sweden2==false && Trini2==false && Germany2==false && Spain2==false && China2==false && Nigeria2==false && Ghana2==false && Chad2==false && UK2==false){
+ // alert('Health And Status: Tick Which Of The Following Diseases You Have Been Treated For In The Past is Incomplete');
+ // return false;
+ // }
 
- }
+ // }
 </script>
 
-<script type="text/javascript">
+<!-- <script type="text/javascript">
         function submitClick() {
             var e = document.getElementById("MaritalStat");
             var optionSelIndex = e.options[e.selectedIndex].value;
@@ -2899,20 +3086,9 @@ function submitClick() {
             
         }
     </script>
+ -->
 
-    <script type="text/javascript">
-        function submitClick() {
-            var ddlFruits = document.getElementById("MaritalStat");
-            if (ddlFruits.value == "") {
-                //If the "Please Select" option is selected display error.
-                alert("Please select an option!");
-                return false;
-            }
-           
-        }
-    </script>
-
-<script type="text/javascript">
+<!-- <script type="text/javascript">
         function submitClick() {
             var e = document.getElementById("countrylist");
             var optionSelIndex = e.options[e.selectedIndex].value;
@@ -2923,9 +3099,9 @@ function submitClick() {
             }
             
         }
-    </script>
+    </script> -->
 
-<script type="text/javascript">
+<!-- <script type="text/javascript">
         function submitClick() {
             var e = document.getElementById("RecommendedBy");
             var optionSelIndex = e.options[e.selectedIndex].value;
@@ -2936,7 +3112,7 @@ function submitClick() {
             }
             
         }
-    </script>    
+    </script>  -->   
 
 
     <script>
@@ -3236,7 +3412,82 @@ function show13a(){
     return false;
   }
 
+  var e = document.getElementById("nationatbirth");
+            var optionSelIndex = e.options[e.selectedIndex].value;
+            var optionSelectedText = e.options[e.selectedIndex].text;
+            if (optionSelIndex == 0) {
+                alert("General: Nationality At Birth Is Incomplete");
+                return false;
+            }   
+
+  var e = document.getElementById("MaritalStat");
+            var optionSelIndex = e.options[e.selectedIndex].value;
+            var optionSelectedText = e.options[e.selectedIndex].text;
+            if (optionSelIndex == 0) {
+                alert("General: Marital Status Is Incomplete");
+                return false;
+            }
+
+  var e = document.getElementById("countrylist");
+            var optionSelIndex = e.options[e.selectedIndex].value;
+            var optionSelectedText = e.options[e.selectedIndex].text;
+            if (optionSelIndex == 0) {
+                alert("General: Country Of Residence Is Incomplete");
+                return false;
+            }       
+
+            var e = document.getElementById("RecommendedBy");
+            var optionSelIndex = e.options[e.selectedIndex].value;
+            var optionSelectedText = e.options[e.selectedIndex].text;
+            if (optionSelIndex == 0) {
+                alert("Recommended By: I Am Recommended By Is Incomplete");
+                return false;
+            } 
+
+             var India = document.getElementById('checkbox-p-2forn').checked;
+ var France = document.getElementById('checkbox-p-2ad').checked;
+ var Japan = document.getElementById('checkbox-p-2ab').checked;
+ var Sweden = document.getElementById('checkbox-p-2mas').checked;
+ var Trini = document.getElementById('checkbox-p-2porno').checked;
+ var Germany = document.getElementById('checkbox-p-2homo').checked;
+ var Spain = document.getElementById('checkbox-p-2les').checked;
+ var China = document.getElementById('checkbox-p-2none').checked;
+ 
+ 
+ 
+ 
+ 
+ if(India==false && France == false && Japan==false && Sweden==false && Trini==false && Germany==false && Spain==false && China==false){
+ alert('Social And Past History: Background Indicate Which Of The Following You have Been Involved In Is Incomplete');
+ return false;
+ }
+
+ var India2 = document.getElementById('checkbox-p-2asthma').checked;
+ var France2 = document.getElementById('checkbox-p-2allergy').checked;
+ var Japan2 = document.getElementById('checkbox-p-2otherallergy').checked;
+ var Sweden2 = document.getElementById('checkbox-p-2drugallergy').checked;
+ var Trini2 = document.getElementById('checkbox-p-2diabetes').checked;
+ var Germany2 = document.getElementById('checkbox-p-2hypertension').checked;
+ var Spain2 = document.getElementById('checkbox-p-2tb').checked;
+ var China2 = document.getElementById('checkbox-p-2mental').checked;
+ var Nigeria2 = document.getElementById('checkbox-p-2illness').checked;
+ var Ghana2 = document.getElementById('checkbox-p-2epilepsy').checked;
+ var Chad2 = document.getElementById('checkbox-p-2illness').checked;
+ var UK2 = document.getElementById('checkbox-p-2epilepsy').checked;
+ 
+ 
+ 
+ 
+ 
+ if(India2==false && France2 == false && Japan2==false && Sweden2==false && Trini2==false && Germany2==false && Spain2==false && China2==false && Nigeria2==false && Ghana2==false && Chad2==false && UK2==false){
+ alert('Health And Status: Tick Which Of The Following Diseases You Have Been Treated For In The Past is Incomplete');
+ return false;
+ }          
+            
+
     }
+
+
     </script>  
 
 <!--   <script type="text/javascript">
