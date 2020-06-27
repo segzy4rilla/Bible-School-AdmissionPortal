@@ -158,7 +158,7 @@ $result = $con->query($query);
 											echo "</td>";
 											
 											echo "<td>";
-												echo "<a href='summarytable.php'>";
+												echo "<a href='admininterview.php'>";
 													if ($row['Interview_Form_Submitted'] == 1) {
 														echo "Completed";
 													} else {
@@ -168,7 +168,7 @@ $result = $con->query($query);
 											echo "</td>";
 											
 											echo "<td>";
-												echo "<a href='summarytable.php'>";
+												echo "<a href='docResults.php'>";
 													echo $row['Document_Uploads_Status'];
 												echo "</a>";
 											echo "</td>";
