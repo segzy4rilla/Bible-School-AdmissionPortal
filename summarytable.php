@@ -146,18 +146,32 @@ $result = $con->query($query);
                                             echo "<td>" . $row['First_Name'] . " " . $row['Last_Name'] . "</td>";
                                             echo "<td>" . $row['Nationality'] . "</td>";
 											echo "<td>" . $row['Church_Part_Of_UD'] . "</td>";
-                                            if ($row['Application_Form_Submitted'] == 1) {
-                                                echo "<td>" . "Completed" . "</td>";
-                                            } else {
-                                                echo "<td>" . "Incomplete" . "</td>";
-                                            }
-
-                                            if ($row['Interview_Form_Submitted'] == 1) {
-                                                echo "<td>" . "Completed" . "</td>";
-                                            } else {
-                                                echo "<td>" . "Incomplete" . "</td>";
-                                            }
-											echo "<td>" . $row['Document_Uploads_Status'] . "</td>";
+                                            
+											echo "<td>";
+												echo "<a href='summarytable.php'>";
+													if ($row['Application_Form_Submitted'] == 1) {
+														echo "Completed";
+													} else {
+														echo "Incomplete";
+													}
+												echo "</a>";
+											echo "</td>";
+											
+											echo "<td>";
+												echo "<a href='summarytable.php'>";
+													if ($row['Interview_Form_Submitted'] == 1) {
+														echo "Completed";
+													} else {
+														echo "Incomplete";
+													}
+												echo "</a>";
+											echo "</td>";
+											
+											echo "<td>";
+												echo "<a href='summarytable.php'>";
+													echo $row['Document_Uploads_Status'];
+												echo "</a>";
+											echo "</td>";
                                             echo "</tr>";
                                         }
 
