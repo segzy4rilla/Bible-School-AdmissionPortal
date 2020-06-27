@@ -139,7 +139,7 @@
 
             <div class="left-side-content-area d-flex align-items-center">
                 <div class="ecaps-logo" style="width:75px">
-                    <a href="applicantdash.php">
+                    <a href="summarytable.php">
                         <img class="desktop-logo" style="min-height:70px; min-width:70px; margin:0px" src="ABTMC.png"
                              alt="Desktop Logo">
                         <img class="small-logo" src="ABTMC.png" alt="Mobile Logo">
