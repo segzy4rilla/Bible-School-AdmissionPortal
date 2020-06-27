@@ -45,7 +45,7 @@
 						$imageFileType = strtolower(pathinfo($targetFilePath, PATHINFO_EXTENSION));
 						$validUpload = 0;
 
-						if ($imageFileType == "jpg" || $imageFileType == "docx" || $imageFileType == "png" || $imageFileType == "txt"|| $imageFileType == "jpeg") {
+						if ($imageFileType == "jpg" || $imageFileType == "png" || $imageFileType == "jpeg"|| $imageFileType == "pdf") {
 							$validUpload = 1;
 						}
 
@@ -62,7 +62,7 @@
 							}
 						}
 						else {
-							$alertMessage = $alertMessage. "File could not be uploaded due to restricted file type. must be: .jpg, .jpeg, .doxc, .png or .txt ";
+							$alertMessage = $alertMessage. "File could not be uploaded due to restricted file type. must be: .jpg, .jpeg, .png or pdf";
 						}
 					}
 					else{
