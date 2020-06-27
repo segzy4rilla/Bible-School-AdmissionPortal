@@ -54,7 +54,7 @@ $result = $con->query($query);
     ">
         <!-- Desktop Logo -->
         <div class="ecaps-logo">
-            <a href="summarytable.html">
+            <a href="summarytable.php">
                 <img class="desktop-logo" style="min-height:70px; min-width:70px; margin:0px 10px 0px 0px" src="ABTMC.png" alt="Desktop Logo">
                 <img class="small-logo" src="ABTMC.png" alt="Mobile Logo">
             </a>
