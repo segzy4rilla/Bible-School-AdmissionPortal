@@ -1,12 +1,16 @@
 <?php
-session_start();
 
-if ($_SESSION['loggedin'] == false || $_SESSION['isAdmin'] == false) {
-    header('Location: loginabmtc.html');
-}
+	session_start();
 
-require("dbconfig/config.php");
+	if ($_SESSION['loggedin'] == false || $_SESSION['isAdmin'] == false) {
+		header('Location: loginabmtc.html');
+	}
 
+	require("dbconfig/config.php");
+	$conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+	$query = $conn->prepare("SELECT * FROM Documemt_Upload WHERE EmailWhatsapp = "."'".$_GET['emailWhatsApp']."'");
+	$query->execute();
+	$uploads = $query->fetch();
 ?>
 <!doctype html>
 <html lang="en">
@@ -184,14 +188,23 @@ require("dbconfig/config.php");
                         <div class="card">
                             <div class="card-body" style="margin-left: 0.9%">
 								<h1>Document Uploads</h1>
-								<div style="margin-left: 1%">
+								<div style="margin-left: 1%; margin-right: 1%">
 									<br/>
 									<div>
 										<div>
 											<h3>Education Certficate</h3>
 											<label>Education Certficate (Highest Level)</label>
 										</div>
-										<embed src="../uploads/a@a.a/1.txt" width="90%"/>
+										<?php
+											$path = trim($uploads['DocFilepath1']);
+											if(!empty($path)){
+												$path = str_replace('../../', '../', $path);
+												echo "<embed src='".$path."' width='90%' height='1000em'/>";
+											}
+											else{
+												echo "<textarea type='text' class='form-control' readonly>".$uploads['DocComment1']."</textarea>";
+											}
+										?>
 									</div>
 									
 									<div>
@@ -199,37 +212,122 @@ require("dbconfig/config.php");
 											<h3>Medical Report</h3>
 										</div>
 										<div>
-											<label>1</label>
+											<label>Full Blood Count Lab Test Report</label>
 										</div>
-										<embed src="../uploads/a@a.a/1.txt" width="90%"/>
+										<?php
+											$path = trim($uploads['DocFilepath2']);
+											if(!empty($path)){
+												$path = str_replace('../../', '../', $path);
+												echo "<embed src='".$path."' width='90%' height='1000em'/>";
+											}
+											else{
+												echo "<textarea type='text' class='form-control' readonly>".$uploads['DocComment2']."</textarea>";
+											}
+										?>
 										<div>
-											<label>2</label>
+											<label>Urine Routine Examination Lab Test Report</label>
 										</div>
-										<embed src="../uploads/a@a.a/1.txt" width="90%"/>
+										<?php
+											$path = trim($uploads['DocFilepath3']);
+											if(!empty($path)){
+												$path = str_replace('../../', '../', $path);
+												echo "<embed src='".$path."' width='90%' height='1000em'/>";
+											}
+											else{
+												echo "<textarea type='text' class='form-control' readonly>".$uploads['DocComment3']."</textarea>";
+											}
+										?>
 										<div>
-											<label>3</label>
+											<label>Stool Routine Examination Lab Test Report</label>
 										</div>
-										<embed src="../uploads/a@a.a/1.txt" width="90%"/>
+										<?php
+											$path = trim($uploads['DocFilepath4']);
+											if(!empty($path)){
+												$path = str_replace('../../', '../', $path);
+												echo "<embed src='".$path."' width='90%' height='1000em'/>";
+											}
+											else{
+												echo "<textarea type='text' class='form-control' readonly>".$uploads['DocComment4']."</textarea>";
+											}
+										?>
 										<div>
-											<label>4</label>
+											<label>Sickling Test Lab Test Report</label>
 										</div>
-										<embed src="../uploads/a@a.a/1.txt" width="90%"/>
+										<?php
+											$path = trim($uploads['DocFilepath5']);
+											if(!empty($path)){
+												$path = str_replace('../../', '../', $path);
+												echo "<embed src='".$path."' width='90%' height='1000em'/>";
+											}
+											else{
+												echo "<textarea type='text' class='form-control' readonly>".$uploads['DocComment5']."</textarea>";
+											}
+										?>
 										<div>
-											<label>5</label>
+											<label>HIV Test Lab Test Report</label>
 										</div>
-										<embed src="../uploads/a@a.a/1.txt" width="90%"/>
+										<?php
+											$path = trim($uploads['DocFilepath6']);
+											if(!empty($path)){
+												$path = str_replace('../../', '../', $path);
+												echo "<embed src='".$path."' width='90%' height='1000em'/>";
+											}
+											else{
+												echo "<textarea type='text' class='form-control' readonly>".$uploads['DocComment6']."</textarea>";
+											}
+										?>
 										<div>
-											<label>6</label>
+											<label>Picture Of Chest X-Ray</label>
 										</div>
-										<embed src="../uploads/a@a.a/1.txt" width="90%"/>
+										<?php
+											$path = trim($uploads['DocFilepath7']);
+											if(!empty($path)){
+												$path = str_replace('../../', '../', $path);
+												echo "<embed src='".$path."' width='90%' height='1000em'/>";
+											}
+											else{
+												echo "<textarea type='text' class='form-control' readonly>".$uploads['DocComment7']."</textarea>";
+											}
+										?>
 										<div>
-											<label>7</label>
+											<label>Official Chest X-Ray Report</label>
 										</div>
-										<embed src="../uploads/a@a.a/1.txt" width="90%"/>
+										<?php
+											$path = trim($uploads['DocFilepath8']);
+											if(!empty($path)){
+												$path = str_replace('../../', '../', $path);
+												echo "<embed src='".$path."' width='90%' height='1000em'/>";
+											}
+											else{
+												echo "<textarea type='text' class='form-control' readonly>".$uploads['DocComment8']."</textarea>";
+											}
+										?>
 										<div>
-											<label>8</label>
+											<label>Mental Health Assessment</label>
 										</div>
-										<embed src="../uploads/a@a.a/1.txt" width="90%"/>
+										<?php
+											$path = trim($uploads['DocFilepath9']);
+											if(!empty($path)){
+												$path = str_replace('../../', '../', $path);
+												echo "<embed src='".$path."' width='90%' height='1000em'/>";
+											}
+											else{
+												echo "<textarea type='text' class='form-control' readonly>".$uploads['DocComment9']."</textarea>";
+											}
+										?>
+										<div>
+											<label>Bible School Medical Assessment Form</label>
+										</div>
+										<?php
+											$path = trim($uploads['DocFilepath10']);
+											if(!empty($path)){
+												$path = str_replace('../../', '../', $path);
+												echo "<embed src='".$path."' width='90%' height='1000em'/>";
+											}
+											else{
+												echo "<textarea type='text' class='form-control' readonly>".$uploads['DocComment10']."</textarea>";
+											}
+										?>
 									</div>
 									
 									<div>
@@ -237,7 +335,16 @@ require("dbconfig/config.php");
 											<h3>Recommendation</h3>
 											<label>Letter Of Recommendation From Pastor</label>
 										</div>
-										<embed src="../uploads/a@a.a/1.txt" width="90%"/>
+										<?php
+											$path = trim($uploads['DocFilepath11']);
+											if(!empty($path)){
+												$path = str_replace('../../', '../', $path);
+												echo "<embed src='".$path."' width='90%' height='1000em'/>";
+											}
+											else{
+												echo "<textarea type='text' class='form-control' readonly>".$uploads['DocComment11']."</textarea>";
+											}
+										?>
 									</div>
 									
 									<div>
@@ -245,13 +352,23 @@ require("dbconfig/config.php");
 											<h3>Police Report</h3>
 											<label>Police Report (International Students Only)</label>
 										</div>
-										<embed src="../uploads/a@a.a/1.txt" width="90%"/>
+										<?php
+											$path = trim($uploads['DocFilepath12']);
+											if(!empty($path)){
+												$path = str_replace('../../', '../', $path);
+												echo "<embed src='".$path."' width='90%' height='1000em'/>";
+											}
+											else{
+												echo "<textarea type='text' class='form-control' readonly>".$uploads['DocComment12']."</textarea>";
+											}
+										?>
 									</div>
 									
 									<br/>
+									<br/>
 									<form id="responseForm" name="responseForm">
-										<h4>Response</h4>
-										<select id="response" name="response">
+										<h1>Admin Response</h1>
+										<select id="response" name="response" class="form-control">
 											<option value="" disabled selected/>Choose Response</option>
 											<option value="Accept"/>Accept</option>
 											<option value="Reject"/>Reject</option>
@@ -264,7 +381,7 @@ require("dbconfig/config.php");
 											<br/>
 										</div>
 										<br/>
-										<button type="submit" class="file-upload-browse btn btn-primary" style="float: right; margin-right: 2%">Submit</button>
+										<button type="submit" class="file-upload-browse btn btn-primary" style="float: right">Submit</button>
 									</form>
 								</div>
 							</div>

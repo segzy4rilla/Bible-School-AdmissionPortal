@@ -168,7 +168,7 @@ $result = $con->query($query);
 											echo "</td>";
 											
 											echo "<td>";
-												echo "<a href='docResults.php'>";
+												echo "<a href='docResults.php?emailWhatsApp=".$row['EmailWhatsapp']."'>";
 													echo $row['Document_Uploads_Status'];
 												echo "</a>";
 											echo "</td>";
