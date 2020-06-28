@@ -1,9 +1,19 @@
 <?php
-session_start();
 
-if ($_SESSION['loggedin'] == false || !$_SESSION['isAdmin']) {
-    header('Location: loginabmtc.html');
-}
+	session_start();
+
+	if ($_SESSION['loggedin'] == false || !$_SESSION['isAdmin']) {
+		header('Location: loginabmtc.html');
+	}
+
+	require("dbconfig/config.php");
+	$conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+	$query = $conn->prepare("SELECT * FROM Interview_Form WHERE User_ID = "."'".$_GET['code']."'");
+	$query->execute();
+	$interview = $query->fetch();
+	$query = $conn->prepare("SELECT * FROM Applicant_Table WHERE User_ID = "."'".$_GET['code']."'");
+	$query->execute();
+	$userInfo = $query->fetch();
 ?>
 <!doctype html>
 <html lang="en">
@@ -51,7 +61,7 @@ if ($_SESSION['loggedin'] == false || !$_SESSION['isAdmin']) {
 
             <div class="left-side-content-area d-flex align-items-center">
                 <div class="ecaps-logo" style="width:75px">
-                    <a href="applicantdash.php">
+                    <a href="summarytable.php">
                         <img class="desktop-logo" style="min-height:70px; min-width:70px; margin:0px 10px 0px 0px"
                              src="ABTMC.png" alt="Desktop Logo">
                         <img class="small-logo" src="ABTMC.png" alt="Mobile Logo">
@@ -108,40 +118,46 @@ if ($_SESSION['loggedin'] == false || !$_SESSION['isAdmin']) {
 
                                     <table id="scroll-horizontal-datatable" class="table w-100 nowrap table-striped ">
                                         <thead>
-                                        <th>Applicant Name</th>
-                                        <th>Are you a born again Christian?</th>
-                                        <th>What does it mean to be a born again Christian?</th>
-                                        <th>When were you born again?</th>
-                                        <th>How long have you been in church for?</th>
-                                        <th>What does it mean to be a new creature in Christ?</th>
-                                        <th>Which of your old habits have passed away?</th>
-                                        <th>When Did You Stop Your Old Habits?</th>
-                                        <th>Is your pastor aware of the problem you have? (If you have a problem)</th>
-                                        <th>What is your role in the church?</th>
-                                        <th>Select John 3:16</th>
-                                        <th>Select Genesis 1:1</th>
-                                        <th>Explain why you want to come to the Bible School</th>
-
-
+											<th>Applicant Name</th>
+											<th>Are you a born again Christian?</th>
+											<th>What does it mean to be a born again Christian?</th>
+											<th>When were you born again?</th>
+											<th>How long have you been in church for?</th>
+											<th>What does it mean to be a new creature in Christ?</th>
+											<th>Which of your old habits have passed away?</th>
+											<th>Which of your old habits have passed away? (Other)</th>
+											<th>When Did You Stop Your Old Habits?</th>
+											<th>When Did You Stop Your Old Habits? (Other)</th>
+											<th>Is your pastor aware of the problem you have? (If you have a problem)</th>
+											<th>Comment</th>
+											<th>What is your role in the church?</th>
+											<th>What is your role in the church? (Other)</th>
+											<th>Select John 3:16</th>
+											<th>Select Genesis 1:1</th>
+											<th>Explain why you want to come to the Bible School</th>
                                         </thead>
                                         <tbody>
-                                        <tr>
-                                            <td>James Buabin</td>
-                                            <td>Nixon</td>
-                                            <td>System Architect</td>
-                                            <td>Edinburgh</td>
-                                            <td>61</td>
-                                            <td>2011/04/25</td>
-                                            <td>$320,800</td>
-                                            <td>5421</td>
-                                            <td>t.nixon@datatables.net</td>
-                                            <td>$320,800</td>
-                                            <td>5421</td>
-                                            <td>t.nixon@datatables.net</td>
-                                            <td>t.nixon@datatables.net</td>
-
-                                        </tr>
-
+											<tr>
+												<?php
+													echo "<td>".$userInfo['First_Name']." ".$userInfo['Last_Name']."</td>";
+													echo "<td>".$interview['Are_You_Born_Again']."</td>";
+													echo "<td>".$interview['What_Does_It_Mean']."</td>";
+													echo "<td>".$interview['When_were_you']."</td>";
+													echo "<td>".$interview['How_long_have_you']."</td>";
+													echo "<td>".$interview['New_Creature_Meaning']."</td>";
+													echo "<td>".$interview['Old_Habits']."</td>";
+													echo "<td>".$interview['Old_Habits_Other']."</td>";
+													echo "<td>".$interview['Stop_Old_Habits']."</td>";
+													echo "<td>".$interview['Stop_Old_Habits_Other']."</td>";
+													echo "<td>".$interview['Is_Pastor_Aware']."</td>";
+													echo "<td>".$interview['Comment']."</td>";
+													echo "<td>".$interview['Role_In_Church']."</td>";
+													echo "<td>".$interview['Other_Role_In_Church']."</td>";
+													echo "<td>".$interview['John_3_16']."</td>";
+													echo "<td>".$interview['Genesis_1_1']."</td>";
+													echo "<td>".$interview['Why_Bible_School']."</td>";
+												?>
+											</tr>
                                         </tbody>
                                     </table>
 
