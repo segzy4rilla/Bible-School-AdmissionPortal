@@ -148,7 +148,7 @@ $result = $con->query($query);
 											echo "<td>" . $row['Church_Part_Of_UD'] . "</td>";
                                             
 											echo "<td>";
-												echo "<a href='summarytable.php?code=".$row['User_ID']."'>";
+												echo "<a href='adminapplicationform.php?code=".$row['User_ID']."'>";
 													if ($row['Application_Form_Submitted'] == 1) {
 														echo "Completed";
 													} else {
