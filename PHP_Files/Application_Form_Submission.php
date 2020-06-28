@@ -182,11 +182,13 @@ Recommended_By,Recommended_By_Specify,Signature,Submission_Date)
     '$question74')";
 
     $sql2 = "UPDATE Applicant_Table SET 	Application_Form_Submitted=TRUE WHERE User_ID='$uniqueid'";
+	$sql3 = "UPDATE Applicant_Table AS A LEFT JOIN Application_Form AS F ON A.User_ID = '$uniqueid' SET A.Church_Part_Of_UD = F.Church_Part_Of_UD WHERE A.User_ID='$uniqueid'";
 
     // use exec() because no results are returned
 
     $conn->exec($sql);
     $conn->exec($sql2);
+    $conn->exec($sql3);
     $_SESSION['Application_Form_Submitted'] = 1;
     echo '<script>alert("Application Form Submitted Successfully")</script>';
     header('Location: ../applicantdash.php');

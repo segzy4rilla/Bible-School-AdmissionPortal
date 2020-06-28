@@ -54,7 +54,7 @@ $result = $con->query($query);
     ">
         <!-- Desktop Logo -->
         <div class="ecaps-logo">
-            <a href="applicantdash.html">
+            <a href="summarytable.php">
                 <img class="desktop-logo" style="min-height:70px; min-width:70px; margin:0px 10px 0px 0px" src="ABTMC.png" alt="Desktop Logo">
                 <img class="small-logo" src="ABTMC.png" alt="Mobile Logo">
             </a>
@@ -70,7 +70,7 @@ $result = $con->query($query);
 
             <div class="left-side-content-area d-flex align-items-center">
                 <div class="ecaps-logo" style="width:75px">
-                    <a href="applicantdash.php">
+                    <a href="summarytable.php">
                         <img class="desktop-logo" style="min-height:70px; min-width:70px; margin:0px" src="ABTMC.png"
                              alt="Desktop Logo">
                         <img class="small-logo" src="ABTMC.png" alt="Mobile Logo">
@@ -146,18 +146,32 @@ $result = $con->query($query);
                                             echo "<td>" . $row['First_Name'] . " " . $row['Last_Name'] . "</td>";
                                             echo "<td>" . $row['Nationality'] . "</td>";
 											echo "<td>" . $row['Church_Part_Of_UD'] . "</td>";
-                                            if ($row['Application_Form_Submitted'] == 1) {
-                                                echo "<td>" . "Completed" . "</td>";
-                                            } else {
-                                                echo "<td>" . "Incomplete" . "</td>";
-                                            }
-
-                                            if ($row['Interview_Form_Submitted'] == 1) {
-                                                echo "<td>" . "Completed" . "</td>";
-                                            } else {
-                                                echo "<td>" . "Incomplete" . "</td>";
-                                            }
-											echo "<td>" . $row['Document_Uploads_Status'] . "</td>";
+                                            
+											echo "<td>";
+												echo "<a href='summarytable.php?code=".$row['User_ID']."'>";
+													if ($row['Application_Form_Submitted'] == 1) {
+														echo "Completed";
+													} else {
+														echo "Incomplete";
+													}
+												echo "</a>";
+											echo "</td>";
+											
+											echo "<td>";
+												echo "<a href='admininterview.php?code=".$row['User_ID']."'>";
+													if ($row['Interview_Form_Submitted'] == 1) {
+														echo "Completed";
+													} else {
+														echo "Incomplete";
+													}
+												echo "</a>";
+											echo "</td>";
+											
+											echo "<td>";
+												echo "<a href='docResults.php?emailWhatsApp=".$row['EmailWhatsapp']."'>";
+													echo $row['Document_Uploads_Status'];
+												echo "</a>";
+											echo "</td>";
                                             echo "</tr>";
                                         }
 

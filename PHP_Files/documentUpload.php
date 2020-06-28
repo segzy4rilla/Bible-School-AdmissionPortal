@@ -16,7 +16,7 @@
 	}
 	else{
 		$userFolder = $emailWhatsApp;
-		$targetDirectory = "../uploads/" .$userFolder ."/";
+		$targetDirectory = "../../uploads/" .$userFolder ."/";
 		
 		if (!file_exists($targetDirectory)) {
 			mkdir($targetDirectory, 0773, true);
@@ -45,7 +45,7 @@
 						$imageFileType = strtolower(pathinfo($targetFilePath, PATHINFO_EXTENSION));
 						$validUpload = 0;
 
-						if ($imageFileType == "jpg" || $imageFileType == "docx" || $imageFileType == "png" || $imageFileType == "txt"|| $imageFileType == "jpeg") {
+						if ($imageFileType == "jpg" || $imageFileType == "png" || $imageFileType == "jpeg"|| $imageFileType == "pdf") {
 							$validUpload = 1;
 						}
 
@@ -62,7 +62,7 @@
 							}
 						}
 						else {
-							$alertMessage = $alertMessage. "File could not be uploaded due to restricted file type. must be: .jpg, .jpeg, .doxc, .png or .txt ";
+							$alertMessage = $alertMessage. "File could not be uploaded due to restricted file type. must be: .jpg, .jpeg, .png or pdf";
 						}
 					}
 					else{
@@ -86,27 +86,37 @@
 	}
 	
 	try{
-		$getUploads = $conn->prepare("SELECT * FROM Documemt_Upload WHERE EmailWhatsapp =  ".$emailWhatsAppWithQuotes);
+		$getNationality = $conn->prepare("SELECT Nationality FROM Applicant_Table WHERE EmailWhatsapp = ".$emailWhatsAppWithQuotes);
+		$getNationality->execute();
+		$nationality = $getNationality->fetch();
+		$getUploads = $conn->prepare("SELECT * FROM Documemt_Upload WHERE EmailWhatsapp = ".$emailWhatsAppWithQuotes);
 		$getUploads->execute();
 		$docs = $getUploads->fetch();
 		$count = 0;
 		$excuses = false;
+		$policeReport = false;
 		
 		for($y = 1; $y < 13; ++$y){
-			$doc = trim($docs['DocFilepath'.$x]);
-			$ex = trim($docs['DocComment'.$x]);
+			$doc = trim($docs['DocFilepath'.$y]);
+			$ex = trim($docs['DocComment'.$y]);
 			
 			if(!empty($doc) || !empty($ex)){
 				$count += 1;
 				if(empty($doc) && !empty($ex)){
-					$excuses = true;
+					if(!($y == 12 && strtoupper($nationality[0]) == 'GHANAIAN')){// ignore excuse if it is for police report and the applicant is Ghanaian
+						$excuses = true;
+					}
 				}
+			}
+			
+			if($y == 12 && !empty($doc)){
+				$policeReport = true;
 			}
 		}
 		
 		$status = "'Incomplete'";
 		
-		if($count == 12){
+		if($count == 12 || ($count == 11 && strtoupper($nationality[0]) == 'GHANAIAN' && !$policeReport)){
 			if(!$excuses){
 				$status = "'Complete'";
 			}
