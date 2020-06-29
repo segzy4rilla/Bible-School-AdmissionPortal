@@ -371,6 +371,7 @@
 										<select id="response" name="response" class="form-control">
 											<option value="" disabled selected/>Choose Response</option>
 											<option value="Accept"/>Accept</option>
+											<option value="Retake"/>Retake</option>
 											<option value="Reject"/>Reject</option>
 										</select>
 										<br/>
@@ -447,7 +448,7 @@
 	function setTrigger(){
 		$("#response").change(showHide);
 		function showHide(){
-			if($("#response").val() == "Reject"){
+			if($("#response").val() == "Reject" || $("#response").val() == "Retake"){
 				$("#rejectReason").prop("hidden", false);
 			}
 			else{
