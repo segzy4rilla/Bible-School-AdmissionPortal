@@ -49,10 +49,13 @@ try {
             $_SESSION['isStaffAdmin'] = true;
             if ($result[0][2] == 1) {
                 $_SESSION['isAdmin'] = false;
+                header('Location: ../summarytable.php');
+
             } else {
                 $_SESSION['isAdmin'] = true;
+                header('Location: ../admindash2.php');
+
             }
-            header('Location: ../summarytable.php');
 
         } else {
             $_SESSION['loggedin'] = false;
