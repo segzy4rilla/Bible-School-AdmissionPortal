@@ -60,7 +60,7 @@ session_start()
 
                     <!-- Mobile Logo -->
                     <div class="mobile-logo mr-3 mr-sm-4">
-                        <a href="applicantdash.html"><img src="ABTMC.png" alt="Mobile Logo"></a>
+                        <a href="/"><img src="ABTMC.png" alt="Mobile Logo"></a>
                     </div>
 
                 </div>
@@ -88,7 +88,7 @@ session_start()
                 <div class="container-fluid" style="height:100%">
                     <div class="row" style="height:100%">
                         <div class="col-lg-12"  style="height:30%">
-							<a href="ABMTCApplicationForm.html">
+                            <a href="summarytable.php">
 								<div class="card" style="margin-bottom:15px;height:100%">
 									<!-- Card body -->
 									<div class="card-body">
@@ -109,13 +109,13 @@ session_start()
 							</a>
                         </div>
                         <div class="col-lg-12"  style="height:30%">
-							<a href="interview.html">
+                            <a href="UD_Bishops.php">
 								<div class="card" style="margin-bottom:15px;height:100%">
 									<!-- Card body -->
 									<div class="card-body">
 										<div class="row">
 											<div class="col">
-												<h5 class="mb-20">Table Of Bishops</h5>                                         
+                                                <h5 class="mb-20">UD Bishops Statistics</h5>
 											</div>
 											<div class="col-auto">
 												<div class="clint-icon bg-gradient-danger text-white rounded-circle icon-shape">
@@ -129,13 +129,13 @@ session_start()
 							</a>
                         </div>
                         <div class="col-lg-12"  style="height:30%">
-                            <a href="documentupload.html">
+                            <a href="schedulezoom.html">
 								<div class="card" style="margin-bottom:15px;height:100%">
 									<!-- Card body -->
 									<div class="card-body">
 										<div class="row">
 											<div class="col">
-												<h5 class="mb-20">Schedule A Meeting</h5>
+                                                <h5 class="mb-20">Schedule a Zoom Interview</h5>
 												
 											</div>
 											<div class="col-auto">
