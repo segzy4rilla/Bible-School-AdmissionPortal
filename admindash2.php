@@ -1,5 +1,9 @@
 <?php
-session_start()
+session_start();
+
+if ($_SESSION['loggedin'] == false || !$_SESSION['isAdmin']) {
+    header('Location: loginabmtc.html');
+}
 ?>
 <!doctype html>
 <html lang="en" style="height:100%">
