@@ -46,7 +46,7 @@ if ($_SESSION['loggedin'] == false || !$_SESSION['isAdmin']) {
 
                 <div class="left-side-content-area d-flex align-items-center">
 					<div class="ecaps-logo" style="width:75px">
-						<a href="applicantdash.html">
+                        <a href="admindash2.php">
 							<img class="desktop-logo" style="min-height:70px; min-width:70px; margin:0px 10px 0px 0px" src="ABTMC.png" alt="Desktop Logo">
 							<img class="small-logo" src="ABTMC.png" alt="Mobile Logo">
 						</a>
@@ -107,11 +107,57 @@ if ($_SESSION['loggedin'] == false || !$_SESSION['isAdmin']) {
 												</div>
 											</div>
 
-										</div>                                    
-									</div>
-								</div>
-							</a>
+										</div>
+                                    </div>
+                                </div>
+                            </a>
                         </div>
+
+                        <div class="col-lg-12" style="height:30%">
+                            <a href="summarytable_bots.php">
+                                <div class="card" style="margin-bottom:15px;height:100%">
+                                    <!-- Card body -->
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col">
+                                                <h5 class="mb-20">Summary Table (Botswana)</h5>
+                                                <span class="text-dark mb-0"></span>
+                                            </div>
+                                            <div class="col-auto">
+                                                <div class="clint-icon bg-gradient-danger text-white rounded-circle icon-shape">
+                                                    <i class="fa fa-table"></i>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+
+
+                        <div class="col-lg-12" style="height:30%">
+                            <a href="summarytable_gh.php">
+                                <div class="card" style="margin-bottom:15px;height:100%">
+                                    <!-- Card body -->
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col">
+                                                <h5 class="mb-20">Summary Table (Ghana)</h5>
+                                                <span class="text-dark mb-0"></span>
+                                            </div>
+                                            <div class="col-auto">
+                                                <div class="clint-icon bg-gradient-danger text-white rounded-circle icon-shape">
+                                                    <i class="fa fa-table"></i>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+
                         <div class="col-lg-12"  style="height:30%">
                             <a href="UD_Bishops.php">
 								<div class="card" style="margin-bottom:15px;height:100%">
