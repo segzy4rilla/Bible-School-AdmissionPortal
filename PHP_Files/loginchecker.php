@@ -46,7 +46,12 @@ try {
 
         if ($result) {
             $_SESSION['loggedin'] = true;
-            $_SESSION['isAdmin'] = true;
+            $_SESSION['isStaffAdmin'] = true;
+            if ($result[0][2] == 1) {
+                $_SESSION['isAdmin'] = false;
+            } else {
+                $_SESSION['isAdmin'] = true;
+            }
             header('Location: ../summarytable.php');
 
         } else {

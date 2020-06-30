@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.1
+-- version 4.9.4
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Jun 14, 2020 at 12:52 PM
--- Server version: 10.1.33-MariaDB
--- PHP Version: 7.2.6
+-- Host: localhost:3306
+-- Generation Time: Jun 29, 2020 at 10:28 PM
+-- Server version: 5.6.47
+-- PHP Version: 7.3.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `ABTMC_Portal`
+-- Database: `anagkaz1_wp780`
 --
 
 -- --------------------------------------------------------
@@ -30,15 +30,17 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `Admin_User` (
   `Username` varchar(255) NOT NULL,
-  `Password` varchar(255) NOT NULL
+  `Password` varchar(255) NOT NULL,
+  `User_Level` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `Admin_User`
 --
 
-INSERT INTO `Admin_User` (`Username`, `Password`) VALUES
-('ABMTC_Admin', 's^s{_h2aSEpbrK&?');
+INSERT INTO `Admin_User` (`Username`, `Password`, `User_Level`) VALUES
+('ABMTC_Admin', 's^s{_h2aSEpbrK&?', 0),
+('ABMTC_Staff1', '66wd%`TPK4_+]Au,', 1);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
