@@ -10,7 +10,11 @@ require("dbconfig/config.php");
 $query = "select * from Applicant_Table";
 $result = $con->query($query);
 
+$query = "select * from Applicant_Table";
+$result = $con->query($query);
+
 ?>
+
 <!doctype html>
 <html lang="en">
 
@@ -133,8 +137,16 @@ $result = $con->query($query);
                                         <tbody>
 											<?php
 												$count = 0;
+												$adminUsername = $_SESSION['Username'];
+												$adminUsernameWithQuotes = "'".$_SESSION['Username']."'";
+												$conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
 												while ($row = $result->fetch_assoc()) {
-													if($row['Document_Uploads_Status'] == 'Complete'){
+													$emailWhatsApp = $row['EmailWhatsapp'];
+													$emailWhatsAppWithQuotes = "'".$emailWhatsApp."'";
+													$entryCheck = $conn->prepare('SELECT * FROM MedicalDocResponse WHERE EXISTS(SELECT * FROM MedicalDocResponse WHERE EmailWhatsapp = ' . $emailWhatsAppWithQuotes .' AND AdminUsername = '.$adminUsernameWithQuotes.')');
+													$entryCheck->execute();
+													$entryExists = $entryCheck->fetchAll();
+													if($row['Document_Uploads_Status'] == 'Complete' && !$entryExists){
 														echo "<tr>";
 														echo "<td>" . ++$count . "</td>";
 														echo "<td>" . $row['First_Name'] . " " . $row['Last_Name'] . "</td>";
