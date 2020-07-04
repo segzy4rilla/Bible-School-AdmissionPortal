@@ -2,7 +2,7 @@
 
 	session_start();
 
-	if ($_SESSION['loggedin'] == false || $_SESSION['isAdmin'] == false) {
+	if ($_SESSION['loggedin'] == false || $_SESSION['IsMedicalAdmin'] == false) {
 		header('Location: loginabmtc.html');
 	}
 

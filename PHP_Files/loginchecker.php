@@ -47,16 +47,15 @@ try {
         if ($result) {
             $_SESSION['loggedin'] = true;
             $_SESSION['isStaffAdmin'] = true;
-            if ($result[0][2] == 1) {
+            if ($result[0][2] == true) {
                 $_SESSION['isAdmin'] = false;
-                header('Location: ../summarytable.php');
+				$_SESSION['IsMedicalAdmin'] = true;
+                header('Location: ../medicalSummary.php');
 
             } else {
                 $_SESSION['isAdmin'] = true;
                 header('Location: ../admindash2.php');
-
             }
-
         } else {
             $_SESSION['loggedin'] = false;
             $_SESSION['isAdmin'] = false;
