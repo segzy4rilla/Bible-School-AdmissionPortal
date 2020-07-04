@@ -1,0 +1,14 @@
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+CREATE TABLE MedicalDocResponse(
+	AdminUsername VARCHAR(50) NOT NULL,
+	EmailWhatsapp VARCHAR(255) NOT NULL,
+	Status VARCHAR(10) NULL,
+	Reason VARCHAR(1000) NULL,
+	PRIMARY KEY (AdminUsername, EmailWhatsapp)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+COMMIT;

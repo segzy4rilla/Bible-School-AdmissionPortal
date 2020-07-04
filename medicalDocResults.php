@@ -2,7 +2,7 @@
 
 	session_start();
 
-	if ($_SESSION['loggedin'] == false || $_SESSION['isAdmin'] == false) {
+	if ($_SESSION['loggedin'] == false || $_SESSION['IsMedicalAdmin'] == false) {
 		header('Location: loginabmtc.html');
 	}
 
@@ -22,7 +22,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">    <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
     <!-- Title -->
-    <title>Document Response Admin</title>
+    <title>Medical Document Response Admin</title>
 
     <!-- Favicon -->
     <link rel="icon" href="ABTMC.png">
@@ -139,7 +139,7 @@
 
             <div class="left-side-content-area d-flex align-items-center">
                 <div class="ecaps-logo" style="width:75px">
-                    <a href="admindash2.php">
+                    <a href="summarytable.php">
                         <img class="desktop-logo" style="min-height:70px; min-width:70px; margin:0px" src="ABTMC.png"
                              alt="Desktop Logo">
                         <img class="small-logo" src="ABTMC.png" alt="Mobile Logo">
@@ -159,7 +159,7 @@
 
                 <!-- Mobile Logo -->
                 <div class="mobile-logo mr-3 mr-sm-4">
-                    <a href="admindash2.php"><img src="ABTMC.png" alt="Mobile Logo"></a>
+                    <a href="applicantdash.php"><img src="ABTMC.png" alt="Mobile Logo"></a>
                 </div>
 
             </div>
@@ -187,25 +187,9 @@
                     <div class="col-12 box-margin height-card">
                         <div class="card">
                             <div class="card-body" style="margin-left: 0.9%">
-								<h1>Document Uploads</h1>
+								<h1>Meidical Document Uploads</h1>
 								<div style="margin-left: 1%; margin-right: 1%">
 									<br/>
-									<div>
-										<div>
-											<h3>Education Certficate</h3>
-											<label>Education Certficate (Highest Level)</label>
-										</div>
-										<?php
-											$path = trim($uploads['DocFilepath1']);
-											if(!empty($path)){
-												$path = str_replace('../../', '../', $path);
-												echo "<embed src='".$path."' width='90%' height='1000em'/>";
-											}
-											else{
-												echo "<textarea type='text' class='form-control' readonly>".$uploads['DocComment1']."</textarea>";
-											}
-										?>
-									</div>
 									
 									<div>
 										<div>
@@ -330,43 +314,9 @@
 										?>
 									</div>
 									
-									<div>
-										<div>
-											<h3>Recommendation</h3>
-											<label>Letter Of Recommendation From Pastor</label>
-										</div>
-										<?php
-											$path = trim($uploads['DocFilepath11']);
-											if(!empty($path)){
-												$path = str_replace('../../', '../', $path);
-												echo "<embed src='".$path."' width='90%' height='1000em'/>";
-											}
-											else{
-												echo "<textarea type='text' class='form-control' readonly>".$uploads['DocComment11']."</textarea>";
-											}
-										?>
-									</div>
-									
-									<div>
-										<div>
-											<h3>Police Report</h3>
-											<label>Police Report (International Students Only)</label>
-										</div>
-										<?php
-											$path = trim($uploads['DocFilepath12']);
-											if(!empty($path)){
-												$path = str_replace('../../', '../', $path);
-												echo "<embed src='".$path."' width='90%' height='1000em'/>";
-											}
-											else{
-												echo "<textarea type='text' class='form-control' readonly>".$uploads['DocComment12']."</textarea>";
-											}
-										?>
-									</div>
-									
 									<br/>
 									<br/>
-									<form id="responseForm" name="responseForm" action="PHP_Files/docResponse.php" method="post">
+									<form id="responseForm" name="responseForm" action="PHP_Files/medicalDocResponse.php" method="post">
 										<h1>Admin Response</h1>
 										<select id="response" name="response" class="form-control">
 											<option value="" disabled selected/>Choose Response</option>
