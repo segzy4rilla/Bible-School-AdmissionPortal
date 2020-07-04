@@ -47,6 +47,7 @@ try {
         if ($result) {
             $_SESSION['loggedin'] = true;
             $_SESSION['isStaffAdmin'] = true;
+			$_SESSION['Username'] = $result[0][0];
             if ($result[0][2] == true) {
                 $_SESSION['isAdmin'] = false;
 				$_SESSION['IsMedicalAdmin'] = true;

@@ -54,7 +54,7 @@ $result = $con->query($query);
     ">
         <!-- Desktop Logo -->
         <div class="ecaps-logo">
-            <a href="summarytable.php">
+            <a href="admindash2.php">
                 <img class="desktop-logo" style="min-height:70px; min-width:70px; margin:0px 10px 0px 0px" src="ABTMC.png" alt="Desktop Logo">
                 <img class="small-logo" src="ABTMC.png" alt="Mobile Logo">
             </a>
@@ -70,7 +70,7 @@ $result = $con->query($query);
 
             <div class="left-side-content-area d-flex align-items-center">
                 <div class="ecaps-logo" style="width:75px">
-                    <a href="summarytable.php">
+                    <a href="admindash2.php">
                         <img class="desktop-logo" style="min-height:70px; min-width:70px; margin:0px" src="ABTMC.png"
                              alt="Desktop Logo">
                         <img class="small-logo" src="ABTMC.png" alt="Mobile Logo">
@@ -90,7 +90,7 @@ $result = $con->query($query);
 
                 <!-- Mobile Logo -->
                 <div class="mobile-logo mr-3 mr-sm-4">
-                    <a href="summarytable.php"><img src="ABTMC.png" alt="Mobile Logo"></a>
+                    <a href="admindash2.php"><img src="ABTMC.png" alt="Mobile Logo"></a>
                 </div>
 
             </div>
