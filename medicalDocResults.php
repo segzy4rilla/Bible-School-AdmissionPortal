@@ -22,7 +22,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">    <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
     <!-- Title -->
-    <title>Document Uploads Admin</title>
+    <title>Medical Document Response Admin</title>
 
     <!-- Favicon -->
     <link rel="icon" href="ABTMC.png">
@@ -316,7 +316,7 @@
 									
 									<br/>
 									<br/>
-									<form id="responseForm" name="responseForm">
+									<form id="responseForm" name="responseForm" action="PHP_Files/medicalDocResponse.php" method="post">
 										<h1>Admin Response</h1>
 										<select id="response" name="response" class="form-control">
 											<option value="" disabled selected/>Choose Response</option>
@@ -325,12 +325,15 @@
 											<option value="Reject"/>Reject</option>
 										</select>
 										<br/>
-										<div id="rejectReason" name="rejectReason" hidden>
+										<div id="rejectReason" hidden>
 											<br/>
 											<h4>Provide Reason For Rejection</h4>
-											<textarea type="text" class="form-control"></textarea>
+											<textarea type="text" name="rejectReason" class="form-control"></textarea>
 											<br/>
 										</div>
+										<?php
+											echo '<input id="eID" name="eID" value="'.$_GET['emailWhatsApp'].'" hidden/>';
+										?>
 										<br/>
 										<button type="submit" class="file-upload-browse btn btn-primary" style="float: right">Submit</button>
 									</form>
