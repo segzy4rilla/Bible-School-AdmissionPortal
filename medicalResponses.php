@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-if ($_SESSION['loggedin'] == false || $_SESSION['IsMedicalAdmin'] == false) {
+if ($_SESSION['loggedin'] == false || $_SESSION['IsMedicalAdmin'] == true || $_SESSION['isStaffAdmin'] == false) {
     header('Location: loginabmtc.html');
 }
 
@@ -23,7 +23,7 @@ $result = $con->query($query);
     <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
     <!-- Title -->
-    <title>ABMTC Medical Documents Review</title>
+    <title>ABMTC Medical Admin Responses</title>
 
     <!-- Favicon -->
     <link rel="icon" href="ABTMC.png" s-resize>
@@ -55,7 +55,7 @@ $result = $con->query($query);
     ">
         <!-- Desktop Logo -->
         <div class="ecaps-logo">
-            <a href="medicalSummary.php">
+            <a href="admindash2.php">
                 <img class="desktop-logo" style="min-height:70px; min-width:70px; margin:0px 10px 0px 0px" src="ABTMC.png" alt="Desktop Logo">
                 <img class="small-logo" src="ABTMC.png" alt="Mobile Logo">
             </a>
@@ -71,7 +71,7 @@ $result = $con->query($query);
 
             <div class="left-side-content-area d-flex align-items-center">
                 <div class="ecaps-logo" style="width:75px">
-                    <a href="medicalSummary.php">
+                    <a href="admindash2.php">
                         <img class="desktop-logo" style="min-height:70px; min-width:70px; margin:0px" src="ABTMC.png"
                              alt="Desktop Logo">
                         <img class="small-logo" src="ABTMC.png" alt="Mobile Logo">
@@ -90,7 +90,7 @@ $result = $con->query($query);
 
                 <!-- Mobile Logo -->
                 <div class="mobile-logo mr-3 mr-sm-4">
-                    <a href="medicalSummary.php"><img src="ABTMC.png" alt="Mobile Logo"></a>
+                    <a href="admindash2.php"><img src="ABTMC.png" alt="Mobile Logo"></a>
                 </div>
 
             </div>
@@ -124,40 +124,74 @@ $result = $con->query($query);
 
                                     <table id="datatable-buttons" class="table table-striped dt-responsive nowrap w-100">
                                         <thead>
-                                        <tr>
-                                            <th>Index</th>
-                                            <th>Applicants Name</th>
-                                            <th>Nationality</th>
-                                            <th>Medical Documents</th>
-                                        </tr>
+											<tr>
+												<th>Index</th>
+												<th>Applicants Name</th>
+												<th>Nationality</th>
+												<?php
+													$query = "SELECT DISTINCT AdminUsername FROM MedicalDocResponse";
+													$result2 = $con->query($query);
+													$x = 1;
+													$usernames = array();
+													while ($row = $result2->fetch_assoc()) {
+														$usernames[] = $row['AdminUsername'];
+														echo '<th>'.$row['AdminUsername'].' Responses</th>';
+														$x += 1;
+													}
+												?>
+											</tr>
                                         </thead>
                                         <tbody>
 											<?php
 												$count = 0;
-												$adminUsername = $_SESSION['Username'];
-												$adminUsernameWithQuotes = "'".$_SESSION['Username']."'";
 												$conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
 												while ($row = $result->fetch_assoc()) {
+													
 													$emailWhatsApp = $row['EmailWhatsapp'];
 													$emailWhatsAppWithQuotes = "'".$emailWhatsApp."'";
-													$entryCheck = $conn->prepare('SELECT * FROM MedicalDocResponse WHERE EXISTS(SELECT * FROM MedicalDocResponse WHERE EmailWhatsapp = ' . $emailWhatsAppWithQuotes .' AND AdminUsername = '.$adminUsernameWithQuotes.')');
-													$entryCheck->execute();
-													$entryExists = $entryCheck->fetchAll();
-													if($row['Document_Uploads_Status'] == 'Complete' && !$entryExists){
+													
+													$responseCheck = $conn->prepare('SELECT * FROM MedicalDocResponse WHERE EmailWhatsapp = ' . $emailWhatsAppWithQuotes);
+													$reponseCheckCall = $responseCheck->execute();
+													if($reponseCheckCall){
+														$responsesForCheck = $responseCheck->fetchAll();
+													}
+													
+													if($responsesForCheck){
+														
 														echo "<tr>";
 														echo "<td>" . ++$count . "</td>";
 														echo "<td>" . $row['First_Name'] . " " . $row['Last_Name'] . "</td>";
 														echo "<td>" . $row['Nationality'] . "</td>";
 														
-														echo "<td>";
-															echo "<a href='medicalDocResults.php?emailWhatsApp=".$row['EmailWhatsapp']."'>";
-																	echo "Review";
-															echo "</a>";
-														echo "</td>";
-														
+														for ($y = 0; $y < count($usernames); ++$y){
+															
+															$adminUsername = $usernames[$y];
+															$adminUsernameWithQuotes = "'".$adminUsername."'";															
+													
+															$getResponses = $conn->prepare('SELECT * FROM MedicalDocResponse WHERE EmailWhatsapp = ' . $emailWhatsAppWithQuotes .' AND AdminUsername = '.$adminUsernameWithQuotes);
+															$reponseCall = $getResponses->execute();
+															
+															$tdAdded = false;
+															if($reponseCall){
+																$response = $getResponses->fetchAll();
+																if($response){
+																	$conditionalNewLine = "";
+																	if($response[0][2] != "Accept" && !empty($response[0][2])){
+																		$conditionalNewLine = ":<br>";
+																	}
+																	echo "<td>".$response[0][2].$conditionalNewLine.$response[0][3]."</td>";
+																	$tdAdded = true;
+																}
+															}
+															
+															if(!$tdAdded){
+																echo "<td></td>";
+															}
+														}
 														echo "</tr>";
 													}
 												}
+												
 											?>
                                         </tbody>
                                     </table>
