@@ -4,6 +4,8 @@ session_start();
 if ($_SESSION['loggedin'] == false || !$_SESSION['isAdmin']) {
     header('Location: loginabmtc.html');
 }
+
+require("PHP_Files/getAdminHomeLink.php");
 ?>
 <!doctype html>
 <html lang="en" style="height:100%">
@@ -46,7 +48,7 @@ if ($_SESSION['loggedin'] == false || !$_SESSION['isAdmin']) {
 
                 <div class="left-side-content-area d-flex align-items-center">
 					<div class="ecaps-logo" style="width:75px">
-                        <a href="admindash2.php">
+                        <?php echo "<a href='".GetAdminHomeLink()."'>";?>
 							<img class="desktop-logo" style="min-height:70px; min-width:70px; margin:0px 10px 0px 0px" src="ABTMC.png" alt="Desktop Logo">
 							<img class="small-logo" src="ABTMC.png" alt="Mobile Logo">
 						</a>
@@ -64,7 +66,7 @@ if ($_SESSION['loggedin'] == false || !$_SESSION['isAdmin']) {
 
                     <!-- Mobile Logo -->
                     <div class="mobile-logo mr-3 mr-sm-4">
-                        <a href="/"><img src="ABTMC.png" alt="Mobile Logo"></a>
+                        <?php echo "<a href='".GetAdminHomeLink()."'><img src='ABTMC.png' alt='Mobile Logo'></a>";?>
                     </div>
 
                 </div>
@@ -144,6 +146,28 @@ if ($_SESSION['loggedin'] == false || !$_SESSION['isAdmin']) {
                                         <div class="row">
                                             <div class="col">
                                                 <h5 class="mb-20">Summary Table (Ghana)</h5>
+                                                <span class="text-dark mb-0"></span>
+                                            </div>
+                                            <div class="col-auto">
+                                                <div class="clint-icon bg-gradient-danger text-white rounded-circle icon-shape">
+                                                    <i class="fa fa-table"></i>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+						
+						<div class="col-lg-12" style="height:30%">
+                            <a href="medicalSummary.php">
+                                <div class="card" style="margin-bottom:15px;height:100%">
+                                    <!-- Card body -->
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col">
+                                                <h5 class="mb-20">Medical Summary Table</h5>
                                                 <span class="text-dark mb-0"></span>
                                             </div>
                                             <div class="col-auto">

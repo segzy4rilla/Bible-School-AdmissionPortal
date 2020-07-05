@@ -4,6 +4,9 @@ session_start();
 if ($_SESSION['loggedin'] == false) {
     header('Location: loginabmtc.html');
 }
+
+require("PHP_Files/getAdminHomeLink.php");
+
 ?>
 <!doctype html>
 <html lang="en">
@@ -298,7 +301,7 @@ if ($_SESSION['loggedin'] == false) {
 
             <div class="left-side-content-area d-flex align-items-center">
                 <div class="ecaps-logo" style="width:75px">
-                    <a href="applicantdash.php">
+                    <?php echo "<a href='".GetAdminHomeLink()."'>";?>
                         <img class="desktop-logo" style="min-height:70px; min-width:70px; margin:0px" src="ABTMC.png"
                              alt="Desktop Logo">
                         <img class="small-logo" src="ABTMC.png" alt="Mobile Logo">
@@ -318,7 +321,7 @@ if ($_SESSION['loggedin'] == false) {
 
                 <!-- Mobile Logo -->
                 <div class="mobile-logo mr-3 mr-sm-4">
-                    <a href="applicantdash.php"><img src="ABTMC.png" alt="Mobile Logo"></a>
+                    <?php echo "<a href='".GetAdminHomeLink()."'><img src='ABTMC.png' alt='Mobile Logo'></a>";?>
                 </div>
 
             </div>
