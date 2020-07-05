@@ -52,7 +52,7 @@ try {
             if ($result[0][2] == true) {
                 $_SESSION['isAdmin'] = false;
 				$_SESSION['IsMedicalAdmin'] = true;
-                header('Location: ../medicalSummary.php');
+                header('Location: ../staffdash.php');
 
             } else {
                 $_SESSION['isAdmin'] = true;
