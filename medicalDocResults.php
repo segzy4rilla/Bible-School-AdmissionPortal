@@ -189,7 +189,7 @@
                     <div class="col-12 box-margin height-card">
                         <div class="card">
                             <div class="card-body" style="margin-left: 0.9%">
-								<h1>Meidical Document Uploads</h1>
+								<h1>Medical Document Uploads</h1>
 								<div style="margin-left: 1%; margin-right: 1%">
 									<br/>
 									
@@ -329,7 +329,7 @@
 										<br/>
 										<div id="rejectReason" hidden>
 											<br/>
-											<h4>Provide Reason For Rejection</h4>
+											<h4>Provide Reason For Response</h4>
 											<textarea type="text" name="rejectReason" class="form-control"></textarea>
 											<br/>
 										</div>
