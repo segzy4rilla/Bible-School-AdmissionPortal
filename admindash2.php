@@ -100,7 +100,7 @@ require("PHP_Files/getAdminHomeLink.php");
 									<div class="card-body">
 										<div class="row">
 											<div class="col">
-												<h5 class="mb-20">Summary Tables</h5>
+												<h5 class="mb-20">Summary Table</h5>
 												<span class="text-dark mb-0"></span>
 											</div>
 											<div class="col-auto">

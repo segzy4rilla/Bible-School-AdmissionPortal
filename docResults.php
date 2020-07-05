@@ -377,7 +377,7 @@
 										<br/>
 										<div id="rejectReason" hidden>
 											<br/>
-											<h4>Provide Reason For Rejection</h4>
+											<h4>Provide Reason For Response</h4>
 											<textarea type="text" name="rejectReason" class="form-control"></textarea>
 											<br/>
 										</div>
