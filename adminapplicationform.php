@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-if ($_SESSION['loggedin'] == false) {
+if ($_SESSION['loggedin'] == false || (!$_SESSION['IsMedicalAdmin'] && !$_SESSION['isAdmin'])) {
     header('Location: loginabmtc.html');
 }
 
