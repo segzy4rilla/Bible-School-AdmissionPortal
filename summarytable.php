@@ -6,6 +6,7 @@ if ($_SESSION['loggedin'] == false || $_SESSION['isStaffAdmin'] == false) {
 }
 
 require("dbconfig/config.php");
+require("PHP_Files/getAdminHomeLink.php");
 
 $query = "select * from Applicant_Table";
 $result = $con->query($query);
@@ -48,20 +49,6 @@ $result = $con->query($query);
 <!-- ======================================
 ******* Page Wrapper Area Start **********
 ======================================= -->
-<div class="ecaps-page-wrapper">
-    <!-- Sidemenu Area -->
-    <div
-    ">
-        <!-- Desktop Logo -->
-        <div class="ecaps-logo">
-            <a href="summarytable.php">
-                <img class="desktop-logo" style="min-height:70px; min-width:70px; margin:0px 10px 0px 0px" src="ABTMC.png" alt="Desktop Logo">
-                <img class="small-logo" src="ABTMC.png" alt="Mobile Logo">
-            </a>
-        </div>
-
-
-    </div>
 
     <!-- Page Content -->
     <div class="ecaps-page-content">
@@ -70,7 +57,7 @@ $result = $con->query($query);
 
             <div class="left-side-content-area d-flex align-items-center">
                 <div class="ecaps-logo" style="width:75px">
-                    <a href="summarytable.php">
+                    <?php echo "<a href='".GetAdminHomeLink()."'>";?>
                         <img class="desktop-logo" style="min-height:70px; min-width:70px; margin:0px" src="ABTMC.png"
                              alt="Desktop Logo">
                         <img class="small-logo" src="ABTMC.png" alt="Mobile Logo">
@@ -90,7 +77,7 @@ $result = $con->query($query);
 
                 <!-- Mobile Logo -->
                 <div class="mobile-logo mr-3 mr-sm-4">
-                    <a href="applicantdash.php"><img src="ABTMC.png" alt="Mobile Logo"></a>
+                    <?php echo "<a href='".GetAdminHomeLink()."'><img src='ABTMC.png' alt='Mobile Logo'></a>";?>
                 </div>
 
             </div>

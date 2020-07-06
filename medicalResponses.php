@@ -1,20 +1,18 @@
 <?php
+session_start();
 
-	session_start();
+if ($_SESSION['loggedin'] == false || ($_SESSION['IsMedicalAdmin'] && !$_SESSION['isStaffAdmin'])) {
+    header('Location: loginabmtc.html');
+}
 
-	if ($_SESSION['loggedin'] == false || (!$_SESSION['IsMedicalAdmin'] && !$_SESSION['isAdmin'])) {
-		header('Location: loginabmtc.html');
-	}
+require("dbconfig/config.php");
+require("PHP_Files/getAdminHomeLink.php");
 
-	require("dbconfig/config.php");
-	$conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-	$query = $conn->prepare("SELECT * FROM Interview_Form WHERE User_ID = "."'".$_GET['code']."'");
-	$query->execute();
-	$interview = $query->fetch();
-	$query = $conn->prepare("SELECT * FROM Applicant_Table WHERE User_ID = "."'".$_GET['code']."'");
-	$query->execute();
-	$userInfo = $query->fetch();
+$query = "select * from Applicant_Table";
+$result = $con->query($query);
+
 ?>
+
 <!doctype html>
 <html lang="en">
 
@@ -26,10 +24,10 @@
     <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
     <!-- Title -->
-    <title>ABMTC - Admin Interview</title>
+    <title>ABMTC Medical Admin Responses</title>
 
     <!-- Favicon -->
-    <link rel="icon" href="ABTMC.png">
+    <link rel="icon" href="ABTMC.png" s-resize>
 
     <!-- These plugins only need for the run this page -->
     <link rel="stylesheet" href="css/default-assets/datatables.bootstrap4.css">
@@ -37,7 +35,7 @@
     <link rel="stylesheet" href="css/default-assets/buttons.bootstrap4.css">
     <link rel="stylesheet" href="css/default-assets/select.bootstrap4.css">
 
-    <!-- Master Stylesheet [If you remove this CSS file, your file will be broken undoubtedly.] -->
+    <!-- Master  [If you remove this CSS file, your file will be broken undoubtedly.] -->
     <link rel="stylesheet" href="style.css">
 
 </head>
@@ -52,7 +50,6 @@
 <!-- ======================================
 ******* Page Wrapper Area Start **********
 ======================================= -->
-<div class="ecaps-page-wrapper">
 
     <!-- Page Content -->
     <div class="ecaps-page-content">
@@ -61,9 +58,9 @@
 
             <div class="left-side-content-area d-flex align-items-center">
                 <div class="ecaps-logo" style="width:75px">
-                    <a href="summarytable.php">
-                        <img class="desktop-logo" style="min-height:70px; min-width:70px; margin:0px 10px 0px 0px"
-                             src="ABTMC.png" alt="Desktop Logo">
+                    <?php echo "<a href='".GetAdminHomeLink()."'>";?>
+                        <img class="desktop-logo" style="min-height:70px; min-width:70px; margin:0px" src="ABTMC.png"
+                             alt="Desktop Logo">
                         <img class="small-logo" src="ABTMC.png" alt="Mobile Logo">
                     </a>
                 </div>
@@ -76,21 +73,20 @@
                     }
                 </script>
 
-                <script type="text/javascript"
-                        src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+                <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
                 <!-- Mobile Logo -->
                 <div class="mobile-logo mr-3 mr-sm-4">
-                    <a href="applicantdash.php"><img src="ABTMC.png" alt="Mobile Logo"></a>
+                    <?php echo "<a href='".GetAdminHomeLink()."'><img src='ABTMC.png' alt='Mobile Logo'></a>";?>
                 </div>
 
             </div>
 
             <div class="right-side-navbar d-flex align-items-center justify-content-end">
+                <!-- Mobile Trigger -->
                 <div class="right-side-trigger" id="rightSideTrigger">
                     <i class="fa fa-reorder"></i>
                 </div>
-
                 <!-- Three line menu button -->
                 <div class="ecaps-triggers mr-1 mr-sm-3">
                     <div class="menu-collasped" id="menuCollasped">
@@ -111,53 +107,79 @@
                         <div class="col-12 box-margin">
                             <div class="card">
                                 <div class="card-body">
-                                    <h4 class="card-title mb-2">Applicant Results</h4>
-                                    <p class="text-muted font-13 mb-4">
-                                        Table description of interview here
-                                    </p>
+                                    <h4 class="card-title mb-2">Medical Documents Review</h4>
 
-                                    <table id="scroll-horizontal-datatable" class="table w-100 nowrap table-striped ">
+                                    <table id="datatable-buttons" class="table table-striped dt-responsive nowrap w-100">
                                         <thead>
-											<th>Applicant Name</th>
-											<th>Are you a born again Christian?</th>
-											<th>What does it mean to be a born again Christian?</th>
-											<th>When were you born again?</th>
-											<th>How long have you been in church for?</th>
-											<th>What does it mean to be a new creature in Christ?</th>
-											<th>Which of your old habits have passed away?</th>
-											<th>Which of your old habits have passed away? (Other)</th>
-											<th>When Did You Stop Your Old Habits?</th>
-											<th>When Did You Stop Your Old Habits? (Other)</th>
-											<th>Is your pastor aware of the problem you have? (If you have a problem)</th>
-											<th>Comment</th>
-											<th>What is your role in the church?</th>
-											<th>What is your role in the church? (Other)</th>
-											<th>Select John 3:16</th>
-											<th>Select Genesis 1:1</th>
-											<th>Explain why you want to come to the Bible School</th>
-                                        </thead>
-                                        <tbody>
 											<tr>
+												<th>Index</th>
+												<th>Applicants Name</th>
+												<th>Nationality</th>
 												<?php
-													echo "<td>".$userInfo['First_Name']." ".$userInfo['Last_Name']."</td>";
-													echo "<td>".$interview['Are_You_Born_Again']."</td>";
-													echo "<td>".$interview['What_Does_It_Mean']."</td>";
-													echo "<td>".$interview['When_were_you']."</td>";
-													echo "<td>".$interview['How_long_have_you']."</td>";
-													echo "<td>".$interview['New_Creature_Meaning']."</td>";
-													echo "<td>".$interview['Old_Habits']."</td>";
-													echo "<td>".$interview['Old_Habits_Other']."</td>";
-													echo "<td>".$interview['Stop_Old_Habits']."</td>";
-													echo "<td>".$interview['Stop_Old_Habits_Other']."</td>";
-													echo "<td>".$interview['Is_Pastor_Aware']."</td>";
-													echo "<td>".$interview['Comment']."</td>";
-													echo "<td>".$interview['Role_In_Church']."</td>";
-													echo "<td>".$interview['Other_Role_In_Church']."</td>";
-													echo "<td>".$interview['John_3_16']."</td>";
-													echo "<td>".$interview['Genesis_1_1']."</td>";
-													echo "<td>".$interview['Why_Bible_School']."</td>";
+													$query = "SELECT DISTINCT AdminUsername FROM MedicalDocResponse";
+													$result2 = $con->query($query);
+													$x = 1;
+													$usernames = array();
+													while ($row = $result2->fetch_assoc()) {
+														$usernames[] = $row['AdminUsername'];
+														echo '<th>'.$row['AdminUsername'].' Responses</th>';
+														$x += 1;
+													}
 												?>
 											</tr>
+                                        </thead>
+                                        <tbody>
+											<?php
+												$count = 0;
+												$conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+												while ($row = $result->fetch_assoc()) {
+													
+													$emailWhatsApp = $row['EmailWhatsapp'];
+													$emailWhatsAppWithQuotes = "'".$emailWhatsApp."'";
+													
+													$responseCheck = $conn->prepare('SELECT * FROM MedicalDocResponse WHERE EmailWhatsapp = ' . $emailWhatsAppWithQuotes);
+													$reponseCheckCall = $responseCheck->execute();
+													if($reponseCheckCall){
+														$responsesForCheck = $responseCheck->fetchAll();
+													}
+													
+													if($responsesForCheck){
+														
+														echo "<tr>";
+														echo "<td>" . ++$count . "</td>";
+														echo "<td>" . $row['First_Name'] . " " . $row['Last_Name'] . "</td>";
+														echo "<td>" . $row['Nationality'] . "</td>";
+														
+														for ($y = 0; $y < count($usernames); ++$y){
+															
+															$adminUsername = $usernames[$y];
+															$adminUsernameWithQuotes = "'".$adminUsername."'";															
+													
+															$getResponses = $conn->prepare('SELECT * FROM MedicalDocResponse WHERE EmailWhatsapp = ' . $emailWhatsAppWithQuotes .' AND AdminUsername = '.$adminUsernameWithQuotes);
+															$reponseCall = $getResponses->execute();
+															
+															$tdAdded = false;
+															if($reponseCall){
+																$response = $getResponses->fetchAll();
+																if($response){
+																	$conditionalNewLine = "";
+																	if($response[0][2] != "Accept" && !empty($response[0][2])){
+																		$conditionalNewLine = ":<br>";
+																	}
+																	echo "<td>".$response[0][2].$conditionalNewLine.$response[0][3]."</td>";
+																	$tdAdded = true;
+																}
+															}
+															
+															if(!$tdAdded){
+																echo "<td></td>";
+															}
+														}
+														echo "</tr>";
+													}
+												}
+												
+											?>
                                         </tbody>
                                     </table>
 
