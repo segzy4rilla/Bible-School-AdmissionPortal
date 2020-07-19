@@ -287,6 +287,11 @@ $result = $con->query($query);
                                         <th>Phone Number</th>
                                         <th>Email Address</th>
                                         <th>Created Account</th>
+                                        <th>Sent Email</th>
+                                        <th>Sent Whatsapp Message</th>
+                                        <th>Response</th>
+                                        <th>Reason</th>
+                                        <th>Online Course</th>
 
                                     </tr>
                                     </thead>
@@ -308,11 +313,14 @@ $result = $con->query($query);
                                         } else {
                                             echo "<td>" . "Incomplete" . "</td>";
                                         }
+                                        echo "<td>" . $row['Sent_Email'] . "</td>";
+                                        echo "<td>" . $row['Sent_Whatsapp_Message'] . "</td>";
+                                        echo "<td>" . $row['Response'] . "</td>";
+                                        echo "<td>" . $row['Reason'] . "</td>";
+                                        echo "<td>" . $row['Online_Course'] . "</td>";
                                         echo "</tr>";
                                     }
-
                                     ?>
-
 
                                     </tbody>
                                 </table>
