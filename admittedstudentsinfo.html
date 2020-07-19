@@ -28,260 +28,280 @@ if ($_SESSION['loggedin'] == false) {
     <link rel="stylesheet" href="style.css">
 
     <style type="text/css">
-      @import url("https://fonts.googleapis.com/css?family=Roboto:300i,400,400i,500,700,900");
+        @import url("https://fonts.googleapis.com/css?family=Roboto:300i,400,400i,500,700,900");
     </style>
     <style type="text/css">
-    .hide {
-  display: none;
-}
-</style>
+        .hide {
+            display: none;
+        }
+    </style>
 
 
-<style>
-  .header__btn {
-  transition-property: all;
-  transition-duration: 0.2s;
-  transition-timing-function: linear;
-  transition-delay: 0s;
-  padding: 10px 20px;
-  display: inline-block;
-  margin-right: 10px;
-  background-color: #fff;
-  border: 1px solid #2c2c2c;
-  border-radius: 3px;
-  cursor: pointer;
-  outline: none;
-}
-.header__btn:last-child {
-  margin-right: 0;
-}
-.header__btn:hover, .header__btn.js-active {
-  color: #fff;
-  background-color: #2c2c2c;
-}
+    <style>
+        .header__btn {
+            transition-property: all;
+            transition-duration: 0.2s;
+            transition-timing-function: linear;
+            transition-delay: 0s;
+            padding: 10px 20px;
+            display: inline-block;
+            margin-right: 10px;
+            background-color: #fff;
+            border: 1px solid #2c2c2c;
+            border-radius: 3px;
+            cursor: pointer;
+            outline: none;
+        }
 
-.header {
-  max-width: 600px;
-  margin: 50px auto;
-  text-align: center;
-}
+        .header__btn:last-child {
+            margin-right: 0;
+        }
 
-.header__title {
-  margin-bottom: 30px;
-  font-size: 2.1rem;
-}
+        .header__btn:hover, .header__btn.js-active {
+            color: #fff;
+            background-color: #2c2c2c;
+        }
 
-.content__title {
-  margin-bottom: 40px;
-  font-size: 20px;
-  text-align: center;
-}
+        .header {
+            max-width: 600px;
+            margin: 50px auto;
+            text-align: center;
+        }
 
-.content__title--m-sm {
-  margin-bottom: 10px;
-}
+        .header__title {
+            margin-bottom: 30px;
+            font-size: 2.1rem;
+        }
 
-.multisteps-form__progress {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
-}
+        .content__title {
+            margin-bottom: 40px;
+            font-size: 20px;
+            text-align: center;
+        }
 
-.multisteps-form__progress-btn {
-  transition-property: all;
-  transition-duration: 0.15s;
-  transition-timing-function: linear;
-  transition-delay: 0s;
-  position: relative;
-  padding-top: 20px;
-  color: rgba(108, 117, 125, 0.7);
-  text-indent: -9999px;
-  border: none;
-  background-color: transparent;
-  outline: none !important;
-  cursor: pointer;
-}
-@media (min-width: 500px) {
-  .multisteps-form__progress-btn {
-    text-indent: 0;
-  }
-}
-.multisteps-form__progress-btn:before {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  display: block;
-  width: 13px;
-  height: 13px;
-  content: '';
-  -webkit-transform: translateX(-50%);
-          transform: translateX(-50%);
-  transition: all 0.15s linear 0s, -webkit-transform 0.15s cubic-bezier(0.05, 1.09, 0.16, 1.4) 0s;
-  transition: all 0.15s linear 0s, transform 0.15s cubic-bezier(0.05, 1.09, 0.16, 1.4) 0s;
-  transition: all 0.15s linear 0s, transform 0.15s cubic-bezier(0.05, 1.09, 0.16, 1.4) 0s, -webkit-transform 0.15s cubic-bezier(0.05, 1.09, 0.16, 1.4) 0s;
-  border: 2px solid currentColor;
-  border-radius: 50%;
-  background-color: #fff;
-  box-sizing: border-box;
-  z-index: 3;
-}
-.multisteps-form__progress-btn:after {
-  position: absolute;
-  top: 5px;
-  left: calc(-50% - 13px / 2);
-  transition-property: all;
-  transition-duration: 0.15s;
-  transition-timing-function: linear;
-  transition-delay: 0s;
-  display: block;
-  width: 100%;
-  height: 2px;
-  content: '';
-  background-color: currentColor;
-  z-index: 1;
-}
-.multisteps-form__progress-btn:first-child:after {
-  display: none;
-}
-.multisteps-form__progress-btn.js-active {
-  color: #ffa500;
-}
-.multisteps-form__progress-btn.js-active:before {
-  -webkit-transform: translateX(-50%) scale(1.2);
-          transform: translateX(-50%) scale(1.2);
-  background-color: currentColor;
-}
+        .content__title--m-sm {
+            margin-bottom: 10px;
+        }
 
-.multisteps-form__form {
-  position: relative;
-}
+        .multisteps-form__progress {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+        }
 
-.multisteps-form__panel {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 0;
-  opacity: 0;
-  visibility: hidden;
-}
-.multisteps-form__panel.js-active {
-  height: auto;
-  opacity: 1;
-  visibility: visible;
-}
-.multisteps-form__panel[data-animation="scaleOut"] {
-  -webkit-transform: scale(1.1);
-          transform: scale(1.1);
-}
-.multisteps-form__panel[data-animation="scaleOut"].js-active {
-  transition-property: all;
-  transition-duration: 0.2s;
-  transition-timing-function: linear;
-  transition-delay: 0s;
-  -webkit-transform: scale(1);
-          transform: scale(1);
-}
-.multisteps-form__panel[data-animation="slideHorz"] {
-  left: 50px;
-}
-.multisteps-form__panel[data-animation="slideHorz"].js-active {
-  transition-property: all;
-  transition-duration: 0.25s;
-  transition-timing-function: cubic-bezier(0.2, 1.13, 0.38, 1.43);
-  transition-delay: 0s;
-  left: 0;
-}
-.multisteps-form__panel[data-animation="slideVert"] {
-  top: 30px;
-}
-.multisteps-form__panel[data-animation="slideVert"].js-active {
-  transition-property: all;
-  transition-duration: 0.2s;
-  transition-timing-function: linear;
-  transition-delay: 0s;
-  top: 0;
-}
-.multisteps-form__panel[data-animation="fadeIn"].js-active {
-  transition-property: all;
-  transition-duration: 0.3s;
-  transition-timing-function: linear;
-  transition-delay: 0s;
-}
-.multisteps-form__panel[data-animation="scaleIn"] {
-  -webkit-transform: scale(0.9);
-          transform: scale(0.9);
-}
-.multisteps-form__panel[data-animation="scaleIn"].js-active {
-  transition-property: all;
-  transition-duration: 0.2s;
-  transition-timing-function: linear;
-  transition-delay: 0s;
-  -webkit-transform: scale(1);
-          transform: scale(1);
-}
-</style>
+        .multisteps-form__progress-btn {
+            transition-property: all;
+            transition-duration: 0.15s;
+            transition-timing-function: linear;
+            transition-delay: 0s;
+            position: relative;
+            padding-top: 20px;
+            color: rgba(108, 117, 125, 0.7);
+            text-indent: -9999px;
+            border: none;
+            background-color: transparent;
+            outline: none !important;
+            cursor: pointer;
+        }
 
-<style type="text/css">
-  .scrollpage1{
-    overflow-y: scroll;
-      }
-      .scrollpage1{
-    overflow-y: scroll;
-      }
-</style>
+        @media (min-width: 500px) {
+            .multisteps-form__progress-btn {
+                text-indent: 0;
+            }
+        }
 
-<style>
-  label.is-invalid {
-  color: #ff0022;
-}
-/* Icons */
-.hide {
-  display: none;
-}
+        .multisteps-form__progress-btn:before {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            display: block;
+            width: 13px;
+            height: 13px;
+            content: '';
+            -webkit-transform: translateX(-50%);
+            transform: translateX(-50%);
+            transition: all 0.15s linear 0s, -webkit-transform 0.15s cubic-bezier(0.05, 1.09, 0.16, 1.4) 0s;
+            transition: all 0.15s linear 0s, transform 0.15s cubic-bezier(0.05, 1.09, 0.16, 1.4) 0s;
+            transition: all 0.15s linear 0s, transform 0.15s cubic-bezier(0.05, 1.09, 0.16, 1.4) 0s, -webkit-transform 0.15s cubic-bezier(0.05, 1.09, 0.16, 1.4) 0s;
+            border: 2px solid currentColor;
+            border-radius: 50%;
+            background-color: #fff;
+            box-sizing: border-box;
+            z-index: 3;
+        }
 
-.icon.validation {
-  width: 13px;
-  height: 13px;
-  position: absolute;
-  top: -5px;
-  right: -5px;
-  border-radius: 50%;
-  -moz-border-radius: 50%;
-  -webkit-border-radius: 50%;
-  font-size: 0.4rem;
-  text-align: center;
-  line-height: 0.9rem;
-  color: #fff;
-}
+        .multisteps-form__progress-btn:after {
+            position: absolute;
+            top: 5px;
+            left: calc(-50% - 13px / 2);
+            transition-property: all;
+            transition-duration: 0.15s;
+            transition-timing-function: linear;
+            transition-delay: 0s;
+            display: block;
+            width: 100%;
+            height: 2px;
+            content: '';
+            background-color: currentColor;
+            z-index: 1;
+        }
 
-.icon.success {
-  background: #00aa11;
-}
+        .multisteps-form__progress-btn:first-child:after {
+            display: none;
+        }
 
-.icon.error {
-  background: #ff0022;
-}
+        .multisteps-form__progress-btn.js-active {
+            color: #ffa500;
+        }
 
-.success {
-  color: #00aa11;
-}
+        .multisteps-form__progress-btn.js-active:before {
+            -webkit-transform: translateX(-50%) scale(1.2);
+            transform: translateX(-50%) scale(1.2);
+            background-color: currentColor;
+        }
 
-/* Fields */
-.input-wrap.is-invalid input, .input-wrap.is-invalid select, .input-wrap.is-invalid textarea {
-  border: 1px solid #ff0022;
-}
+        .multisteps-form__form {
+            position: relative;
+        }
 
-/* Helper/Error */
-.is-helpful {
-  color: #999;
-  font-size: 0.8rem;
-  margin-top: 0.5rem;
-}
+        .multisteps-form__panel {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 0;
+            opacity: 0;
+            visibility: hidden;
+        }
 
-.is-helpful.error-message {
-  color: #ff0022;
-}
-</style>
+        .multisteps-form__panel.js-active {
+            height: auto;
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .multisteps-form__panel[data-animation="scaleOut"] {
+            -webkit-transform: scale(1.1);
+            transform: scale(1.1);
+        }
+
+        .multisteps-form__panel[data-animation="scaleOut"].js-active {
+            transition-property: all;
+            transition-duration: 0.2s;
+            transition-timing-function: linear;
+            transition-delay: 0s;
+            -webkit-transform: scale(1);
+            transform: scale(1);
+        }
+
+        .multisteps-form__panel[data-animation="slideHorz"] {
+            left: 50px;
+        }
+
+        .multisteps-form__panel[data-animation="slideHorz"].js-active {
+            transition-property: all;
+            transition-duration: 0.25s;
+            transition-timing-function: cubic-bezier(0.2, 1.13, 0.38, 1.43);
+            transition-delay: 0s;
+            left: 0;
+        }
+
+        .multisteps-form__panel[data-animation="slideVert"] {
+            top: 30px;
+        }
+
+        .multisteps-form__panel[data-animation="slideVert"].js-active {
+            transition-property: all;
+            transition-duration: 0.2s;
+            transition-timing-function: linear;
+            transition-delay: 0s;
+            top: 0;
+        }
+
+        .multisteps-form__panel[data-animation="fadeIn"].js-active {
+            transition-property: all;
+            transition-duration: 0.3s;
+            transition-timing-function: linear;
+            transition-delay: 0s;
+        }
+
+        .multisteps-form__panel[data-animation="scaleIn"] {
+            -webkit-transform: scale(0.9);
+            transform: scale(0.9);
+        }
+
+        .multisteps-form__panel[data-animation="scaleIn"].js-active {
+            transition-property: all;
+            transition-duration: 0.2s;
+            transition-timing-function: linear;
+            transition-delay: 0s;
+            -webkit-transform: scale(1);
+            transform: scale(1);
+        }
+    </style>
+
+    <style type="text/css">
+        .scrollpage1 {
+            overflow-y: scroll;
+        }
+
+        .scrollpage1 {
+            overflow-y: scroll;
+        }
+    </style>
+
+    <style>
+        label.is-invalid {
+            color: #ff0022;
+        }
+
+        /* Icons */
+        .hide {
+            display: none;
+        }
+
+        .icon.validation {
+            width: 13px;
+            height: 13px;
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            border-radius: 50%;
+            -moz-border-radius: 50%;
+            -webkit-border-radius: 50%;
+            font-size: 0.4rem;
+            text-align: center;
+            line-height: 0.9rem;
+            color: #fff;
+        }
+
+        .icon.success {
+            background: #00aa11;
+        }
+
+        .icon.error {
+            background: #ff0022;
+        }
+
+        .success {
+            color: #00aa11;
+        }
+
+        /* Fields */
+        .input-wrap.is-invalid input, .input-wrap.is-invalid select, .input-wrap.is-invalid textarea {
+            border: 1px solid #ff0022;
+        }
+
+        /* Helper/Error */
+        .is-helpful {
+            color: #999;
+            font-size: 0.8rem;
+            margin-top: 0.5rem;
+        }
+
+        .is-helpful.error-message {
+            color: #ff0022;
+        }
+    </style>
 </head>
 
 <body>
@@ -353,554 +373,797 @@ if ($_SESSION['loggedin'] == false) {
                         <div class="card">
                             <div class="card-body">
                                 <div class="content">
-  <!--content inner-->
-  <div class="">
-    <div class="container overflow-hidden">
-      <!--multisteps-form-->
-      <div class="multisteps-form">
-        <br><br>
-        <!--progress bar-->
-        <div class="row">
-          <div class="col-12 col-lg-12 ml-auto mr-auto mb-4">
-            <div class="multisteps-form__progress">
+                                    <!--content inner-->
+                                    <div class="">
+                                        <div class="container overflow-hidden">
+                                            <!--multisteps-form-->
+                                            <div class="multisteps-form">
+                                                <br><br>
+                                                <!--progress bar-->
+                                                <div class="row">
+                                                    <div class="col-12 col-lg-12 ml-auto mr-auto mb-4">
+                                                        <div class="multisteps-form__progress">
 
-              <button class="multisteps-form__progress-btn js-active" style="cursor: default;" type="button" title="User Info" disabled>REGISTRATION</button>
-              <button class="multisteps-form__progress-btn" style="cursor: default;" type="button" title="Address" disabled>PASTORAL POINTS REGISTRATION</button>
-              <button class="multisteps-form__progress-btn" style="cursor: default;" type="button" title="Order Info" disabled>SPONSOR AGREEMENT PLAN</button>
-              <button class="multisteps-form__progress-btn" style="cursor: default; font-size: 13px;" type="button" title="Comments" disabled>INTERNATIONAL STUDENT CONFIRMATIONS</button>
-              <button class="multisteps-form__progress-btn" style="cursor: default; font-size: 13px;" type="button" title="Comments" disabled>INTERNATIONAL STUDENT ARRIVAL</button>
-              <button class="multisteps-form__progress-btn" style="cursor: default;" type="button" title="Comments" disabled>HELPFUL LINKS</button>
-              <button class="multisteps-form__progress-btn" style="cursor: default;" type="button" title="Comments" disabled>SOFT LANDING CHECKLIST</button>
-              <button class="multisteps-form__progress-btn" style="cursor: default;" type="button" title="Comments" disabled>UNIVERSITY ITEMS CHECKLIST</button>
-              <button class="multisteps-form__progress-btn" style="cursor: default;" type="button" title="Comments" disabled>FINISH</button>
-            </div>
-          </div>
-        </div>
-        <!--form panels-->
-        <div class="row">
-          <div class="col-12 col-lg-12 m-auto">
-            <form class="multisteps-form__form" id="myForm" name="admittedform" action="PHP_Files/Application_Form_Submission.php"
-                                          method="POST" onsubmit="return submitClick();">
-              <!--single form panel-->
-              <div class="multisteps-form__panel shadow p-4 rounded bg-white js-active" data-animation="scaleIn" disabled>
-                <h3 class="multisteps-form__title">REGISTRATION</h3>
-                <br>
-                <div class="multisteps-form__content">
-                  
-                    <div id="demo-form" data-parsley-validate="" class="scrollpage1" style="height: 300px;">
-             
-                    <div class="form-group">
-                    <br>
-                    <span class="help-block"><medium>Please Click On This Link And Complete The Following:</medium></span>
-                    <br>
-                    <a href="http://firstlovegallery.com/student/new" target="_blank">https://school.anagkazomanager.org/register</a>
-                    <br>
-                    <br>
-                    <span class="help-block"><medium>1. Select Course - Junior Clerkship</medium></span>
-                    <br>
-                    <span class="help-block"><medium>2. Click Apply</medium></span>
-                    <br>
-                    <span class="help-block"><medium>3. Fill In Details</medium></span>
-                    <br>
-                    <span class="help-block"><medium>4. Upload a smart passport size picture of yourself wearing a white shirt and black jacket (you must upload a picture of yourself, if the picture upload is not working try a smaller photo with less quality, <b>do not submit if the picture does not upload!</b>)</medium></span>
-                    <br>
-                    <span class="help-block"><medium>5. Submit Application</medium></span>
-                    <br>
-                    <br>
-                    <span class="help-block"><small>Please confirm that you have registered</small></span>
-
-                    <br>
-                   
-                      <div class="custom-control custom-checkbox">
-                       <input type="checkbox" class="custom-control-input" id="Checkconfirmregistration" name="confirmregistrationcheck">
-                        <label class="custom-control-label" for="Checkconfirmregistration">Yes I can confirm</label>
-                         </div>
-                         </div>
-                                              </div>
-
-                                                
-
-                
-                
-                 
-                </div>
-                <div class="card">
-                            <div class="card-body">
-                                <div class="content">
-                                                <div class="button-row d-flex mt-4">
-                                                  <!-- <button class="btn">
-                                                  <div class="btn">Here is my clickable div</div>
-                                               </button> -->
-
-                    <button class="btn btn-primary ml-auto js-btn-next" type="button" title="Next">Next</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-              </div>
-
-              <!--single form panel-->
-              <div class="multisteps-form__panel shadow p-4 rounded bg-white" data-animation="scaleIn">
-                <h3 class="multisteps-form__title">PASTORAL POINTS REGISTRATION</h3>
-                <div class="multisteps-form__content">
-                  <div id="demo-form2" data-parsley-validate="" class="scrollpage1" style="height: 300px;">
-                    <br>
-                    <div class="form-group">
-                    <span class="help-block"><medium><b>Please Click On This Link</b></medium></span><span class="help-block"><medium> And Fill In The Pastoral Points New Student Form</medium></span>
-                    <br>
-                    <span class="help-block"><medium>New Student Form:</medium></span>
-                    <br>
-                    <a href="http://firstlovegallery.com/student/new" target="_blank">http://firstlovegallery.com/student/new</a>
-                    <br>
-                    <span class="help-block"><medium>UD Means A Lighthouse Chapel Church, Non-UD Means A Non-Lighthouse Church, Please Make Sure You Fill In All The Fields.</medium></span>
-                    <br>
-                    <br>
-                    <span class="help-block"><small>Please confirm that you have filled in the form</small></span>
-
-                    <br>
-                   
-                      <div class="custom-control custom-checkbox">
-                       <input type="checkbox" class="custom-control-input" id="CheckUD" name="UDcheck">
-                        <label class="custom-control-label" for="CheckUD">Yes I can confirm</label>
-                         </div>
-                         </div>                                  
-                  </div>
-                  <div class="button-row d-flex mt-4">
-                    <button class="btn btn-primary js-btn-prev" type="button" title="Prev">Prev</button>
-                    <button class="btn btn-primary ml-auto js-btn-next" type="button" title="Next">Next</button>
-                  </div>
-                </div>
-              </div>
-              <!--single form panel-->
-              <!--single form panel-->
-              <div class="multisteps-form__panel shadow p-4 rounded bg-white" data-animation="scaleIn">
-                <h3 class="multisteps-form__title">SPONSOR AGREEMENT PAYMENT PLAN (LOCAL AND INTERNATIONAL STUDENTS)</h3>
-                <div class="multisteps-form__content">
-                  <div id="demo-form2" data-parsley-validate="" class="scrollpage1" style="height: 300px;">
-                    <br>
-                    <div class="form-group">
-                    <span class="help-block"><medium>Applicants Need To Confirm That They Have A Sponsorship Agreement Payment Plan (When You Will Receive Money And How Much You Will Receive)</medium></span>
-                      <br>
-                      <br>
-                      <div class="form-group">
-                                                <div class="custom-control custom-radio">
-                                                    <input type="radio" id="Radio1locintsponsor" name="locintsponsor" class="custom-control-input">
-                                                    <label class="custom-control-label" for="Radio1locintsponsor">Yes</label>
+                                                            <button class="multisteps-form__progress-btn js-active"
+                                                                    style="cursor: default;" type="button"
+                                                                    title="User Info" disabled>REGISTRATION
+                                                            </button>
+                                                            <button class="multisteps-form__progress-btn"
+                                                                    style="cursor: default;" type="button"
+                                                                    title="Address" disabled>PASTORAL POINTS
+                                                                REGISTRATION
+                                                            </button>
+                                                            <button class="multisteps-form__progress-btn"
+                                                                    style="cursor: default;" type="button"
+                                                                    title="Order Info" disabled>SPONSOR AGREEMENT PLAN
+                                                            </button>
+                                                            <button class="multisteps-form__progress-btn"
+                                                                    style="cursor: default; font-size: 13px;"
+                                                                    type="button" title="Comments" disabled>
+                                                                INTERNATIONAL STUDENT CONFIRMATIONS
+                                                            </button>
+                                                            <button class="multisteps-form__progress-btn"
+                                                                    style="cursor: default; font-size: 13px;"
+                                                                    type="button" title="Comments" disabled>
+                                                                INTERNATIONAL STUDENT ARRIVAL
+                                                            </button>
+                                                            <button class="multisteps-form__progress-btn"
+                                                                    style="cursor: default;" type="button"
+                                                                    title="Comments" disabled>HELPFUL LINKS
+                                                            </button>
+                                                            <button class="multisteps-form__progress-btn"
+                                                                    style="cursor: default;" type="button"
+                                                                    title="Comments" disabled>SOFT LANDING CHECKLIST
+                                                            </button>
+                                                            <button class="multisteps-form__progress-btn"
+                                                                    style="cursor: default;" type="button"
+                                                                    title="Comments" disabled>UNIVERSITY ITEMS CHECKLIST
+                                                            </button>
+                                                            <button class="multisteps-form__progress-btn"
+                                                                    style="cursor: default;" type="button"
+                                                                    title="Comments" disabled>FINISH
+                                                            </button>
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                                <div class="custom-control custom-radio">
-                                                    <input type="radio" id="Radio2locintsponsor" name="locintsponsor" class="custom-control-input">
-                                                    <label class="custom-control-label" for="Radio2locintsponsor">No</label>
+                                                <!--form panels-->
+                                                <div class="row">
+                                                    <div class="col-12 col-lg-12 m-auto">
+                                                        <form class="multisteps-form__form" id="myForm"
+                                                              name="admittedform"
+                                                              action="PHP_Files/Application_Form_Submission.php"
+                                                              method="POST" onsubmit="return submitClick();">
+                                                            <!--single form panel-->
+                                                            <div class="multisteps-form__panel shadow p-4 rounded bg-white js-active"
+                                                                 data-animation="scaleIn" disabled>
+                                                                <h3 class="multisteps-form__title">REGISTRATION</h3>
+                                                                <br>
+                                                                <div class="multisteps-form__content">
+
+                                                                    <div id="demo-form" data-parsley-validate=""
+                                                                         class="scrollpage1" style="height: 300px;">
+
+                                                                        <div class="form-group">
+                                                                            <br>
+                                                                            <span class="help-block"><medium>Please Click On This Link And Complete The Following:</medium></span>
+                                                                            <br>
+                                                                            <a href="http://firstlovegallery.com/student/new"
+                                                                               target="_blank">https://school.anagkazomanager.org/register</a>
+                                                                            <br>
+                                                                            <br>
+                                                                            <span class="help-block"><medium>1. Select Course - Junior Clerkship</medium></span>
+                                                                            <br>
+                                                                            <span class="help-block"><medium>2. Click Apply</medium></span>
+                                                                            <br>
+                                                                            <span class="help-block"><medium>3. Fill In Details</medium></span>
+                                                                            <br>
+                                                                            <span class="help-block"><medium>4. Upload a smart passport size picture of yourself wearing a white shirt and black jacket (you must upload a picture of yourself, if the picture upload is not working try a smaller photo with less quality, <b>do not submit if the picture does not upload!</b>)</medium></span>
+                                                                            <br>
+                                                                            <span class="help-block"><medium>5. Submit Application</medium></span>
+                                                                            <br>
+                                                                            <br>
+                                                                            <span class="help-block"><small>Please confirm that you have registered</small></span>
+
+                                                                            <br>
+
+                                                                            <div class="custom-control custom-checkbox">
+                                                                                <input type="checkbox"
+                                                                                       class="custom-control-input"
+                                                                                       id="Checkconfirmregistration"
+                                                                                       name="confirmregistrationcheck">
+                                                                                <label class="custom-control-label"
+                                                                                       for="Checkconfirmregistration">Yes
+                                                                                    I can confirm</label>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+
+
+                                                                </div>
+                                                                <div class="card">
+                                                                    <div class="card-body">
+                                                                        <div class="content">
+                                                                            <div class="button-row d-flex mt-4">
+                                                                                <!-- <button class="btn">
+                                                                                <div class="btn">Here is my clickable div</div>
+                                                                             </button> -->
+
+                                                                                <button class="btn btn-primary ml-auto js-btn-next"
+                                                                                        type="button" title="Next">Next
+                                                                                </button>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <!--single form panel-->
+                                                            <div class="multisteps-form__panel shadow p-4 rounded bg-white"
+                                                                 data-animation="scaleIn">
+                                                                <h3 class="multisteps-form__title">PASTORAL POINTS
+                                                                    REGISTRATION</h3>
+                                                                <div class="multisteps-form__content">
+                                                                    <div id="demo-form2" data-parsley-validate=""
+                                                                         class="scrollpage1" style="height: 300px;">
+                                                                        <br>
+                                                                        <div class="form-group">
+                                                                            <span class="help-block"><medium><b>Please Click On This Link</b></medium></span><span
+                                                                                class="help-block"><medium> And Fill In The Pastoral Points New Student Form</medium></span>
+                                                                            <br>
+                                                                            <span class="help-block"><medium>New Student Form:</medium></span>
+                                                                            <br>
+                                                                            <a href="http://firstlovegallery.com/student/new"
+                                                                               target="_blank">http://firstlovegallery.com/student/new</a>
+                                                                            <br>
+                                                                            <span class="help-block"><medium>UD Means A Lighthouse Chapel Church, Non-UD Means A Non-Lighthouse Church, Please Make Sure You Fill In All The Fields.</medium></span>
+                                                                            <br>
+                                                                            <br>
+                                                                            <span class="help-block"><small>Please confirm that you have filled in the form</small></span>
+
+                                                                            <br>
+
+                                                                            <div class="custom-control custom-checkbox">
+                                                                                <input type="checkbox"
+                                                                                       class="custom-control-input"
+                                                                                       id="CheckUD" name="UDcheck">
+                                                                                <label class="custom-control-label"
+                                                                                       for="CheckUD">Yes I can
+                                                                                    confirm</label>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="button-row d-flex mt-4">
+                                                                        <button class="btn btn-primary js-btn-prev"
+                                                                                type="button" title="Prev">Prev
+                                                                        </button>
+                                                                        <button class="btn btn-primary ml-auto js-btn-next"
+                                                                                type="button" title="Next">Next
+                                                                        </button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <!--single form panel-->
+                                                            <!--single form panel-->
+                                                            <div class="multisteps-form__panel shadow p-4 rounded bg-white"
+                                                                 data-animation="scaleIn">
+                                                                <h3 class="multisteps-form__title">SPONSOR AGREEMENT
+                                                                    PAYMENT PLAN (LOCAL AND INTERNATIONAL STUDENTS)</h3>
+                                                                <div class="multisteps-form__content">
+                                                                    <div id="demo-form2" data-parsley-validate=""
+                                                                         class="scrollpage1" style="height: 300px;">
+                                                                        <br>
+                                                                        <div class="form-group">
+                                                                            <span class="help-block"><medium>Applicants Need To Confirm That They Have A Sponsorship Agreement Payment Plan (When You Will Receive Money And How Much You Will Receive)</medium></span>
+                                                                            <br>
+                                                                            <br>
+                                                                            <div class="form-group">
+                                                                                <div class="custom-control custom-radio">
+                                                                                    <input type="radio"
+                                                                                           id="Radio1locintsponsor"
+                                                                                           name="locintsponsor"
+                                                                                           class="custom-control-input">
+                                                                                    <label class="custom-control-label"
+                                                                                           for="Radio1locintsponsor">Yes</label>
+                                                                                </div>
+                                                                                <div class="custom-control custom-radio">
+                                                                                    <input type="radio"
+                                                                                           id="Radio2locintsponsor"
+                                                                                           name="locintsponsor"
+                                                                                           class="custom-control-input">
+                                                                                    <label class="custom-control-label"
+                                                                                           for="Radio2locintsponsor">No</label>
+                                                                                </div>
+                                                                            </div>
+
+                                                                            <br>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="button-row d-flex mt-4">
+                                                                        <button class="btn btn-primary js-btn-prev"
+                                                                                type="button" title="Prev">Prev
+                                                                        </button>
+                                                                        <button class="btn btn-primary ml-auto js-btn-next"
+                                                                                type="button" title="Next">Next
+                                                                        </button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="multisteps-form__panel shadow p-4 rounded bg-white"
+                                                                 data-animation="scaleIn">
+                                                                <h3 class="multisteps-form__title">INTERNATIONAL
+                                                                    STUDENTS CONFIRMATIONS</h3>
+                                                                <div class="multisteps-form__content">
+                                                                    <div class="scrollpage1" style="height: 300px;">
+                                                                        <div class="relative input-wrap is-required">
+                                                                            <br>
+                                                                            <div class="form-group">
+                                                                                <br>
+                                                                                <span class="help-block"><large>If You Are A <b>Local Student</b> Please Kindly Follow On To The Next Step Of The Form</large></span>
+                                                                                <br>
+                                                                                <br>
+                                                                                <span class="help-block"><large>If You Are An <b>International Student</b> Please Scroll Through This Page And Confirm All Necessary Items</large></span>
+                                                                                <br>
+                                                                                <br>
+                                                                                <span class="help-block"><medium>Printed All Requested Documents To Bring To School:</medium></span>
+                                                                                <br>
+                                                                                <br>
+                                                                                <span class="help-block"><medium>1. Application Form</medium></span>
+                                                                                <br>
+                                                                                <span class="help-block"><medium>2. School Certficate</medium></span>
+                                                                                <br>
+                                                                                <span class="help-block"><medium>3. Recommendation Letter</medium></span>
+                                                                                <br>
+                                                                                <span class="help-block"><medium>4. All Medical Documents</medium></span>
+                                                                                <br>
+                                                                                <span class="help-block"><medium>5. Police Report</medium></span>
+                                                                                <br>
+                                                                                <span class="help-block"><medium>6. Admission Contract</medium></span>
+                                                                                <br>
+                                                                                <span class="help-block"><medium>7. Responsibility Form</medium></span>
+                                                                                <br>
+                                                                                <span class="help-block"><medium>8. Declaration Form</medium></span>
+                                                                                <br>
+                                                                                <span class="help-block"><medium>9. Room Assignment Form</medium></span>
+                                                                                <br>
+                                                                                <span class="help-block"><medium>10. Application Form</medium></span>
+                                                                                <br>
+                                                                                <div class="form-group">
+                                                                                    <br>
+                                                                                    <div class="custom-control custom-checkbox">
+                                                                                        <input type="checkbox"
+                                                                                               class="custom-control-input"
+                                                                                               id="checkprintrequesteddocs"
+                                                                                               name="printrequesteddocs">
+                                                                                        <label class="custom-control-label"
+                                                                                               for="checkprintrequesteddocs">I
+                                                                                            can confirm I printed all
+                                                                                            requested documents</label>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+
+                                                                            <br>
+
+                                                                            <div class="form-group">
+
+                                                                                <label for="exampleTextarea1">Do You
+                                                                                    Have Malaria Medication?</label>
+
+                                                                                <div class="custom-control custom-checkbox">
+                                                                                    <input type="checkbox"
+                                                                                           class="custom-control-input"
+                                                                                           id="checkmalariamed"
+                                                                                           name="malariacheck">
+                                                                                    <label class="custom-control-label"
+                                                                                           for="checkmalariamed">I can
+                                                                                        confirm I have malaria
+                                                                                        medication</label>
+                                                                                </div>
+
+                                                                            </div>
+
+                                                                            <br>
+
+                                                                            <div class="form-group">
+
+                                                                                <label for="exampleTextarea1">Is Your
+                                                                                    Mobile Phone Unlocked So That The
+                                                                                    Ghana Sim Card Will Work?</label>
+
+                                                                                <div class="custom-control custom-checkbox">
+                                                                                    <input type="checkbox"
+                                                                                           class="custom-control-input"
+                                                                                           id="checkghanasim"
+                                                                                           name="ghanasimcheck">
+                                                                                    <label class="custom-control-label"
+                                                                                           for="checkghanasim">I can
+                                                                                        confirm my mobile phone is
+                                                                                        unlocked</label>
+                                                                                </div>
+
+                                                                            </div>
+
+                                                                            <br>
+
+                                                                            <div class="form-group">
+
+                                                                                <label for="exampleTextarea1">Do You
+                                                                                    Have A 3-Pin/Charger Or An Adaptor
+                                                                                    For The Sockets In Ghana?</label>
+
+                                                                                <div class="custom-control custom-checkbox">
+                                                                                    <input type="checkbox"
+                                                                                           class="custom-control-input"
+                                                                                           id="checkchargerghana"
+                                                                                           name="3pinghanacheck">
+                                                                                    <label class="custom-control-label"
+                                                                                           for="checkchargerghana">I can
+                                                                                        confirm I have 3-pin/charger or
+                                                                                        an adaptor</label>
+                                                                                </div>
+
+                                                                            </div>
+
+                                                                            <br>
+
+                                                                            <div class="form-group">
+
+                                                                                <label for="exampleTextarea1">Do You
+                                                                                    Have A Charged Power Bank And A
+                                                                                    Cable To Charge Your Phone?</label>
+
+                                                                                <div class="custom-control custom-checkbox">
+                                                                                    <input type="checkbox"
+                                                                                           class="custom-control-input"
+                                                                                           id="checkpower"
+                                                                                           name="chargepowercheck">
+                                                                                    <label class="custom-control-label"
+                                                                                           for="checkpower">I can
+                                                                                        confirm I have a charged power
+                                                                                        bank and cable for my
+                                                                                        phone</label>
+                                                                                </div>
+
+                                                                            </div>
+
+                                                                            <br>
+
+                                                                            <div class="form-group">
+
+                                                                                <label for="exampleTextarea1">Do You
+                                                                                    Have A Pillowcase, Bedsheets, And
+                                                                                    Duvet For A Single Bed?</label>
+
+                                                                                <div class="custom-control custom-checkbox">
+                                                                                    <input type="checkbox"
+                                                                                           class="custom-control-input"
+                                                                                           id="checkbeddings"
+                                                                                           name="beddingscheck">
+                                                                                    <label class="custom-control-label"
+                                                                                           for="checkbeddings">I can
+                                                                                        confirm I have these
+                                                                                        beddings</label>
+                                                                                </div>
+
+                                                                            </div>
+
+                                                                            <br>
+
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="button-row d-flex mt-4">
+                                                                        <button class="btn btn-primary js-btn-prev"
+                                                                                type="button" title="Prev">Prev
+                                                                        </button>
+                                                                        <button class="btn btn-primary ml-auto js-btn-next"
+                                                                                type="button" title="Next">Next
+                                                                        </button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <!--single form panel-->
+                                                            <div class="multisteps-form__panel shadow p-4 rounded bg-white"
+                                                                 data-animation="scaleIn">
+                                                                <h5 class="multisteps-form__title">INTERNATIONAL STUDENT
+                                                                    ARRIVAL PROCESS</h5>
+
+                                                                <div class="scrollpage1" style="height: 300px;">
+
+                                                                    <ul type="disc">
+                                                                        <li>ABMTC will organise airport pick up - The
+                                                                            Bible School Attendant will hold an ABMTC
+                                                                            placard outside the airport
+                                                                        </li>
+                                                                        <li>Connect to the wifi when you arrive at the
+                                                                            Accra Airport
+                                                                        </li>
+                                                                        <li>Please make sure you have US Dollars or UK
+                                                                            Pounds to change at the airport (do not plan
+                                                                            on changing another currency). You must
+                                                                            change some money at the airport!
+                                                                        </li>
+                                                                        <li>Please <b>do not buy a sim card when you
+                                                                            arrive</b>, a specific sim card with a
+                                                                            network that has good signal in Mampong will
+                                                                            be given to you for a fee of 30 cedis by the
+                                                                            Bible School Attendant who will pick you up
+                                                                            from the airport. Please give the sim card
+                                                                            money to the Bible School Attendant after
+                                                                            you have changed some money at the airport
+                                                                            to cedis
+                                                                        </li>
+                                                                        <li>When you arrive the Bible School Attendant
+                                                                            will take you to the convenience store near
+                                                                            the airport which also has restaurants.
+                                                                            After the Bible School Attendant will bring
+                                                                            you to the Bible School
+                                                                        </li>
+                                                                    </ul>
+
+
+                                                                </div>
+                                                                <div class="button-row d-flex mt-4 col-12">
+                                                                    <button class="btn btn-primary js-btn-prev"
+                                                                            type="button" title="Prev">Prev
+                                                                    </button>
+                                                                    <button class="btn btn-primary ml-auto js-btn-next"
+                                                                            type="button" title="Next">Next
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+
+                                                            <!--single form panel-->
+                                                            <div class="multisteps-form__panel shadow p-4 rounded bg-white"
+                                                                 data-animation="scaleIn">
+                                                                <h3 class="multisteps-form__title">HELPFUL LINKS</h3>
+                                                                <div class="scrollpage1" style="height: 300px;">
+                                                                    <div class="form-group">
+                                                                        <span class="help-block"><medium>Please read the recommended items you should bring to ABMTC on the school website: <a
+                                                                                href="https://school.anagkazomanager.org/register"
+                                                                                target="_blank">www.abmtc.org/studentlife</a></medium></span>
+                                                                        <br>
+                                                                        <span class="help-block"><medium>Academic Calendar</medium></span>
+                                                                        <br>
+                                                                        <span class="help-block"><medium>Campus Map</medium></span>
+
+                                                                        <br>
+
+                                                                        <span class="help-block"><medium>Download Campus Map Here: <a
+                                                                                href="img/map.jpg" target="_blank"
+                                                                                download>Download Campus Map</a></medium></span>
+
+
+                                                                    </div>
+                                                                </div>
+                                                                <div class="button-row d-flex mt-4 col-12">
+                                                                    <button class="btn btn-primary js-btn-prev"
+                                                                            type="button" title="Prev">Prev
+                                                                    </button>
+                                                                    <button class="btn btn-primary ml-auto js-btn-next"
+                                                                            type="button" title="Next">Next
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+
+                                                            <!--single form panel-->
+                                                            <div class="multisteps-form__panel shadow p-4 rounded bg-white"
+                                                                 data-animation="scaleIn">
+                                                                <h3 class="multisteps-form__title">SOFT LANDING
+                                                                    CHECKLIST</h3>
+                                                                <div class="scrollpage1" style="height: 300px;">
+                                                                    <br>
+                                                                    <label for="exampleTextarea1">Please Confirm The
+                                                                        Following:</label>
+
+                                                                    <div class="form-group">
+                                                                        <label>Airport Pick-Up (International Students
+                                                                            Only)</label>
+                                                                        <div class="custom-control custom-radio">
+                                                                            <input type="radio" id="radioairportpick1"
+                                                                                   name="airportpick"
+                                                                                   class="custom-control-input">
+                                                                            <label class="custom-control-label"
+                                                                                   for="radioairportpick1">Yes</label>
+                                                                        </div>
+                                                                        <div class="custom-control custom-radio">
+                                                                            <input type="radio" id="radioairportpick2"
+                                                                                   name="airportpick"
+                                                                                   class="custom-control-input">
+                                                                            <label class="custom-control-label"
+                                                                                   for="radioairportpick2">No</label>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="form-group">
+                                                                        <label>Changed Money At The Airport
+                                                                            (International Students Only)</label>
+                                                                        <div class="custom-control custom-radio">
+                                                                            <input type="radio"
+                                                                                   id="radiocheckmoneychange1"
+                                                                                   name="moneycheck"
+                                                                                   class="custom-control-input">
+                                                                            <label class="custom-control-label"
+                                                                                   for="radioairportpick1">Yes</label>
+                                                                        </div>
+                                                                        <div class="custom-control custom-radio">
+                                                                            <input type="radio"
+                                                                                   id="radiocheckmoneychange2"
+                                                                                   name="moneycheck"
+                                                                                   class="custom-control-input">
+                                                                            <label class="custom-control-label"
+                                                                                   for="radiocheckmoneychange2">No</label>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="form-group">
+                                                                        <label>Starter Pack (International Students
+                                                                            Only)</label>
+                                                                        <div class="custom-control custom-radio">
+                                                                            <input type="radio" id="radiostarterpack1"
+                                                                                   name="starterpack"
+                                                                                   class="custom-control-input">
+                                                                            <label class="custom-control-label"
+                                                                                   for="radiostarterpack1">Yes</label>
+                                                                        </div>
+                                                                        <div class="custom-control custom-radio">
+                                                                            <input type="radio" id="radiostarterpack2"
+                                                                                   name="starterpack"
+                                                                                   class="custom-control-input">
+                                                                            <label class="custom-control-label"
+                                                                                   for="radiostarterpack2">No</label>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="form-group">
+
+                                                                        <div class="custom-control custom-checkbox">
+                                                                            <input type="checkbox"
+                                                                                   class="custom-control-input"
+                                                                                   id="checksimcred"
+                                                                                   name="simcredcheck">
+                                                                            <label class="custom-control-label"
+                                                                                   for="checksimcred">Set Up MTN Sim
+                                                                                Card And Credit</label>
+                                                                        </div>
+                                                                    </div>
+
+
+                                                                    <div class="form-group">
+                                                                        <div class="custom-control custom-checkbox">
+                                                                            <input type="checkbox"
+                                                                                   class="custom-control-input"
+                                                                                   id="checkcollecttag" name="tagcheck">
+                                                                            <label class="custom-control-label"
+                                                                                   for="checkcollecttag">Collected
+                                                                                Tag</label>
+                                                                        </div>
+                                                                    </div>
+
+
+                                                                    <div class="form-group row">
+                                                                        <label for="example-search-input"
+                                                                               class="col-sm-2 col-form-label">Room
+                                                                            Number</label>
+                                                                        <div class="col-sm-1">
+                                                                            <input type="number"
+                                                                                   class="form-control rounded-0 form-control-sm"
+                                                                                   id="checkroomnum" name="roomnumber">
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="form-group">
+                                                                        <label>Are There Any Issues In The Room?</label>
+                                                                        <div class="custom-control custom-radio">
+                                                                            <input type="radio" id="Radioroom1"
+                                                                                   name="roomissues"
+                                                                                   class="custom-control-input">
+                                                                            <label class="custom-control-label"
+                                                                                   for="Radioroom1" onclick="show2();">Yes</label>
+                                                                        </div>
+                                                                        <div class="custom-control custom-radio">
+                                                                            <input type="radio" id="Radioroom2"
+                                                                                   name="roomissues"
+                                                                                   class="custom-control-input">
+                                                                            <label class="custom-control-label"
+                                                                                   for="Radioroom2" onclick="show1();">No</label>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div id="div1" class="form-group hide">
+
+                                                                        <label>If Yes, Please Comment On The Room
+                                                                            Issues</label>
+
+                                                                        <input type="text" class="form-control"
+                                                                               placeholder="" name="roomissuescomment">
+
+                                                                    </div>
+
+                                                                    <div class="form-group">
+                                                                        <label>Have The Issues In Your Room Been
+                                                                            Solved?</label>
+                                                                        <div class="custom-control custom-radio">
+                                                                            <input type="radio" id="Radiocheckroomprob1"
+                                                                                   name="checkroomprob"
+                                                                                   class="custom-control-input">
+                                                                            <label class="custom-control-label"
+                                                                                   for="Radiocheckroomprob1">Yes</label>
+                                                                        </div>
+                                                                        <div class="custom-control custom-radio">
+                                                                            <input type="radio" id="Radiocheckroomprob2"
+                                                                                   name="checkroomprob"
+                                                                                   class="custom-control-input">
+                                                                            <label class="custom-control-label"
+                                                                                   for="Radiocheckroomprob2">No</label>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="form-group">
+
+                                                                        <div class="custom-control custom-checkbox">
+                                                                            <input type="checkbox"
+                                                                                   class="custom-control-input"
+                                                                                   id="checkadminfeebook"
+                                                                                   name="feeandbookcheck">
+                                                                            <label class="custom-control-label"
+                                                                                   for="checkadminfeebook">Paid Admin
+                                                                                Fee And Collected Textbooks</label>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="form-group">
+
+                                                                        <div class="custom-control custom-checkbox">
+                                                                            <input type="checkbox"
+                                                                                   class="custom-control-input"
+                                                                                   id="checkgallerytour"
+                                                                                   name="tourcheck">
+                                                                            <label class="custom-control-label"
+                                                                                   for="checkgallerytour">Gallery
+                                                                                Tour</label>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="form-group">
+
+                                                                        <div class="custom-control custom-checkbox">
+                                                                            <input type="checkbox"
+                                                                                   class="custom-control-input"
+                                                                                   id="checkorphanage"
+                                                                                   name="orphancheck">
+                                                                            <label class="custom-control-label"
+                                                                                   for="checkorphanage">Orphanage
+                                                                                Tour</label>
+                                                                        </div>
+                                                                    </div>
+
+                                                                </div>
+
+                                                                <div class="button-row d-flex mt-4 col-12">
+                                                                    <button class="btn btn-primary js-btn-prev"
+                                                                            type="button" title="Prev">Prev
+                                                                    </button>
+                                                                    <button class="btn btn-primary ml-auto js-btn-next"
+                                                                            type="button" title="Next">Next
+                                                                    </button>
+
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="multisteps-form__panel shadow p-4 rounded bg-white"
+                                                                 data-animation="scaleIn">
+                                                                <h3 class="multisteps-form__title">UNIVERSITY ITEMS
+                                                                    CHECKLIST</h3>
+                                                                <div class="multisteps-form__content">
+                                                                    <div class="scrollpage1" style="height: 300px;">
+                                                                        <div class="relative input-wrap is-required">
+                                                                            <br>
+                                                                            <div class="form-group">
+                                                                                <br>
+                                                                                <span class="help-block"><medium>Please Take The Time In Making Sure You Have These University Essentials</medium></span>
+                                                                                <br>
+                                                                                <br>
+                                                                                <span class="help-block"><medium>- Cooking Utensils such as cutlery etc</medium></span>
+                                                                                <br>
+                                                                                <span class="help-block"><medium>- Rice Cooker</medium></span>
+                                                                                <br>
+                                                                                <span class="help-block"><medium>- Kettle</medium></span>
+                                                                                <br>
+                                                                                <span class="help-block"><medium>- Hard-drive/USB Stick</medium></span>
+                                                                                <br>
+                                                                                <span class="help-block"><medium>- Notebook</medium></span>
+                                                                                <br>
+                                                                                <span class="help-block"><medium>- Stationary</medium></span>
+                                                                                <br>
+                                                                                <span class="help-block"><medium>- Power Bank</medium></span>
+                                                                                <br>
+                                                                                <span class="help-block"><medium>- Surge Proof Extension Cables x2</medium></span>
+                                                                                <br>
+                                                                                <span class="help-block"><medium>- International Adaptor Plugs</medium></span>
+                                                                                <br>
+                                                                                <span class="help-block"><medium>- Portable Fan</medium></span>
+                                                                                <br>
+                                                                                <span class="help-block"><medium>- Bedding</medium></span>
+                                                                                <br>
+                                                                                <span class="help-block"><medium>- Cleaning Products</medium></span>
+                                                                                <br>
+                                                                                <span class="help-block"><medium>- Casual Clothes</medium></span>
+                                                                                <br>
+                                                                                <span class="help-block"><medium>- Smart Clothes</medium></span>
+                                                                                <br>
+                                                                                <span class="help-block"><medium>- Evening Wear</medium></span>
+                                                                                <br>
+                                                                                <span class="help-block"><medium>- Traditional Clothes (Optional)</medium></span>
+                                                                                <br>
+                                                                                <span class="help-block"><medium>- Sportswear (Optional - Golf, Football, Jogging)</medium></span>
+                                                                                <br>
+                                                                                <span class="help-block"><medium>- Footwear (Trainers, Smart Shoes, Casual Shoes)</medium></span>
+                                                                                <br>
+                                                                                <span class="help-block"><medium>- Clothing To Work In (BMCDR)</medium></span>
+                                                                                <br>
+                                                                                <span class="help-block"><medium>- Footwear To Work (BMCDR)</medium></span>
+                                                                                <br>
+                                                                                <span class="help-block"><medium>- Clothing For Different Seasons (Both Warm And Cold Weather)</medium></span>
+                                                                                <br>
+                                                                                <div class="form-group">
+                                                                                    <br>
+                                                                                    <div class="custom-control custom-checkbox">
+                                                                                        <input type="checkbox"
+                                                                                               class="custom-control-input"
+                                                                                               id="checkuniversityitems"
+                                                                                               name="universitylist">
+                                                                                        <label class="custom-control-label"
+                                                                                               for="checkuniversityitems">I
+                                                                                            can confirm I have all
+                                                                                            university items</label>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="button-row d-flex mt-4">
+                                                                        <button class="btn btn-primary js-btn-prev"
+                                                                                type="button" title="Prev">Prev
+                                                                        </button>
+                                                                        <button class="btn btn-primary ml-auto js-btn-next"
+                                                                                type="button" title="Next">Next
+                                                                        </button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <!--single form panel-->
+                                                            <div class="multisteps-form__panel shadow p-4 rounded bg-white"
+                                                                 data-animation="scaleIn">
+                                                                <h3 class="multisteps-form__title">FINISH</h3>
+                                                                <div class="scrollpage1" style="height: 300px;">
+                                                                    <br>
+                                                                    <br>
+                                                                    <center><span class="help-block"><medium>Click Submit To Complete Admitted Students Form</medium></span>
+                                                                    </center>
+                                                                </div>
+                                                                <div class="button-row d-flex mt-4 col-12">
+                                                                    <button class="btn btn-primary js-btn-prev"
+                                                                            type="button" title="Prev">Prev
+                                                                    </button>
+                                                                    <button id="clickable"
+                                                                            class="btn btn-primary ml-auto toggle-disabled"
+                                                                            type="submit" title="Send">Submit
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+
+                                                            <!--single form panel-->
+                                                        </form>
+                                                    </div>
                                                 </div>
                                             </div>
-
-                    <br>
-                         </div>                                  
-                  </div>
-                  <div class="button-row d-flex mt-4">
-                    <button class="btn btn-primary js-btn-prev" type="button" title="Prev">Prev</button>
-                    <button class="btn btn-primary ml-auto js-btn-next" type="button" title="Next">Next</button>
-                  </div>
-                </div>
-              </div>
-              <div class="multisteps-form__panel shadow p-4 rounded bg-white" data-animation="scaleIn">
-                <h3 class="multisteps-form__title">INTERNATIONAL STUDENTS CONFIRMATIONS</h3>
-                <div class="multisteps-form__content">
-                  <div class="scrollpage1" style="height: 300px;">
-                    <div class="relative input-wrap is-required">
-                      <br>
-                    <div class="form-group"> 
-                      <br>
-                      <span class="help-block"><large>If You Are A <b>Local Student</b> Please Kindly Follow On To The Next Step Of The Form</large></span>
-                      <br>
-                      <br>
-                      <span class="help-block"><large>If You Are An <b>International Student</b> Please Scroll Through This Page And Confirm All Necessary Items</large></span>
-                      <br>
-                      <br>
-                      <span class="help-block"><medium>Printed All Requested Documents To Bring To School:</medium></span>
-                      <br>
-                      <br>
-                      <span class="help-block"><medium>1. Application Form</medium></span>
-                      <br>
-                      <span class="help-block"><medium>2. School Certficate</medium></span>
-                      <br>
-                      <span class="help-block"><medium>3. Recommendation Letter</medium></span>
-                      <br>
-                      <span class="help-block"><medium>4. All Medical Documents</medium></span>
-                      <br>
-                      <span class="help-block"><medium>5. Police Report</medium></span>
-                      <br>
-                      <span class="help-block"><medium>6. Admission Contract</medium></span>
-                      <br>
-                      <span class="help-block"><medium>7. Responsibility Form</medium></span>
-                      <br>
-                      <span class="help-block"><medium>8. Declaration Form</medium></span>
-                      <br>
-                      <span class="help-block"><medium>9. Room Assignment Form</medium></span>
-                      <br>
-                      <span class="help-block"><medium>10. Application Form</medium></span>
-                      <br>
-                      <div class="form-group">
-                                                <br>
-                                                <div class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input" id="checkprintrequesteddocs" name="printrequesteddocs">
-                                                    <label class="custom-control-label" for="checkprintrequesteddocs">I can confirm I printed all requested documents</label>
-                                                </div>
-                                            </div>
-                      </div>
-
-                      <br>
-
-                      <div class="form-group">
-
-                      <label for="exampleTextarea1">Do You Have Malaria Medication?</label>
-
-                      <div class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input" id="checkmalariamed" name="malariacheck">
-                                                    <label class="custom-control-label" for="checkmalariamed">I can confirm I have malaria medication</label>
-                                                </div>
-
-                      </div> 
-
-                      <br>
-
-                      <div class="form-group">
-
-                      <label for="exampleTextarea1">Is Your Mobile Phone Unlocked So That The Ghana Sim Card Will Work?</label>
-
-                      <div class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input" id="checkghanasim" name="ghanasimcheck">
-                                                    <label class="custom-control-label" for="checkghanasim">I can confirm my mobile phone is unlocked</label>
-                                                </div>
-
-                      </div>
-
-                      <br>
-
-                      <div class="form-group">
-
-                      <label for="exampleTextarea1">Do You Have A 3-Pin/Charger Or An Adaptor For The Sockets In Ghana?</label>
-
-                      <div class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input" id="checkchargerghana" name="3pinghanacheck">
-                                                    <label class="custom-control-label" for="checkchargerghana">I can confirm I have 3-pin/charger or an adaptor</label>
-                                                </div>
-
-                      </div>
-
-                      <br>
-
-                      <div class="form-group">
-
-                      <label for="exampleTextarea1">Do You Have A Charged Power Bank And A Cable To Charge Your Phone?</label>
-
-                      <div class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input" id="checkpower" name="chargepowercheck">
-                                                    <label class="custom-control-label" for="checkpower">I can confirm I have a charged power bank and cable for my phone</label>
-                                                </div>
-
-                      </div> 
-
-                      <br>
-
-                      <div class="form-group">
-
-                      <label for="exampleTextarea1">Do You Have A Pillowcase, Bedsheets, And Duvet For A Single Bed?</label>
-
-                      <div class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input" id="checkbeddings" name="beddingscheck">
-                                                    <label class="custom-control-label" for="checkbeddings">I can confirm I have these beddings</label>
-                                                </div>
-
-                      </div>   
-
-                      <br>                   
-                    
-                                           </div>
-                  </div>
-                  <div class="button-row d-flex mt-4">
-                    <button class="btn btn-primary js-btn-prev" type="button" title="Prev">Prev</button>
-                    <button class="btn btn-primary ml-auto js-btn-next" type="button" title="Next">Next</button>
-                  </div>
-                </div>
-              </div>
-              
-              <!--single form panel-->
-              <div class="multisteps-form__panel shadow p-4 rounded bg-white" data-animation="scaleIn">
-                <h5 class="multisteps-form__title">INTERNATIONAL STUDENT ARRIVAL PROCESS</h5>
-
-                <div class="scrollpage1" style="height: 300px;">
-                  
-                <ul type="disc">
-                  <li>ABMTC will organise airport pick up - The Bible School Attendant will hold an ABMTC placard outside the airport</li>
-                  <li>Connect to the wifi when you arrive at the Accra Airport</li>
-                  <li>Please make sure you have US Dollars or UK Pounds to change at the airport (do not plan on changing another currency). You must change some money at the airport!</li>
-                  <li>Please <b>do not buy a sim card when you arrive</b>, a specific sim card with a network that has good signal in Mampong will be given to you for a fee of 30 cedis by the Bible School Attendant who will pick you up from the airport. Please give the sim card money to the Bible School Attendant after you have changed some money at the airport to cedis</li>
-                    <li>When you arrive the Bible School Attendant will take you to the convenience store near the airport which also has restaurants. After the Bible School Attendant will bring you to the Bible School</li>
-                </ul>
-
-                                          
-
-                                             
-                                              
-                  </div>
-                    <div class="button-row d-flex mt-4 col-12">
-                      <button class="btn btn-primary js-btn-prev" type="button" title="Prev">Prev</button>
-                      <button class="btn btn-primary ml-auto js-btn-next" type="button" title="Next">Next</button>
-                  </div>
-                </div>
-
-                <!--single form panel-->
-              <div class="multisteps-form__panel shadow p-4 rounded bg-white" data-animation="scaleIn">
-                <h3 class="multisteps-form__title">HELPFUL LINKS</h3>
-                <div class="scrollpage1" style="height: 300px;">
-                  <div class="form-group">
-                    <span class="help-block"><medium>Please read the recommended items you should bring to ABMTC on the school website: <a href="https://school.anagkazomanager.org/register" target="_blank">www.abmtc.org/studentlife</a></medium></span>
-                    <br>
-                    <span class="help-block"><medium>Academic Calendar</medium></span>
-                    <br>
-                    <span class="help-block"><medium>Campus Map</medium></span>
-
-                    <br>
-
-                    <span class="help-block"><medium>Download Campus Map Here: <a href="img/map.jpg" target="_blank" download>Download Campus Map</a></medium></span>
-
-                                           
-                                          </div>
-                  </div>
-                    <div class="button-row d-flex mt-4 col-12">
-                      <button class="btn btn-primary js-btn-prev" type="button" title="Prev">Prev</button>
-                      <button class="btn btn-primary ml-auto js-btn-next" type="button" title="Next">Next</button>
-                  </div>
-                </div>
-
-                <!--single form panel-->
-              <div class="multisteps-form__panel shadow p-4 rounded bg-white" data-animation="scaleIn">
-                <h3 class="multisteps-form__title">SOFT LANDING CHECKLIST</h3>
-                <div class="scrollpage1" style="height: 300px;">
-                  <br>
-                  <label for="exampleTextarea1">Please Confirm The Following:</label>
-
-                      <div class="form-group">
-                      <label>Airport Pick-Up (International Students Only)</label>
-                                                <div class="custom-control custom-radio">
-                                                    <input type="radio" id="radioairportpick1" name="airportpick" class="custom-control-input">
-                                                    <label class="custom-control-label" for="radioairportpick1">Yes</label>
-                                                </div>
-                                                <div class="custom-control custom-radio">
-                                                    <input type="radio" id="radioairportpick2" name="airportpick" class="custom-control-input">
-                                                    <label class="custom-control-label" for="radioairportpick2">No</label>
-                                                </div>
-                                            </div> 
-
-                      <div class="form-group">
-                      <label>Changed Money At The Airport (International Students Only)</label>
-                                                <div class="custom-control custom-radio">
-                                                    <input type="radio" id="radiocheckmoneychange1" name="moneycheck" class="custom-control-input">
-                                                    <label class="custom-control-label" for="radioairportpick1">Yes</label>
-                                                </div>
-                                                <div class="custom-control custom-radio">
-                                                    <input type="radio" id="radiocheckmoneychange2" name="moneycheck" class="custom-control-input">
-                                                    <label class="custom-control-label" for="radiocheckmoneychange2">No</label>
-                                                </div>
-                                            </div>
-
-                      <div class="form-group">
-                      <label>Starter Pack (International Students Only)</label>
-                                                <div class="custom-control custom-radio">
-                                                    <input type="radio" id="radiostarterpack1" name="starterpack" class="custom-control-input">
-                                                    <label class="custom-control-label" for="radiostarterpack1">Yes</label>
-                                                </div>
-                                                <div class="custom-control custom-radio">
-                                                    <input type="radio" id="radiostarterpack2" name="starterpack" class="custom-control-input">
-                                                    <label class="custom-control-label" for="radiostarterpack2">No</label>
-                                                </div>
-                                            </div>                      
-
-                      <div class="form-group">
-
-                      <div class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input" id="checksimcred" name="simcredcheck">
-                                                    <label class="custom-control-label" for="checksimcred">Set Up MTN Sim Card And Credit</label>
-                                                </div>
-                                              </div>
-
-
-
-                       <div class="form-group">                   
-                       <div class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input" id="checkcollecttag" name="tagcheck">
-                                                    <label class="custom-control-label" for="checkcollecttag">Collected Tag</label>
-                                                </div>
-                                                </div>                        
-
-                      
-
-                         <div class="form-group row">
-                                                <label for="example-search-input" class="col-sm-2 col-form-label">Room Number</label>
-                                                <div class="col-sm-1">
-                                                    <input type="number" class="form-control rounded-0 form-control-sm" id="checkroomnum" name="roomnumber">
-                                                </div>
-                                            </div> 
-
-                          <div class="form-group">
-                                              <label>Are There Any Issues In The Room?</label>
-                                                <div class="custom-control custom-radio">
-                                                    <input type="radio" id="Radioroom1" name="roomissues" class="custom-control-input">
-                                                    <label class="custom-control-label" for="Radioroom1" onclick="show2();">Yes</label>
-                                                </div>
-                                                <div class="custom-control custom-radio">
-                                                    <input type="radio" id="Radioroom2" name="roomissues" class="custom-control-input">
-                                                    <label class="custom-control-label" for="Radioroom2" onclick="show1();">No</label>
-                                                </div>
-                                            </div>                                         
-                                            
-                                            <div id="div1" class="form-group hide">
-
-                                                  <label>If Yes, Please Comment On The Room Issues</label>
-
-                                                <input type="text" class="form-control" placeholder="" name="roomissuescomment">
-
-                                                </div> 
-
-                                              <div class="form-group">
-                                              <label>Have The Issues In Your Room Been Solved?</label>
-                                                <div class="custom-control custom-radio">
-                                                    <input type="radio" id="Radiocheckroomprob1" name="checkroomprob" class="custom-control-input">
-                                                    <label class="custom-control-label" for="Radiocheckroomprob1">Yes</label>
-                                                </div>
-                                                <div class="custom-control custom-radio">
-                                                    <input type="radio" id="Radiocheckroomprob2" name="checkroomprob" class="custom-control-input">
-                                                    <label class="custom-control-label" for="Radiocheckroomprob2">No</label>
-                                                </div>
-                                            </div>
-
-                         <div class="form-group">
-
-                      <div class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input" id="checkadminfeebook" name="feeandbookcheck">
-                                                    <label class="custom-control-label" for="checkadminfeebook">Paid Admin Fee And Collected Textbooks</label>
-                                                </div>
-                                              </div>
-
-                       <div class="form-group">
-
-                      <div class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input" id="checkgallerytour" name="tourcheck">
-                                                    <label class="custom-control-label" for="checkgallerytour">Gallery Tour</label>
-                                                </div>
-                                              </div>
-
-                      <div class="form-group">
-
-                      <div class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input" id="checkorphanage" name="orphancheck">
-                                                    <label class="custom-control-label" for="checkorphanage">Orphanage Tour</label>
-                                                </div>
-                                              </div>                                                                                                                                                             
-
-                      </div>
-                  
-                    <div class="button-row d-flex mt-4 col-12">
-                      <button class="btn btn-primary js-btn-prev" type="button" title="Prev">Prev</button>
-                      <button class="btn btn-primary ml-auto js-btn-next" type="button" title="Next">Next</button>
-
-                  </div>
-                </div>
-
-                <div class="multisteps-form__panel shadow p-4 rounded bg-white" data-animation="scaleIn">
-                <h3 class="multisteps-form__title">UNIVERSITY ITEMS CHECKLIST</h3>
-                <div class="multisteps-form__content">
-                  <div class="scrollpage1" style="height: 300px;">
-                    <div class="relative input-wrap is-required">
-                      <br>
-                    <div class="form-group"> 
-                      <br>
-                      <span class="help-block"><medium>Please Take The Time In Making Sure You Have These University Essentials</medium></span>
-                      <br>
-                      <br>
-                      <span class="help-block"><medium>- Cooking Utensils such as cutlery etc</medium></span>
-                      <br>
-                      <span class="help-block"><medium>- Rice Cooker</medium></span>
-                      <br>
-                      <span class="help-block"><medium>- Kettle</medium></span>
-                      <br>
-                      <span class="help-block"><medium>- Hard-drive/USB Stick</medium></span>
-                      <br>
-                      <span class="help-block"><medium>- Notebook</medium></span>
-                      <br>
-                      <span class="help-block"><medium>- Stationary</medium></span>
-                      <br>
-                      <span class="help-block"><medium>- Power Bank</medium></span>
-                      <br>
-                      <span class="help-block"><medium>- Surge Proof Extension Cables x2</medium></span>
-                      <br>
-                      <span class="help-block"><medium>- International Adaptor Plugs</medium></span>
-                      <br>
-                      <span class="help-block"><medium>- Portable Fan</medium></span>
-                      <br>
-                      <span class="help-block"><medium>- Bedding</medium></span>
-                      <br>
-                      <span class="help-block"><medium>- Cleaning Products</medium></span>
-                      <br>
-                      <span class="help-block"><medium>- Casual Clothes</medium></span>
-                      <br>
-                      <span class="help-block"><medium>- Smart Clothes</medium></span>
-                      <br>
-                      <span class="help-block"><medium>- Evening Wear</medium></span>
-                      <br>
-                      <span class="help-block"><medium>- Traditional Clothes (Optional)</medium></span>
-                      <br>
-                      <span class="help-block"><medium>- Sportswear (Optional - Golf, Football, Jogging)</medium></span>
-                      <br>
-                      <span class="help-block"><medium>- Footwear (Trainers, Smart Shoes, Casual Shoes)</medium></span>
-                      <br>
-                      <span class="help-block"><medium>- Clothing To Work In (BMCDR)</medium></span>
-                      <br>
-                      <span class="help-block"><medium>- Footwear To Work (BMCDR)</medium></span>
-                      <br>
-                      <span class="help-block"><medium>- Clothing For Different Seasons (Both Warm And Cold Weather)</medium></span>
-                      <br>
-                      <div class="form-group">
-                                                <br>
-                                                <div class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input" id="checkuniversityitems" name="universitylist">
-                                                    <label class="custom-control-label" for="checkuniversityitems">I can confirm I have all university items</label>
-                                                </div>
-                                            </div>
-                      </div>                   
-                    
-                                           </div>
-                  </div>
-                  <div class="button-row d-flex mt-4">
-                    <button class="btn btn-primary js-btn-prev" type="button" title="Prev">Prev</button>
-                    <button class="btn btn-primary ml-auto js-btn-next" type="button" title="Next">Next</button>
-                  </div>
-                </div>
-              </div>
-
-                <!--single form panel-->
-              <div class="multisteps-form__panel shadow p-4 rounded bg-white" data-animation="scaleIn">
-                <h3 class="multisteps-form__title">FINISH</h3>
-                <div class="scrollpage1" style="height: 300px;">
-                  <br>
-                  <br>
-                  <center><span class="help-block"><medium>Click Submit To Complete Admitted Students Form</medium></span></center>
-                  </div>
-                    <div class="button-row d-flex mt-4 col-12">
-                      <button class="btn btn-primary js-btn-prev" type="button" title="Prev">Prev</button>
-                      <button id="clickable" class="btn btn-primary ml-auto toggle-disabled" type="submit" title="Send">Submit</button>
-                  </div>
-                </div>          
-                               
-              <!--single form panel-->
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- partial -->
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- partial -->
                             </div>
                         </div>
                     </div>
@@ -955,799 +1218,785 @@ if ($_SESSION['loggedin'] == false) {
 <script src="js/default-assets/file-upload.js"></script>
 
 <script>
-  //DOM elements
-const DOMstrings = {
-  stepsBtnClass: 'multisteps-form__progress-btn',
-  stepsBtns: document.querySelectorAll(`.multisteps-form__progress-btn`),
-  stepsBar: document.querySelector('.multisteps-form__progress'),
-  stepsForm: document.querySelector('.multisteps-form__form'),
-  stepsFormTextareas: document.querySelectorAll('.multisteps-form__textarea'),
-  stepFormPanelClass: 'multisteps-form__panel',
-  stepFormPanels: document.querySelectorAll('.multisteps-form__panel'),
-  stepPrevBtnClass: 'js-btn-prev',
-  stepNextBtnClass: 'js-btn-next' };
+    //DOM elements
+    const DOMstrings = {
+        stepsBtnClass: 'multisteps-form__progress-btn',
+        stepsBtns: document.querySelectorAll(`.multisteps-form__progress-btn`),
+        stepsBar: document.querySelector('.multisteps-form__progress'),
+        stepsForm: document.querySelector('.multisteps-form__form'),
+        stepsFormTextareas: document.querySelectorAll('.multisteps-form__textarea'),
+        stepFormPanelClass: 'multisteps-form__panel',
+        stepFormPanels: document.querySelectorAll('.multisteps-form__panel'),
+        stepPrevBtnClass: 'js-btn-prev',
+        stepNextBtnClass: 'js-btn-next'
+    };
 
 
-//remove class from a set of items
-const removeClasses = (elemSet, className) => {
+    //remove class from a set of items
+    const removeClasses = (elemSet, className) => {
 
-  elemSet.forEach(elem => {
+        elemSet.forEach(elem => {
 
-    elem.classList.remove(className);
+            elem.classList.remove(className);
 
-  });
+        });
 
-};
+    };
 
-//return exect parent node of the element
-const findParent = (elem, parentClass) => {
+    //return exect parent node of the element
+    const findParent = (elem, parentClass) => {
 
-  let currentNode = elem;
+        let currentNode = elem;
 
-  while (!currentNode.classList.contains(parentClass)) {
-    currentNode = currentNode.parentNode;
-  }
+        while (!currentNode.classList.contains(parentClass)) {
+            currentNode = currentNode.parentNode;
+        }
 
-  return currentNode;
+        return currentNode;
 
-};
+    };
 
-//get active button step number
-const getActiveStep = elem => {
-  return Array.from(DOMstrings.stepsBtns).indexOf(elem);
-};
+    //get active button step number
+    const getActiveStep = elem => {
+        return Array.from(DOMstrings.stepsBtns).indexOf(elem);
+    };
 
-//set all steps before clicked (and clicked too) to active
-const setActiveStep = activeStepNum => {
+    //set all steps before clicked (and clicked too) to active
+    const setActiveStep = activeStepNum => {
 
-  //remove active state from all the state
-  removeClasses(DOMstrings.stepsBtns, 'js-active');
+        //remove active state from all the state
+        removeClasses(DOMstrings.stepsBtns, 'js-active');
 
-  //set picked items to active
-  DOMstrings.stepsBtns.forEach((elem, index) => {
+        //set picked items to active
+        DOMstrings.stepsBtns.forEach((elem, index) => {
 
-    if (index <= activeStepNum) {
-      elem.classList.add('js-active');
-    }
+            if (index <= activeStepNum) {
+                elem.classList.add('js-active');
+            }
 
-  });
-};
+        });
+    };
 
-//get active panel
-const getActivePanel = () => {
+    //get active panel
+    const getActivePanel = () => {
 
-  let activePanel;
+        let activePanel;
 
-  DOMstrings.stepFormPanels.forEach(elem => {
+        DOMstrings.stepFormPanels.forEach(elem => {
 
-    if (elem.classList.contains('js-active')) {
+            if (elem.classList.contains('js-active')) {
 
-      activePanel = elem;
+                activePanel = elem;
 
-    }
+            }
 
-  });
+        });
 
-  return activePanel;
+        return activePanel;
 
-};
+    };
 
-//open active panel (and close unactive panels)
-const setActivePanel = activePanelNum => {
+    //open active panel (and close unactive panels)
+    const setActivePanel = activePanelNum => {
 
-  //remove active class from all the panels
-  removeClasses(DOMstrings.stepFormPanels, 'js-active');
+        //remove active class from all the panels
+        removeClasses(DOMstrings.stepFormPanels, 'js-active');
 
-  //show active panel
-  DOMstrings.stepFormPanels.forEach((elem, index) => {
-    if (index === activePanelNum) {
+        //show active panel
+        DOMstrings.stepFormPanels.forEach((elem, index) => {
+            if (index === activePanelNum) {
 
-      elem.classList.add('js-active');
+                elem.classList.add('js-active');
 
-      setFormHeight(elem);
+                setFormHeight(elem);
 
-    }
-  });
+            }
+        });
 
-};
+    };
 
-//set form height equal to current panel height
-const formHeight = activePanel => {
+    //set form height equal to current panel height
+    const formHeight = activePanel => {
 
-  const activePanelHeight = activePanel.offsetHeight;
+        const activePanelHeight = activePanel.offsetHeight;
 
-  DOMstrings.stepsForm.style.height = `${activePanelHeight}px`;
+        DOMstrings.stepsForm.style.height = `${activePanelHeight}px`;
 
-};
+    };
 
-const setFormHeight = () => {
-  const activePanel = getActivePanel();
+    const setFormHeight = () => {
+        const activePanel = getActivePanel();
 
-  formHeight(activePanel);
-};
+        formHeight(activePanel);
+    };
 
-//STEPS BAR CLICK FUNCTION
-DOMstrings.stepsBar.addEventListener('click', e => {
+    //STEPS BAR CLICK FUNCTION
+    DOMstrings.stepsBar.addEventListener('click', e => {
 
-  //check if click target is a step button
-  const eventTarget = e.target;
+        //check if click target is a step button
+        const eventTarget = e.target;
 
-  if (!eventTarget.classList.contains(`${DOMstrings.stepsBtnClass}`)) {
-    return;
-  }
+        if (!eventTarget.classList.contains(`${DOMstrings.stepsBtnClass}`)) {
+            return;
+        }
 
-  //get active button step number
-  const activeStep = getActiveStep(eventTarget);
+        //get active button step number
+        const activeStep = getActiveStep(eventTarget);
 
-  //set all steps before clicked (and clicked too) to active
-  setActiveStep(activeStep);
+        //set all steps before clicked (and clicked too) to active
+        setActiveStep(activeStep);
 
-  //open active panel
-  setActivePanel(activeStep);
-});
+        //open active panel
+        setActivePanel(activeStep);
+    });
 
-//PREV/NEXT BTNS CLICK
-DOMstrings.stepsForm.addEventListener('click', e => {
+    //PREV/NEXT BTNS CLICK
+    DOMstrings.stepsForm.addEventListener('click', e => {
 
-  const eventTarget = e.target;
+        const eventTarget = e.target;
 
-  //check if we clicked on `PREV` or NEXT` buttons
-  if (!(eventTarget.classList.contains(`${DOMstrings.stepPrevBtnClass}`) || eventTarget.classList.contains(`${DOMstrings.stepNextBtnClass}`)))
-  {
-    return;
-  }
+        //check if we clicked on `PREV` or NEXT` buttons
+        if (!(eventTarget.classList.contains(`${DOMstrings.stepPrevBtnClass}`) || eventTarget.classList.contains(`${DOMstrings.stepNextBtnClass}`))) {
+            return;
+        }
 
-  //find active panel
-  const activePanel = findParent(eventTarget, `${DOMstrings.stepFormPanelClass}`);
+        //find active panel
+        const activePanel = findParent(eventTarget, `${DOMstrings.stepFormPanelClass}`);
 
-  let activePanelNum = Array.from(DOMstrings.stepFormPanels).indexOf(activePanel);
+        let activePanelNum = Array.from(DOMstrings.stepFormPanels).indexOf(activePanel);
 
-  //set active step and active panel onclick
-  if (eventTarget.classList.contains(`${DOMstrings.stepPrevBtnClass}`)) {
-    activePanelNum--;
+        //set active step and active panel onclick
+        if (eventTarget.classList.contains(`${DOMstrings.stepPrevBtnClass}`)) {
+            activePanelNum--;
 
-  } else {
+        } else {
 
-    activePanelNum++;
+            activePanelNum++;
 
-  }
+        }
 
-  setActiveStep(activePanelNum);
-  setActivePanel(activePanelNum);
+        setActiveStep(activePanelNum);
+        setActivePanel(activePanelNum);
 
-});
+    });
 
-//SETTING PROPER FORM HEIGHT ONLOAD
-window.addEventListener('load', setFormHeight, false);
+    //SETTING PROPER FORM HEIGHT ONLOAD
+    window.addEventListener('load', setFormHeight, false);
 
-//SETTING PROPER FORM HEIGHT ONRESIZE
-window.addEventListener('resize', setFormHeight, false);
+    //SETTING PROPER FORM HEIGHT ONRESIZE
+    window.addEventListener('resize', setFormHeight, false);
 
-//changing animation via animation select !!!YOU DON'T NEED THIS CODE (if you want to change animation type, just change form panels data-attr)
+    //changing animation via animation select !!!YOU DON'T NEED THIS CODE (if you want to change animation type, just change form panels data-attr)
 
-const setAnimationType = newType => {
-  DOMstrings.stepFormPanels.forEach(elem => {
-    elem.dataset.animation = newType;
-  });
-};
+    const setAnimationType = newType => {
+        DOMstrings.stepFormPanels.forEach(elem => {
+            elem.dataset.animation = newType;
+        });
+    };
 
-//selector onchange - changing animation
-const animationSelect = document.querySelector('.pick-animation__select');
+    //selector onchange - changing animation
+    const animationSelect = document.querySelector('.pick-animation__select');
 
-animationSelect.addEventListener('change', () => {
-  const newAnimationType = animationSelect.value;
+    animationSelect.addEventListener('change', () => {
+        const newAnimationType = animationSelect.value;
 
-  setAnimationType(newAnimationType);
-});
+        setAnimationType(newAnimationType);
+    });
 </script>
 
 <script src='https://rawgit.com/guillaumepotier/Parsley.js/2.2.0-rc4/dist/parsley.js'></script>
 
 <script type="text/javascript">
-  $(document).ready(function () {
+    $(document).ready(function () {
 
 
-  
-});
+    });
 </script>
 
 <script>
-    $(document).on('change keyup', '.required', function(e){
-   let Disabled = true;
-    $(".required").each(function() {
+    $(document).on('change keyup', '.required', function (e) {
+        let Disabled = true;
+        $(".required").each(function () {
 
-      let value = this.value
-      if ((value)&&(value.trim() !=''))
-          {
-            Disabled = false
-          }else{
-            Disabled = true
-            return false
-          }
-    });
-   
-   if(Disabled){
-        $('.toggle-disabled').prop("disabled", true);
-      }else{
-        $('.toggle-disabled').prop("disabled", false);
-      }
- })
-  </script>
+            let value = this.value;
+            if ((value) && (value.trim() != '')) {
+                Disabled = false
+            } else {
+                Disabled = true;
+                return false
+            }
+        });
+
+        if (Disabled) {
+            $('.toggle-disabled').prop("disabled", true);
+        } else {
+            $('.toggle-disabled').prop("disabled", false);
+        }
+    })
+</script>
 
 
-  <!-- Disable button for page 1 -->
-  <script type="text/javascript">
+<!-- Disable button for page 1 -->
+<script type="text/javascript">
     document.getElementById('clickable').addEventListener('click', clickDiv);
 
-function clickDiv() {
-    // document.getElementById('clickable').innerHTML = "Clicked and Changed"; // Changes text inside div one time only when clicked
-    $('#demo-form .btn').on('click', function () {
-    $('#demo-form').parsley().validate();
-    validateFront();
-  });
+    function clickDiv() {
+        // document.getElementById('clickable').innerHTML = "Clicked and Changed"; // Changes text inside div one time only when clicked
+        $('#demo-form .btn').on('click', function () {
+            $('#demo-form').parsley().validate();
+            validateFront();
+        });
 
-  var validateFront = function () {
-    if (true === $('#demo-form').parsley().isValid()) {
-      $('.bs-callout-info').removeClass('hidden');
-      $('.bs-callout-warning').addClass('hidden');
-    } else {
-      $('.bs-callout-info').addClass('hidden');
-      $('.bs-callout-warning').removeClass('hidden');
+        var validateFront = function () {
+            if (true === $('#demo-form').parsley().isValid()) {
+                $('.bs-callout-info').removeClass('hidden');
+                $('.bs-callout-warning').addClass('hidden');
+            } else {
+                $('.bs-callout-info').addClass('hidden');
+                $('.bs-callout-warning').removeClass('hidden');
+            }
+        };
     }
-  };
-}
-  </script>
-
-  <!-- Disable and enable button for page 2 -->
-
-  <script>
-    // Heavily commented so you can you whichever chunks you need
-// Please use and improve your forms 
-
-var $inputWrapper = '.input-wrap',
-  $invalidClass = 'is-invalid',
-  $validClass = 'is-valid',
-  $optionalClass = 'is-optional',
-  $requiredClass = 'is-required',
-  $helperClass = '.is-helpful',
-  $errorClass = 'error-message',
-  
-  $validEmail = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,13}$/i,
-  $validWebsite = /^[A-Z._-]+.[A-Z0-9.-]+\.[A-Z]{2,13}$/i,
-  $validPhone = /^[0-9-.()]{3,15}$/,
-  
-  $date = new Date();
-   
-/*
- * Validation Functions
- */
-
-// There are three kinds of validation
-// Valid, invalid, and neutral
-// Because markValid sets the success icon, neutral is needed to
-// remove the error icon for optional fields
-function markValid(field) {
-  var $field_wrapper = field.parents($inputWrapper);
-
-  $field_wrapper.addClass($validClass).removeClass($invalidClass);    
-
-  $(field).parents($inputWrapper).siblings('.error-message').slideUp(200, function() {
-    $(this).addClass('hide');
-  });
-
-  field.parents($inputWrapper).siblings($helperClass).removeClass($errorClass);
-  field.parents($inputWrapper).siblings('.error-message').removeClass($errorClass);
-
-  setIcon(field, 'valid');
-  setField(field, $field_wrapper, 'valid');
-  helperUp(field);
-}
-
-function markInvalid(field, error_message) {
-  var $field_wrapper = field.parents($inputWrapper);
-
-  if ($field_wrapper.hasClass($requiredClass) || ($field_wrapper.hasClass($optionalClass) && field.val() != '')) {
-    setIcon(field, 'invalid');
-    setError(field, error_message);
-    setField(field, $field_wrapper, 'invalid');
-  }
-}
-
-function markNeutral(field) {
-  $(field).closest($inputWrapper).addClass($validClass).removeClass($invalidClass);
-  $('label[for="' + field.attr('id') + '"]').addClass($validClass).removeClass($invalidClass);
-  $(field).siblings('.icon.success').removeClass('show').addClass('hide');
-  $(field).siblings('.icon.error').removeClass('show').addClass('hide');
-}
-
-function setIcon(field, validation_type) {
-  var $iconSuccess = $(field).siblings('.icon.success');
-  var $iconError = $(field).siblings('.icon.error');
-
-  if (validation_type === 'valid') {
-    $iconSuccess.removeClass('hide');
-    $iconError.addClass('hide');
-  } else if (validation_type === 'invalid') {
-    $iconSuccess.addClass('hide');
-    $iconError.removeClass('hide');
-  }
-}
-
-// Used for selects because the icons are in a different location
-// due to layout changes
-function setIconMulti(iconSuccess, iconError, validation_type) {
-  if (validation_type === 'valid') {
-    iconSuccess.removeClass('hide');
-    iconError.addClass('hide');
-  } else if (validation_type === 'invalid') {
-    iconSuccess.addClass('hide');
-    iconError.removeClass('hide');
-  }
-}
-
-function setError(field, error_message) {
-  field.closest($inputWrapper).siblings($helperClass).html(error_message);
-  field.closest($inputWrapper).siblings($helperClass).addClass('error-message').removeClass('hide');
-}
-
-function setField(field, field_wrapper, validation_type) {
-  if (validation_type === 'valid') {
-    field_wrapper.addClass($validClass).removeClass($invalidClass);
-    field_wrapper.siblings('label').addClass($validClass).removeClass($invalidClass);
-  } else if (validation_type === 'invalid') {
-    field_wrapper.addClass($invalidClass).removeClass($validClass);
-    field_wrapper.siblings('label').addClass($invalidClass).removeClass($validClass);
-  }
-}
-
-/*
- * Specific Checker Functions
- */
-
-function checkPasswordRequirements(input, event) {
-  var errors = 4;
-
-  if (input.val().match(/[a-z]/) != null) {
-    errors--;
-    $('.help_text_pwd1').addClass('success');
-  } else if (input.val().match(/[a-z]/) === null) {
-    errors++;
-    $('.help_text_pwd1').removeClass('success');
-  }
-
-  if (input.val().match(/[A-Z]/) != null) {
-    errors--;
-    $('.help_text_pwd2').addClass('success');
-  } else if (input.val().toLowerCase() === input.val()) {
-    errors++;
-    $('.help_text_pwd2').removeClass('success');
-  }
-
-  if (input.val().match(/[0-9]/) != null) {
-    errors--;
-    $('.help_text_pwd3').addClass('success');
-  } else if (input.val().match(/[0-9]/) === null) {
-    errors++;
-    $('.help_text_pwd3').removeClass('success');
-  }
-
-  if (input.val().length >= 8) {
-    errors--;
-    $('.help_text_pwd4').addClass('success');
-  } else if (input.val().length < 8) {
-    errors++;
-    $('.help_text_pwd4').removeClass('success');
-  } 
-
-  if (errors > 0) {
-    if (event.type === 'blur') {
-      markInvalid(input, 'Please choose a valid password.');
-    }
-  } else if (errors <= 0) {
-    markValid(input);
-  }
-}
-
-function validatePasswordPair(first, second) {
-  if (first.val() === second.val()) {
-    markValid(second);
-  } else {
-    if (second.val().length >= 8) {
-      markInvalid(second, 'Both passwords must match.');
-    }
-  }
-}
-
-
-/*
- * Helper Text
- */
-
-function helperDown(field, help_div, message) {
-  help_div.html(message);
-  help_div.removeClass($errorClass);
-  help_div.slideDown(400);
-}
-
-function helperUp(field) {
-  field.parents($inputWrapper).siblings($helperClass).slideUp(400);
-}
-
-
-/*
- * Event Triggers
- */
-
-$('input, textarea').on('focus', function() {
-  markNeutral($(this));
-  var $helpText = $(this).closest($inputWrapper).siblings($helperClass);
-  
-  if ($(this).closest($inputWrapper).hasClass('password-set')) {
-    var $message =  '<ul>' +
-            '<li><div class="help_text_pwd1">(a-z) lowercase</div></li>' +
-            '<li><div class="help_text_pwd2">(A-Z) UPPERCASE</div></li>' +
-            '<li><div class="help_text_pwd3">(0-9) number</div></li>' +
-            '<li><div class="help_text_pwd4">8 characters</div></li>' +
-            '</ul>';
-  } else {
-    var $message = $helpText.attr('data-helper');
-  }
-  
-  helperDown($(this), $helpText, $message);
-});
-
-$('input:not("input[type=url], input[type=password], input[name=email], input[type=tel]"), textarea').on('blur', function() {
-  if ($(this).val() === '' && $(this).closest($inputWrapper).hasClass($requiredClass)) {
-    markInvalid($(this), $(this).closest($inputWrapper).siblings($helperClass).attr('data-error'));
-  } else {
-    helperUp($(this));
-  }
-});
-
-$('input:not("input[type=url], input[type=password], input[name=email], input[type=tel]"), textarea').on('keyup', function(event) {
-  if ($(this).val() !== '') {
-    markValid($(this));
-  }
-});
-
-// This will handle single selects
-// and groups of selects with n number of selects in them.
-// Whichever selects are contained within the $inputWrapper class
-// will validate as a group, only if each has been changed
-// at least once.
-$('select').on('change', function () {
-  var $currentSelect = $(this),
-    $selects = $('select ', $currentSelect.closest($inputWrapper)),
-    $numSelects = $selects.length;
-  
-  if ($numSelects > 1) { // handle multiple selects
-    if (!$currentSelect.hasClass('changed')) {
-      $currentSelect.addClass('changed');
-    }
-    
-    var $selectsValues = [];
-    var $numChanges = $('.changed ', $currentSelect.closest($inputWrapper)).length;
-    
-    if ($numChanges === $numSelects) {
-      $selects.each(function() {
-        if ($(this).val() === '') {
-          $selectsValues.push('empty'); // need a value to push to the array (can't use 'empty' in markup if '' is needed elsewhere)
-        } else {
-          $selectsValues.push($(this).val());
-        }
-      });
-
-      var $numEmpty = 0;
-
-      for (i = 0; i < $selectsValues.length; i++) {
-        if ($selectsValues[i] === 'empty') {
-          $numEmpty++;
-        }
-      }
-
-      var $iconSuccess = $('.icon.success', $(this).closest($inputWrapper)),
-        $iconError = $('.icon.error', $(this).closest($inputWrapper));
-      
-      if ($numEmpty > 0) {
-        setIconMulti($iconSuccess, $iconError, 'invalid');
-        setField($currentSelect, $currentSelect.closest($inputWrapper), 'invalid');
-      } else {
-        setIconMulti($iconSuccess, $iconError, 'valid');
-        setField($currentSelect, $currentSelect.closest($inputWrapper), 'valid');
-      }
-    }
-  
-  } else { // handle single selects
-    if ($(this).val() === '') {
-      markInvalid($(this), 'Please make a selection');
-    } else {
-      markValid($(this));
-    }
-  }
-}); 
-
-// Email validation
-$('input[name=email]').on('keyup blur', function (event) {
-  if ($(this).parents($inputWrapper).hasClass($optionalClass) && $(this).val() === '') {
-    markNeutral($(this));
-  } else {
-    var $checkEmail = $(this).val().match($validEmail);
-
-    if (event.type === 'blur') {
-      if ($(this).val() === '') {
-        markInvalid($(this), $(this).parents($inputWrapper).siblings($helperClass).attr('data-error'));
-      } else if ($checkEmail === null) {
-        markInvalid($(this), 'Please enter a valid email');
-      } else {
-        markValid($(this));
-        helperText($(this), $helpText, $message, event);
-      }
-    } else {
-      if ($checkEmail !== null) {
-        markValid($(this));
-      }
-    }
-  }
-});
-
-// PASSWORDS
-// These are all separated out, based on the type of password field and the event type
-// It's more code and repetitive, but it's much more readable
-
-// Bind initial password choice on blur
-$('input[name=password1]').on('blur', function (event) {
-  if ($(this).val().length === 0) {
-    markInvalid($(this), 'Please choose a password.');
-  } else {
-    checkPasswordRequirements($(this), event);
-  }
-});
-
-// Bind initial password choice while typing
-$('input[name=password1]').on('keyup change', function (event) {
-  if ($(this).val().length === 0) {
-    markInvalid($(this), 'Please choose a password');
-  } else {
-    checkPasswordRequirements($(this), event);
-  }
-});
-
-// Bind password confirmation field on blur
-$('input[name=password2]').on('blur', function (event) {
-  if ($(this).val().length === 0) {
-    markInvalid($(this), 'Please confirm your password');
-  } else {
-    validatePasswordPair($('.password-set').children('input[type="password"]'), $(this));
-  }
-});
-
-// Bind password confirmation field while typing
-$('input[name=password2]').on('keyup change', function (event) {
-  if ($('.password-set').hasClass('is-invalid')) {
-    markInvalid($(this), 'Your password does not meet the requirements. Please fix it before confirming.');
-  } else {
-    validatePasswordPair($('.password-set').children('input[type="password"]'), $(this));
-  }
-});
-
-// Bind current password on blur
-$('input[name=password-old]').on('blur', function (event) {
-  if ($(this).val().length === 0) {
-    markInvalid($(this), 'Please enter your password');
-  } else if ($(this).val().length < 8) {
-    markInvalid($(this), 'Please enter a valid password');
-  }
-});
-
-// Bind current password while typing
-$('input[name=password-old]').on('keyup change', function (event) {
-  if ($(this).val().length >= 8) {
-    markValid($(this));
-  }
-});
-
-// URLs
-$('input[name=website]').on('keyup blur', function(event) {
-  if ($(this).parents($inputWrapper).hasClass($optionalClass) && $(this).val() === '') {
-    markNeutral($(this));
-    helperUp($(this));
-  } else {
-    var $checkWebsite = $(this).val().match($validWebsite);
-
-    if (event.type === 'blur') {
-      if ($checkWebsite === null) {
-        markInvalid($(this), 'Please enter a valid website address (www.example.com)');
-      } else {
-        markValid($(this));
-      }
-    } else {
-      if ($checkWebsite !== null) {
-        markValid($(this));
-      }
-    }
-  }
-});
-
-// Phone
-$('input[type=tel]').on('keyup blur', function(event) {
-  if ($(this).parents($inputWrapper).hasClass($optionalClass) && $(this).val() === '') {
-    markNeutral($(this));
-  } else {
-    var $checkPhone = $(this).val().match($validPhone);
-
-    if (event.type === 'blur') {
-      if ($checkPhone === null) {
-        markInvalid($(this), 'Please enter a valid phone number');
-      } else {
-        markValid($(this));
-        helperText($(this), $helpText, $message, event);
-      }
-    } else {
-      if ($checkPhone != null) {
-        markValid($(this));
-      }
-    }
-  }
-});
-
-// Make sure they are at least 13 years old
-$('input[name=birthdate]').on('blur', function() {
-  var $year = parseInt($(this).val().substr(0,4));
-  var $month = parseInt($(this).val().substr(5,2));
-  var $day = parseInt($(this).val().substr(8,2));
-  
-  if (($year + 13) > parseInt($date.getFullYear())) {
-    if ($month < (parseInt($date.getMonth()) + 1)) {
-      if ($day < parseInt($date.getFullYear())) {
-        markInvalid($(this), 'Sorry, you must be at least 13')
-      } else {
-        markValid($(this));
-      }
-    } else {
-      markValid($(this));
-    }
-  } else {
-    markValid($(this));
-  }
-});
-
-// Set the default date to January 1st, 13 years ago
-$(function() {
-  var $thirteen = $date.getFullYear() - 13;
-  $('input[name=birthdate]').val($thirteen + '-01-01');
-});
-
-$('input[type=color]').on('click change focus hover', function() {
-  markValid($(this));
-});
-  </script>
-
-  <script>
- 
-angular.module('app', [])
-.controller('ctrl', function($scope) {
-  console.log('scope',$scope);
-    $scope.printDiv = function(divName) {
-
-    var printContents = document.getElementById(divName).innerHTML;
-
-    var popupWin = window.open('', '_blank', 'width=300,height=300');
-    popupWin.document.open();
-    popupWin.document.write('<html><head><link rel="stylesheet" href="sample.css" /></head><body onload="window.print()">' + printContents + '</body></html>');
-    popupWin.document.close();      
-    };
-});
-
 </script>
 
+<!-- Disable and enable button for page 2 -->
+
+<script>
+    // Heavily commented so you can you whichever chunks you need
+    // Please use and improve your forms
+
+    var $inputWrapper = '.input-wrap',
+        $invalidClass = 'is-invalid',
+        $validClass = 'is-valid',
+        $optionalClass = 'is-optional',
+        $requiredClass = 'is-required',
+        $helperClass = '.is-helpful',
+        $errorClass = 'error-message',
+
+        $validEmail = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,13}$/i,
+        $validWebsite = /^[A-Z._-]+.[A-Z0-9.-]+\.[A-Z]{2,13}$/i,
+        $validPhone = /^[0-9-.()]{3,15}$/,
+
+        $date = new Date();
+
+    /*
+     * Validation Functions
+     */
+
+    // There are three kinds of validation
+    // Valid, invalid, and neutral
+    // Because markValid sets the success icon, neutral is needed to
+    // remove the error icon for optional fields
+    function markValid(field) {
+        var $field_wrapper = field.parents($inputWrapper);
+
+        $field_wrapper.addClass($validClass).removeClass($invalidClass);
+
+        $(field).parents($inputWrapper).siblings('.error-message').slideUp(200, function () {
+            $(this).addClass('hide');
+        });
+
+        field.parents($inputWrapper).siblings($helperClass).removeClass($errorClass);
+        field.parents($inputWrapper).siblings('.error-message').removeClass($errorClass);
+
+        setIcon(field, 'valid');
+        setField(field, $field_wrapper, 'valid');
+        helperUp(field);
+    }
+
+    function markInvalid(field, error_message) {
+        var $field_wrapper = field.parents($inputWrapper);
+
+        if ($field_wrapper.hasClass($requiredClass) || ($field_wrapper.hasClass($optionalClass) && field.val() != '')) {
+            setIcon(field, 'invalid');
+            setError(field, error_message);
+            setField(field, $field_wrapper, 'invalid');
+        }
+    }
+
+    function markNeutral(field) {
+        $(field).closest($inputWrapper).addClass($validClass).removeClass($invalidClass);
+        $('label[for="' + field.attr('id') + '"]').addClass($validClass).removeClass($invalidClass);
+        $(field).siblings('.icon.success').removeClass('show').addClass('hide');
+        $(field).siblings('.icon.error').removeClass('show').addClass('hide');
+    }
+
+    function setIcon(field, validation_type) {
+        var $iconSuccess = $(field).siblings('.icon.success');
+        var $iconError = $(field).siblings('.icon.error');
+
+        if (validation_type === 'valid') {
+            $iconSuccess.removeClass('hide');
+            $iconError.addClass('hide');
+        } else if (validation_type === 'invalid') {
+            $iconSuccess.addClass('hide');
+            $iconError.removeClass('hide');
+        }
+    }
+
+    // Used for selects because the icons are in a different location
+    // due to layout changes
+    function setIconMulti(iconSuccess, iconError, validation_type) {
+        if (validation_type === 'valid') {
+            iconSuccess.removeClass('hide');
+            iconError.addClass('hide');
+        } else if (validation_type === 'invalid') {
+            iconSuccess.addClass('hide');
+            iconError.removeClass('hide');
+        }
+    }
+
+    function setError(field, error_message) {
+        field.closest($inputWrapper).siblings($helperClass).html(error_message);
+        field.closest($inputWrapper).siblings($helperClass).addClass('error-message').removeClass('hide');
+    }
+
+    function setField(field, field_wrapper, validation_type) {
+        if (validation_type === 'valid') {
+            field_wrapper.addClass($validClass).removeClass($invalidClass);
+            field_wrapper.siblings('label').addClass($validClass).removeClass($invalidClass);
+        } else if (validation_type === 'invalid') {
+            field_wrapper.addClass($invalidClass).removeClass($validClass);
+            field_wrapper.siblings('label').addClass($invalidClass).removeClass($validClass);
+        }
+    }
+
+    /*
+     * Specific Checker Functions
+     */
+
+    function checkPasswordRequirements(input, event) {
+        var errors = 4;
+
+        if (input.val().match(/[a-z]/) != null) {
+            errors--;
+            $('.help_text_pwd1').addClass('success');
+        } else if (input.val().match(/[a-z]/) === null) {
+            errors++;
+            $('.help_text_pwd1').removeClass('success');
+        }
+
+        if (input.val().match(/[A-Z]/) != null) {
+            errors--;
+            $('.help_text_pwd2').addClass('success');
+        } else if (input.val().toLowerCase() === input.val()) {
+            errors++;
+            $('.help_text_pwd2').removeClass('success');
+        }
+
+        if (input.val().match(/[0-9]/) != null) {
+            errors--;
+            $('.help_text_pwd3').addClass('success');
+        } else if (input.val().match(/[0-9]/) === null) {
+            errors++;
+            $('.help_text_pwd3').removeClass('success');
+        }
+
+        if (input.val().length >= 8) {
+            errors--;
+            $('.help_text_pwd4').addClass('success');
+        } else if (input.val().length < 8) {
+            errors++;
+            $('.help_text_pwd4').removeClass('success');
+        }
+
+        if (errors > 0) {
+            if (event.type === 'blur') {
+                markInvalid(input, 'Please choose a valid password.');
+            }
+        } else if (errors <= 0) {
+            markValid(input);
+        }
+    }
+
+    function validatePasswordPair(first, second) {
+        if (first.val() === second.val()) {
+            markValid(second);
+        } else {
+            if (second.val().length >= 8) {
+                markInvalid(second, 'Both passwords must match.');
+            }
+        }
+    }
+
+
+    /*
+     * Helper Text
+     */
+
+    function helperDown(field, help_div, message) {
+        help_div.html(message);
+        help_div.removeClass($errorClass);
+        help_div.slideDown(400);
+    }
+
+    function helperUp(field) {
+        field.parents($inputWrapper).siblings($helperClass).slideUp(400);
+    }
+
+
+    /*
+     * Event Triggers
+     */
+
+    $('input, textarea').on('focus', function () {
+        markNeutral($(this));
+        var $helpText = $(this).closest($inputWrapper).siblings($helperClass);
+
+        if ($(this).closest($inputWrapper).hasClass('password-set')) {
+            var $message = '<ul>' +
+                '<li><div class="help_text_pwd1">(a-z) lowercase</div></li>' +
+                '<li><div class="help_text_pwd2">(A-Z) UPPERCASE</div></li>' +
+                '<li><div class="help_text_pwd3">(0-9) number</div></li>' +
+                '<li><div class="help_text_pwd4">8 characters</div></li>' +
+                '</ul>';
+        } else {
+            var $message = $helpText.attr('data-helper');
+        }
+
+        helperDown($(this), $helpText, $message);
+    });
+
+    $('input:not("input[type=url], input[type=password], input[name=email], input[type=tel]"), textarea').on('blur', function () {
+        if ($(this).val() === '' && $(this).closest($inputWrapper).hasClass($requiredClass)) {
+            markInvalid($(this), $(this).closest($inputWrapper).siblings($helperClass).attr('data-error'));
+        } else {
+            helperUp($(this));
+        }
+    });
+
+    $('input:not("input[type=url], input[type=password], input[name=email], input[type=tel]"), textarea').on('keyup', function (event) {
+        if ($(this).val() !== '') {
+            markValid($(this));
+        }
+    });
+
+    // This will handle single selects
+    // and groups of selects with n number of selects in them.
+    // Whichever selects are contained within the $inputWrapper class
+    // will validate as a group, only if each has been changed
+    // at least once.
+    $('select').on('change', function () {
+        var $currentSelect = $(this),
+            $selects = $('select ', $currentSelect.closest($inputWrapper)),
+            $numSelects = $selects.length;
+
+        if ($numSelects > 1) { // handle multiple selects
+            if (!$currentSelect.hasClass('changed')) {
+                $currentSelect.addClass('changed');
+            }
+
+            var $selectsValues = [];
+            var $numChanges = $('.changed ', $currentSelect.closest($inputWrapper)).length;
+
+            if ($numChanges === $numSelects) {
+                $selects.each(function () {
+                    if ($(this).val() === '') {
+                        $selectsValues.push('empty'); // need a value to push to the array (can't use 'empty' in markup if '' is needed elsewhere)
+                    } else {
+                        $selectsValues.push($(this).val());
+                    }
+                });
+
+                var $numEmpty = 0;
+
+                for (i = 0; i < $selectsValues.length; i++) {
+                    if ($selectsValues[i] === 'empty') {
+                        $numEmpty++;
+                    }
+                }
+
+                var $iconSuccess = $('.icon.success', $(this).closest($inputWrapper)),
+                    $iconError = $('.icon.error', $(this).closest($inputWrapper));
+
+                if ($numEmpty > 0) {
+                    setIconMulti($iconSuccess, $iconError, 'invalid');
+                    setField($currentSelect, $currentSelect.closest($inputWrapper), 'invalid');
+                } else {
+                    setIconMulti($iconSuccess, $iconError, 'valid');
+                    setField($currentSelect, $currentSelect.closest($inputWrapper), 'valid');
+                }
+            }
+
+        } else { // handle single selects
+            if ($(this).val() === '') {
+                markInvalid($(this), 'Please make a selection');
+            } else {
+                markValid($(this));
+            }
+        }
+    });
+
+    // Email validation
+    $('input[name=email]').on('keyup blur', function (event) {
+        if ($(this).parents($inputWrapper).hasClass($optionalClass) && $(this).val() === '') {
+            markNeutral($(this));
+        } else {
+            var $checkEmail = $(this).val().match($validEmail);
+
+            if (event.type === 'blur') {
+                if ($(this).val() === '') {
+                    markInvalid($(this), $(this).parents($inputWrapper).siblings($helperClass).attr('data-error'));
+                } else if ($checkEmail === null) {
+                    markInvalid($(this), 'Please enter a valid email');
+                } else {
+                    markValid($(this));
+                    helperText($(this), $helpText, $message, event);
+                }
+            } else {
+                if ($checkEmail !== null) {
+                    markValid($(this));
+                }
+            }
+        }
+    });
+
+    // PASSWORDS
+    // These are all separated out, based on the type of password field and the event type
+    // It's more code and repetitive, but it's much more readable
+
+    // Bind initial password choice on blur
+    $('input[name=password1]').on('blur', function (event) {
+        if ($(this).val().length === 0) {
+            markInvalid($(this), 'Please choose a password.');
+        } else {
+            checkPasswordRequirements($(this), event);
+        }
+    });
+
+    // Bind initial password choice while typing
+    $('input[name=password1]').on('keyup change', function (event) {
+        if ($(this).val().length === 0) {
+            markInvalid($(this), 'Please choose a password');
+        } else {
+            checkPasswordRequirements($(this), event);
+        }
+    });
+
+    // Bind password confirmation field on blur
+    $('input[name=password2]').on('blur', function (event) {
+        if ($(this).val().length === 0) {
+            markInvalid($(this), 'Please confirm your password');
+        } else {
+            validatePasswordPair($('.password-set').children('input[type="password"]'), $(this));
+        }
+    });
+
+    // Bind password confirmation field while typing
+    $('input[name=password2]').on('keyup change', function (event) {
+        if ($('.password-set').hasClass('is-invalid')) {
+            markInvalid($(this), 'Your password does not meet the requirements. Please fix it before confirming.');
+        } else {
+            validatePasswordPair($('.password-set').children('input[type="password"]'), $(this));
+        }
+    });
+
+    // Bind current password on blur
+    $('input[name=password-old]').on('blur', function (event) {
+        if ($(this).val().length === 0) {
+            markInvalid($(this), 'Please enter your password');
+        } else if ($(this).val().length < 8) {
+            markInvalid($(this), 'Please enter a valid password');
+        }
+    });
+
+    // Bind current password while typing
+    $('input[name=password-old]').on('keyup change', function (event) {
+        if ($(this).val().length >= 8) {
+            markValid($(this));
+        }
+    });
+
+    // URLs
+    $('input[name=website]').on('keyup blur', function (event) {
+        if ($(this).parents($inputWrapper).hasClass($optionalClass) && $(this).val() === '') {
+            markNeutral($(this));
+            helperUp($(this));
+        } else {
+            var $checkWebsite = $(this).val().match($validWebsite);
+
+            if (event.type === 'blur') {
+                if ($checkWebsite === null) {
+                    markInvalid($(this), 'Please enter a valid website address (www.example.com)');
+                } else {
+                    markValid($(this));
+                }
+            } else {
+                if ($checkWebsite !== null) {
+                    markValid($(this));
+                }
+            }
+        }
+    });
+
+    // Phone
+    $('input[type=tel]').on('keyup blur', function (event) {
+        if ($(this).parents($inputWrapper).hasClass($optionalClass) && $(this).val() === '') {
+            markNeutral($(this));
+        } else {
+            var $checkPhone = $(this).val().match($validPhone);
+
+            if (event.type === 'blur') {
+                if ($checkPhone === null) {
+                    markInvalid($(this), 'Please enter a valid phone number');
+                } else {
+                    markValid($(this));
+                    helperText($(this), $helpText, $message, event);
+                }
+            } else {
+                if ($checkPhone != null) {
+                    markValid($(this));
+                }
+            }
+        }
+    });
+
+    // Make sure they are at least 13 years old
+    $('input[name=birthdate]').on('blur', function () {
+        var $year = parseInt($(this).val().substr(0, 4));
+        var $month = parseInt($(this).val().substr(5, 2));
+        var $day = parseInt($(this).val().substr(8, 2));
+
+        if (($year + 13) > parseInt($date.getFullYear())) {
+            if ($month < (parseInt($date.getMonth()) + 1)) {
+                if ($day < parseInt($date.getFullYear())) {
+                    markInvalid($(this), 'Sorry, you must be at least 13')
+                } else {
+                    markValid($(this));
+                }
+            } else {
+                markValid($(this));
+            }
+        } else {
+            markValid($(this));
+        }
+    });
+
+    // Set the default date to January 1st, 13 years ago
+    $(function () {
+        var $thirteen = $date.getFullYear() - 13;
+        $('input[name=birthdate]').val($thirteen + '-01-01');
+    });
+
+    $('input[type=color]').on('click change focus hover', function () {
+        markValid($(this));
+    });
+</script>
+
+<script>
+
+    angular.module('app', [])
+        .controller('ctrl', function ($scope) {
+            console.log('scope', $scope);
+            $scope.printDiv = function (divName) {
+
+                var printContents = document.getElementById(divName).innerHTML;
+
+                var popupWin = window.open('', '_blank', 'width=300,height=300');
+                popupWin.document.open();
+                popupWin.document.write('<html><head><link rel="stylesheet" href="sample.css" /></head><body onload="window.print()">' + printContents + '</body></html>');
+                popupWin.document.close();
+            };
+        });
+
+</script>
 
 
 <script>
- function submitClick(){
- var India2 = document.getElementById('Checkconfirmregistration').checked;
- var France2 = document.getElementById('CheckUD').checked;
- var Japan2 = document.getElementById('checksimcred').checked;
- var Sweden2 = document.getElementById('checkcollecttag').checked;
- var Germany2 = document.getElementById('checkadminfeebook').checked;
- var Spain2 = document.getElementById('checkgallerytour').checked;
- var China2 = document.getElementById('checkorphanage').checked;
- var Nigeria2 = document.getElementById('checkuniversityitems').checked;
- // var Ghana2 = document.getElementById('checkbox-p-2epilepsy').checked;
- // var Chad2 = document.getElementById('checkbox-p-2illness').checked;
- // var UK2 = document.getElementById('checkbox-p-2epilepsy').checked;
- 
+    function submitClick() {
+        var India2 = document.getElementById('Checkconfirmregistration').checked;
+        var France2 = document.getElementById('CheckUD').checked;
+        var Japan2 = document.getElementById('checksimcred').checked;
+        var Sweden2 = document.getElementById('checkcollecttag').checked;
+        var Germany2 = document.getElementById('checkadminfeebook').checked;
+        var Spain2 = document.getElementById('checkgallerytour').checked;
+        var China2 = document.getElementById('checkorphanage').checked;
+        var Nigeria2 = document.getElementById('checkuniversityitems').checked;
+        // var Ghana2 = document.getElementById('checkbox-p-2epilepsy').checked;
+        // var Chad2 = document.getElementById('checkbox-p-2illness').checked;
+        // var UK2 = document.getElementById('checkbox-p-2epilepsy').checked;
 
 
-
- 
- 
- 
- 
-  if(India2==false){
-  alert('REGISTRATION: Please Confirm Registration');
-  return false;
-  }
-  if(France2==false){
-  alert('PASTORAL POINTS REGISTRATION: Please Confirm Student Form Completion');
-  return false;
-  }
-  if(Japan2==false){
-  alert('SOFT LANDING CHECKLIST: Please Confirm MTN Sim Card And Credit Set Up');
-  return false;
-  }
-  if(Sweden2==false){
-  alert('SOFT LANDING CHECKLIST: Please Confirm Collected Tag');
-  return false;
-  }
-  if(Germany2==false){
-  alert('SOFT LANDING CHECKLIST: Please Confirm If Admin Fee Is Paid And Textbooks Are Collected');
-  return false;
-  }
-  if(Spain2==false){
-  alert('SOFT LANDING CHECKLIST: Please Confirm Gallery Tour');
-  return false;
-  }
-  if(China2==false){
-  alert('SOFT LANDING CHECKLIST: Please Confirm Orphanage Tour');
-  return false;
-  }
-  if(Nigeria2==false){
-  alert('UNIVERSITY ITEMS CHECKLIST: Please Confirm University Items');
-  return false;
-  }
+        if (India2 == false) {
+            alert('REGISTRATION: Please Confirm Registration');
+            return false;
+        }
+        if (France2 == false) {
+            alert('PASTORAL POINTS REGISTRATION: Please Confirm Student Form Completion');
+            return false;
+        }
+        if (Japan2 == false) {
+            alert('SOFT LANDING CHECKLIST: Please Confirm MTN Sim Card And Credit Set Up');
+            return false;
+        }
+        if (Sweden2 == false) {
+            alert('SOFT LANDING CHECKLIST: Please Confirm Collected Tag');
+            return false;
+        }
+        if (Germany2 == false) {
+            alert('SOFT LANDING CHECKLIST: Please Confirm If Admin Fee Is Paid And Textbooks Are Collected');
+            return false;
+        }
+        if (Spain2 == false) {
+            alert('SOFT LANDING CHECKLIST: Please Confirm Gallery Tour');
+            return false;
+        }
+        if (China2 == false) {
+            alert('SOFT LANDING CHECKLIST: Please Confirm Orphanage Tour');
+            return false;
+        }
+        if (Nigeria2 == false) {
+            alert('UNIVERSITY ITEMS CHECKLIST: Please Confirm University Items');
+            return false;
+        }
 
 
-      
+        var uname = document.getElementById("checkroomnum").value;
+        if (uname == "") {
+            alert("SOFT LANDING CHECKLIST: Please Enter Room Number");
+            return false;
+        }
 
 
-  var uname=document.getElementById("checkroomnum").value;
-          if (uname==""){
-              alert("SOFT LANDING CHECKLIST: Please Enter Room Number");
-              return false;
-          }
+        var sponsorshipcheck = document.forms["admittedform"]["locintsponsor"].value;
+
+        var issuescheck = document.forms["admittedform"]["roomissues"].value;
+
+        var solveroom = document.forms["admittedform"]["checkroomprob"].value;
 
 
+        if (sponsorshipcheck == null || sponsorshipcheck == '') {
+            alert("SPONSOR AGREEMENT PLAN: Please Select If You Have A Sponsorship Agreement Plan");
+            return false;
+        }
+
+        if (issuescheck == null || issuescheck == '') {
+            alert("SOFT LANDING CHECKLIST: Please Select If There Are Any Room Issues");
+            return false;
+        }
+
+        if (solveroom == null || solveroom == '') {
+            alert("UNIVERSITY ITEMS CHECKLIST: Please Select If Room Issue Has Been Solved");
+            return false;
+        }
 
 
-  var sponsorshipcheck = document.forms["admittedform"]["locintsponsor"].value;
-
-  var issuescheck = document.forms["admittedform"]["roomissues"].value;
-
-  var solveroom = document.forms["admittedform"]["checkroomprob"].value;
-  
-
-  if (sponsorshipcheck == null || sponsorshipcheck == '') {
-        alert("SPONSOR AGREEMENT PLAN: Please Select If You Have A Sponsorship Agreement Plan");
-        return false;
-      }
-
-  if (issuescheck == null || issuescheck == '') {
-        alert("SOFT LANDING CHECKLIST: Please Select If There Are Any Room Issues");
-        return false;
-      }    
-
-    if (solveroom == null || solveroom == '') {
-        alert("UNIVERSITY ITEMS CHECKLIST: Please Select If Room Issue Has Been Solved");
-        return false;
-      }
-
-      
-
-  }
+    }
 </script>
 
 
-    <script>
-function show1(){
-  document.getElementById('div1').style.display ='none';
-}
-function show2(){
-  document.getElementById('div1').style.display = 'block';
-}
+<script>
+    function show1() {
+        document.getElementById('div1').style.display = 'none';
+    }
+
+    function show2() {
+        document.getElementById('div1').style.display = 'block';
+    }
 
 
-    </script>      
-  
+</script>
+
 
 </body>
 
