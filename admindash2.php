@@ -225,7 +225,7 @@ require("PHP_Files/getAdminHomeLink.php");
 							</a>
                         </div>
                         <div class="col-lg-12"  style="height:30%">
-                            <a href="schedulezoom.html">
+                            <a href="schedulezoom.php">
 								<div class="card" style="margin-bottom:15px;height:100%">
 									<!-- Card body -->
 									<div class="card-body">
