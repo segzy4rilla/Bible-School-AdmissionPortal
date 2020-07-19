@@ -3,7 +3,7 @@
 include "PHP_Files/dbconfig.php";
 session_start();
 
-if ($_SESSION['loggedin'] == false) {
+if (!$_SESSION['loggedin']) {
     header('Location: loginabmtc.html');
 }
 
@@ -201,7 +201,7 @@ $applicantDetails = $getApplicantDetails->fetch();
 									<div class="card-body">
 										<div class="row">
 											<div class="col">
-												<h5 class='mb-20'>Applicant Meeting</h5>
+												<h5 class='mb-20'>Zoom Interview Details</h5>
 											</div>
 											<div class="col-auto">
 												<div class="clint-icon bg-gradient-danger text-white rounded-circle icon-shape">
