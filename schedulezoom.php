@@ -1,3 +1,32 @@
+<?php
+session_start();
+
+if ($_SESSION['loggedin'] == false || $_SESSION['isStaffAdmin'] == false) {
+    header('Location: loginabmtc.html');
+}
+
+require("dbconfig/config.php");
+require("PHP_Files/getAdminHomeLink.php");
+
+$query = "SELECT * FROM(
+    SELECT A.User_ID, A.First_Name, A.Last_Name, A.Nationality, A.EmailWhatsapp, C.Date, C.Time, C.Link,
+    (ROW_NUMBER() OVER( 
+        PARTITION BY A.EmailWhatsapp, B.Status
+        ORDER BY  A.EmailWhatsapp, B.Status
+    )) AS Row_Num
+    FROM Applicant_Table AS A 
+    JOIN MedicalDocResponse AS B 
+    ON A.EmailWhatsapp = B.EmailWhatsapp
+    LEFT JOIN ZoomInterview AS C
+    ON A.User_ID = C.ID
+    WHERE B.Status = 'Accept'
+) AS D
+WHERE D.Row_Num = 1
+";
+$result = $con->query($query);
+
+?>
+
 <!doctype html>
 <html lang="en">
 
@@ -101,177 +130,7 @@
                 </div>
                 </div>
 
-                <div class="right-side-navbar d-flex align-items-center justify-content-end">
-                    <!-- Mobile Trigger -->
-                    <div class="right-side-trigger" id="rightSideTrigger">
-                        <i class="fa fa-reorder"></i>
-                    </div>
 
-                    <!-- Top Bar Nav -->
-                    <ul class="right-side-content d-flex align-items-center">
-                        <!-- Left Side Nav -->
-                        <li class="hide-phone app-search">
-                            <form role="search" class=""><input type="text" placeholder="Search..." class="form-control"> <button type="submit" class="mr-0"><i class="fa fa-search"></i></button></form>
-                        </li>
-
-                        <li class="nav-item dropdown">
-                            <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-envelope-o" aria-hidden="true"></i></button>
-
-                            <div class="dropdown-menu dropdown-menu-right">
-                                <!-- Top Message Area -->
-                                <div class="top-message-area">
-                                    <!-- Heading -->
-                                    <div class="top-message-heading">
-                                        <div class="heading-title">
-                                            <h6>Messages</h6>
-                                        </div>
-                                        <span>07 New</span>
-                                    </div>
-                                    <div class="message-box" id="messageBox">
-                                        <a href="#" class="dropdown-item">
-                                            <img src="img/member-img/10.png" alt="">
-                                            <span class="message-text">
-                                                <span>Jhon Lina</span>
-                                                <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut, voluptas!</span>
-                                            </span>
-                                        </a>
-                                        <span class="message-heading">New Messages</span>
-                                        <a href="#" class="dropdown-item">
-                                            <img src="img/member-img/11.png" alt="">
-                                            <span class="message-text">
-                                                <span>Google Ads: You'll get a refund soon</span>
-                                                <span>27 min ago</span>
-                                            </span>
-                                        </a>
-                                        <a href="#" class="dropdown-item">
-                                            <img src="img/member-img/7.png" alt="">
-                                            <span class="message-text">
-                                                <span>New Feature: HTTP Method Selection</span>
-                                                <span>56 min ago</span>
-                                            </span>
-                                        </a>
-                                        <a href="#" class="dropdown-item">
-                                            <img src="img/member-img/8.png" alt="">
-                                            <span class="message-text">
-                                                <span>The Complete JavaScript Handbook</span>
-                                                <span>1 hour ago</span>
-                                            </span>
-                                        </a>
-                                        <span class="message-heading">Hot Messages</span>
-                                        <a href="#" class="dropdown-item">
-                                            <img src="img/member-img/9.png" alt="">
-                                            <span class="message-text">
-                                                <span>New comment: ecaps Template</span>
-                                                <span>2 days ago</span>
-                                            </span>
-                                        </a>
-                                        <a href="#" class="dropdown-item">
-                                            <img src="img/member-img/10.png" alt="">
-                                            <span class="message-text">
-                                                <span>6-hour video course on Angular</span>
-                                                <span>3 min ago</span>
-                                            </span>
-                                        </a>
-                                        <a href="#" class="dropdown-item">
-                                            <img src="img/member-img/11.png" alt="">
-                                            <span class="message-text">
-                                                <span>Google Ads: You'll get a refund soon</span>
-                                                <span>27 min ago</span>
-                                            </span>
-                                        </a>
-                                        <a href="#" class="dropdown-item">
-                                            <img src="img/member-img/12.png" alt="">
-                                            <span class="message-text">
-                                                <span>New Feature: HTTP Method Selection</span>
-                                                <span>56 min ago</span>
-                                            </span>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-
-                        <li class="nav-item dropdown">
-                            <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-bell-o" aria-hidden="true"></i> <span class="active-status"></span></button>
-                            <div class="dropdown-menu dropdown-menu-right">
-                                <!-- Top Notifications Area -->
-                                <div class="top-notifications-area">
-                                    <!-- Heading -->
-                                    <div class="notifications-heading">
-                                        <div class="heading-title">
-                                            <h6>Notifications</h6>
-                                        </div>
-                                    </div>
-
-                                    <div class="notifications-box" id="notificationsBox">
-                                        <a href="#" class="dropdown-item">
-                                            <img src="img/member-img/1.png" alt="">
-                                            <span class="message-text">
-                                                <span>New Feature: HTTP Method Selection</span>
-                                                <span>56 min ago</span>
-                                            </span>
-                                        </a>
-                                        <a href="#" class="dropdown-item">
-                                            <img src="img/member-img/2.png" alt="">
-                                            <span class="message-text">
-                                                <span>Andrew Done Project</span>
-                                                <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam, quam.</span>
-                                            </span>
-                                        </a>
-                                        <a href="#" class="dropdown-item">
-                                            <img src="img/member-img/3.png" alt="">
-                                            <span class="message-text">
-                                                <span>New Feature: HTTP Method Selection</span>
-                                                <span>56 min ago</span>
-                                            </span>
-                                        </a>
-                                        <a href="#" class="dropdown-item">
-                                            <img src="img/member-img/4.png" alt="">
-                                            <span class="message-text">
-                                                <span>New Feature: HTTP Method Selection</span>
-                                                <span>56 min ago</span>
-                                            </span>
-                                        </a>
-                                        <a href="#" class="dropdown-item">
-                                            <img src="img/member-img/5.png" alt="">
-                                            <span class="message-text">
-                                                <span>New Feature: HTTP Method Selection</span>
-                                                <span>56 min ago</span>
-                                            </span>
-                                        </a>
-                                        <a href="#" class="dropdown-item">
-                                            <img src="img/member-img/6.png" alt="">
-                                            <span class="message-text">
-                                                <span>New Feature: HTTP Method Selection</span>
-                                                <span>56 min ago</span>
-                                            </span>
-                                        </a>
-                                        <a href="#" class="dropdown-item">
-                                            <img src="img/member-img/7.png" alt="">
-                                            <span class="message-text">
-                                                <span>New Feature: HTTP Method Selection</span>
-                                                <span>56 min ago</span>
-                                            </span>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-
-                        <li class="nav-item dropdown">
-                            <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="img/member-img/4.png" alt=""></button>
-                            <div class="dropdown-menu header-profile dropdown-menu-right">
-                                <!-- User Profile Area -->
-                                <div class="user-profile-area">
-                                    <a href="#" class="dropdown-item"><i class="zmdi zmdi-account profile-icon" aria-hidden="true"></i> My profile</a>
-                                    <a href="#" class="dropdown-item"><i class="zmdi zmdi-email-open profile-icon" aria-hidden="true"></i> Messages</a>
-                                    <a href="#" class="dropdown-item"><i class="zmdi zmdi-brightness-7 profile-icon" aria-hidden="true"></i> Account settings</a>
-                                    <a href="#" class="dropdown-item"><i class="ti-unlink profile-icon" aria-hidden="true"></i> Sign-out</a>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
             </header>
 
             <!-- Main Content Area -->
@@ -285,56 +144,72 @@
                                         <p class="text-muted font-13 mb-4">
                                         
                                         </p>
+										<div>
+											<table id="scroll-horizontal-datatable" class="table w-100 nowrap">
+												<thead>
+													<tr>
+														<th>ID</th>
+														<th>First name</th>
+														<th>Last name</th>
+														<th>Country</th>
+														<th>Email/WhatsApp</th>
+														<th>Interview Date</th>
+														<th>Time (Ghana Time)</th>
+														<th>Zoom Link</th>
+														<th>Select Student</th>
+													</tr>
+												</thead>
+												<tbody>
 
-                                        <table id="scroll-horizontal-datatable" class="table w-100 nowrap">
-                                            <thead>
-                                                <tr>
-                                                    <th>First name</th>
-                                                    <th>Last name</th>
-                                                    <th>Country</th>
-                                                    <th>Interview Date</th>
-                                                    <th>Time (Ghana Time)</th>
-                                                    <th>Schedule Zoom Meeting</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
+													<?php
+														while ($row = $result->fetch_assoc()) {
+															echo "<tr>";
+																echo "<td name='appID'>".$row['User_ID']."</td>";
+																echo "<td>".$row['First_Name']."</td>";
+																echo "<td>".$row['Last_Name']."</td>";
+																echo "<td>".$row['Nationality']."</td>";
+																echo "<td>".$row['EmailWhatsapp']."</td>";
+																echo "<td>".$row['Date']."</td>";
+																echo "<td>".$row['Time']."</td>";
+																echo "<td>".$row['Link']."</td>";
+																echo "<td name='selected'><input type='checkbox'/></td>";
+															echo "</tr>";
+														}
+													?>
+																								
+												</tbody>
 
-                                                <tr>
-                                                    <td>James</td>
-                                                    <td>Buabin</td>
-                                                    <td>Trinidad</td>
-                                                    <td>16/06/2020</td>
-                                                    <td>20:45</td>
-                                                    <td><button class="btn btn-primary md-trigger mr-2 mb-2" data-modal="modal-13">Schedule A Meeting</button></td>
-                                                 
-                                                    
-                                                </tr>
-                                                
-                                                                                            
-                                            </tbody>
-
-                                        </table>
-
+											</table>
+										</div>
+										<div style="padding-right: 15px">
+											<button class="btn btn-primary md-trigger mr-2 mb-2" data-modal="modal-13" width="10em">Schedule A Meeting</button>
+										</div>
                                         <div class="md-modal md-effect-13" id="modal-13">
                             <div class="md-content">
                                 <h3 class="bg-info">Schedule A Meeting</h3>
-                                <div>
-                                    <h4>Applicant Name</h4>
-                                    <p>James Buabin</p>
-                                    <ul>
-                                        <li><strong>Post Zoom Link Here:</strong> 
-                                            <div class="input-group">
-                                                <input type="text" class="form-control" placeholder="Zoom Meeting ID" aria-label="Zoom Meeting ID">
-                                                <div class="input-group-append">
-                                                    <button type="submit" class="btn btn-primary mr-2">Submit</button>
-
-                                                </div>
-                                            </div>
-                                    </li>
-                                    </ul>
-
-                                    <button class="btn btn-primary md-close">Close</button>
-                                </div>
+                                <form id="scheduleMeetingForm" action="PHP_Files/zoomSchedule.php" method="Post">
+									<div>
+										<label>Zoom Link</label>
+									</div>
+									<div style="margin-bottom: 5px">
+										<input type="text" name="zoomLink" width="120px"/>
+									</div>
+									<div>
+										<label>Date</label>
+									</div>
+									<div style="margin-bottom: 5px">
+										<input type="date" name="zoomDate" width="120px"/>
+									</div>
+									<div>
+										<label>Time</label>
+									</div>
+									<div style="margin-bottom: 5px">
+										<input type="time" name="zoomTime" width="120px"/>
+									</div>
+									<div style="margin-bottom: 5px">
+										<button type="submit" class="btn btn-primary">Submit</button>
+									</div>
+                                </form>
                             </div>
                         </div>
                                 </div>
@@ -556,7 +431,7 @@
                                             Insert a country in the search box to find their current time 
                                         </p>
 
-                                        <div class="row">
+  <div class="row">
     <div class="col-sm-12 mb-3">
       <input type="text" id="myFilter" class="form-control" onkeyup="myFunction()" placeholder="Search for country..">
     </div>
@@ -2603,6 +2478,23 @@
     <script src="js/default-assets/datatables.select.min.js"></script>
     <script src="js/default-assets/demo.datatable-init.js"></script>
 
+	
+	<script>
+		$(document).ready(updateForm);
+		function updateForm(){
+			$("[name=selected] > input").change(updateRoutine);
+			function updateRoutine(){
+				$("[name='applicantID[]']").remove();
+				var applicantIDs = $("#scroll-horizontal-datatable > tbody > tr:has([name=selected] > input:checked) > [name=appID]").get().map(x => x.innerHTML);
+				for(var i = 0; i < applicantIDs.length; ++ i){
+					var el = document.createElement("input");
+					$(el).attr({"hidden": "hidden", "name": "applicantID[]"}).val(applicantIDs[i]);
+					$("#scheduleMeetingForm").append(el);
+				}
+			}
+		}
+	</script>
+	
     <script>
   function myFunction() {
     var input, filter, cards, cardContainer, h5, title, i;
