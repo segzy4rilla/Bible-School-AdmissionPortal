@@ -1,0 +1,4 @@
+ALTER TABLE zoominterview
+ADD COLUMN Comments VARCHAR(500) NULL;
+ALTER TABLE zoominterview
+ADD COLUMN Admitted VARCHAR(15) NULL;

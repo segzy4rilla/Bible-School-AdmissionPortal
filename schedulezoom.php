@@ -9,7 +9,7 @@ require("dbconfig/config.php");
 require("PHP_Files/getAdminHomeLink.php");
 
 $query = "SELECT * FROM(
-    SELECT A.User_ID, A.First_Name, A.Last_Name, A.Nationality, A.EmailWhatsapp, C.Date, C.Time, C.Link,
+    SELECT A.User_ID, A.First_Name, A.Last_Name, A.Nationality, A.EmailWhatsapp, C.Date, C.Time, C.Link, C.Comments, C.Admitted,
     (ROW_NUMBER() OVER( 
         PARTITION BY A.EmailWhatsapp, B.Status
         ORDER BY  A.EmailWhatsapp, B.Status
@@ -156,6 +156,8 @@ $result = $con->query($query);
                                             <th>Interview Date</th>
                                             <th>Time (Ghana Time)</th>
                                             <th>Zoom Link</th>
+                                            <th>Comments</th>
+                                            <th>Admitted</th>
                                             <th>Select Student</th>
                                         </tr>
                                         </thead>
@@ -172,6 +174,8 @@ $result = $con->query($query);
                                             echo "<td>" . $row['Date'] . "</td>";
                                             echo "<td>" . $row['Time'] . "</td>";
                                             echo "<td>" . $row['Link'] . "</td>";
+                                            echo "<td>" . $row['Comments'] . "</td>";
+                                            echo "<td>" . $row['Admitted'] . "</td>";
                                             echo "<td name='selected'><input type='checkbox'/></td>";
                                             echo "</tr>";
                                         }
@@ -186,6 +190,12 @@ $result = $con->query($query);
                                             width="10em">Schedule A Meeting
                                     </button>
                                 </div>
+								<div style="padding-right: 15px">
+                                    <button class="btn btn-primary md-trigger mr-2 mb-2" data-modal="modal-14"
+                                            width="10em"
+											onclick="$('#resModal').addClass('md-show')">Make Response
+                                    </button>
+                                </div>
                                 <div class="md-modal md-effect-13" id="modal-13">
                                     <div class="md-content">
                                         <h3 class="bg-info">Schedule A Meeting</h3>
@@ -195,23 +205,53 @@ $result = $con->query($query);
                                                 <label>Zoom Link</label>
                                             </div>
                                             <div style="margin-bottom: 5px">
-                                                <input type="text" name="zoomLink" width="120px"/>
+                                                <input type="text" name="zoomLink" width="10em"/>
                                             </div>
                                             <div>
                                                 <label>Date</label>
                                             </div>
                                             <div style="margin-bottom: 5px">
-                                                <input type="date" name="zoomDate" width="120px"/>
+                                                <input type="date" name="zoomDate" width="10em"/>
                                             </div>
                                             <div>
                                                 <label>Time</label>
                                             </div>
                                             <div style="margin-bottom: 5px">
-                                                <input type="time" name="zoomTime" width="120px"/>
+                                                <input type="time" name="zoomTime" width="10em"/>
                                             </div>
                                             <div style="margin-bottom: 5px">
                                                 <button type="submit" class="btn btn-primary">Submit</button>
                                             </div>
+											<span onclick="$('#modal-13').removeClass('md-show')" >close</span>
+                                        </form>
+                                    </div>
+                                </div>
+								
+								<div class="md-modal md-effect-13" id="resModal">
+                                    <div class="md-content">
+                                        <h3 class="bg-info">Make Response</h3>
+                                        <form id="responseForm" action="PHP_Files/zoomResponse.php"
+                                              method="Post">
+                                            <div>
+                                                <label>Comments</label>
+                                            </div>
+                                            <div style="margin-bottom: 5px">
+                                                <input type="text" name="comments" width="200px"/>
+                                            </div>
+                                            <div>
+                                                <label>Response</label>
+                                            </div>
+                                            <div style="margin-bottom: 5px">
+                                                <select name="response">
+													<option value="" disabled selected>Select Response</option>
+													<option value="Admitted">Admitted</option>
+													<option value="Rejected">Rejected</option>
+												</select>
+                                            </div>
+                                            <div style="margin-bottom: 5px">
+                                                <button type="submit" class="btn btn-primary">Submit</button>
+                                            </div>
+											<span onclick="$('#resModal').removeClass('md-show')" >close</span>
                                         </form>
                                     </div>
                                 </div>
@@ -4835,9 +4875,11 @@ $result = $con->query($query);
                 var el = document.createElement("input");
                 $(el).attr({"hidden": "hidden", "name": "applicantID[]"}).val(applicantIDs[i]);
                 $("#scheduleMeetingForm").append(el);
+                $("#responseForm").append(el);
             }
         }
     }
+
 </script>
 
 <script>
