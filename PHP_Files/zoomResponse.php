@@ -39,5 +39,5 @@ if (empty($alertMessage)) {
     $alertMessage = "Zoom Interview Update Successful";
 }
 
-//AlertAndRedirect($alertMessage, $redirectUrl);
+AlertAndRedirect($alertMessage, $redirectUrl);
 ?>
