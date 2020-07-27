@@ -8,20 +8,11 @@ if ($_SESSION['loggedin'] == false || !$_SESSION['isAdmin']) {
 require("dbconfig/config.php");
 require("PHP_Files/getAdminHomeLink.php");
 
-$query = "SELECT * FROM(
-    SELECT A.User_ID, A.First_Name, A.Last_Name, A.Nationality, A.EmailWhatsapp, C.Date, C.Time, C.Link, C.Comments, C.Admitted,
-    (ROW_NUMBER() OVER( 
-        PARTITION BY A.EmailWhatsapp, B.Status
-        ORDER BY  A.EmailWhatsapp, B.Status
-    )) AS Row_Num
+$query = "
+    SELECT A.User_ID, A.First_Name, A.Last_Name, A.Nationality, A.EmailWhatsapp, B.Date, B.Time, B.Link, B.Comments, B.Admitted
     FROM Applicant_Table AS A 
-    JOIN MedicalDocResponse AS B 
-    ON A.EmailWhatsapp = B.EmailWhatsapp
-    LEFT JOIN ZoomInterview AS C
-    ON A.User_ID = C.ID
-    WHERE B.Status = 'Accept'
-) AS D
-WHERE D.Row_Num = 1
+    LEFT JOIN ZoomInterview AS B
+    ON A.User_ID = B.ID
 ";
 $result = $con->query($query);
 
@@ -4873,9 +4864,11 @@ $result = $con->query($query);
             var applicantIDs = $("#scroll-horizontal-datatable > tbody > tr:has([name=selected] > input:checked) > [name=appID]").get().map(x => x.innerHTML);
             for (var i = 0; i < applicantIDs.length; ++i) {
                 var el = document.createElement("input");
+                var el2 = document.createElement("input");
                 $(el).attr({"hidden": "hidden", "name": "applicantID[]"}).val(applicantIDs[i]);
+                $(el2).attr({"hidden": "hidden", "name": "applicantID[]"}).val(applicantIDs[i]);
                 $("#scheduleMeetingForm").append(el);
-                $("#responseForm").append(el);
+                $("#responseForm").append(el2);
             }
         }
     }

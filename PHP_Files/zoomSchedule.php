@@ -9,7 +9,7 @@ $redirectUrl = "../schedulezoom.php";
 $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
 $date = "'" . $_POST['zoomDate'] . "'";
 $time = "'" . $_POST['zoomTime'] . "'";
-$link = "'" . $_POST['zoomLink'] . "'";
+$link = "'" . EscapeQuotes($_POST['zoomLink']) . "'";
 
 for ($x = 0; $x < count($_POST['applicantID']); ++$x) {
     $id = "'" . $_POST['applicantID'][$x] . "'";

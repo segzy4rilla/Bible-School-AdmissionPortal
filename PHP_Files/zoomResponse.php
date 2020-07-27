@@ -7,7 +7,7 @@ include_once "escapeQuotes.php";
 $alertMessage = "";
 $redirectUrl = "../schedulezoom.php";
 $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-$comments = "'" . $_POST['comments'] . "'";
+$comments = "'" . EscapeQuotes($_POST['comments']) . "'";
 $response = "'" . $_POST['response'] . "'";
 
 for ($x = 0; $x < count($_POST['applicantID']); ++$x) {
