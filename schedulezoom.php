@@ -4865,10 +4865,8 @@ $result = $con->query($query);
             var applicantIDs = $("tr:has([name=selected] > input:checked) > [name=appID]").get().map(x => x.innerHTML);
 			var el = document.createElement("input");
 			var el2 = document.createElement("input");
-            for (var i = 0; i < applicantIDs.length; ++i) {
-                $(el).attr({"hidden": "hidden", "name": "applicantID[]"}).val(applicantIDs[i]);
-                $(el2).attr({"hidden": "hidden", "name": "applicantID[]"}).val(applicantIDs[i]);
-            }
+			$(el).attr({"hidden": "hidden", "name": "applicantID[]"}).val(applicantIDs);
+			$(el2).attr({"hidden": "hidden", "name": "applicantID[]"}).val(applicantIDs);
 			$("#scheduleMeetingForm").append(el);
 			$("#responseForm").append(el2);
         }
