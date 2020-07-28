@@ -4863,9 +4863,9 @@ $result = $con->query($query);
         function updateRoutine() {
             $("[name='applicantID[]']").remove();
             var applicantIDs = $("tr:has([name=selected] > input:checked) > [name=appID]").get().map(x => x.innerHTML);
+			var el = document.createElement("input");
+			var el2 = document.createElement("input");
             for (var i = 0; i < applicantIDs.length; ++i) {
-                var el = document.createElement("input");
-                var el2 = document.createElement("input");
                 $(el).attr({"hidden": "hidden", "name": "applicantID[]"}).val(applicantIDs[i]);
                 $(el2).attr({"hidden": "hidden", "name": "applicantID[]"}).val(applicantIDs[i]);
             }
