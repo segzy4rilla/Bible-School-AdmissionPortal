@@ -4857,11 +4857,12 @@ $result = $con->query($query);
     $(document).ready(updateForm);
 
     function updateForm() {
-        $("[name=selected] > input").change(updateRoutine);
+		$(document).click(updateRoutine);
+		$("[name=selected] > input").change(updateRoutine);
 
         function updateRoutine() {
             $("[name='applicantID[]']").remove();
-            var applicantIDs = $("#scroll-horizontal-datatable > tbody > tr:has([name=selected] > input:checked) > [name=appID]").get().map(x => x.innerHTML);
+            var applicantIDs = $("tr:has([name=selected] > input:checked) > [name=appID]").get().map(x => x.innerHTML);
             for (var i = 0; i < applicantIDs.length; ++i) {
                 var el = document.createElement("input");
                 var el2 = document.createElement("input");
