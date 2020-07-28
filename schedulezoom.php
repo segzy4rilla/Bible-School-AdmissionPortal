@@ -4868,9 +4868,9 @@ $result = $con->query($query);
                 var el2 = document.createElement("input");
                 $(el).attr({"hidden": "hidden", "name": "applicantID[]"}).val(applicantIDs[i]);
                 $(el2).attr({"hidden": "hidden", "name": "applicantID[]"}).val(applicantIDs[i]);
-                $("#scheduleMeetingForm").append(el);
-                $("#responseForm").append(el2);
             }
+			$("#scheduleMeetingForm").append(el);
+			$("#responseForm").append(el2);
         }
     }
 
