@@ -9,7 +9,7 @@ require("dbconfig/config.php");
 require("PHP_Files/getAdminHomeLink.php");
 
 $query = "
-    SELECT A.User_ID, A.First_Name, A.Last_Name, A.Nationality, A.EmailWhatsapp, B.Date, B.Time, B.Link, B.Comments, B.Admitted
+    SELECT A.User_ID, A.First_Name, A.Last_Name, A.Nationality, A.Church_Part_Of_UD, A.EmailWhatsapp, B.Date, B.Time, B.Link, B.Comments, B.Admitted
     FROM Applicant_Table AS A 
     LEFT JOIN ZoomInterview AS B
     ON A.User_ID = B.ID
@@ -143,6 +143,7 @@ $result = $con->query($query);
                                             <th>First name</th>
                                             <th>Last name</th>
                                             <th>Country</th>
+                                            <th>Member Of UD</th>
                                             <th>Email/WhatsApp</th>
                                             <th>Interview Date</th>
                                             <th>Time (Ghana Time)</th>
@@ -161,6 +162,7 @@ $result = $con->query($query);
                                             echo "<td>" . $row['First_Name'] . "</td>";
                                             echo "<td>" . $row['Last_Name'] . "</td>";
                                             echo "<td>" . $row['Nationality'] . "</td>";
+                                            echo "<td>" . $row['Church_Part_Of_UD'] . "</td>";
                                             echo "<td>" . $row['EmailWhatsapp'] . "</td>";
                                             echo "<td>" . $row['Date'] . "</td>";
                                             echo "<td>" . $row['Time'] . "</td>";
