@@ -9,21 +9,13 @@ require("dbconfig/config.php");
 
 $userID = "'".$_SESSION['User_Id']."'";
 
-$query = "SELECT * FROM(
-    SELECT C.Date, C.Time, C.Link,
-    (ROW_NUMBER() OVER( 
-        PARTITION BY A.EmailWhatsapp, B.Status
-        ORDER BY  A.EmailWhatsapp, B.Status
-    )) AS Row_Num
+$query = "
+    SELECT A.User_ID, A.First_Name, A.Last_Name, A.Nationality, A.EmailWhatsapp, B.Date, B.Time, B.Link, B.Comments, B.Admitted
     FROM Applicant_Table AS A 
-    JOIN MedicalDocResponse AS B 
-    ON A.EmailWhatsapp = B.EmailWhatsapp
-    LEFT JOIN ZoomInterview AS C
-    ON A.User_ID = ".$userID." 
-    WHERE B.Status = 'Accept'
-) AS D
-WHERE D.Row_Num = 1
-";
+    JOIN ZoomInterview AS B
+    ON A.User_ID = B.ID
+	WHERE A.User_ID = ".$userID;
+
 $result = $con->query($query);
 
 ?>
