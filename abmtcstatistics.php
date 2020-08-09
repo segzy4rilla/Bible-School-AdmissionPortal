@@ -272,7 +272,7 @@ $zoomCompleted = mysqli_num_rows($query);
     <br>
   <div class="pie-charts">
     <div class="pieID--micro-skills pie-chart--wrapper">
-      <h2>Total Students</h2>
+      <h2>Total Applicants</h2>
       <div class="pie-chart">
         <div class="pie-chart__pie"></div>
         <ul class="pie-chart__legend" style="height: 80px;">
@@ -287,7 +287,7 @@ $zoomCompleted = mysqli_num_rows($query);
       <h2>Admitted Students</h2>
       <div class="pie-chart">
         <div class="pie-chart__pie"></div>
-        <ul class="pie-chart__legend" style="height: 163px;">
+        <ul class="pie-chart__legend">
 			<?php
 				echo "<li><em style='font-size: 9px'>Local Applicants Admitted</em><span>".$localAdmitted."</span></li>";
 				echo "<li><em style='font-size: 9px'>International Applicants Admitted</em><span>".$internationalAdmitted."</span></li>";
@@ -298,7 +298,7 @@ $zoomCompleted = mysqli_num_rows($query);
       </div>
     </div>
     <div class="pieID--operations pie-chart--wrapper">
-      <h2>Total Applicants from United Denominations</h2>
+      <h2>Applicant's Denominations</h2>
       <div class="pie-chart">
         <div class="pie-chart__pie"></div>
         <ul class="pie-chart__legend">
