@@ -287,7 +287,7 @@ $zoomCompleted = mysqli_num_rows($query);
       <h2>Admitted Students</h2>
       <div class="pie-chart">
         <div class="pie-chart__pie"></div>
-        <ul class="pie-chart__legend">
+        <ul class="pie-chart__legend" style="height: 80px;">
 			<?php
 				echo "<li><em style='font-size: 9px'>Local Applicants Admitted</em><span>".$localAdmitted."</span></li>";
 				echo "<li><em style='font-size: 9px'>International Applicants Admitted</em><span>".$internationalAdmitted."</span></li>";
