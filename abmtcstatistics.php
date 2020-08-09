@@ -8,10 +8,10 @@ if ($_SESSION['loggedin'] == false || $_SESSION['isStaffAdmin'] == false) {
 require("dbconfig/config.php");
 require("PHP_Files/getAdminHomeLink.php");
 
-$query = $con->query("SELECT * FROM applicant_table WHERE Nationality = 'Ghanaian'");
+$query = $con->query("SELECT * FROM Applicant_Table WHERE Nationality = 'Ghanaian'");
 $localTotal = mysqli_num_rows($query);
 
-$query = $con->query("SELECT * FROM applicant_table WHERE Nationality <> 'Ghanaian'");
+$query = $con->query("SELECT * FROM Applicant_Table WHERE Nationality <> 'Ghanaian'");
 $internationalTotal = mysqli_num_rows($query);
 
 $query = $con->query("SELECT * FROM Applicant_Table as A JOIN ZoomInterview AS Z ON A.User_ID = Z.ID WHERE Z.Admitted = 'Admitted' AND A.Nationality = 'Ghanaian'");
