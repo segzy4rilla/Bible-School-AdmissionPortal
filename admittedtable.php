@@ -8,10 +8,10 @@ if ($_SESSION['loggedin'] == false || $_SESSION['isStaffAdmin'] == false) {
 require("dbconfig/config.php");
 require("PHP_Files/getAdminHomeLink.php");
 
-$query = "SELECT A.First_Name, A.Last_Name, A.Nationality, A.Church_Part_Of_UD FROM Applicant_Table as A
-		  JOIN ZoomInterview AS Z
-		  ON A.User_ID = Z.ID
-		  WHERE Admitted = 'Admitted'";
+$query = "SELECT * FROM Applicant_Table as A
+			JOIN ZoomInterview AS Z
+			ON A.User_ID = Z.ID
+			WHERE Admitted = 'Admitted'";
 $result = $con->query($query);
 
 ?>
@@ -119,6 +119,10 @@ $result = $con->query($query);
                                             <th>Applicants Name</th>
                                             <th>Nationality</th>
 											<th>Member of UD-OLGC Church</th>
+                                            <th>Applicants Form</th>
+                                            <th>Interview Test</th>
+                                            <th>Uploaded Documents</th>
+
                                         </tr>
                                         </thead>
 
@@ -132,6 +136,32 @@ $result = $con->query($query);
                                             echo "<td>" . $row['First_Name'] . " " . $row['Last_Name'] . "</td>";
                                             echo "<td>" . $row['Nationality'] . "</td>";
 											echo "<td>" . $row['Church_Part_Of_UD'] . "</td>";
+                                            
+											echo "<td>";
+												echo "<a href='adminapplicationform.php?code=".$row['User_ID']."'>";
+													if ($row['Application_Form_Submitted'] == 1) {
+														echo "Completed";
+													} else {
+														echo "Incomplete";
+													}
+												echo "</a>";
+											echo "</td>";
+											
+											echo "<td>";
+												echo "<a href='admininterview.php?code=".$row['User_ID']."'>";
+													if ($row['Interview_Form_Submitted'] == 1) {
+														echo "Completed";
+													} else {
+														echo "Incomplete";
+													}
+												echo "</a>";
+											echo "</td>";
+											
+											echo "<td>";
+												echo "<a href='docResults.php?emailWhatsApp=".$row['EmailWhatsapp']."'>";
+													echo $row['Document_Uploads_Status'];
+												echo "</a>";
+											echo "</td>";
                                             echo "</tr>";
                                         }
 

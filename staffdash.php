@@ -95,6 +95,28 @@ require("PHP_Files/getAdminHomeLink.php");
                 <div class="container-fluid" style="height:100%">
                     <div class="row" style="height:100%">
 					
+					<div class="col-lg-12"  style="height:30%">
+                            <a href="admittedtable.php">
+								<div class="card" style="margin-bottom:15px;height:100%">
+									<!-- Card body -->
+									<div class="card-body">
+										<div class="row">
+											<div class="col">
+												<h5 class="mb-20">Admitted Students Table</h5>
+												<span class="text-dark mb-0"></span>
+											</div>
+											<div class="col-auto">
+												<div class="clint-icon bg-gradient-danger text-white rounded-circle icon-shape">
+													<i class="fa fa-table"></i>
+												</div>
+											</div>
+
+										</div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+					
                         <div class="col-lg-12"  style="height:30%">
                             <a href="summarytable.php">
 								<div class="card" style="margin-bottom:15px;height:100%">
@@ -158,9 +180,7 @@ require("PHP_Files/getAdminHomeLink.php");
                                         </div>
                                     </div>
                                 </div>
-                            </a>
-                        </div>
-
+                            </
                     </div>
                     
 
