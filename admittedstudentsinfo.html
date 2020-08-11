@@ -30,12 +30,6 @@ if ($_SESSION['loggedin'] == false) {
     <style type="text/css">
       @import url("https://fonts.googleapis.com/css?family=Roboto:300i,400,400i,500,700,900");
     </style>
-    <style type="text/css">
-    .hide {
-  display: none;
-}
-</style>
-
 
 <style>
   .header__btn {
@@ -281,6 +275,91 @@ if ($_SESSION['loggedin'] == false) {
 .is-helpful.error-message {
   color: #ff0022;
 }
+
+#myImg {
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+#myImg:hover {
+  opacity: 0.7s;
+}
+
+/* The modal background */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  padding-top: 100px; /*location of the box */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto; /* enable scroll if needed */
+  background-color: rgb(0,0,0); /* fallback color*/
+  background-color: rgba(0,0,0,0.9);
+}
+
+.modal-content {
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 700px;
+}
+
+#caption {
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 700px;
+  text-align: center;
+  color: #ccc;
+  padding: 10px 0;
+  height: 150px;
+}
+
+/* Add animation-zoom in the image (bigger image) */
+.modal-content, #caption {
+  -webkit-animation-name: zoom;
+  -webkit-animation-duration: 0.6s;
+  animation-name: zoom;
+  animation-duration: 0.6s;
+}
+
+@-webkit-keyframes zoom {
+  from {transform:scale(0)}
+  to {transform:scale(1)}
+}
+
+@keyframes zoom {
+  from {transform:scale(0)}
+  to {transform:scale(1)}
+}
+
+.close {
+  position: absolute;
+  top: 15px;
+  right: 35px;
+  color: #f1f1f1;
+  font-size: 40px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.close:hover,
+.close:focus {
+  color: #bbb;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* 100% width of image on small screens */
+@media only screen and (max-width: 700px) {
+  .modal-content {
+    width: 100%;
+  }
+}
 </style>
 </head>
 
@@ -364,11 +443,11 @@ if ($_SESSION['loggedin'] == false) {
           <div class="col-12 col-lg-12 ml-auto mr-auto mb-4">
             <div class="multisteps-form__progress">
 
-              <button class="multisteps-form__progress-btn js-active" style="cursor: default;" type="button" title="User Info" disabled>REGISTRATION</button>
+              <button class="multisteps-form__progress-btn js-active" style="cursor: default;" type="button" title="Order Info" disabled>LOCAL</button>
+              <button class="multisteps-form__progress-btn" style="cursor: default;" type="button" title="Order Info" disabled>INTERNATIONAL STUDENTS</button>
+              <button class="multisteps-form__progress-btn" style="cursor: default;" type="button" title="User Info" disabled>REGISTRATION</button>
               <button class="multisteps-form__progress-btn" style="cursor: default;" type="button" title="Address" disabled>PASTORAL POINTS REGISTRATION</button>
               <button class="multisteps-form__progress-btn" style="cursor: default;" type="button" title="Order Info" disabled>SPONSOR AGREEMENT PLAN</button>
-              <button class="multisteps-form__progress-btn" style="cursor: default;" type="button" title="Order Info" disabled>LOCAL</button>
-              <button class="multisteps-form__progress-btn" style="cursor: default;" type="button" title="Order Info" disabled>INTERNATIONAL STUDENTS</button>
               <button class="multisteps-form__progress-btn" style="cursor: default; font-size: 13px;" type="button" title="Comments" disabled>INTERNATIONAL STUDENT CONFIRMATIONS</button>
               <button class="multisteps-form__progress-btn" style="cursor: default; font-size: 13px;" type="button" title="Comments" disabled>INTERNATIONAL STUDENT ARRIVAL</button>
               <button class="multisteps-form__progress-btn" style="cursor: default;" type="button" title="Comments" disabled>HELPFUL LINKS</button>
@@ -383,135 +462,20 @@ if ($_SESSION['loggedin'] == false) {
           <div class="col-12 col-lg-12 m-auto">
             <form class="multisteps-form__form" id="myForm" name="admittedform" action="PHP_Files/Application_Form_Submission.php"
                                           method="POST" onsubmit="return submitClick();">
-              <!--single form panel-->
-              <div class="multisteps-form__panel shadow p-4 rounded bg-white js-active" data-animation="scaleIn" disabled>
-                <h3 class="multisteps-form__title">REGISTRATION</h3>
                 <br>
-                <div class="multisteps-form__content">
-                  
-                    <div id="demo-form" data-parsley-validate="" class="scrollpage1" style="height: 300px;">
-             
-                    <div class="form-group">
-                    <br>
-                    <span class="help-block"><medium>Please Click On This Link And Complete The Following:</medium></span>
-                    <br>
-                    <a href="http://firstlovegallery.com/student/new" target="_blank">https://school.anagkazomanager.org/register</a>
-                    <br>
-                    <br>
-                    <span class="help-block"><medium>1. Select Course - Junior Clerkship</medium></span>
-                    <br>
-                    <span class="help-block"><medium>2. Click Apply</medium></span>
-                    <br>
-                    <span class="help-block"><medium>3. Fill In Details</medium></span>
-                    <br>
-                    <span class="help-block"><medium>4. Upload a smart passport size picture of yourself wearing a white shirt and black jacket (you must upload a picture of yourself, if the picture upload is not working try a smaller photo with less quality, <b>do not submit if the picture does not upload!</b>)</medium></span>
-                    <br>
-                    <span class="help-block"><medium>5. Submit Application</medium></span>
-                    <br>
-                    <br>
-                    <span class="help-block"><small>Please confirm that you have registered</small></span>
 
-                    <br>
-                   
-                      <div class="custom-control custom-checkbox">
-                       <input type="checkbox" class="custom-control-input" id="Checkconfirmregistration" name="confirmregistrationcheck">
-                        <label class="custom-control-label" for="Checkconfirmregistration">Yes I can confirm</label>
-                         </div>
-                         </div>
-                                              </div>
-
-                                                
-
-                
-                
-                 
-                </div>
-                <div class="card">
-                            <div class="card-body">
-                                <div class="content">
-                                                <div class="button-row d-flex mt-4">
-                                                  <!-- <button class="btn">
-                                                  <div class="btn">Here is my clickable div</div>
-                                               </button> -->
-
-                    <button class="btn btn-primary ml-auto js-btn-next" type="button" title="Next">Next</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-              </div>
-
-              <!--single form panel-->
-              <div class="multisteps-form__panel shadow p-4 rounded bg-white" data-animation="scaleIn">
-                <h3 class="multisteps-form__title">PASTORAL POINTS REGISTRATION</h3>
-                <div class="multisteps-form__content">
-                  <div id="demo-form2" data-parsley-validate="" class="scrollpage1" style="height: 300px;">
-                    <br>
-                    <div class="form-group">
-                    <span class="help-block"><medium><b>Please Click On This Link</b></medium></span><span class="help-block"><medium> And Fill In The Pastoral Points New Student Form</medium></span>
-                    <br>
-                    <span class="help-block"><medium>New Student Form:</medium></span>
-                    <br>
-                    <a href="http://firstlovegallery.com/student/new" target="_blank">http://firstlovegallery.com/student/new</a>
-                    <br>
-                    <span class="help-block"><medium>UD Means A Lighthouse Chapel Church, Non-UD Means A Non-Lighthouse Church, Please Make Sure You Fill In All The Fields.</medium></span>
-                    <br>
-                    <br>
-                    <span class="help-block"><small>Please confirm that you have filled in the form</small></span>
-
-                    <br>
-                   
-                      <div class="custom-control custom-checkbox">
-                       <input type="checkbox" class="custom-control-input" id="CheckUD" name="UDcheck">
-                        <label class="custom-control-label" for="CheckUD">Yes I can confirm</label>
-                         </div>
-                         </div>                                  
-                  </div>
-                  <div class="button-row d-flex mt-4">
-                    <button class="btn btn-primary js-btn-prev" type="button" title="Prev">Prev</button>
-                    <button class="btn btn-primary ml-auto js-btn-next" type="button" title="Next">Next</button>
-                  </div>
-                </div>
-              </div>
-              <!--single form panel-->
-              <!--single form panel-->
-              <div class="multisteps-form__panel shadow p-4 rounded bg-white" data-animation="scaleIn">
-                <h3 class="multisteps-form__title">SPONSOR AGREEMENT PAYMENT PLAN (LOCAL AND INTERNATIONAL STUDENTS)</h3>
-                <div class="multisteps-form__content">
-                  <div id="demo-form2" data-parsley-validate="" class="scrollpage1" style="height: 300px;">
-                    <br>
-                    <div class="form-group">
-                    <span class="help-block"><medium>Applicants Need To Confirm That They Have A Sponsorship Agreement Payment Plan (When You Will Receive Money And How Much You Will Receive)</medium></span>
-                      <br>
-                      <br>
-                      <div class="form-group">
-                                                <div class="custom-control custom-radio">
-                                                    <input type="radio" id="Radio1locintsponsor" name="locintsponsor" class="custom-control-input">
-                                                    <label class="custom-control-label" for="Radio1locintsponsor">Yes</label>
-                                                </div>
-                                                <div class="custom-control custom-radio">
-                                                    <input type="radio" id="Radio2locintsponsor" name="locintsponsor" class="custom-control-input">
-                                                    <label class="custom-control-label" for="Radio2locintsponsor">No</label>
-                                                </div>
-                                            </div>
-
-                    <br>
-                         </div>                                  
-                  </div>
-                  <div class="button-row d-flex mt-4">
-                    <button class="btn btn-primary js-btn-prev" type="button" title="Prev">Prev</button>
-                    <button class="btn btn-primary ml-auto js-btn-next" type="button" title="Next">Next</button>
-                  </div>
-                </div>
-              </div>
-              <!--single form panel-->
-              <div class="multisteps-form__panel shadow p-4 rounded bg-white" data-animation="scaleIn">
+                <!--single form panel-->
+              <div class="multisteps-form__panel shadow p-4 rounded bg-white js-active" data-animation="scaleIn" disabled>
                 <br>
                                                 <h6>IF YOU ARE AN INTERNATIONAL STUDENT PLEASE KINDLY SELECT NEXT TO PROCEED ON TO THE FOLLOWING PAGE</h6>
                                                 <br>
                 <h3 class="multisteps-form__title">LOCAL STUDENTS</h3>
                 <div class="multisteps-form__content">
                   <div id="demo-form2" data-parsley-validate="" class="scrollpage1" style="height: 300px;">
+                    <br>
+                    <b><medium>Please scroll through this page to fill in available input fields</medium></b>
+                    <br>
+                    <br>
                     <br>
                     <medium>Click here to download responsibility form. Once you have filled in the responsibility form upload your completed details.</medium>
 
@@ -536,7 +500,7 @@ if ($_SESSION['loggedin'] == false) {
                                                <div class="form-group">
                                             <label>Proof Of Administration Fees Payment - 700 cedis</label>
                                             <br>
-                                            <span class="help-block"><small>A picture of a receipt or if you are unable to pay the fees into the school bank account please upload a picture of the cash that you will pay on arrival. Post bank account details.</small></span>
+                                            <span class="help-block"><small>A picture of a receipt or if you are unable to pay the fees into the school bank account please upload a picture of the cash that you will pay on arrival - Bank account details are on the admission letter.</small></span>
                                             <input type="file" name="adminfeepay[]" class="file-upload-default" style="display:none;">
                                             <div class="input-group col-xs-12">
                                                 <input type="text" class="form-control file-upload-info" disabled="" placeholder="Upload Image">
@@ -558,7 +522,10 @@ if ($_SESSION['loggedin'] == false) {
                                                     <input type="radio" id="radioaccommodation2" name="customRadioaccommodation2" class="custom-control-input">
                                                     <label class="custom-control-label" for="radioaccommodation2">No</label>
                                                 </div>
-                                                
+                                                <div class="custom-control custom-radio">
+                                                    <input type="radio" id="radiolocaccomodation3" name="customRadioaccommodation2" class="custom-control-input">
+                                                    <label class="custom-control-label" for="radiolocaccomodation3">Will Share A Room With My Spouse</label>
+                                                </div>
                                                     </div> 
 
                                                     <br>
@@ -624,7 +591,7 @@ if ($_SESSION['loggedin'] == false) {
                                              <br>
                                              <span class="help-block"><small>7. Room Assignment Form</small></span>
                                              <br>
-                                             <span class="help-block"><small>8. Administration Fee Or Cash (645 Cedis)</small></span>
+                                             <span class="help-block"><small>8. Hard Copy Receipt Of Administration Fee (700 Cedis)</small></span>
                                              <br>
                                         <div class="custom-control custom-checkbox">
                                                     <input type="checkbox" class="custom-control-input" id="customdocuments" name="docsconfirm">
@@ -663,7 +630,6 @@ if ($_SESSION['loggedin'] == false) {
                                                     </div>                                  
                   </div>
                   <div class="button-row d-flex mt-4">
-                    <button class="btn btn-primary js-btn-prev" type="button" title="Prev">Prev</button>
                     <button class="btn btn-primary ml-auto js-btn-next" type="button" title="Next">Next</button>
                   </div>
                 </div>
@@ -676,6 +642,11 @@ if ($_SESSION['loggedin'] == false) {
                 <h3 class="multisteps-form__title">INTERNATIONAL STUDENTS</h3>
                 <div class="multisteps-form__content">
                   <div id="demo-form2" data-parsley-validate="" class="scrollpage1" style="height: 300px;">
+                    <br>
+                    <b><medium>Please scroll through this page to fill in available input fields</medium></b>
+                    <br>
+                    <br>
+                    <br>
                     <div class="form-group">
                       <medium>Click here to download admission contract. Once you have filled in the admission contract upload your completed details.</medium>
 
@@ -790,8 +761,17 @@ if ($_SESSION['loggedin'] == false) {
                                                 <br>
                                                 <span class="help-block"><small>The Bible School offers 2 complimentary meals when you arrive.</small></span>
                                                 <br>
+                                                <br>
                                                 <div>
-                                                    <input class="form-control rounded-0 form-control-md" type="date" value="2011-08-19" id="example-date-input">
+                                                  <label>Date For Breakfast</label>
+                                                  <br>
+                                                    <input class="form-control rounded-0 form-control-md" type="date" value="2011-08-19" id="example-date-input" name="breakfastdate">
+                                                </div>
+                                                <br>
+                                                <div>
+                                                  <label>Date For Lunch</label>
+                                                  <br>
+                                                    <input class="form-control rounded-0 form-control-md" type="date" value="2011-08-19" id="example-date-input" name="lunchdate">
                                                 </div>
                                             </div>
                                             
@@ -842,6 +822,10 @@ if ($_SESSION['loggedin'] == false) {
                                                 <div class="custom-control custom-radio">
                                                     <input type="radio" id="radioaccomodation2" name="customRadioaccomodation2" class="custom-control-input">
                                                     <label class="custom-control-label" for="radioaccomodation2">No</label>
+                                                </div>
+                                                <div class="custom-control custom-radio">
+                                                    <input type="radio" id="radioaccomodation3" name="customRadioaccomodation2" class="custom-control-input">
+                                                    <label class="custom-control-label" for="radioaccomodation3">Will Share A Room With My Spouse</label>
                                                 </div>
                                                     </div>
 
@@ -899,6 +883,195 @@ if ($_SESSION['loggedin'] == false) {
                 </div>
               </div>
               <div class="multisteps-form__panel shadow p-4 rounded bg-white" data-animation="scaleIn">
+                <h3 class="multisteps-form__title">REGISTRATION</h3>
+                <div class="multisteps-form__content">
+                  
+                    <div id="demo-form" data-parsley-validate="" class="scrollpage1" style="height: 300px;">
+             
+                    <div class="form-group">
+                    <br>
+                    <span class="help-block"><medium>Please Click On This Link And Complete The Following:</medium></span>
+                    <br>
+                    <a href="https://school.anagkazomanager.org/register" target="_blank">https://school.anagkazomanager.org/register</a>
+                    <br>
+                    <br>
+                    <span class="help-block"><medium>1. Select Course - Junior Clerkship</medium></span>
+                    <br>
+                    <span class="help-block"><medium>2. Click Apply</medium></span>
+                    <br>
+                    <span class="help-block"><medium>3. Fill In Details</medium></span>
+                    <br>
+                    <span class="help-block"><medium>4. Upload a smart passport size picture of yourself wearing a white shirt and black jacket (you must upload a picture of yourself, if the picture upload is not working try a smaller photo with less quality, <b>do not submit if the picture does not upload!</b>)</medium></span>
+                    <br>
+                    <span class="help-block"><medium>5. Submit Application</medium></span>
+                    <br>
+                    <br>
+                    <span class="help-block"><small>Please confirm that you have registered</small></span>
+
+                    <br>
+                   
+                      <div class="custom-control custom-checkbox">
+                       <input type="checkbox" class="custom-control-input" id="Checkconfirmregistration" name="confirmregistrationcheck">
+                        <label class="custom-control-label" for="Checkconfirmregistration">Yes I can confirm</label>
+                         </div>
+
+                         <br>
+                   
+                      <div class="custom-control custom-checkbox">
+                       <input type="checkbox" class="custom-control-input" id="Checkconfirmjcsept2020" name="confirmjcsept2020">
+                        <label class="custom-control-label" for="Checkconfirmjcsept2020">Select Class: JC September 2020</label>
+                         </div>
+
+                         </div>
+
+                         <br>
+                         <div class="form-group">
+                                                <label for="exampleInputEmail111">Name of Church Branch</label>
+                                                <input type="text" class="form-control" id="exampleInputEmail111" placeholder="Enter Church Branch" name="churchbranchreg">
+                                            </div>
+
+                          <div class="form-group">
+                                                <label for="exampleInputEmail111">Name of Pastor</label>
+                                                <input type="text" class="form-control" id="exampleInputEmail111" placeholder="Enter Pastor Name" name="pastornamereg">
+                                            </div>   
+
+                          <div class="form-group">
+                                                <label for="exampleInputEmail111">Pastors Phone Number</label>
+                                                <input type="text" class="form-control" id="exampleInputEmail111" placeholder="Enter Pastors Phone Number" name="pastornumreg">
+                                            </div> 
+
+                          <div class="form-group">
+                      <label>Is Your Church A UD-OLGC Lighthouse/First Love Church?</label>
+                                                <div class="custom-control custom-radio">
+                                                    <input type="radio" id="radioUDOLGCCheck1" name="UDOLGCCheck" class="custom-control-input">
+                                                    <label class="custom-control-label" for="radioUDOLGCCheck1">Yes</label>
+                                                </div>
+                                                <div class="custom-control custom-radio">
+                                                    <input type="radio" id="radioUDOLGCCheck2" name="UDOLGCCheck" class="custom-control-input">
+                                                    <label class="custom-control-label" for="radioUDOLGCCheck2">No</label>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="exampleSelect1">Select Denomination</label>
+                                                <select class="form-control rounded-0" id="denominationsel" name="seldenomreg">
+                                                    <option value="0">-- Select Denomination --</option>
+                                                    <option value="1">Anagkazo Assemblies</option>
+                                                    <option value="2">Catch The Anointing Centre</option>
+                                                    <option value="3">Evangelical Lighthouse Chapel Int</option>
+                                                    <option value="4">Greater Love Church Ghana</option>
+                                                    <option value="5">Healing Jesus Mission Int</option>
+                                                    <option value="6">Igreja Do Primiero Amor</option>
+                                                    <option value="7">Jesus Is The Answer Church</option>
+                                                    <option value="8">LCI Kenya</option>
+                                                    <option value="9">LCI Sa</option>
+                                                    <option value="10">Lighthouse Chapel Int</option>
+                                                    <option value="11">Loyalty House Int</option>
+                                                    <option value="12">Mustard Seed Chapel</option>
+                                                    <option value="13">QFC Ghana</option>
+                                                    <option value="14">QFC USA</option>
+                                                    <option value="15">The Machaneh Church</option>
+                                                    <option value="16">The Makarios Church</option>
+                                                    <option value="17">The Mega Church</option>
+                                                    <option value="18">First Love</option>
+                                                    <option value="19">Other</option>
+                                                </select>
+                                            </div>  
+
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail111">Name Of Bishop</label>
+                                                <input type="text" class="form-control" id="exampleInputEmail111" placeholder="Enter Name Of Bishop" name="bishopnamereg">
+                                            </div>                
+
+
+
+                                              </div>
+
+                                                
+
+                
+                
+                 
+                </div>
+                <div class="card">
+                            <div class="card-body">
+                                <div class="content">
+                                                <div class="button-row d-flex mt-4">
+                                                  <!-- <button class="btn">
+                                                  <div class="btn">Here is my clickable div</div>
+                                               </button> -->
+                      <button class="btn btn-primary js-btn-prev" type="button" title="Prev">Prev</button>                         
+                    <button class="btn btn-primary ml-auto js-btn-next" type="button" title="Next">Next</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+              </div>
+
+              <!--single form panel-->
+              <div class="multisteps-form__panel shadow p-4 rounded bg-white" data-animation="scaleIn">
+                <h3 class="multisteps-form__title">PASTORAL POINTS REGISTRATION</h3>
+                <div class="multisteps-form__content">
+                  <div id="demo-form2" data-parsley-validate="" class="scrollpage1" style="height: 300px;">
+                    <br>
+                    <div class="form-group">
+                    <span class="help-block"><medium><b>Please Click On This Link</b></medium></span><span class="help-block"><medium> And Fill In The Pastoral Points New Student Form</medium></span>
+                    <br>
+                    <span class="help-block"><medium>New Student Form:</medium></span>
+                    <br>
+                    <a href="http://anagkazo.firstlovegallery.com/student/new" target="_blank">http://anagkazo.firstlovegallery.com/student/new</a>
+                    <br>
+                    <span class="help-block"><medium>UD Means A Lighthouse Chapel Church, Non-UD Means A Non-Lighthouse Church, Please Make Sure You Fill In All The Fields.</medium></span>
+                    <br>
+                    <br>
+                    <span class="help-block"><small>Please confirm that you have filled in the form</small></span>
+
+                    <br>
+                   
+                      <div class="custom-control custom-checkbox">
+                       <input type="checkbox" class="custom-control-input" id="CheckUD" name="UDcheck">
+                        <label class="custom-control-label" for="CheckUD">Yes I can confirm</label>
+                         </div>
+                         </div>                                  
+                  </div>
+                  <div class="button-row d-flex mt-4">
+                    <button class="btn btn-primary js-btn-prev" type="button" title="Prev">Prev</button>
+                    <button class="btn btn-primary ml-auto js-btn-next" type="button" title="Next">Next</button>
+                  </div>
+                </div>
+              </div>
+              <!--single form panel-->
+              <!--single form panel-->
+              <div class="multisteps-form__panel shadow p-4 rounded bg-white" data-animation="scaleIn">
+                <h3 class="multisteps-form__title">SPONSOR AGREEMENT PAYMENT PLAN (LOCAL AND INTERNATIONAL STUDENTS)</h3>
+                <div class="multisteps-form__content">
+                  <div id="demo-form2" data-parsley-validate="" class="scrollpage1" style="height: 300px;">
+                    <br>
+                    <div class="form-group">
+                    <span class="help-block"><medium>Applicants Need To Confirm That They Have A Sponsorship Agreement Payment Plan (When You Will Receive Money And How Much You Will Receive)</medium></span>
+                      <br>
+                      <br>
+                      <div class="form-group">
+                                                <div class="custom-control custom-radio">
+                                                    <input type="radio" id="Radio1locintsponsor" name="locintsponsor" class="custom-control-input">
+                                                    <label class="custom-control-label" for="Radio1locintsponsor">Yes</label>
+                                                </div>
+                                                <div class="custom-control custom-radio">
+                                                    <input type="radio" id="Radio2locintsponsor" name="locintsponsor" class="custom-control-input">
+                                                    <label class="custom-control-label" for="Radio2locintsponsor">No</label>
+                                                </div>
+                                            </div>
+
+                    <br>
+                         </div>                                  
+                  </div>
+                  <div class="button-row d-flex mt-4">
+                    <button class="btn btn-primary js-btn-prev" type="button" title="Prev">Prev</button>
+                    <button class="btn btn-primary ml-auto js-btn-next" type="button" title="Next">Next</button>
+                  </div>
+                </div>
+              </div>
+              <div class="multisteps-form__panel shadow p-4 rounded bg-white" data-animation="scaleIn">
                 <h3 class="multisteps-form__title">INTERNATIONAL STUDENTS CONFIRMATIONS</h3>
                 <div class="multisteps-form__content">
                   <div class="scrollpage1" style="height: 300px;">
@@ -933,7 +1106,11 @@ if ($_SESSION['loggedin'] == false) {
                       <br>
                       <span class="help-block"><medium>9. Room Assignment Form</medium></span>
                       <br>
-                      <span class="help-block"><medium>10. Application Form</medium></span>
+                      <span class="help-block"><medium>10. Hard Copy Receipt Of Administration Fee ($250
+                      USD)</medium></span>
+                      <br>
+                      <span class="help-block"><medium>11. Hard Copy Receipt Of Immigration Fee Or Cash ($170
+                      USD)</medium></span>
                       <br>
                       <div class="form-group">
                                                 <br>
@@ -1047,18 +1224,24 @@ if ($_SESSION['loggedin'] == false) {
 
                 <!--single form panel-->
               <div class="multisteps-form__panel shadow p-4 rounded bg-white" data-animation="scaleIn">
-                <h3 class="multisteps-form__title">HELPFUL LINKS</h3>
+                <h3 class="multisteps-form__title">CAMPUS MAP</h3>
                 <div class="scrollpage1" style="height: 300px;">
                   <div class="form-group">
-                    <span class="help-block"><medium>Please read the recommended items you should bring to ABMTC on the school website: <a href="https://school.anagkazomanager.org/register" target="_blank">www.abmtc.org/studentlife</a></medium></span>
+                    <!-- <span class="help-block"><medium>Please read the recommended items you should bring to ABMTC on the school website: <a href="https://school.anagkazomanager.org/register" target="_blank">www.abmtc.org/studentlife</a></medium></span> -->
                     <br>
-                    <span class="help-block"><medium>Academic Calendar</medium></span>
+                  
+                    <span class="help-block"><medium>Click on the map to enlarge the view</medium></span>
                     <br>
-                    <span class="help-block"><medium>Campus Map</medium></span>
-
-                    <br>
-
-                    <span class="help-block"><medium>Download Campus Map Here: <a href="img/map.jpg" target="_blank" download>Download Campus Map</a></medium></span>
+    <img id= "myImg" src="map.jpg" alt= "ABMTC Campus" width="300">
+    <!-- The Modal -->
+    <div id= "myModal" class="modal">
+      <!-- The close button -->
+      <span class= "close">&times;</span>
+      <!-- The modal content (image) -->
+      <img class= "modal-content" id= "img1">
+      <!-- The modal caption (img text) -->
+      <div id= "caption"></div>
+    </div>  <!-- end of Modal -->
 
                                            
                                           </div>
@@ -1086,7 +1269,9 @@ if ($_SESSION['loggedin'] == false) {
                                                     <input type="radio" id="radioairportpick2" name="airportpick" class="custom-control-input">
                                                     <label class="custom-control-label" for="radioairportpick2">No</label>
                                                 </div>
-                                            </div> 
+                                            </div>
+
+                                            
 
                       <div class="form-group">
                       <label>Changed Money At The Airport (International Students Only)</label>
@@ -1142,7 +1327,7 @@ if ($_SESSION['loggedin'] == false) {
                                               <label>Are There Any Issues In The Room?</label>
                                                 <div class="custom-control custom-radio">
                                                     <input type="radio" id="Radioroom1" name="roomissues" class="custom-control-input">
-                                                    <label class="custom-control-label" for="Radioroom1" onclick="show2();">Yes</label>
+                                                    <label class="custom-control-label" for="Radioroom1" onclick="show1a();">Yes</label>
                                                 </div>
                                                 <div class="custom-control custom-radio">
                                                     <input type="radio" id="Radioroom2" name="roomissues" class="custom-control-input">
@@ -1150,13 +1335,17 @@ if ($_SESSION['loggedin'] == false) {
                                                 </div>
                                             </div>                                         
                                             
-                                            <div id="div1" class="form-group hide">
+                                            <div id="hidecall" class="hide">
 
-                                                  <label>If Yes, Please Comment On The Room Issues</label>
+                                                <label class="control-label">If Yes, Please Describe The Issues In Your Room</label>
 
-                                                <input type="text" class="form-control" placeholder="" name="roomissuescomment">
+                                                <textarea class="form-control" name="roomissuecomment" id="exampleTextarea1"
+                                                          rows="2">
 
-                                                </div> 
+                                             </textarea>
+                                             <br>
+
+                                           </div>  
 
                                               <div class="form-group">
                                               <label>Have The Issues In Your Room Been Solved?</label>
@@ -1256,13 +1445,21 @@ if ($_SESSION['loggedin'] == false) {
                       <br>
                       <span class="help-block"><medium>- Clothing For Different Seasons (Both Warm And Cold Weather)</medium></span>
                       <br>
-                      <div class="form-group">
+                      <span class="help-block"><medium>- Smartphone</medium></span>
+                      <br>
+                      <span class="help-block"><medium>- Hard Drive</medium></span>
+                      <br>
+                      <span class="help-block"><medium>- Tablet</medium></span>
+                      <br>
+                      <span class="help-block"><medium>- Quality Internet Connection</medium></span>
+                      <br>
+                      <!-- <div class="form-group">
                                                 <br>
                                                 <div class="custom-control custom-checkbox">
                                                     <input type="checkbox" class="custom-control-input" id="checkuniversityitems" name="universitylist">
                                                     <label class="custom-control-label" for="checkuniversityitems">I can confirm I have all university items</label>
                                                 </div>
-                                            </div>
+                                            </div> -->
                       </div>                   
                     
                                            </div>
@@ -2048,7 +2245,7 @@ angular.module('app', [])
  var Spain2 = document.getElementById('checkgallerytour').checked;
  var China2 = document.getElementById('checkorphanage').checked;
  var Nigeria2 = document.getElementById('checkuniversityitems').checked;
- // var Ghana2 = document.getElementById('checkbox-p-2epilepsy').checked;
+ var Ghana2 = document.getElementById('Checkconfirmjcsept2020').checked;
  // var Chad2 = document.getElementById('checkbox-p-2illness').checked;
  // var UK2 = document.getElementById('checkbox-p-2epilepsy').checked;
  
@@ -2091,6 +2288,11 @@ angular.module('app', [])
   alert('UNIVERSITY ITEMS CHECKLIST: Please Confirm University Items');
   return false;
   }
+  if(Ghana2==false){
+  alert('REGISTRATION: Please Confirm JC September 2020');
+  return false;
+  }
+  
 
 
       
@@ -2127,22 +2329,88 @@ angular.module('app', [])
         return false;
       }
 
-      
+      function validateForm() {
+  var x = document.forms["admittedform"]["churchbranchreg"].value;
+  var x = document.forms["admittedform"]["pastornamereg"].value;
+  var x = document.forms["admittedform"]["pastornumreg"].value;
+  var x = document.forms["admittedform"]["bishopnamereg"].value;
+  var selUD = document.querySelector("[name=UDOLGCCheck]:checked");
+  var e = document.getElementById("denominationsel");
+            var optionSelIndex = e.options[e.selectedIndex].value;
+            var optionSelectedText = e.options[e.selectedIndex].text;
+
+ 
+  if (x == "") {
+    alert("Registration: Church Branch Is Incomplete");
+    return false;
+  }
+  if (x == "") {
+    alert("Registration: Pastor Name Is Incomplete");
+    return false;
+  }
+  if (x == "") {
+    alert("Registration: Pastor Number Is Incomplete");
+    return false;
+  }
+  if (x == "") {
+    alert("Registration: Bishop Name Is Incomplete");
+    return false;
+  }
+  if (!selUD) {
+    alert("Registration: UD-OLGC Lighthouse/First Love Church Is Incomplete");
+    return false;
+  }
+
+            if (optionSelIndex == 0) {
+                alert("Registration: Denomination Is Incomplete");
+                return false;
+            }
+
+            
+
+
+}
 
   }
 </script>
 
 
+
+
     <script>
 function show1(){
-  document.getElementById('div1').style.display ='none';
+  document.getElementById('hidecall').style.display ='none';
 }
-function show2(){
-  document.getElementById('div1').style.display = 'block';
+function show1a(){
+  document.getElementById('hidecall').style.display = 'block';
 }
 
 
-    </script>      
+    </script>  
+
+    <script type="text/javascript">
+      var modal = document.getElementById("myModal");
+var img = document.getElementById("myImg");
+var img1 = document.getElementById("img1");
+var caption = document.getElementById("caption");
+var close = document.getElementsByClassName("close")[0];
+
+img.onclick = function() {
+  modal.style.display = "block";
+  img1.src = this.src;
+  caption.innerHTML = this.alt;
+}
+
+close.onclick = function() {
+  modal.style.display = "none";
+}
+
+window.onclick = function(e) {
+  if(e.target == modal) {
+    modal.style.display = "none";
+  }
+}
+    </script>    
   
 
 </body>
