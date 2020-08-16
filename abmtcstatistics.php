@@ -35,7 +35,7 @@ $internationalAdmittedNonUD = mysqli_num_rows($query);
 $query = $con->query("SELECT DISTINCT(A.User_ID) FROM Applicant_Table AS A LEFT JOIN Application_Form AS B ON A.User_ID = B.User_ID WHERE (A.Church_Part_Of_UD = 'Yes' OR B.Church_Part_Of_UD = 'Yes')");
 $udApplicants = mysqli_num_rows($query);
 
-$query = $con->query("SELECT DISTINCT(A.User_ID) FROM Applicant_Table AS A LEFT JOIN Application_Form AS B ON A.User_ID = B.User_ID WHERE (A.Church_Part_Of_UD = 'Yes' OR B.Church_Part_Of_UD = 'No')");
+$query = $con->query("SELECT DISTINCT(A.User_ID) FROM Applicant_Table AS A LEFT JOIN Application_Form AS B ON A.User_ID = B.User_ID WHERE (A.Church_Part_Of_UD = 'No' OR B.Church_Part_Of_UD = 'No')");
 $nonUDApplicants = mysqli_num_rows($query);
 
 $query = $con->query("SELECT * FROM Applicant_Table WHERE Application_Form_Submitted = 1");
