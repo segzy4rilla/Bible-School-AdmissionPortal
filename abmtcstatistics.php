@@ -55,12 +55,6 @@ $followUp = mysqli_num_rows($query);
 
 $nationSummary = $con->query("SELECT A.Nationality, Total, Admitted FROM (SELECT COUNT(Nationality) Total, Nationality FROM Applicant_Table GROUP BY Nationality) A JOIN (SELECT COUNT(Nationality) Admitted, Nationality FROM Applicant_Table AS X JOIN ZoomInterview AS Y ON X.User_ID = Y.ID WHERE Admitted = 'Admitted' GROUP BY Nationality) B ON A.Nationality = B.Nationality");
 
-$query = $con->query("SELECT * FROM Applicant_Table");
-$totalApplicants = mysqli_num_rows($query);
-
-$query = $con->query("SELECT * FROM ZoomInterview Where Admitted = 'Admitted'");
-$totalAdmissions = mysqli_num_rows($query);
-
 $query = $con->query("SELECT DISTINCT(Nationality) FROM Applicant_Table");
 $totalNations = mysqli_num_rows($query);
 
@@ -299,7 +293,9 @@ $totalNations = mysqli_num_rows($query);
   <div class="pie-charts">
     <div class="pieID--micro-skills pie-chart--wrapper">
       <?php
-		echo "<h2>Total Applicants (".$totalApplicants.")</h2>";
+		echo "<h2>Total Applicants (".($localTotal + $localTotalNonUD + $internationalTotal + $internationalTotalNonUD).")</h2>";
+		echo "<h4>Local (".($localTotal + $localTotalNonUD).")</h4>";
+		echo "<h4>International(".($internationalTotal + $internationalTotalNonUD).")</h4>";
 	  ?>
       <div class="pie-chart">
         <div class="pie-chart__pie"></div>
@@ -315,7 +311,9 @@ $totalNations = mysqli_num_rows($query);
     </div>
     <div class="pieID--categories pie-chart--wrapper">
       <?php
-		echo "<h2>Admitted Students (".$totalAdmissions.")</h2>";
+		echo "<h2>Admitted Students (".($localAdmitted + $localAdmittedNonUD + $internationalAdmitted + $internationalAdmittedNonUD).")</h2>";
+		echo "<h4>Local (".($localAdmitted + $localAdmittedNonUD).")</h4>";
+		echo "<h4>Admitted International (".($internationalAdmitted + $internationalAdmittedNonUD).")</h4>";
 	  ?>
       <div class="pie-chart">
         <div class="pie-chart__pie"></div>
