@@ -53,6 +53,8 @@ $zoomCompleted = mysqli_num_rows($query);
 $query = $con->query("SELECT * FROM Applicant_Table");
 $followUp = mysqli_num_rows($query);
 
+$nationSummary = $con->query("SELECT A.Nationality, Total, Admitted FROM (SELECT COUNT(Nationality) Total, Nationality FROM Applicant_Table GROUP BY Nationality) A JOIN (SELECT COUNT(Nationality) Admitted, Nationality FROM Applicant_Table AS X JOIN ZoomInterview AS Y ON X.User_ID = Y.ID WHERE Admitted = 'Admitted' GROUP BY Nationality) B ON A.Nationality = B.Nationality");
+
 ?>
 <!DOCTYPE html>
 <html lang="en" >
@@ -390,6 +392,29 @@ $followUp = mysqli_num_rows($query);
 		echo "<td style='color: white;'>".$followUp."</td>"
 	  ?>
 	</tr>
+  </tbody>
+</table>
+</div>
+
+<div class="container table-responsive py-5"> 
+<table class="table table-bordered table-hover table-striped table-dark">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Nationality</th>
+      <th scope="col">Total</th>
+      <th scope="col">Admitted</th>
+    </tr>
+  </thead>
+  <tbody>
+	<?php
+		while ($row = $nationSummary->fetch_assoc()) {
+			echo "<tr>";
+				echo "<th scope='row' style='color: white;'>".$row['Nationality']."</th>";
+				echo "<td style='color: white;'>".$row['Total']."</td>";
+				echo "<td style='color: white;'>".$row['Admitted']."</td>";
+			echo "</tr>";
+		}
+	?>
   </tbody>
 </table>
 </div>
