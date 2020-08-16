@@ -55,6 +55,15 @@ $followUp = mysqli_num_rows($query);
 
 $nationSummary = $con->query("SELECT A.Nationality, Total, Admitted FROM (SELECT COUNT(Nationality) Total, Nationality FROM Applicant_Table GROUP BY Nationality) A JOIN (SELECT COUNT(Nationality) Admitted, Nationality FROM Applicant_Table AS X JOIN ZoomInterview AS Y ON X.User_ID = Y.ID WHERE Admitted = 'Admitted' GROUP BY Nationality) B ON A.Nationality = B.Nationality");
 
+$query = $con->query("SELECT * FROM Applicant_Table");
+$totalApplicants = mysqli_num_rows($query);
+
+$query = $con->query("SELECT * FROM ZoomInterview Where Admitted = 'Admitted'");
+$totalAdmissions = mysqli_num_rows($query);
+
+$query = $con->query("SELECT DISTINCT(Nationality) FROM Applicant_Table");
+$totalNations = mysqli_num_rows($query);
+
 ?>
 <!DOCTYPE html>
 <html lang="en" >
@@ -289,29 +298,33 @@ $nationSummary = $con->query("SELECT A.Nationality, Total, Admitted FROM (SELECT
     <br>
   <div class="pie-charts">
     <div class="pieID--micro-skills pie-chart--wrapper">
-      <h2>Total Applicants</h2>
+      <?php
+		echo "<h2>Total Applicants (".$totalApplicants.")</h2>";
+	  ?>
       <div class="pie-chart">
         <div class="pie-chart__pie"></div>
         <ul class="pie-chart__legend" style="height: 110px; width:300px">
 			<?php
-				echo "<li><em>Local Students (UD)</em><span>".$localTotal."</span></li>";
-				echo "<li><em>International Students (UD)</em><span>".$internationalTotal."</span></li>";
-				echo "<li><em>Local Students (Non-UD)</em><span>".$localTotalNonUD."</span></li>";
-				echo "<li><em>International Students (Non-UD)</em><span>".$internationalTotalNonUD."</span></li>";
+				echo "<li><em>Local Applicants (UD)</em><span>".$localTotal."</span></li>";
+				echo "<li><em>International Applicants (UD)</em><span>".$internationalTotal."</span></li>";
+				echo "<li><em>Local Applicants (Non-UD)</em><span>".$localTotalNonUD."</span></li>";
+				echo "<li><em>International Applicants (Non-UD)</em><span>".$internationalTotalNonUD."</span></li>";
 			?>
         </ul>
       </div>
     </div>
     <div class="pieID--categories pie-chart--wrapper">
-      <h2>Admitted Students</h2>
+      <?php
+		echo "<h2>Admitted Students (".$totalAdmissions.")</h2>";
+	  ?>
       <div class="pie-chart">
         <div class="pie-chart__pie"></div>
         <ul class="pie-chart__legend" style="height:110px; width:300px">
 			<?php
-				echo "<li><em>Local Admissions (UD)</em><span>".$localAdmitted."</span></li>";
-				echo "<li><em>International Admissions (UD)</em><span>".$internationalAdmitted."</span></li>";
-				echo "<li><em>Local Admissions (Non-UD)</em><span>".$localAdmittedNonUD."</span></li>";
-				echo "<li><em>International Admissions (Non-UD)</em><span>".$internationalAdmittedNonUD."</span></li>";
+				echo "<li><em>Local Students (UD)</em><span>".$localAdmitted."</span></li>";
+				echo "<li><em>International Students (UD)</em><span>".$internationalAdmitted."</span></li>";
+				echo "<li><em>Local Students (Non-UD)</em><span>".$localAdmittedNonUD."</span></li>";
+				echo "<li><em>International Students (Non-UD)</em><span>".$internationalAdmittedNonUD."</span></li>";
 			?>
 		  <!--<li style="margin-top:25px;"><em style="font-size: 9px">Local Applicants Provisional Admission</em><span>24</span></li>-->
           <!--<li style="margin-top:25px;"><em style="font-size: 9px">International Applicants Provisional Admission</em><span>43</span></li>-->
@@ -376,21 +389,17 @@ $nationSummary = $con->query("SELECT A.Nationality, Total, Admitted FROM (SELECT
   <thead class="thead-dark">
     <tr>
       <th scope="col">Follow Up Info</th>
-      <th scope="col">Number</th>
+      <th scope="col">Total</th>
+      <th scope="col">Means Of Contacting</th>
     </tr>
   </thead>
   <tbody>
-	<tr>
-	  <th scope="row" style="color: white;">Accouts Being Follwed Up</th>
-	  <?php
-		echo "<td style='color: white;'>".$followUp."</td>"
-	  ?>
-	</tr>
 	<tr>
 	  <th scope="row" style="color: white;">Follow Up Effort For The Week</th>
 	  <?php
 		echo "<td style='color: white;'>".$followUp."</td>"
 	  ?>
+	  <td style='color: white;'>Email, Calls And WhatsApp</td>
 	</tr>
   </tbody>
 </table>
@@ -400,7 +409,9 @@ $nationSummary = $con->query("SELECT A.Nationality, Total, Admitted FROM (SELECT
 <table class="table table-bordered table-hover table-striped table-dark">
   <thead class="thead-dark">
     <tr>
-      <th scope="col">Nationality</th>
+	  <?php
+		echo "<th scope='col'>Nationality (".$totalNations.")</th>";
+	  ?>
       <th scope="col">Total</th>
       <th scope="col">Admitted</th>
     </tr>
