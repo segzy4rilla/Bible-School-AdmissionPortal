@@ -35,7 +35,7 @@ if (!$idInserted && !$idExists) {
 } 
 else {
 	//Local
-	/*$UpdateLocal = $conn->prepare
+	$UpdateLocal = $conn->prepare
 								("
 									UPDATE AdmittedStudents 
 									SET Loc_InternationalStudentsHostel = '".$."', 
@@ -49,7 +49,7 @@ else {
 
 	if (!$localInfoUpdated) {
 		$alertMessage = $alertMessage . " " . "Sorry, there was an error submitting the Local Tab information";
-	}*/
+	}
 	
 	$alertMessage = $alertMessage . " " . sql_upload_doc($conn, "AdmittedStudents", "Loc_ResponsibilityFormFilepath", $ID, "locstudentform", $targetDirectory);
 	$alertMessage = $alertMessage . " " . sql_upload_doc($conn, "AdmittedStudents", "Loc_AdminFeeProofFilepath", $ID, "adminfeepay", $targetDirectory);
@@ -57,24 +57,15 @@ else {
 	$alertMessage = $alertMessage . " " . sql_upload_doc($conn, "AdmittedStudents", "Loc_RoomAssignmentFormFilepath", $ID, "roomasignmentform", $targetDirectory);
 	
 	//International
-	/*$UpdateInternational = $conn->prepare
+	$UpdateInternational = $conn->prepare
 								("
 									UPDATE AdmittedStudents 
-									SET Int_AdmissionContractFormFilepath = '".$."', 
-									Int_StudentResponsibilityFormFilepath = '".$."',
-									Int_AdminFeeProofFilepath = '".$."',
-									Int_ImmigrationFeeProofFilepath = '".$."',
-									Int_PassportFilepath = '".$."',
-									Int_VisaFilepath = '".$."',
-									Int_VisaNotRequiredComment = '".$."',
-									Int_FlightTicketFilepath = '".$."',
+									SET Int_VisaNotRequiredComment = '".$."',
 									Int_Arrival = '".$."', = '".$."',
 									Int_Breakfast = '".$."', = '".$."',
 									Int_Lunch = '".$."', = '".$."',
 									Int_WantsStarterPack = '".$."',
-									Int_InternationalStudentsHostel = '".$."',
-									Int_DeclarationFormFilepath = '".$."',
-									Int_RoomAssignmentFormFilepath = '".$.
+									Int_InternationalStudentsHostel = '".$.
 									"' WHERE ID = '" .$ID."'";
 								);
 								
@@ -83,6 +74,16 @@ else {
 	if (!$internationalInfoUpdated) {
 		$alertMessage = $alertMessage . " " . "Sorry, there was an error submitting the International Tab information";
 	}
+	
+	$alertMessage = $alertMessage . " " . sql_upload_doc($conn, "AdmittedStudents", "Int_AdmissionContractFormFilepath", $ID, "admissioncontract", $targetDirectory);
+	$alertMessage = $alertMessage . " " . sql_upload_doc($conn, "AdmittedStudents", "Int_StudentResponsibilityFormFilepath", $ID, "intstudentresponform", $targetDirectory);
+	$alertMessage = $alertMessage . " " . sql_upload_doc($conn, "AdmittedStudents", "Int_AdminFeeProofFilepath", $ID, "adminfeeimgigpay", $targetDirectory);
+	$alertMessage = $alertMessage . " " . sql_upload_doc($conn, "AdmittedStudents", "Int_ImmigrationFeeProofFilepath", $ID, "adminfeeimgigpay2", $targetDirectory);
+	$alertMessage = $alertMessage . " " . sql_upload_doc($conn, "AdmittedStudents", "Int_PassportFilepath", $ID, "passportbiodata", $targetDirectory);
+	$alertMessage = $alertMessage . " " . sql_upload_doc($conn, "AdmittedStudents", "Int_VisaFilepath", $ID, "visaletter", $targetDirectory);
+	$alertMessage = $alertMessage . " " . sql_upload_doc($conn, "AdmittedStudents", "Int_FlightTicketFilepath", $ID, "flightticket", $targetDirectory);
+	$alertMessage = $alertMessage . " " . sql_upload_doc($conn, "AdmittedStudents", "Int_DeclarationFormFilepath", $ID, "intdecform", $targetDirectory);
+	$alertMessage = $alertMessage . " " . sql_upload_doc($conn, "AdmittedStudents", "Int_RoomAssignmentFormFilepath", $ID, "introomassignform", $targetDirectory);
 	
 	//Registration
 	$UpdateRegistration = $conn->prepare
@@ -137,14 +138,12 @@ else {
 	$UpdateInternationalStudentConfirmations = $conn->prepare
 								("
 									UPDATE AdmittedStudents 
-									SET Loc_ResponsibilityFormFilepath = '".$."', 
-									Loc_AdminFeeProofFilepath = '".$."', 
-									Loc_InternationalStudentsHostel = '".$."', 
-									Loc_DeclarationFormFilepath = '".$."', 
-									Loc_RoomAssignmentFormFilepath = '".$."', 
-									Loc_PrintedAllDocuments = '".$."', 
-									Loc_HasBeddings = '".$."', 
-									Loc_HasMTNCard = '".$.
+									SET IntCon_PrintedAllDocuments = '".$."', 
+									IntCon_HasMalariaMedication = '".$."', 
+									IntCon_MobilePhoneUnlocked = '".$."', 
+									IntCon_HasGhanaCharger = '".$."', 
+									IntCon_PowerBank = '".$."', 
+									IntCon_HasBeddings = '".$.
 									"' WHERE ID = '" .$ID."'";
 								);
 								
@@ -158,21 +157,25 @@ else {
 	$UpdateSoftLandingChecklist = $conn->prepare
 								("
 									UPDATE AdmittedStudents 
-									SET Loc_ResponsibilityFormFilepath = '".$."', 
-									Loc_AdminFeeProofFilepath = '".$."', 
-									Loc_InternationalStudentsHostel = '".$."', 
-									Loc_DeclarationFormFilepath = '".$."', 
-									Loc_RoomAssignmentFormFilepath = '".$."', 
-									Loc_PrintedAllDocuments = '".$."', 
-									Loc_HasBeddings = '".$."', 
-									Loc_HasMTNCard = '".$.
+									SET Check_AirportPickup = '".$."',
+										Check_ChangedMoneyAt = '".$."',
+										Check_StarterPack = '".$."',
+										Check_MTNSimCard = '".$."',
+										Check_CollectTag = '".$."',
+										Check_IssuesInTheRoom = '".$."',
+										Check_IssuesInTheRoomSolved = '".$."',
+										Check_PaidAdminFeesAndCollectedTextbooks = '".$."',
+										Check_GalleryTour = '".$."',
+										Check_OrphanageTour = '".$.
 									"' WHERE ID = '" .$ID."'";
 								);
 	$softLandingChecklistInfoUpdated = $UpdateSoftLandingChecklist->execute();
 
 	if (!$softLandingChecklistInfoUpdated) {
 		$alertMessage = $alertMessage . " " . "Sorry, there was an error submitting the Soft Landing Checklist Tab information";
-	}*/
+	}
+	
+	
 }
 echo $alertMessage;
 
