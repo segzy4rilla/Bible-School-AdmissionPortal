@@ -575,7 +575,7 @@ if ($_SESSION['loggedin'] == false) {
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label>Room Assignment Form</label>
+                                            <label>Hard Copy Documents</label>
                                             <br>
                                             <span class="help-block"><small>1. Application Form</small></span>
                                             <br>
@@ -619,7 +619,7 @@ if ($_SESSION['loggedin'] == false) {
                                                     </div>        
                                             
                                             <div class="form-group">
-                                            <label>Do you have an MTN Card?</label>
+                                            <label>Do you have an MTN Sim Card?</label>
                                             <br>
                                             
                                         <div class="custom-control custom-checkbox">
@@ -659,6 +659,23 @@ if ($_SESSION['loggedin'] == false) {
                       <br>
                                             <label>Admission Contract</label>
                                             <input type="file" name="admissioncontract[]" class="file-upload-default" style="display:none;">
+                                            <div class="input-group col-xs-12">
+                                                <input type="text" class="form-control file-upload-info" disabled="" placeholder="Upload Image">
+                                                <span class="input-group-append">
+                                                    <button class="file-upload-browse btn btn-primary" type="button">Upload</button>
+                                                </span>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                                    <label class="control-label">Date Assigned Of Paying Full Administration Fee</label>
+                                                    <input type="text" class="form-control" placeholder="Enter date" name="datepayfulladmin">
+                                                </div>
+
+                                                <div class="form-group">
+                    
+                                            <label>Letter To Confirm For Full Payment </label>
+                                            <input type="file" name="ConfirmPayment[]" class="file-upload-default" style="display:none;">
                                             <div class="input-group col-xs-12">
                                                 <input type="text" class="form-control file-upload-info" disabled="" placeholder="Upload Image">
                                                 <span class="input-group-append">
@@ -1182,7 +1199,114 @@ if ($_SESSION['loggedin'] == false) {
                                                     <label class="custom-control-label" for="checkbeddings">I can confirm I have these beddings</label>
                                                 </div>
 
-                      </div>   
+                      </div>
+
+                      
+
+                    <div class="form-group">
+                                            <label>Special Skills</label>
+                                            <div>
+                                                <div class="custom-control custom-checkbox">
+                                                    <input type="checkbox" class="custom-control-input" id="customCheck1" name="cooking">
+                                                    <label class="custom-control-label" for="customCheck1">Cooking</label>
+                                                </div>
+                                                <div class="custom-control custom-checkbox">
+                                                    <input type="checkbox" class="custom-control-input" id="customCheck2" name="driving">
+                                                    <label class="custom-control-label" for="customCheck2">Driving</label>
+                                                </div>
+                                                <div class="custom-control custom-checkbox">
+                                                    <input type="checkbox" class="custom-control-input" id="customCheck3" name="firstaid">
+                                                    <label class="custom-control-label" for="customCheck3">First Aid and CPR</label>
+                                                </div>
+                                                <div class="custom-control custom-checkbox">
+                                                    <input type="checkbox" class="custom-control-input" id="customCheck4" name="garden">
+                                                    <label class="custom-control-label" for="customCheck4">Garden Maintenance</label>
+                                                </div>
+                                                <div class="custom-control custom-checkbox">
+                                                    <input type="checkbox" class="custom-control-input" id="customCheck5" name="hospitality">
+                                                    <label class="custom-control-label" for="customCheck5">Hospitality</label>
+                                                </div>
+                                                <div class="custom-control custom-checkbox">
+                                                    <input type="checkbox" class="custom-control-input" id="customCheck6" name="painting">
+                                                    <label class="custom-control-label" for="customCheck6">Painting</label>
+                                                </div>
+                                                <div class="custom-control custom-checkbox">
+                                                    <input type="checkbox" class="custom-control-input" id="customCheck7" name="sales">
+                                                    <label class="custom-control-label" for="customCheck7">Sales</label>
+                                                </div>
+                                                <div class="custom-control custom-checkbox">
+                                                    <input type="checkbox" class="custom-control-input" id="customCheck8" name="farming">
+                                                    <label class="custom-control-label" for="customCheck8">Farming</label>
+                                                </div>
+                                                <div class="custom-control custom-checkbox">
+                                                    <input type="checkbox" class="custom-control-input" id="customCheck9" name="plumbing">
+                                                    <label class="custom-control-label" for="customCheck9">Plumbing/Electrical/Carpentry</label>
+                                                </div>
+                                                <div class="custom-control custom-checkbox">
+                                                    <input type="checkbox" class="custom-control-input" id="customCheck10" name="singing">
+                                                    <label class="custom-control-label" for="customCheck10">Singing</label>
+                                                </div>
+                                                <div class="custom-control custom-checkbox">
+                                                    <input type="checkbox" class="custom-control-input" id="customCheck11" name="acting">
+                                                    <label class="custom-control-label" for="customCheck11">Acting</label>
+                                                </div>
+                                                <div class="custom-control custom-checkbox">
+                                                    <input type="checkbox" class="custom-control-input" id="customCheck12" name="dancing">
+                                                    <label class="custom-control-label" for="customCheck12">Dancing</label>
+                                                </div>
+                                                <div class="custom-control custom-checkbox">
+                                                    <input type="checkbox" class="custom-control-input" id="customCheck13" name="sports">
+                                                    <label class="custom-control-label" for="customCheck13">Sports</label>
+                                                </div>
+                                                <div class="custom-control custom-checkbox">
+                                                    <input type="checkbox" class="custom-control-input" id="customCheck14" name="computing">
+                                                    <label class="custom-control-label" for="customCheck14">Computing/Technology</label>
+                                                </div>
+                                                <div class="custom-control custom-checkbox">
+                                                    <input type="checkbox" class="custom-control-input" id="customCheck15" name="administration">
+                                                    <label class="custom-control-label" for="customCheck15">Administration</label>
+                                                </div>
+                                                <div class="custom-control custom-checkbox">
+                                                    <input type="checkbox" class="custom-control-input" id="customCheck16" name="media">
+                                                    <label class="custom-control-label" for="customCheck16">Media</label>
+                                                </div>
+                                                <div class="custom-control custom-checkbox">
+                                                    <input type="checkbox" class="custom-control-input" id="customCheck17" name="languages">
+                                                    <label class="custom-control-label" for="customCheck17">Languages</label>
+                                                </div>
+                                                <div class="custom-control custom-checkbox">
+                                                    <input type="checkbox" class="custom-control-input" id="customCheck18" name="art">
+                                                    <label class="custom-control-label" for="customCheck18">Art</label>
+                                                </div>
+                                                <div class="custom-control custom-checkbox">
+                                                    <input type="checkbox" class="custom-control-input" id="customCheck19" name="construction">
+                                                    <label class="custom-control-label" for="customCheck19">Construction</label>
+                                                </div>
+                                                <div class="custom-control custom-checkbox">
+                                                    <input type="checkbox" class="custom-control-input" id="customCheck20" name="instruments">
+                                                    <label class="custom-control-label" for="customCheck20">Instruments</label>
+                                                </div>
+                                                <div class="custom-control custom-checkbox">
+                                                    <input type="checkbox" class="custom-control-input" id="customCheck21" name="other" id="chkPassport" onclick="ShowHideDiv(this)">
+                                                    <label class="custom-control-label" for="customCheck21">Other</label>
+                                                </div>
+                                            </div>
+                                          </div>
+
+                                          <div class="form-group">
+               
+                                          <div id="dvPassport" style="display: none">
+
+                                                <label class="control-label">If Other, Please Enter Additional Skills In Below</label>
+
+                                                <textarea class="form-control" name="otherskills" id="exampleTextarea1"
+                                                          rows="2">
+
+                                             </textarea>
+
+                                           </div> 
+                                           </div>
+                         
 
                       <br>                   
                     
@@ -1267,6 +1391,10 @@ if ($_SESSION['loggedin'] == false) {
                                                     <input type="radio" id="radioairportpick2" name="airportpick" class="custom-control-input">
                                                     <label class="custom-control-label" for="radioairportpick2">No</label>
                                                 </div>
+                                                <div class="custom-control custom-radio">
+                                                    <input type="radio" id="radioairportpick3" name="airportpick" class="custom-control-input">
+                                                    <label class="custom-control-label" for="radioairportpick3">Did Not Order</label>
+                                                </div>
                                             </div>
 
                                             
@@ -1343,6 +1471,9 @@ if ($_SESSION['loggedin'] == false) {
                                              </textarea>
 
                                            </div>  
+
+                                           <br>
+                                           <br>
 
                                               <div class="form-group">
                                               <label>Have The Issues In Your Room Been Solved?</label>
@@ -2371,6 +2502,11 @@ function show1(){
 function show1a(){
   document.getElementById('hidecall').style.display = 'block';
 }
+
+function ShowHideDiv(chkPassport) {
+            var dvPassport = document.getElementById("dvPassport");
+            dvPassport.style.display = chkPassport.checked ? "block" : "none";
+        }
 
 
     </script>  
