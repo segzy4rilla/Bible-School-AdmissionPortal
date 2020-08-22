@@ -1,4 +1,5 @@
 CREATE TABLE AdmittedStudents(
+	User_ID VARCHAR(255),
 	-- Local
 	Loc_ResponsibilityFormFilepath VARCHAR(255),
 	Loc_AdminFeeProofFilepath VARCHAR(255),
