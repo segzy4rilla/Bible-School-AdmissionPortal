@@ -460,8 +460,7 @@ if ($_SESSION['loggedin'] == false) {
         <!--form panels-->
         <div class="row">
           <div class="col-12 col-lg-12 m-auto">
-            <form class="multisteps-form__form" id="myForm" name="admittedform" action="PHP_Files/Application_Form_Submission.php"
-                                          method="POST" onsubmit="return submitClick();">
+            <form class="multisteps-form__form" id="myForm" name="admittedform" action="PHP_Files/AdmittedStudentsSubmission.php" method="post" enctype="multipart/form-data">
                 <br>
 
                 <!--single form panel-->
@@ -487,7 +486,7 @@ if ($_SESSION['loggedin'] == false) {
                       <br>
                       <br>
                     <label>Local Student Responsibility Form</label>
-                                            <input type="file" name="locstudentform[]" class="file-upload-default" style="display:none;">
+                                            <input type="file" name="locstudentform" class="file-upload-default" style="display:none;">
                                             <div class="input-group col-xs-12">
                                                 <input type="text" class="form-control file-upload-info" disabled="" placeholder="Upload Image">
                                                 <span class="input-group-append">
@@ -501,7 +500,7 @@ if ($_SESSION['loggedin'] == false) {
                                             <label>Proof Of Administration Fees Payment - 700 cedis</label>
                                             <br>
                                             <span class="help-block"><small>A picture of a receipt or if you are unable to pay the fees into the school bank account please upload a picture of the cash that you will pay on arrival. Bank account details are on the admission letter.</small></span>
-                                            <input type="file" name="adminfeepay[]" class="file-upload-default" style="display:none;">
+                                            <input type="file" name="adminfeepay" class="file-upload-default" style="display:none;">
                                             <div class="input-group col-xs-12">
                                                 <input type="text" class="form-control file-upload-info" disabled="" placeholder="Upload Image">
                                                 <span class="input-group-append">
@@ -542,7 +541,7 @@ if ($_SESSION['loggedin'] == false) {
                                                     
                                                 <div class="form-group">
                                             <label>Declaration Form</label>
-                                            <input type="file" name="declarationform[]" class="file-upload-default" style="display:none;">
+                                            <input type="file" name="declarationform" class="file-upload-default" style="display:none;">
                                             <div class="input-group col-xs-12">
                                                 <input type="text" class="form-control file-upload-info" disabled="" placeholder="Upload Image">
                                                 <span class="input-group-append">
@@ -566,7 +565,7 @@ if ($_SESSION['loggedin'] == false) {
                                         
                                              <div class="form-group">
                                             <label>Room Assignment Form</label>
-                                            <input type="file" name="roomasignmentform[]" class="file-upload-default" style="display:none;">
+                                            <input type="file" name="roomasignmentform" class="file-upload-default" style="display:none;">
                                             <div class="input-group col-xs-12">
                                                 <input type="text" class="form-control file-upload-info" disabled="" placeholder="Upload Image">
                                                 <span class="input-group-append">
@@ -658,7 +657,7 @@ if ($_SESSION['loggedin'] == false) {
                       <br>
                       <br>
                                             <label>Admission Contract</label>
-                                            <input type="file" name="admissioncontract[]" class="file-upload-default" style="display:none;">
+                                            <input type="file" name="admissioncontract" class="file-upload-default" style="display:none;">
                                             <div class="input-group col-xs-12">
                                                 <input type="text" class="form-control file-upload-info" disabled="" placeholder="Upload Image">
                                                 <span class="input-group-append">
@@ -681,7 +680,7 @@ if ($_SESSION['loggedin'] == false) {
 
                                         <div class="form-group">
                                             <label>International Student Responsibility Form</label>
-                                            <input type="file" name="intstudentresponform[]" class="file-upload-default" style="display:none;">
+                                            <input type="file" name="intstudentresponform" class="file-upload-default" style="display:none;">
                                             <div class="input-group col-xs-12">
                                                 <input type="text" class="form-control file-upload-info" disabled="" placeholder="Upload Image">
                                                 <span class="input-group-append">
@@ -693,7 +692,7 @@ if ($_SESSION['loggedin'] == false) {
                                             <label>Administration Fee - $250</label>
                                             <br>
                                              <span class="help-block"><small>A picture of a receipt or if you are unable to pay the fees into the school bank account please upload a picture of the cash that you will pay on arrival. Post bank account details.</small></span>
-                                            <input type="file" name="adminfeeimgigpay[]" class="file-upload-default" style="display:none;">
+                                            <input type="file" name="adminfeeimgigpay" class="file-upload-default" style="display:none;">
                                             <div class="input-group col-xs-12">
                                                 <input type="text" class="form-control file-upload-info" disabled="" placeholder="Upload Image">
                                                 <span class="input-group-append">
@@ -705,7 +704,7 @@ if ($_SESSION['loggedin'] == false) {
                                             <label>Imigration Fee - $170</label>
                                             <br>
                                              <span class="help-block"><small>A picture of a receipt or if you are unable to pay the fees into the school bank account please upload a picture of the cash that you will pay on arrival. Post bank account details.</small></span>
-                                            <input type="file" name="adminfeeimgigpay2[]" class="file-upload-default" style="display:none;">
+                                            <input type="file" name="adminfeeimgigpay2" class="file-upload-default" style="display:none;">
                                             <div class="input-group col-xs-12">
                                                 <input type="text" class="form-control file-upload-info" disabled="" placeholder="Upload Image">
                                                 <span class="input-group-append">
@@ -715,7 +714,7 @@ if ($_SESSION['loggedin'] == false) {
                                         </div> 
                                         <div class="form-group">
                                             <label>Picture Of Passport Bio Data (Passport Page With Your Picture And Passport Information</label>
-                                            <input type="file" name="passportbiodata[]" class="file-upload-default" style="display:none;">
+                                            <input type="file" name="passportbiodata" class="file-upload-default" style="display:none;">
                                             <div class="input-group col-xs-12">
                                                 <input type="text" class="form-control file-upload-info" disabled="" placeholder="Upload Image">
                                                 <span class="input-group-append">
@@ -725,7 +724,7 @@ if ($_SESSION['loggedin'] == false) {
                                         </div> 
                                         <div class="form-group">
                                             <label>Visa Entrance And Clearance Letter (If Required)</label>
-                                            <input type="file" name="visaletter[]" class="file-upload-default" style="display:none;">
+                                            <input type="file" name="visaletter" class="file-upload-default" style="display:none;">
                                             <div class="input-group col-xs-12">
                                                 <input type="text" class="form-control file-upload-info" disabled="" placeholder="Upload Image">
                                                 <span class="input-group-append">
@@ -743,7 +742,7 @@ if ($_SESSION['loggedin'] == false) {
                                             <label>Flight Ticket To Ghana</label>
                                             <br>
                                             <span class="help-block"><small>Please try to book a flight that will arrive from to Tuesday to Friday between 6am - 8pm</small></span>
-                                            <input type="file" name="flightticket[]" class="file-upload-default" style="display:none;">
+                                            <input type="file" name="flightticket" class="file-upload-default" style="display:none;">
                                             <div class="input-group col-xs-12">
                                                 <input type="text" class="form-control file-upload-info" disabled="" placeholder="Upload Image">
                                                 <span class="input-group-append">
@@ -844,7 +843,7 @@ if ($_SESSION['loggedin'] == false) {
                                                     
                                                 <div class="form-group">
                                             <label>Declaration Form</label>
-                                            <input type="file" name="intdecform[]" class="file-upload-default" style="display:none;">
+                                            <input type="file" name="intdecform" class="file-upload-default" style="display:none;">
                                             <div class="input-group col-xs-12">
                                                 <input type="text" class="form-control file-upload-info" disabled="" placeholder="Upload Image">
                                                 <span class="input-group-append">
@@ -867,7 +866,7 @@ if ($_SESSION['loggedin'] == false) {
                                         
                                         <div class="form-group">
                                             <label>Room Assignment Form</label>
-                                            <input type="file" name="introomassignform[]" class="file-upload-default" style="display:none;">
+                                            <input type="file" name="introomassignform" class="file-upload-default" style="display:none;">
                                             <div class="input-group col-xs-12">
                                                 <input type="text" class="form-control file-upload-info" disabled="" placeholder="Upload Image">
                                                 <span class="input-group-append">
