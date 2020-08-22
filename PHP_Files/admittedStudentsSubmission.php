@@ -43,10 +43,14 @@ if (!$idInserted && !$idExists) {
 } 
 else {
 	//Local
+	$localAccom = "";
+	if(isset($_POST['local_accommodation'])){
+		$localAccom =$_POST['local_accommodation'];
+	}
 	$UpdateLocal = $conn->prepare
 								("
 									UPDATE AdmittedStudents 
-									SET Loc_InternationalStudentsHostel = '".$_POST['local_accommodation']."', 
+									SET Loc_InternationalStudentsHostel = '".$localAccom."', 
 									Loc_PrintedAllDocuments = '".BoolToYesNo('docsconfirm')."', 
 									Loc_HasBeddings = '".BoolToYesNo('beddingconfirm')."', 
 									Loc_HasMTNCard = '".BoolToYesNo('mtncardconfirm').
