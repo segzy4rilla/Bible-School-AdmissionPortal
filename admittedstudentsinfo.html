@@ -514,18 +514,21 @@ if ($_SESSION['loggedin'] == false) {
                                                         <br>
                                                         <span class="help-block"><small>(Please note a standard room sleeps 4 people)</small></span>
                                                         <div class="custom-control custom-radio">
-                                                    <input type="radio" id="radioaccommodation1" name="customRadioaccommodation2" class="custom-control-input">
+                                                    <input type="radio" id="radioaccommodation1" name="local_accommodation" class="custom-control-input"
+														value="Yes">
                                                     <label class="custom-control-label" for="radioaccommodation1">Yes</label>
                                                 </div>
                                                 <div class="custom-control custom-radio">
-                                                    <input type="radio" id="radioaccommodation2" name="customRadioaccommodation2" class="custom-control-input">
+                                                    <input type="radio" id="radioaccommodation2" name="local_accommodation" class="custom-control-input"
+														value="No">
                                                     <label class="custom-control-label" for="radioaccommodation2">No</label>
                                                 </div>
                                                 <div class="custom-control custom-radio">
-                                                    <input type="radio" id="radiolocaccomodation3" name="customRadioaccommodation2" class="custom-control-input">
+                                                    <input type="radio" id="radiolocaccomodation3" name="local_accommodation" class="custom-control-input"
+														value="Will Share A Room With My Spouse">
                                                     <label class="custom-control-label" for="radiolocaccomodation3">Will Share A Room With My Spouse</label>
                                                 </div>
-                                                    </div> 
+											</div> 
 
                                                     <br>
 
@@ -799,11 +802,11 @@ if ($_SESSION['loggedin'] == false) {
                                                         <br>
                                                         <span class="help-block"><small>(Please note that you need to bring your own bedsheets etc. If you do not opt for the starter pack you need to bring your own pillow)</small></span>
                                                         <div class="custom-control custom-radio">
-                                                    <input type="radio" id="radiokit1" name="customRadiokit2" class="custom-control-input">
+                                                    <input type="radio" id="radiokit1" name="loc_starterPack" class="custom-control-input" value="Yes">
                                                     <label class="custom-control-label" for="radiokit1">Yes</label>
                                                 </div>
                                                 <div class="custom-control custom-radio">
-                                                    <input type="radio" id="radiokit2" name="customRadiokit2" class="custom-control-input">
+                                                    <input type="radio" id="radiokit2" name="loc_starterPack" class="custom-control-input" value="No">
                                                     <label class="custom-control-label" for="radiokit2">No</label>
                                                 </div>
                                                 
@@ -815,15 +818,15 @@ if ($_SESSION['loggedin'] == false) {
                                                         <br>
                                                         <span class="help-block"><small>(Please note that a standard room sleeps 4 people)</small></span>
                                                         <div class="custom-control custom-radio">
-                                                    <input type="radio" id="radioaccomodation1" name="customRadioaccomodation2" class="custom-control-input">
+                                                    <input type="radio" id="radioaccomodation1" name="int_accommodation" class="custom-control-input" value="Yes">
                                                     <label class="custom-control-label" for="radioaccomodation1">Yes</label>
                                                 </div>
                                                 <div class="custom-control custom-radio">
-                                                    <input type="radio" id="radioaccomodation2" name="customRadioaccomodation2" class="custom-control-input">
+                                                    <input type="radio" id="radioaccomodation2" name="int_accommodation" class="custom-control-input" value="No">
                                                     <label class="custom-control-label" for="radioaccomodation2">No</label>
                                                 </div>
                                                 <div class="custom-control custom-radio">
-                                                    <input type="radio" id="radioaccomodation3" name="customRadioaccomodation2" class="custom-control-input">
+                                                    <input type="radio" id="radioaccomodation3" name="int_accommodation" class="custom-control-input" value="Will Share A Room With My Spouse">
                                                     <label class="custom-control-label" for="radioaccomodation3">Will Share A Room With My Spouse</label>
                                                 </div>
                                                     </div>
@@ -940,11 +943,11 @@ if ($_SESSION['loggedin'] == false) {
                           <div class="form-group">
                       <label>Is Your Church A UD-OLGC Lighthouse/First Love Church</label>
                                                 <div class="custom-control custom-radio">
-                                                    <input type="radio" id="radioUDOLGCCheck1" name="UDOLGCCheck" class="custom-control-input">
+                                                    <input type="radio" id="radioUDOLGCCheck1" name="UDOLGCCheck" class="custom-control-input" value="Yes">
                                                     <label class="custom-control-label" for="radioUDOLGCCheck1">Yes</label>
                                                 </div>
                                                 <div class="custom-control custom-radio">
-                                                    <input type="radio" id="radioUDOLGCCheck2" name="UDOLGCCheck" class="custom-control-input">
+                                                    <input type="radio" id="radioUDOLGCCheck2" name="UDOLGCCheck" class="custom-control-input" value="No">
                                                     <label class="custom-control-label" for="radioUDOLGCCheck2">No</label>
                                                 </div>
                                             </div>
@@ -1050,11 +1053,11 @@ if ($_SESSION['loggedin'] == false) {
                       <br>
                       <div class="form-group">
                                                 <div class="custom-control custom-radio">
-                                                    <input type="radio" id="Radio1locintsponsor" name="locintsponsor" class="custom-control-input">
+                                                    <input type="radio" id="Radio1locintsponsor" name="sponsor" class="custom-control-input" value="Yes">
                                                     <label class="custom-control-label" for="Radio1locintsponsor">Yes</label>
                                                 </div>
                                                 <div class="custom-control custom-radio">
-                                                    <input type="radio" id="Radio2locintsponsor" name="locintsponsor" class="custom-control-input">
+                                                    <input type="radio" id="Radio2locintsponsor" name="sponsor" class="custom-control-input" value="No">
                                                     <label class="custom-control-label" for="Radio2locintsponsor">No</label>
                                                 </div>
                                             </div>
@@ -1259,11 +1262,11 @@ if ($_SESSION['loggedin'] == false) {
                       <div class="form-group">
                       <label>Airport Pick-Up (International Students Only)</label>
                                                 <div class="custom-control custom-radio">
-                                                    <input type="radio" id="radioairportpick1" name="airportpick" class="custom-control-input">
+                                                    <input type="radio" id="radioairportpick1" name="airportpick" class="custom-control-input" value="Yes">
                                                     <label class="custom-control-label" for="radioairportpick1">Yes</label>
                                                 </div>
                                                 <div class="custom-control custom-radio">
-                                                    <input type="radio" id="radioairportpick2" name="airportpick" class="custom-control-input">
+                                                    <input type="radio" id="radioairportpick2" name="airportpick" class="custom-control-input" value="No">
                                                     <label class="custom-control-label" for="radioairportpick2">No</label>
                                                 </div>
                                             </div>
@@ -1273,11 +1276,11 @@ if ($_SESSION['loggedin'] == false) {
                       <div class="form-group">
                       <label>Changed Money At The Airport (International Students Only)</label>
                                                 <div class="custom-control custom-radio">
-                                                    <input type="radio" id="radiocheckmoneychange1" name="moneycheck" class="custom-control-input">
+                                                    <input type="radio" id="radiocheckmoneychange1" name="changeMoney" class="custom-control-input" value="Yes">
                                                     <label class="custom-control-label" for="radioairportpick1">Yes</label>
                                                 </div>
                                                 <div class="custom-control custom-radio">
-                                                    <input type="radio" id="radiocheckmoneychange2" name="moneycheck" class="custom-control-input">
+                                                    <input type="radio" id="radiocheckmoneychange2" name="changeMoney" class="custom-control-input" value="No">
                                                     <label class="custom-control-label" for="radiocheckmoneychange2">No</label>
                                                 </div>
                                             </div>
@@ -1285,11 +1288,11 @@ if ($_SESSION['loggedin'] == false) {
                       <div class="form-group">
                       <label>Starter Pack (International Students Only)</label>
                                                 <div class="custom-control custom-radio">
-                                                    <input type="radio" id="radiostarterpack1" name="starterpack" class="custom-control-input">
+                                                    <input type="radio" id="radiostarterpack1" name="int_starterPack" class="custom-control-input" value="Yes">
                                                     <label class="custom-control-label" for="radiostarterpack1">Yes</label>
                                                 </div>
                                                 <div class="custom-control custom-radio">
-                                                    <input type="radio" id="radiostarterpack2" name="starterpack" class="custom-control-input">
+                                                    <input type="radio" id="radiostarterpack2" name="int_starterPack" class="custom-control-input" value="No">
                                                     <label class="custom-control-label" for="radiostarterpack2">No</label>
                                                 </div>
                                             </div>                      
@@ -1323,11 +1326,11 @@ if ($_SESSION['loggedin'] == false) {
                           <div class="form-group">
                                               <label>Are There Any Issues In The Room?</label>
                                                 <div class="custom-control custom-radio">
-                                                    <input type="radio" id="Radioroom1" name="roomissues" class="custom-control-input">
+                                                    <input type="radio" id="Radioroom1" name="roomissues" class="custom-control-input" value="Yes">
                                                     <label class="custom-control-label" for="Radioroom1" onclick="show1a();">Yes</label>
                                                 </div>
                                                 <div class="custom-control custom-radio">
-                                                    <input type="radio" id="Radioroom2" name="roomissues" class="custom-control-input">
+                                                    <input type="radio" id="Radioroom2" name="roomissues" class="custom-control-input" value="No">
                                                     <label class="custom-control-label" for="Radioroom2" onclick="show1();">No</label>
                                                 </div>
                                             </div>                                         
@@ -1346,11 +1349,11 @@ if ($_SESSION['loggedin'] == false) {
                                               <div class="form-group">
                                               <label>Have The Issues In Your Room Been Solved?</label>
                                                 <div class="custom-control custom-radio">
-                                                    <input type="radio" id="Radiocheckroomprob1" name="checkroomprob" class="custom-control-input">
+                                                    <input type="radio" id="Radiocheckroomprob1" name="issuesResolved" class="custom-control-input" value="Yes">
                                                     <label class="custom-control-label" for="Radiocheckroomprob1">Yes</label>
                                                 </div>
                                                 <div class="custom-control custom-radio">
-                                                    <input type="radio" id="Radiocheckroomprob2" name="checkroomprob" class="custom-control-input">
+                                                    <input type="radio" id="Radiocheckroomprob2" name="issuesResolved" class="custom-control-input" value="No">
                                                     <label class="custom-control-label" for="Radiocheckroomprob2">No</label>
                                                 </div>
                                             </div>

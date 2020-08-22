@@ -38,10 +38,10 @@ else {
 	$UpdateLocal = $conn->prepare
 								("
 									UPDATE AdmittedStudents 
-									SET Loc_InternationalStudentsHostel = '".$."', 
-									Loc_PrintedAllDocuments = '".$."', 
-									Loc_HasBeddings = '".$."', 
-									Loc_HasMTNCard = '".$.
+									SET Loc_InternationalStudentsHostel = '".$POST_['local_accommodation']."', 
+									Loc_PrintedAllDocuments = '".$POST_['starterPack']."', 
+									Loc_HasBeddings = '".$POST_['local_accommodation']."', 
+									Loc_HasMTNCard = '".$POST_['local_accommodation'].
 									"' WHERE ID = '" .$ID."'";
 								);
 								
@@ -57,7 +57,7 @@ else {
 	$alertMessage = $alertMessage . " " . sql_upload_doc($conn, "AdmittedStudents", "Loc_RoomAssignmentFormFilepath", $ID, "roomasignmentform", $targetDirectory);
 	
 	//International
-	$UpdateInternational = $conn->prepare
+	/*$UpdateInternational = $conn->prepare
 								("
 									UPDATE AdmittedStudents 
 									SET Int_VisaNotRequiredComment = '".$."',
@@ -173,7 +173,7 @@ else {
 
 	if (!$softLandingChecklistInfoUpdated) {
 		$alertMessage = $alertMessage . " " . "Sorry, there was an error submitting the Soft Landing Checklist Tab information";
-	}
+	}*/
 	
 	
 }
