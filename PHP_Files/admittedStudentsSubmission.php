@@ -1,6 +1,7 @@
 <?php
 
 include "dbconfig.php";
+include "sql_upload_doc.php";
 include "alertAndRedirect.php";
 include_once "escapeQuotes.php";
 
@@ -11,30 +12,33 @@ $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
 session_start();
 $ID = $_SESSION['User_Id'];
 
+$userFolder = $ID;
+$targetDirectory = "../../uploads_admitted/".$userFolder."/";
+		
+if (!file_exists($targetDirectory)) {
+	mkdir($targetDirectory, 0773, true);
+}
+
 $idCheck = $conn->prepare("SELECT COUNT(User_ID) FROM AdmittedStudents WHERE User_ID = '".$ID."'");
 $idCheck->execute();
 $result = $idCheck->fetchAll();
-$idExists = $result == 1;
+$idExists = ($result[0][0] > 0);
 
 $idInserted = false;
 if (!$idExists) {
-	$idInsert = $conn->prepare('INSERT INTO AdmittedStudents(User_ID) VALUES('.$id.')');
+	$idInsert = $conn->prepare("INSERT INTO AdmittedStudents(User_ID) VALUES('".$ID."')");
 	$idInserted = $idInsert->execute();
 }
 
 if (!$idInserted && !$idExists) {
-	$alertMessage = $alertMessage . "Sorry, there was an error submitting the admission info. Error Code: ER1";
-} else {
-	
+	$alertMessage = $alertMessage . " " . "Sorry, there was an error submitting the admission info. Error Code: ER1";
+} 
+else {
 	//Local
-	$UpdateLocal = $conn->prepare
+	/*$UpdateLocal = $conn->prepare
 								("
 									UPDATE AdmittedStudents 
-									SET Loc_ResponsibilityFormFilepath = '".$."', 
-									Loc_AdminFeeProofFilepath = '".$."', 
-									Loc_InternationalStudentsHostel = '".$."', 
-									Loc_DeclarationFormFilepath = '".$."', 
-									Loc_RoomAssignmentFormFilepath = '".$."', 
+									SET Loc_InternationalStudentsHostel = '".$."', 
 									Loc_PrintedAllDocuments = '".$."', 
 									Loc_HasBeddings = '".$."', 
 									Loc_HasMTNCard = '".$.
@@ -44,11 +48,16 @@ if (!$idInserted && !$idExists) {
 	$localInfoUpdated = $UpdateLocal->execute();
 
 	if (!$localInfoUpdated) {
-		$alertMessage = $alertMessage . "Sorry, there was an error submitting the Local Tab information";
-	}
+		$alertMessage = $alertMessage . " " . "Sorry, there was an error submitting the Local Tab information";
+	}*/
+	
+	$alertMessage = $alertMessage . " " . sql_upload_doc($conn, "AdmittedStudents", "Loc_ResponsibilityFormFilepath", $ID, "locstudentform", $targetDirectory);
+	$alertMessage = $alertMessage . " " . sql_upload_doc($conn, "AdmittedStudents", "Loc_AdminFeeProofFilepath", $ID, "adminfeepay", $targetDirectory);
+	$alertMessage = $alertMessage . " " . sql_upload_doc($conn, "AdmittedStudents", "Loc_DeclarationFormFilepath", $ID, "declarationform", $targetDirectory);
+	$alertMessage = $alertMessage . " " . sql_upload_doc($conn, "AdmittedStudents", "Loc_RoomAssignmentFormFilepath", $ID, "roomasignmentform", $targetDirectory);
 	
 	//International
-	$UpdateInternational = $conn->prepare
+	/*$UpdateInternational = $conn->prepare
 								("
 									UPDATE AdmittedStudents 
 									SET Int_AdmissionContractFormFilepath = '".$."', 
@@ -72,7 +81,7 @@ if (!$idInserted && !$idExists) {
 	$internationalInfoUpdated = $UpdateInternational->execute();
 
 	if (!$internationalInfoUpdated) {
-		$alertMessage = $alertMessage . "Sorry, there was an error submitting the International Tab information";
+		$alertMessage = $alertMessage . " " . "Sorry, there was an error submitting the International Tab information";
 	}
 	
 	//Registration
@@ -93,7 +102,7 @@ if (!$idInserted && !$idExists) {
 	$registrationInfoUpdated = $UpdateRegistration->execute();
 
 	if (!$registrationInfoUpdated) {
-		$alertMessage = $alertMessage . "Sorry, there was an error submitting the Registration Tab information";
+		$alertMessage = $alertMessage . " " . "Sorry, there was an error submitting the Registration Tab information";
 	}
 	
 	//PastoralPoints
@@ -107,7 +116,7 @@ if (!$idInserted && !$idExists) {
 	$pastoralPointsInfoUpdated = $UpdatePastoralPoints->execute();
 
 	if (!$pastoralPointsInfoUpdated) {
-		$alertMessage = $alertMessage . "Sorry, there was an error submitting the Pastoral Points Tab information";
+		$alertMessage = $alertMessage . " " . "Sorry, there was an error submitting the Pastoral Points Tab information";
 	}
 	
 	//SponsorAgreementPlan
@@ -121,7 +130,7 @@ if (!$idInserted && !$idExists) {
 	$sponsorAgreementPlanInfoUpdated = $UpdateSponsorAgreementPlan->execute();
 
 	if (!$sponsorAgreementPlanInfoUpdated) {
-		$alertMessage = $alertMessage . "Sorry, there was an error submitting the Sponsor Agreement Plan Tab information";
+		$alertMessage = $alertMessage . " " . "Sorry, there was an error submitting the Sponsor Agreement Plan Tab information";
 	}
 	
 	//InternationalStudentConfirmations
@@ -142,7 +151,7 @@ if (!$idInserted && !$idExists) {
 	$internationalStudentConfirmationsInfoUpdated = $UpdateInternationalStudentConfirmations->execute();
 
 	if (!$internationalStudentConfirmationsInfoUpdated) {
-		$alertMessage = $alertMessage . "Sorry, there was an error submitting the International Student Confirmations Tab information";
+		$alertMessage = $alertMessage . " " . "Sorry, there was an error submitting the International Student Confirmations Tab information";
 	}
 	
 	//SoftLandingChecklist
@@ -162,8 +171,8 @@ if (!$idInserted && !$idExists) {
 	$softLandingChecklistInfoUpdated = $UpdateSoftLandingChecklist->execute();
 
 	if (!$softLandingChecklistInfoUpdated) {
-		$alertMessage = $alertMessage . "Sorry, there was an error submitting the Soft Landing Checklist Tab information";
-	}
+		$alertMessage = $alertMessage . " " . "Sorry, there was an error submitting the Soft Landing Checklist Tab information";
+	}*/
 }
 echo $alertMessage;
 
@@ -171,5 +180,5 @@ if (empty($alertMessage)) {
     $alertMessage = "Admission Info Update Successful";
 }
 
-AlertAndRedirect($alertMessage, $redirectUrl);
+//AlertAndRedirect($alertMessage, $redirectUrl);
 ?>
