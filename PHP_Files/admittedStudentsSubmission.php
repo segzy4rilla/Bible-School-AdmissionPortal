@@ -5,6 +5,14 @@ include "sql_upload_doc.php";
 include "alertAndRedirect.php";
 include_once "escapeQuotes.php";
 
+function BoolToYesNo($value){
+	$return = "No";
+	if(isset($_POST[$value]) && $_POST[$value]){
+		$return = "Yes";
+	}
+	return $return;
+}
+
 $alertMessage = "";
 $redirectUrl = "../admittedStudentsinfo.html";
 $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
@@ -38,11 +46,11 @@ else {
 	$UpdateLocal = $conn->prepare
 								("
 									UPDATE AdmittedStudents 
-									SET Loc_InternationalStudentsHostel = '".$POST_['local_accommodation']."', 
-									Loc_PrintedAllDocuments = '".$POST_['starterPack']."', 
-									Loc_HasBeddings = '".$POST_['local_accommodation']."', 
-									Loc_HasMTNCard = '".$POST_['local_accommodation'].
-									"' WHERE ID = '" .$ID."'";
+									SET Loc_InternationalStudentsHostel = '".$_POST['local_accommodation']."', 
+									Loc_PrintedAllDocuments = '".BoolToYesNo('docsconfirm')."', 
+									Loc_HasBeddings = '".BoolToYesNo('beddingconfirm')."', 
+									Loc_HasMTNCard = '".BoolToYesNo('mtncardconfirm').
+									"' WHERE User_ID = '".$ID."'"
 								);
 								
 	$localInfoUpdated = $UpdateLocal->execute();
@@ -66,7 +74,7 @@ else {
 									Int_Lunch = '".$."', = '".$."',
 									Int_WantsStarterPack = '".$."',
 									Int_InternationalStudentsHostel = '".$.
-									"' WHERE ID = '" .$ID."'";
+									"' WHERE User_ID = '" .$ID."'";
 								);
 								
 	$internationalInfoUpdated = $UpdateInternational->execute();
@@ -97,7 +105,7 @@ else {
 									Reg_UDChurch = '".$."', 
 									Reg_Denomination = '".$."', 
 									Reg_Bishop = '".$.
-									"' WHERE ID = '" .$ID."'";
+									"' WHERE User_ID = '" .$ID."'";
 								);
 								
 	$registrationInfoUpdated = $UpdateRegistration->execute();
@@ -111,7 +119,7 @@ else {
 								("
 									UPDATE AdmittedStudents 
 									SET PastoralPointsRegistration = '".$.
-									"' WHERE ID = '" .$ID."'";
+									"' WHERE User_ID = '" .$ID."'";
 								);
 								
 	$pastoralPointsInfoUpdated = $UpdatePastoralPoints->execute();
@@ -125,7 +133,7 @@ else {
 								("
 									UPDATE AdmittedStudents 
 									SET SponsorAgreementPlan = '".$.
-									"' WHERE ID = '" .$ID."'";
+									"' WHERE User_ID = '" .$ID."'";
 								);
 								
 	$sponsorAgreementPlanInfoUpdated = $UpdateSponsorAgreementPlan->execute();
@@ -144,7 +152,7 @@ else {
 									IntCon_HasGhanaCharger = '".$."', 
 									IntCon_PowerBank = '".$."', 
 									IntCon_HasBeddings = '".$.
-									"' WHERE ID = '" .$ID."'";
+									"' WHERE User_ID = '" .$ID."'";
 								);
 								
 	$internationalStudentConfirmationsInfoUpdated = $UpdateInternationalStudentConfirmations->execute();
@@ -167,7 +175,7 @@ else {
 										Check_PaidAdminFeesAndCollectedTextbooks = '".$."',
 										Check_GalleryTour = '".$."',
 										Check_OrphanageTour = '".$.
-									"' WHERE ID = '" .$ID."'";
+									"' WHERE User_ID = '" .$ID."'";
 								);
 	$softLandingChecklistInfoUpdated = $UpdateSoftLandingChecklist->execute();
 
