@@ -1,5 +1,5 @@
 CREATE TABLE AdmittedStudents(
-	--Local
+	-- Local
 	Loc_ResponsibilityFormFilepath VARCHAR(255),
 	Loc_AdminFeeProofFilepath VARCHAR(255),
 	Loc_InternationalStudentsHostel VARCHAR(255),
@@ -9,7 +9,7 @@ CREATE TABLE AdmittedStudents(
 	Loc_HasBeddings VARCHAR(3),
 	Loc_HasMTNCard VARCHAR(3),
 	
-	--International
+	-- International
 	Int_AdmissionContractFormFilepath VARCHAR(255),
 	Int_StudentResponsibilityFormFilepath VARCHAR(255),
 	Int_AdminFeeProofFilepath VARCHAR(255),
@@ -26,7 +26,7 @@ CREATE TABLE AdmittedStudents(
 	Int_DeclarationFormFilepath VARCHAR(255),
 	Int_RoomAssignmentFormFilepath VARCHAR(255),
 	
-	--Registration
+	-- Registration
 	Reg_Confirmed VARCHAR(3),
 	Reg_SelectedSeptember2020Admission VARCHAR(3),
 	Reg_ChurchBranch VARCHAR(255),
@@ -36,13 +36,13 @@ CREATE TABLE AdmittedStudents(
 	Reg_Denomination VARCHAR(255),
 	Reg_Bishop VARCHAR(255),
 	
-	--PastoralPoints
+	-- PastoralPoints
 	PastoralPointsRegistration VARCHAR(3),
 	
-	--SponsorAgreementPlan
+	-- SponsorAgreementPlan
 	SponsorAgreementPlan VARCHAR(3),
 	
-	--InternationalStudentConfirmations
+	-- InternationalStudentConfirmations
 	IntCon_PrintedAllDocuments VARCHAR(3),
 	IntCon_HasMalariaMedication VARCHAR(3),
 	IntCon_MobilePhoneUnlocked VARCHAR(3),
@@ -50,7 +50,7 @@ CREATE TABLE AdmittedStudents(
 	IntCon_PowerBank VARCHAR(3),
 	IntCon_HasBeddings VARCHAR(3),
 	
-	--SoftLandingChecklist
+	-- SoftLandingChecklist
 	Check_AirportPickup VARCHAR(3),
 	Check_ChangedMoneyAt VARCHAR(3),
 	Check_StarterPack VARCHAR(3),
