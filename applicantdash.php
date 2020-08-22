@@ -20,6 +20,10 @@ $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
 $getApplicantDetails = $conn->prepare("SELECT * FROM Applicant_Table WHERE EmailWhatsapp = '".$_SESSION['EmailWhatsapp']."'");
 $getApplicantDetails->execute();
 $applicantDetails = $getApplicantDetails->fetch();
+
+$getZoomInterviewInfo = $conn->prepare("SELECT * FROM ZoomInterview WHERE ID = '".$_SESSION['User_Id']."'");
+$getZoomInterviewInfo->execute();
+$zoomInterviewInfo = $getZoomInterviewInfo->fetch();
 ?>
 <!doctype html>
 <html lang="en" style="height:100%">
@@ -143,7 +147,6 @@ $applicantDetails = $getApplicantDetails->fetch();
                             <?php
                             if ($int_comp) {
                                 echo '<a href="">';
-
                             } else {
                                 echo '<a href="interview.php">';
                             }
@@ -214,6 +217,29 @@ $applicantDetails = $getApplicantDetails->fetch();
 								</div>
 							</a>
                         </div>
+						<?php
+							if($zoomInterviewInfo['Admitted'] == 'Admitted'){
+								echo "<div class='col-lg-12'  style='height:30%'>";
+								echo "	<a href='admittedstudentsinfo.html'>";
+								echo "		<div class='card' style='margin-bottom:15px;height:100%'>";
+								echo "			<!-- Card body -->";
+								echo "			<div class='card-body'>";
+								echo "				<div class='row'>";
+								echo "					<div class='col'>";
+								echo "						<h5 class='mb-20'>Admitted Students Info</h5>";
+								echo "					</div>";
+								echo "					<div class='col-auto'>";
+								echo "						<div class='clint-icon bg-gradient-danger text-white rounded-circle icon-shape'>";
+								echo "							<i class='fa fa-folder'></i>";
+								echo "						</div>";
+								echo "					</div>";
+								echo "				</div>";
+								echo "			</div>";
+								echo "		</div>";
+								echo "	</a>";
+								echo "</div>";
+							}
+						?>
                     </div>
                     
 
