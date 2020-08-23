@@ -91,75 +91,30 @@ else {
 	
 	
 	//PastoralPoints
-	/*$UpdatePastoralPoints = $conn->prepare
-								("
-									UPDATE AdmittedStudents 
-									SET PastoralPointsRegistration = '".$.
-									"' WHERE User_ID = '" .$ID."'";
-								);
-								
-	$pastoralPointsInfoUpdated = $UpdatePastoralPoints->execute();
-
-	if (!$pastoralPointsInfoUpdated) {
-		$alertMessage = $alertMessage . " " . "Sorry, there was an error submitting the Pastoral Points Tab information";
-	}
+	$alertMessage = $alertMessage . " " . sql_update_field($conn, "AdmittedStudents", "PastoralPointsRegistration", $ID, BoolToYesNo('UDcheck'));
 	
-	//SponsorAgreementPlan
-	$UpdateSponsorAgreementPlan = $conn->prepare
-								("
-									UPDATE AdmittedStudents 
-									SET SponsorAgreementPlan = '".$.
-									"' WHERE User_ID = '" .$ID."'";
-								);
-								
-	$sponsorAgreementPlanInfoUpdated = $UpdateSponsorAgreementPlan->execute();
-
-	if (!$sponsorAgreementPlanInfoUpdated) {
-		$alertMessage = $alertMessage . " " . "Sorry, there was an error submitting the Sponsor Agreement Plan Tab information";
-	}
+	//SponsorAgreementPlan							
+	$alertMessage = $alertMessage . " " . sql_update_field($conn, "AdmittedStudents", "SponsorAgreementPlan", $ID, HandleNullIndex('sponsor'));
 	
-	//InternationalStudentConfirmations
-	$UpdateInternationalStudentConfirmations = $conn->prepare
-								("
-									UPDATE AdmittedStudents 
-									SET IntCon_PrintedAllDocuments = '".$."', 
-									IntCon_HasMalariaMedication = '".$."', 
-									IntCon_MobilePhoneUnlocked = '".$."', 
-									IntCon_HasGhanaCharger = '".$."', 
-									IntCon_PowerBank = '".$."', 
-									IntCon_HasBeddings = '".$.
-									"' WHERE User_ID = '" .$ID."'";
-								);
-								
-	$internationalStudentConfirmationsInfoUpdated = $UpdateInternationalStudentConfirmations->execute();
-
-	if (!$internationalStudentConfirmationsInfoUpdated) {
-		$alertMessage = $alertMessage . " " . "Sorry, there was an error submitting the International Student Confirmations Tab information";
-	}
+	//InternationalStudentConfirmations						
+	$alertMessage = $alertMessage . " " . sql_update_field($conn, "AdmittedStudents", "IntCon_PrintedAllDocuments", $ID, BoolToYesNo('printrequesteddocs'));
+	$alertMessage = $alertMessage . " " . sql_update_field($conn, "AdmittedStudents", "IntCon_HasMalariaMedication", $ID, BoolToYesNo('malariacheck'));
+	$alertMessage = $alertMessage . " " . sql_update_field($conn, "AdmittedStudents", "IntCon_MobilePhoneUnlocked", $ID, BoolToYesNo('ghanasimcheck'));
+	$alertMessage = $alertMessage . " " . sql_update_field($conn, "AdmittedStudents", "IntCon_HasGhanaCharger", $ID, BoolToYesNo('3pinghanacheck'));
+	$alertMessage = $alertMessage . " " . sql_update_field($conn, "AdmittedStudents", "IntCon_PowerBank", $ID, BoolToYesNo('chargepowercheck'));
+	$alertMessage = $alertMessage . " " . sql_update_field($conn, "AdmittedStudents", "IntCon_HasBeddings", $ID, BoolToYesNo('beddingscheck'));
 	
 	//SoftLandingChecklist
-	$UpdateSoftLandingChecklist = $conn->prepare
-								("
-									UPDATE AdmittedStudents 
-									SET Check_AirportPickup = '".$."',
-										Check_ChangedMoneyAt = '".$."',
-										Check_StarterPack = '".$."',
-										Check_MTNSimCard = '".$."',
-										Check_CollectTag = '".$."',
-										Check_IssuesInTheRoom = '".$."',
-										Check_IssuesInTheRoomSolved = '".$."',
-										Check_PaidAdminFeesAndCollectedTextbooks = '".$."',
-										Check_GalleryTour = '".$."',
-										Check_OrphanageTour = '".$.
-									"' WHERE User_ID = '" .$ID."'";
-								);
-	$softLandingChecklistInfoUpdated = $UpdateSoftLandingChecklist->execute();
-
-	if (!$softLandingChecklistInfoUpdated) {
-		$alertMessage = $alertMessage . " " . "Sorry, there was an error submitting the Soft Landing Checklist Tab information";
-	}*/
-	
-	
+	$alertMessage = $alertMessage . " " . sql_update_field($conn, "AdmittedStudents", "Check_AirportPickup", $ID, HandleNullIndex('airportpick'));
+	$alertMessage = $alertMessage . " " . sql_update_field($conn, "AdmittedStudents", "Check_ChangedMoneyAt", $ID, HandleNullIndex('changeMoney'));
+	$alertMessage = $alertMessage . " " . sql_update_field($conn, "AdmittedStudents", "Check_StarterPack", $ID, HandleNullIndex('starterPackCheck'));
+	$alertMessage = $alertMessage . " " . sql_update_field($conn, "AdmittedStudents", "Check_MTNSimCard", $ID, BoolToYesNo('simcredcheck'));
+	$alertMessage = $alertMessage . " " . sql_update_field($conn, "AdmittedStudents", "Check_CollectTag", $ID, BoolToYesNo('tagcheck'));
+	$alertMessage = $alertMessage . " " . sql_update_field($conn, "AdmittedStudents", "Check_IssuesInTheRoom", $ID, HandleNullIndex('roomnumber'));
+	$alertMessage = $alertMessage . " " . sql_update_field($conn, "AdmittedStudents", "Check_IssuesInTheRoomSolved", $ID, HandleNullIndex('roomissues'));
+	$alertMessage = $alertMessage . " " . sql_update_field($conn, "AdmittedStudents", "Check_PaidAdminFeesAndCollectedTextbooks", $ID, BoolToYesNo('issuesResolved'));
+	$alertMessage = $alertMessage . " " . sql_update_field($conn, "AdmittedStudents", "Check_GalleryTour", $ID, BoolToYesNo('feeandbookcheck'));
+	$alertMessage = $alertMessage . " " . sql_update_field($conn, "AdmittedStudents", "Check_OrphanageTour", $ID, BoolToYesNo('tourcheck'));
 }
 echo $alertMessage;
 
