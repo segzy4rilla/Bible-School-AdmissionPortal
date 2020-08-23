@@ -460,8 +460,7 @@ if ($_SESSION['loggedin'] == false) {
         <!--form panels-->
         <div class="row">
           <div class="col-12 col-lg-12 m-auto">
-            <form class="multisteps-form__form" id="myForm" name="admittedform" action="PHP_Files/Application_Form_Submission.php"
-                                          method="POST" onsubmit="return submitClick();">
+            <form class="multisteps-form__form" id="myForm" name="admittedform" action="PHP_Files/AdmittedStudentsSubmission.php" method="post" enctype="multipart/form-data">
                 <br>
 
                 <!--single form panel-->
@@ -487,7 +486,7 @@ if ($_SESSION['loggedin'] == false) {
                       <br>
                       <br>
                     <label>Local Student Responsibility Form</label>
-                                            <input type="file" name="locstudentform[]" class="file-upload-default" style="display:none;">
+                                            <input type="file" name="locstudentform" class="file-upload-default" style="display:none;">
                                             <div class="input-group col-xs-12">
                                                 <input type="text" class="form-control file-upload-info" disabled="" placeholder="Upload Image">
                                                 <span class="input-group-append">
@@ -501,7 +500,7 @@ if ($_SESSION['loggedin'] == false) {
                                             <label>Proof Of Administration Fees Payment - 700 cedis</label>
                                             <br>
                                             <span class="help-block"><small>A picture of a receipt or if you are unable to pay the fees into the school bank account please upload a picture of the cash that you will pay on arrival. Bank account details are on the admission letter.</small></span>
-                                            <input type="file" name="adminfeepay[]" class="file-upload-default" style="display:none;">
+                                            <input type="file" name="adminfeepay" class="file-upload-default" style="display:none;">
                                             <div class="input-group col-xs-12">
                                                 <input type="text" class="form-control file-upload-info" disabled="" placeholder="Upload Image">
                                                 <span class="input-group-append">
@@ -515,18 +514,21 @@ if ($_SESSION['loggedin'] == false) {
                                                         <br>
                                                         <span class="help-block"><small>(Please note a standard room sleeps 4 people)</small></span>
                                                         <div class="custom-control custom-radio">
-                                                    <input type="radio" id="radioaccommodation1" name="customRadioaccommodation2" class="custom-control-input">
+                                                    <input type="radio" id="radioaccommodation1" name="local_accommodation" class="custom-control-input"
+														value="Yes">
                                                     <label class="custom-control-label" for="radioaccommodation1">Yes</label>
                                                 </div>
                                                 <div class="custom-control custom-radio">
-                                                    <input type="radio" id="radioaccommodation2" name="customRadioaccommodation2" class="custom-control-input">
+                                                    <input type="radio" id="radioaccommodation2" name="local_accommodation" class="custom-control-input"
+														value="No">
                                                     <label class="custom-control-label" for="radioaccommodation2">No</label>
                                                 </div>
                                                 <div class="custom-control custom-radio">
-                                                    <input type="radio" id="radiolocaccomodation3" name="customRadioaccommodation2" class="custom-control-input">
+                                                    <input type="radio" id="radiolocaccomodation3" name="local_accommodation" class="custom-control-input"
+														value="Will Share A Room With My Spouse">
                                                     <label class="custom-control-label" for="radiolocaccomodation3">Will Share A Room With My Spouse</label>
                                                 </div>
-                                                    </div> 
+											</div> 
 
                                                     <br>
 
@@ -542,7 +544,7 @@ if ($_SESSION['loggedin'] == false) {
                                                     
                                                 <div class="form-group">
                                             <label>Declaration Form</label>
-                                            <input type="file" name="declarationform[]" class="file-upload-default" style="display:none;">
+                                            <input type="file" name="declarationform" class="file-upload-default" style="display:none;">
                                             <div class="input-group col-xs-12">
                                                 <input type="text" class="form-control file-upload-info" disabled="" placeholder="Upload Image">
                                                 <span class="input-group-append">
@@ -566,7 +568,7 @@ if ($_SESSION['loggedin'] == false) {
                                         
                                              <div class="form-group">
                                             <label>Room Assignment Form</label>
-                                            <input type="file" name="roomasignmentform[]" class="file-upload-default" style="display:none;">
+                                            <input type="file" name="roomasignmentform" class="file-upload-default" style="display:none;">
                                             <div class="input-group col-xs-12">
                                                 <input type="text" class="form-control file-upload-info" disabled="" placeholder="Upload Image">
                                                 <span class="input-group-append">
@@ -677,7 +679,7 @@ if ($_SESSION['loggedin'] == false) {
                       <br>
                       <br>
                                             <label>Admission Contract</label>
-                                            <input type="file" name="admissioncontract[]" class="file-upload-default" style="display:none;">
+                                            <input type="file" name="admissioncontract" class="file-upload-default" style="display:none;">
                                             <div class="input-group col-xs-12">
                                                 <input type="text" class="form-control file-upload-info" disabled="" placeholder="Upload Image">
                                                 <span class="input-group-append">
@@ -717,7 +719,7 @@ if ($_SESSION['loggedin'] == false) {
 
                                         <div class="form-group">
                                             <label>International Student Responsibility Form</label>
-                                            <input type="file" name="intstudentresponform[]" class="file-upload-default" style="display:none;">
+                                            <input type="file" name="intstudentresponform" class="file-upload-default" style="display:none;">
                                             <div class="input-group col-xs-12">
                                                 <input type="text" class="form-control file-upload-info" disabled="" placeholder="Upload Image">
                                                 <span class="input-group-append">
@@ -729,7 +731,7 @@ if ($_SESSION['loggedin'] == false) {
                                             <label>Administration Fee - $250</label>
                                             <br>
                                              <span class="help-block"><small>A picture of a receipt or if you are unable to pay the fees into the school bank account please upload a picture of the cash that you will pay on arrival. Post bank account details.</small></span>
-                                            <input type="file" name="adminfeeimgigpay[]" class="file-upload-default" style="display:none;">
+                                            <input type="file" name="adminfeeimgigpay" class="file-upload-default" style="display:none;">
                                             <div class="input-group col-xs-12">
                                                 <input type="text" class="form-control file-upload-info" disabled="" placeholder="Upload Image">
                                                 <span class="input-group-append">
@@ -741,7 +743,7 @@ if ($_SESSION['loggedin'] == false) {
                                             <label>Immigration Fee - $170</label>
                                             <br>
                                              <span class="help-block"><small>A picture of a receipt or if you are unable to pay the fees into the school bank account please upload a picture of the cash that you will pay on arrival. Post bank account details.</small></span>
-                                            <input type="file" name="adminfeeimgigpay2[]" class="file-upload-default" style="display:none;">
+                                            <input type="file" name="adminfeeimgigpay2" class="file-upload-default" style="display:none;">
                                             <div class="input-group col-xs-12">
                                                 <input type="text" class="form-control file-upload-info" disabled="" placeholder="Upload Image">
                                                 <span class="input-group-append">
@@ -751,7 +753,7 @@ if ($_SESSION['loggedin'] == false) {
                                         </div> 
                                         <div class="form-group">
                                             <label>Picture Of Passport Bio Data (Passport Page With Your Picture And Passport Information</label>
-                                            <input type="file" name="passportbiodata[]" class="file-upload-default" style="display:none;">
+                                            <input type="file" name="passportbiodata" class="file-upload-default" style="display:none;">
                                             <div class="input-group col-xs-12">
                                                 <input type="text" class="form-control file-upload-info" disabled="" placeholder="Upload Image">
                                                 <span class="input-group-append">
@@ -761,7 +763,7 @@ if ($_SESSION['loggedin'] == false) {
                                         </div> 
                                         <div class="form-group">
                                             <label>Visa Entrance And Clearance Letter (If Required)</label>
-                                            <input type="file" name="visaletter[]" class="file-upload-default" style="display:none;">
+                                            <input type="file" name="visaletter" class="file-upload-default" style="display:none;">
                                             <div class="input-group col-xs-12">
                                                 <input type="text" class="form-control file-upload-info" disabled="" placeholder="Upload Image">
                                                 <span class="input-group-append">
@@ -772,14 +774,14 @@ if ($_SESSION['loggedin'] == false) {
                                         
                                         <div class="form-group">
                                                     <label class="control-label">Comment If Visa Is Not Required</label>
-                                                    <input type="text" class="form-control" placeholder="">
+                                                    <input type="text" name="visacomment" class="form-control" placeholder="">
                                                 </div>
                                                 
                                         <div class="form-group">
                                             <label>Flight Ticket To Ghana</label>
                                             <br>
                                             <span class="help-block"><small>Please try to book a flight that will arrive from to Tuesday to Friday between 6am - 8pm</small></span>
-                                            <input type="file" name="flightticket[]" class="file-upload-default" style="display:none;">
+                                            <input type="file" name="flightticket" class="file-upload-default" style="display:none;">
                                             <div class="input-group col-xs-12">
                                                 <input type="text" class="form-control file-upload-info" disabled="" placeholder="Upload Image">
                                                 <span class="input-group-append">
@@ -789,7 +791,7 @@ if ($_SESSION['loggedin'] == false) {
                                         </div>
                                         <div class="form-group">
                                                 <label for="example-datetime-local-input">Ghana Airport Arrival Date And Time</label>
-                                                    <input class="form-control rounded-0 form-control-md" type="datetime-local" value="2011-08-19T13:45:00" id="example-datetime-local-input">
+                                                    <input class="form-control rounded-0 form-control-md" type="datetime-local" name="airportArrivalDateTime" id="example-datetime-local-input">
                                             </div>
                                             
                                         <div class="form-group">
@@ -801,13 +803,13 @@ if ($_SESSION['loggedin'] == false) {
                                                 <div>
                                                   <label>Date For Breakfast</label>
                                                   <br>
-                                                    <input class="form-control rounded-0 form-control-md" type="date" value="2011-08-19" id="example-date-input" name="breakfastdate">
+                                                    <input class="form-control rounded-0 form-control-md" type="date" id="example-date-input" name="breakfastdate">
                                                 </div>
                                                 <br>
                                                 <div>
                                                   <label>Date For Lunch</label>
                                                   <br>
-                                                    <input class="form-control rounded-0 form-control-md" type="date" value="2011-08-19" id="example-date-input" name="lunchdate">
+                                                    <input class="form-control rounded-0 form-control-md" type="date" id="example-date-input" name="lunchdate">
                                                 </div>
                                             </div>
                                             
@@ -836,11 +838,11 @@ if ($_SESSION['loggedin'] == false) {
                                                         <br>
                                                         <span class="help-block"><small>(Please note that you need to bring your own bedsheets etc. If you do not opt for the starter pack you need to bring your own pillow)</small></span>
                                                         <div class="custom-control custom-radio">
-                                                    <input type="radio" id="radiokit1" name="customRadiokit2" class="custom-control-input">
+                                                    <input type="radio" id="radiokit1" name="int_starterPack" class="custom-control-input" value="Yes">
                                                     <label class="custom-control-label" for="radiokit1">Yes</label>
                                                 </div>
                                                 <div class="custom-control custom-radio">
-                                                    <input type="radio" id="radiokit2" name="customRadiokit2" class="custom-control-input">
+                                                    <input type="radio" id="radiokit2" name="int_starterPack" class="custom-control-input" value="No">
                                                     <label class="custom-control-label" for="radiokit2">No</label>
                                                 </div>
                                                 
@@ -852,15 +854,15 @@ if ($_SESSION['loggedin'] == false) {
                                                         <br>
                                                         <span class="help-block"><small>(Please note that a standard room sleeps 4 people)</small></span>
                                                         <div class="custom-control custom-radio">
-                                                    <input type="radio" id="radioaccomodation1" name="customRadioaccomodation2" class="custom-control-input">
+                                                    <input type="radio" id="radioaccomodation1" name="int_accommodation" class="custom-control-input" value="Yes">
                                                     <label class="custom-control-label" for="radioaccomodation1">Yes</label>
                                                 </div>
                                                 <div class="custom-control custom-radio">
-                                                    <input type="radio" id="radioaccomodation2" name="customRadioaccomodation2" class="custom-control-input">
+                                                    <input type="radio" id="radioaccomodation2" name="int_accommodation" class="custom-control-input" value="No">
                                                     <label class="custom-control-label" for="radioaccomodation2">No</label>
                                                 </div>
                                                 <div class="custom-control custom-radio">
-                                                    <input type="radio" id="radioaccomodation3" name="customRadioaccomodation2" class="custom-control-input">
+                                                    <input type="radio" id="radioaccomodation3" name="int_accommodation" class="custom-control-input" value="Will Share A Room With My Spouse">
                                                     <label class="custom-control-label" for="radioaccomodation3">Will Share A Room With My Spouse</label>
                                                 </div>
                                                     </div>
@@ -880,7 +882,7 @@ if ($_SESSION['loggedin'] == false) {
                                                     
                                                 <div class="form-group">
                                             <label>Declaration Form</label>
-                                            <input type="file" name="intdecform[]" class="file-upload-default" style="display:none;">
+                                            <input type="file" name="intdecform" class="file-upload-default" style="display:none;">
                                             <div class="input-group col-xs-12">
                                                 <input type="text" class="form-control file-upload-info" disabled="" placeholder="Upload Image">
                                                 <span class="input-group-append">
@@ -903,7 +905,7 @@ if ($_SESSION['loggedin'] == false) {
                                         
                                         <div class="form-group">
                                             <label>Room Assignment Form</label>
-                                            <input type="file" name="introomassignform[]" class="file-upload-default" style="display:none;">
+                                            <input type="file" name="introomassignform" class="file-upload-default" style="display:none;">
                                             <div class="input-group col-xs-12">
                                                 <input type="text" class="form-control file-upload-info" disabled="" placeholder="Upload Image">
                                                 <span class="input-group-append">
@@ -977,11 +979,11 @@ if ($_SESSION['loggedin'] == false) {
                           <div class="form-group">
                       <label>Is Your Church A UD-OLGC Lighthouse/First Love Church</label>
                                                 <div class="custom-control custom-radio">
-                                                    <input type="radio" id="radioUDOLGCCheck1" name="UDOLGCCheck" class="custom-control-input">
+                                                    <input type="radio" id="radioUDOLGCCheck1" name="UDOLGCCheck" class="custom-control-input" value="Yes">
                                                     <label class="custom-control-label" for="radioUDOLGCCheck1">Yes</label>
                                                 </div>
                                                 <div class="custom-control custom-radio">
-                                                    <input type="radio" id="radioUDOLGCCheck2" name="UDOLGCCheck" class="custom-control-input">
+                                                    <input type="radio" id="radioUDOLGCCheck2" name="UDOLGCCheck" class="custom-control-input" value="No">
                                                     <label class="custom-control-label" for="radioUDOLGCCheck2">No</label>
                                                 </div>
                                             </div>
@@ -989,26 +991,26 @@ if ($_SESSION['loggedin'] == false) {
                                             <div class="form-group">
                                                 <label for="exampleSelect1">Select Denomination</label>
                                                 <select class="form-control rounded-0" id="denominationsel" name="seldenomreg">
-                                                    <option value="0">-- Select Denomination --</option>
-                                                    <option value="1">Anagkazo Assemblies</option>
-                                                    <option value="2">Catch The Anointing Centre</option>
-                                                    <option value="3">Evangelical Lighthouse Chapel Int</option>
-                                                    <option value="4">Greater Love Church Ghana</option>
-                                                    <option value="5">Healing Jesus Mission Int</option>
-                                                    <option value="6">Igreja Do Primiero Amor</option>
-                                                    <option value="7">Jesus Is The Answer Church</option>
-                                                    <option value="8">LCI Kenya</option>
-                                                    <option value="9">LCI Sa</option>
-                                                    <option value="10">Lighthouse Chapel Int</option>
-                                                    <option value="11">Loyalty House Int</option>
-                                                    <option value="12">Mustard Seed Chapel</option>
-                                                    <option value="13">QFC Ghana</option>
-                                                    <option value="14">QFC USA</option>
-                                                    <option value="15">The Machaneh Church</option>
-                                                    <option value="16">The Makarios Church</option>
-                                                    <option value="17">The Mega Church</option>
-                                                    <option value="18">First Love</option>
-                                                    <option value="19">Other</option>
+                                                    <option value="">-- Select Denomination --</option>
+                                                    <option>Anagkazo Assemblies</option>
+                                                    <option>Catch The Anointing Centre</option>
+                                                    <option>Evangelical Lighthouse Chapel Int</option>
+                                                    <option>Greater Love Church Ghana</option>
+                                                    <option>Healing Jesus Mission Int</option>
+                                                    <option>Igreja Do Primiero Amor</option>
+                                                    <option>Jesus Is The Answer Church</option>
+                                                    <option>LCI Kenya</option>
+                                                    <option>LCI Sa</option>
+                                                    <option>Lighthouse Chapel Int</option>
+                                                    <option>Loyalty House Int</option>
+                                                    <option>Mustard Seed Chapel</option>
+                                                    <option>QFC Ghana</option>
+                                                    <option>QFC USA</option>
+                                                    <option>The Machaneh Church</option>
+                                                    <option>The Makarios Church</option>
+                                                    <option>The Mega Church</option>
+                                                    <option>First Love</option>
+                                                    <option>Other</option>
                                                 </select>
                                             </div>  
 
@@ -1195,11 +1197,11 @@ if ($_SESSION['loggedin'] == false) {
                       <br>
                       <div class="form-group">
                                                 <div class="custom-control custom-radio">
-                                                    <input type="radio" id="Radio1locintsponsor" name="locintsponsor" class="custom-control-input">
+                                                    <input type="radio" id="Radio1locintsponsor" name="sponsor" class="custom-control-input" value="Yes">
                                                     <label class="custom-control-label" for="Radio1locintsponsor">Yes</label>
                                                 </div>
                                                 <div class="custom-control custom-radio">
-                                                    <input type="radio" id="Radio2locintsponsor" name="locintsponsor" class="custom-control-input">
+                                                    <input type="radio" id="Radio2locintsponsor" name="sponsor" class="custom-control-input" value="No">
                                                     <label class="custom-control-label" for="Radio2locintsponsor">No</label>
                                                 </div>
                                             </div>
@@ -1405,11 +1407,11 @@ if ($_SESSION['loggedin'] == false) {
                       <div class="form-group">
                       <label>Airport Pick-Up (International Students Only)</label>
                                                 <div class="custom-control custom-radio">
-                                                    <input type="radio" id="radioairportpick1" name="airportpick" class="custom-control-input">
+                                                    <input type="radio" id="radioairportpick1" name="airportpick" class="custom-control-input" value="Yes">
                                                     <label class="custom-control-label" for="radioairportpick1">Yes</label>
                                                 </div>
                                                 <div class="custom-control custom-radio">
-                                                    <input type="radio" id="radioairportpick2" name="airportpick" class="custom-control-input">
+                                                    <input type="radio" id="radioairportpick2" name="airportpick" class="custom-control-input" value="No">
                                                     <label class="custom-control-label" for="radioairportpick2">No</label>
                                                 </div>
                                                 <div class="custom-control custom-radio">
@@ -1423,11 +1425,11 @@ if ($_SESSION['loggedin'] == false) {
                       <div class="form-group">
                       <label>Changed Money At The Airport (International Students Only)</label>
                                                 <div class="custom-control custom-radio">
-                                                    <input type="radio" id="radiocheckmoneychange1" name="moneycheck" class="custom-control-input">
-                                                    <label class="custom-control-label" for="radioairportpick1">Yes</label>
+                                                    <input type="radio" id="radiocheckmoneychange1" name="changeMoney" class="custom-control-input" value="Yes">
+                                                    <label class="custom-control-label" for="radiocheckmoneychange1">Yes</label>
                                                 </div>
                                                 <div class="custom-control custom-radio">
-                                                    <input type="radio" id="radiocheckmoneychange2" name="moneycheck" class="custom-control-input">
+                                                    <input type="radio" id="radiocheckmoneychange2" name="changeMoney" class="custom-control-input" value="No">
                                                     <label class="custom-control-label" for="radiocheckmoneychange2">No</label>
                                                 </div>
                                             </div>
@@ -1435,11 +1437,11 @@ if ($_SESSION['loggedin'] == false) {
                       <div class="form-group">
                       <label>Starter Pack (International Students Only)</label>
                                                 <div class="custom-control custom-radio">
-                                                    <input type="radio" id="radiostarterpack1" name="starterpack" class="custom-control-input">
+                                                    <input type="radio" id="radiostarterpack1" name="starterPackCheck" class="custom-control-input" value="Yes">
                                                     <label class="custom-control-label" for="radiostarterpack1">Yes</label>
                                                 </div>
                                                 <div class="custom-control custom-radio">
-                                                    <input type="radio" id="radiostarterpack2" name="starterpack" class="custom-control-input">
+                                                    <input type="radio" id="radiostarterpack2" name="starterPackCheck" class="custom-control-input" value="No">
                                                     <label class="custom-control-label" for="radiostarterpack2">No</label>
                                                 </div>
                                                 <div class="custom-control custom-radio">
@@ -1477,11 +1479,11 @@ if ($_SESSION['loggedin'] == false) {
                           <div class="form-group">
                                               <label>Are There Any Issues In The Room?</label>
                                                 <div class="custom-control custom-radio">
-                                                    <input type="radio" id="Radioroom1" name="roomissues" class="custom-control-input">
+                                                    <input type="radio" id="Radioroom1" name="roomissues" class="custom-control-input" value="Yes">
                                                     <label class="custom-control-label" for="Radioroom1" onclick="show1a();">Yes</label>
                                                 </div>
                                                 <div class="custom-control custom-radio">
-                                                    <input type="radio" id="Radioroom2" name="roomissues" class="custom-control-input">
+                                                    <input type="radio" id="Radioroom2" name="roomissues" class="custom-control-input" value="No">
                                                     <label class="custom-control-label" for="Radioroom2" onclick="show1();">No</label>
                                                 </div>
                                             </div>                                         
@@ -1503,11 +1505,11 @@ if ($_SESSION['loggedin'] == false) {
                                               <div class="form-group">
                                               <label>Have The Issues In Your Room Been Solved?</label>
                                                 <div class="custom-control custom-radio">
-                                                    <input type="radio" id="Radiocheckroomprob1" name="checkroomprob" class="custom-control-input">
+                                                    <input type="radio" id="Radiocheckroomprob1" name="issuesResolved" class="custom-control-input" value="Yes">
                                                     <label class="custom-control-label" for="Radiocheckroomprob1">Yes</label>
                                                 </div>
                                                 <div class="custom-control custom-radio">
-                                                    <input type="radio" id="Radiocheckroomprob2" name="checkroomprob" class="custom-control-input">
+                                                    <input type="radio" id="Radiocheckroomprob2" name="issuesResolved" class="custom-control-input" value="No">
                                                     <label class="custom-control-label" for="Radiocheckroomprob2">No</label>
                                                 </div>
                                             </div>
