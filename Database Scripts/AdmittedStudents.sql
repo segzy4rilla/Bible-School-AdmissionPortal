@@ -64,4 +64,4 @@ CREATE TABLE AdmittedStudents(
 	Check_PaidAdminFeesAndCollectedTextbooks VARCHAR(3),
 	Check_GalleryTour VARCHAR(3),
 	Check_OrphanageTour VARCHAR(3)
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
