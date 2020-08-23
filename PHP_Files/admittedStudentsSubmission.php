@@ -110,11 +110,13 @@ else {
 	$alertMessage = $alertMessage . " " . sql_update_field($conn, "AdmittedStudents", "Check_StarterPack", $ID, HandleNullIndex('starterPackCheck'));
 	$alertMessage = $alertMessage . " " . sql_update_field($conn, "AdmittedStudents", "Check_MTNSimCard", $ID, BoolToYesNo('simcredcheck'));
 	$alertMessage = $alertMessage . " " . sql_update_field($conn, "AdmittedStudents", "Check_CollectTag", $ID, BoolToYesNo('tagcheck'));
-	$alertMessage = $alertMessage . " " . sql_update_field($conn, "AdmittedStudents", "Check_IssuesInTheRoom", $ID, HandleNullIndex('roomnumber'));
-	$alertMessage = $alertMessage . " " . sql_update_field($conn, "AdmittedStudents", "Check_IssuesInTheRoomSolved", $ID, HandleNullIndex('roomissues'));
-	$alertMessage = $alertMessage . " " . sql_update_field($conn, "AdmittedStudents", "Check_PaidAdminFeesAndCollectedTextbooks", $ID, BoolToYesNo('issuesResolved'));
-	$alertMessage = $alertMessage . " " . sql_update_field($conn, "AdmittedStudents", "Check_GalleryTour", $ID, BoolToYesNo('feeandbookcheck'));
-	$alertMessage = $alertMessage . " " . sql_update_field($conn, "AdmittedStudents", "Check_OrphanageTour", $ID, BoolToYesNo('tourcheck'));
+	$alertMessage = $alertMessage . " " . sql_update_field($conn, "AdmittedStudents", "Check_RoomNumber", $ID, HandleNullIndex('roomnumber'));
+	$alertMessage = $alertMessage . " " . sql_update_field($conn, "AdmittedStudents", "Check_IssuesInTheRoom", $ID, HandleNullIndex('roomissues'));
+	$alertMessage = $alertMessage . " " . sql_update_field($conn, "AdmittedStudents", "Check_IssuesInTheRoomDescription", $ID, HandleNullIndex('roomissuecomment'));
+	$alertMessage = $alertMessage . " " . sql_update_field($conn, "AdmittedStudents", "Check_IssuesInTheRoomSolved", $ID, HandleNullIndex('issuesResolved'));
+	$alertMessage = $alertMessage . " " . sql_update_field($conn, "AdmittedStudents", "Check_PaidAdminFeesAndCollectedTextbooks", $ID, BoolToYesNo('feeandbookcheck'));
+	$alertMessage = $alertMessage . " " . sql_update_field($conn, "AdmittedStudents", "Check_GalleryTour", $ID, BoolToYesNo('tourcheck'));
+	$alertMessage = $alertMessage . " " . sql_update_field($conn, "AdmittedStudents", "Check_OrphanageTour", $ID, BoolToYesNo('orphancheck'));
 }
 echo $alertMessage;
 
