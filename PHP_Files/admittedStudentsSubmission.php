@@ -2,6 +2,7 @@
 
 include "dbconfig.php";
 include "sql_upload_doc.php";
+include "sql_update_field.php";
 include "alertAndRedirect.php";
 include_once "escapeQuotes.php";
 
@@ -9,6 +10,14 @@ function BoolToYesNo($value){
 	$return = "No";
 	if(isset($_POST[$value]) && $_POST[$value]){
 		$return = "Yes";
+	}
+	return $return;
+}
+
+function HandleNullIndex($value){
+	$return = "";
+	if(isset($_POST[$value])){
+		$return = $_POST[$value];
 	}
 	return $return;
 }
@@ -42,51 +51,24 @@ if (!$idInserted && !$idExists) {
 	$alertMessage = $alertMessage . " " . "Sorry, there was an error submitting the admission info. Error Code: ER1";
 } 
 else {
-	//Local
-	$localAccom = "";
-	if(isset($_POST['local_accommodation'])){
-		$localAccom =$_POST['local_accommodation'];
-	}
-	$UpdateLocal = $conn->prepare
-								("
-									UPDATE AdmittedStudents 
-									SET Loc_InternationalStudentsHostel = '".$localAccom."', 
-									Loc_PrintedAllDocuments = '".BoolToYesNo('docsconfirm')."', 
-									Loc_HasBeddings = '".BoolToYesNo('beddingconfirm')."', 
-									Loc_HasMTNCard = '".BoolToYesNo('mtncardconfirm').
-									"' WHERE User_ID = '".$ID."'"
-								);
-								
-	$localInfoUpdated = $UpdateLocal->execute();
-
-	if (!$localInfoUpdated) {
-		$alertMessage = $alertMessage . " " . "Sorry, there was an error submitting the Local Tab information";
-	}
 	
+	//Local
+	$alertMessage = $alertMessage . " " . sql_update_field($conn, "AdmittedStudents", "Loc_InternationalStudentsHostel", $ID, HandleNullIndex('local_accommodation'));
+	$alertMessage = $alertMessage . " " . sql_update_field($conn, "AdmittedStudents", "Loc_PrintedAllDocuments", $ID, BoolToYesNo('docsconfirm'));
+	$alertMessage = $alertMessage . " " . sql_update_field($conn, "AdmittedStudents", "Loc_HasBeddings", $ID, BoolToYesNo('beddingconfirm'));
+	$alertMessage = $alertMessage . " " . sql_update_field($conn, "AdmittedStudents", "Loc_HasMTNCard", $ID, BoolToYesNo('mtncardconfirm'));
 	$alertMessage = $alertMessage . " " . sql_upload_doc($conn, "AdmittedStudents", "Loc_ResponsibilityFormFilepath", $ID, "locstudentform", $targetDirectory);
 	$alertMessage = $alertMessage . " " . sql_upload_doc($conn, "AdmittedStudents", "Loc_AdminFeeProofFilepath", $ID, "adminfeepay", $targetDirectory);
 	$alertMessage = $alertMessage . " " . sql_upload_doc($conn, "AdmittedStudents", "Loc_DeclarationFormFilepath", $ID, "declarationform", $targetDirectory);
 	$alertMessage = $alertMessage . " " . sql_upload_doc($conn, "AdmittedStudents", "Loc_RoomAssignmentFormFilepath", $ID, "roomasignmentform", $targetDirectory);
 	
 	//International
-	/*$UpdateInternational = $conn->prepare
-								("
-									UPDATE AdmittedStudents 
-									SET Int_VisaNotRequiredComment = '".$."',
-									Int_Arrival = '".$."', = '".$."',
-									Int_Breakfast = '".$."', = '".$."',
-									Int_Lunch = '".$."', = '".$."',
-									Int_WantsStarterPack = '".$."',
-									Int_InternationalStudentsHostel = '".$.
-									"' WHERE User_ID = '" .$ID."'";
-								);
-								
-	$internationalInfoUpdated = $UpdateInternational->execute();
-
-	if (!$internationalInfoUpdated) {
-		$alertMessage = $alertMessage . " " . "Sorry, there was an error submitting the International Tab information";
-	}
-	
+	$alertMessage = $alertMessage . " " . sql_update_field($conn, "AdmittedStudents", "Int_VisaNotRequiredComment", $ID, HandleNullIndex('visacomment'));
+	$alertMessage = $alertMessage . " " . sql_update_field($conn, "AdmittedStudents", "Int_ArrivalDateTime", $ID, HandleNullIndex('airportArrivalDateTime'));
+	$alertMessage = $alertMessage . " " . sql_update_field($conn, "AdmittedStudents", "Int_BreakfastDate", $ID, HandleNullIndex('breakfastdate'));
+	$alertMessage = $alertMessage . " " . sql_update_field($conn, "AdmittedStudents", "Int_LunchDate", $ID, HandleNullIndex('lunchdate'));
+	$alertMessage = $alertMessage . " " . sql_update_field($conn, "AdmittedStudents", "Int_WantsStarterPack", $ID, HandleNullIndex('int_starterPack'));
+	$alertMessage = $alertMessage . " " . sql_update_field($conn, "AdmittedStudents", "Int_InternationalStudentsHostel", $ID, HandleNullIndex('int_accommodation'));
 	$alertMessage = $alertMessage . " " . sql_upload_doc($conn, "AdmittedStudents", "Int_AdmissionContractFormFilepath", $ID, "admissioncontract", $targetDirectory);
 	$alertMessage = $alertMessage . " " . sql_upload_doc($conn, "AdmittedStudents", "Int_StudentResponsibilityFormFilepath", $ID, "intstudentresponform", $targetDirectory);
 	$alertMessage = $alertMessage . " " . sql_upload_doc($conn, "AdmittedStudents", "Int_AdminFeeProofFilepath", $ID, "adminfeeimgigpay", $targetDirectory);
@@ -98,28 +80,18 @@ else {
 	$alertMessage = $alertMessage . " " . sql_upload_doc($conn, "AdmittedStudents", "Int_RoomAssignmentFormFilepath", $ID, "introomassignform", $targetDirectory);
 	
 	//Registration
-	$UpdateRegistration = $conn->prepare
-								("
-									UPDATE AdmittedStudents 
-									SET Reg_Confirmed = '".$."', 
-									Reg_SelectedSeptember2020Admission = '".$."', 
-									Reg_ChurchBranch = '".$."', 
-									Reg_Pastor = '".$."', 
-									Reg_PastorsPhoneNumber = '".$."', 
-									Reg_UDChurch = '".$."', 
-									Reg_Denomination = '".$."', 
-									Reg_Bishop = '".$.
-									"' WHERE User_ID = '" .$ID."'";
-								);
-								
-	$registrationInfoUpdated = $UpdateRegistration->execute();
-
-	if (!$registrationInfoUpdated) {
-		$alertMessage = $alertMessage . " " . "Sorry, there was an error submitting the Registration Tab information";
-	}
+	$alertMessage = $alertMessage . " " . sql_update_field($conn, "AdmittedStudents", "Reg_Confirmed", $ID, BoolToYesNo('confirmregistrationcheck2'));
+	$alertMessage = $alertMessage . " " . sql_update_field($conn, "AdmittedStudents", "Reg_SelectedSeptember2020Admission", $ID, BoolToYesNo('confirmregistrationcheck2'));
+	$alertMessage = $alertMessage . " " . sql_update_field($conn, "AdmittedStudents", "Reg_ChurchBranch", $ID, HandleNullIndex('churchbranchreg'));
+	$alertMessage = $alertMessage . " " . sql_update_field($conn, "AdmittedStudents", "Reg_Pastor", $ID, HandleNullIndex('pastornamereg'));
+	$alertMessage = $alertMessage . " " . sql_update_field($conn, "AdmittedStudents", "Reg_PastorsPhoneNumber", $ID, HandleNullIndex('pastornumreg'));
+	$alertMessage = $alertMessage . " " . sql_update_field($conn, "AdmittedStudents", "Reg_UDChurch", $ID, HandleNullIndex('UDOLGCCheck'));
+	$alertMessage = $alertMessage . " " . sql_update_field($conn, "AdmittedStudents", "Reg_Denomination", $ID, HandleNullIndex('seldenomreg'));
+	$alertMessage = $alertMessage . " " . sql_update_field($conn, "AdmittedStudents", "Reg_Bishop", $ID, HandleNullIndex('bishopnamereg'));
+	
 	
 	//PastoralPoints
-	$UpdatePastoralPoints = $conn->prepare
+	/*$UpdatePastoralPoints = $conn->prepare
 								("
 									UPDATE AdmittedStudents 
 									SET PastoralPointsRegistration = '".$.
