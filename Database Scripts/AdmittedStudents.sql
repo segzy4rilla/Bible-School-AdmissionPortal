@@ -9,8 +9,12 @@ CREATE TABLE AdmittedStudents(
 	Loc_PrintedAllDocuments VARCHAR(3),
 	Loc_HasBeddings VARCHAR(3),
 	Loc_HasMTNCard VARCHAR(3),
+	Loc_AdminFeePaymentDate DATE,--
+	Loc_ConfirmationLetterFilepath VARCHAR(255),--
 	
 	-- International
+	Int_AdminFeePaymentDate DATE,--
+	Int_ConfirmationLetterFilepath VARCHAR(255),--
 	Int_AdmissionContractFormFilepath VARCHAR(255),
 	Int_StudentResponsibilityFormFilepath VARCHAR(255),
 	Int_AdminFeeProofFilepath VARCHAR(255),
