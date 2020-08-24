@@ -220,7 +220,7 @@ $zoomInterviewInfo = $getZoomInterviewInfo->fetch();
 						<?php
 							if($zoomInterviewInfo['Admitted'] == 'Admitted'){
 								echo "<div class='col-lg-12'  style='height:30%'>";
-								echo "	<a href='admittedstudentsinfo.html'>";
+								echo "	<a href='admittedstudentsinfo.php'>";
 								echo "		<div class='card' style='margin-bottom:15px;height:100%'>";
 								echo "			<!-- Card body -->";
 								echo "			<div class='card-body'>";
