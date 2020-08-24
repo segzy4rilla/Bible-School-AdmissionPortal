@@ -57,18 +57,22 @@ else {
 	$alertMessage = $alertMessage . " " . sql_update_field($conn, "AdmittedStudents", "Loc_PrintedAllDocuments", $ID, BoolToYesNo('docsconfirm'));
 	$alertMessage = $alertMessage . " " . sql_update_field($conn, "AdmittedStudents", "Loc_HasBeddings", $ID, BoolToYesNo('beddingconfirm'));
 	$alertMessage = $alertMessage . " " . sql_update_field($conn, "AdmittedStudents", "Loc_HasMTNCard", $ID, BoolToYesNo('mtncardconfirm'));
+	$alertMessage = $alertMessage . " " . sql_update_field($conn, "AdmittedStudents", "Loc_AdminFeePaymentDate", $ID, HandleNullIndex('loc_datepayfulladmin'));
 	$alertMessage = $alertMessage . " " . sql_upload_doc($conn, "AdmittedStudents", "Loc_ResponsibilityFormFilepath", $ID, "locstudentform", $targetDirectory);
 	$alertMessage = $alertMessage . " " . sql_upload_doc($conn, "AdmittedStudents", "Loc_AdminFeeProofFilepath", $ID, "adminfeepay", $targetDirectory);
 	$alertMessage = $alertMessage . " " . sql_upload_doc($conn, "AdmittedStudents", "Loc_DeclarationFormFilepath", $ID, "declarationform", $targetDirectory);
 	$alertMessage = $alertMessage . " " . sql_upload_doc($conn, "AdmittedStudents", "Loc_RoomAssignmentFormFilepath", $ID, "roomasignmentform", $targetDirectory);
+	$alertMessage = $alertMessage . " " . sql_upload_doc($conn, "AdmittedStudents", "Loc_ConfirmationLetterFilepath", $ID, "loc_ConfirmPayment", $targetDirectory);
 	
 	//International
+	$alertMessage = $alertMessage . " " . sql_update_field($conn, "AdmittedStudents", "Int_AdminFeePaymentDate", $ID, HandleNullIndex('int_datepayfulladmin'));
 	$alertMessage = $alertMessage . " " . sql_update_field($conn, "AdmittedStudents", "Int_VisaNotRequiredComment", $ID, HandleNullIndex('visacomment'));
 	$alertMessage = $alertMessage . " " . sql_update_field($conn, "AdmittedStudents", "Int_ArrivalDateTime", $ID, HandleNullIndex('airportArrivalDateTime'));
 	$alertMessage = $alertMessage . " " . sql_update_field($conn, "AdmittedStudents", "Int_BreakfastDate", $ID, HandleNullIndex('breakfastdate'));
 	$alertMessage = $alertMessage . " " . sql_update_field($conn, "AdmittedStudents", "Int_LunchDate", $ID, HandleNullIndex('lunchdate'));
 	$alertMessage = $alertMessage . " " . sql_update_field($conn, "AdmittedStudents", "Int_WantsStarterPack", $ID, HandleNullIndex('int_starterPack'));
 	$alertMessage = $alertMessage . " " . sql_update_field($conn, "AdmittedStudents", "Int_InternationalStudentsHostel", $ID, HandleNullIndex('int_accommodation'));
+	$alertMessage = $alertMessage . " " . sql_upload_doc($conn, "AdmittedStudents", "Int_ConfirmationLetterFilepath", $ID, "int_ConfirmPayment", $targetDirectory);
 	$alertMessage = $alertMessage . " " . sql_upload_doc($conn, "AdmittedStudents", "Int_AdmissionContractFormFilepath", $ID, "admissioncontract", $targetDirectory);
 	$alertMessage = $alertMessage . " " . sql_upload_doc($conn, "AdmittedStudents", "Int_StudentResponsibilityFormFilepath", $ID, "intstudentresponform", $targetDirectory);
 	$alertMessage = $alertMessage . " " . sql_upload_doc($conn, "AdmittedStudents", "Int_AdminFeeProofFilepath", $ID, "adminfeeimgigpay", $targetDirectory);
@@ -88,7 +92,6 @@ else {
 	$alertMessage = $alertMessage . " " . sql_update_field($conn, "AdmittedStudents", "Reg_UDChurch", $ID, HandleNullIndex('UDOLGCCheck'));
 	$alertMessage = $alertMessage . " " . sql_update_field($conn, "AdmittedStudents", "Reg_Denomination", $ID, HandleNullIndex('seldenomreg'));
 	$alertMessage = $alertMessage . " " . sql_update_field($conn, "AdmittedStudents", "Reg_Bishop", $ID, HandleNullIndex('bishopnamereg'));
-	
 	
 	//PastoralPoints
 	$alertMessage = $alertMessage . " " . sql_update_field($conn, "AdmittedStudents", "PastoralPointsRegistration", $ID, BoolToYesNo('UDcheck'));
@@ -118,11 +121,10 @@ else {
 	$alertMessage = $alertMessage . " " . sql_update_field($conn, "AdmittedStudents", "Check_GalleryTour", $ID, BoolToYesNo('tourcheck'));
 	$alertMessage = $alertMessage . " " . sql_update_field($conn, "AdmittedStudents", "Check_OrphanageTour", $ID, BoolToYesNo('orphancheck'));
 }
-echo $alertMessage;
 
 if (empty($alertMessage)) {
     $alertMessage = "Admission Info Update Successful";
 }
 
-//AlertAndRedirect($alertMessage, $redirectUrl);
+AlertAndRedirect($alertMessage, $redirectUrl);
 ?>
