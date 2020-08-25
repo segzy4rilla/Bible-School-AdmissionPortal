@@ -392,7 +392,7 @@ $result = $con->query($query);
 														echo "<td>".$row['First_Name']." ".$row['Last_Name']."</td>";
 														echo "<td>".$row['Nationality']."</td>";
 														echo "<td>".$row['First_Name']."</td>";
-														if($row['Nationality'] == "Ghanaian"){
+														if($row['Nationality'] == "ghanaian"){
 															echo "<td><a href='".$row['Loc_AdminFeeProofFilepath']."'>Proof Of Payment</a></td>";
 															echo "<td>".$row['Loc_AdminFeePaymentDate']."</td>";
 															echo "<td><a href='".$row['Loc_ConfirmationLetterFilepath']."'>Bishops Letter Payment Approval</a></td>";
