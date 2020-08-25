@@ -378,33 +378,33 @@ $result = $con->query($query);
                                                     <th style="font-size: 10px;">Name</th>
                                                     <th style="font-size: 10px;">Nationality</th>
                                                     <th style="font-size: 10px;">Denomination</th>
-                                                    <th style="font-size: 10px;">Proof Of Payment (Picture Display)</th>
+                                                    <th style="font-size: 10px;">Fee Payment Date</th>
                                                     <th style="font-size: 10px;">Provided Payment Date</th>
-                                                    <th style="font-size: 10px;">Bishops Letter Payment Approval</th>
+                                                    <th style="font-size: 10px;">Vouch Letter</th>
                                                 </tr>
                                             </thead>
 
 
                                             <tbody>
-												<?php
-													while ($row = $result->fetch_assoc()) {
-														echo "<tr>";
-														echo "<td>".$row['First_Name']." ".$row['Last_Name']."</td>";
-														echo "<td>".$row['Nationality']."</td>";
-														echo "<td>".$row['First_Name']."</td>";
-														if($row['Nationality'] == "ghanaian"){
-															echo "<td><a href='".$row['Loc_AdminFeeProofFilepath']."'>Proof Of Payment</a></td>";
-															echo "<td>".$row['Loc_AdminFeePaymentDate']."</td>";
-															echo "<td><a href='".$row['Loc_ConfirmationLetterFilepath']."'>Bishops Letter Payment Approval</a></td>";
-														}
-														else{
-															echo "<td><a href='".$row['Int_AdminFeeProofFilepath']."'>Proof Of Payment</a></td>";
-															echo "<td>".$row['Int_AdminFeePaymentDate']."</td>";
-															echo "<td><a href='".$row['Int_ConfirmationLetterFilepath']."'>Bishops Letter Payment Approval</a></td>";
-														}
-														echo "</tr>";
-													}
-												?>
+                        <?php
+                          while ($row = $result->fetch_assoc()) {
+                            echo "<tr>";
+                            echo "<td>".$row['First_Name']." ".$row['Last_Name']."</td>";
+                            echo "<td>".$row['Nationality']."</td>";
+                            echo "<td>".$row['First_Name']."</td>";
+                            if($row['Nationality'] == "ghanaian"){
+                              echo "<td><a href='".$row['Loc_AdminFeeProofFilepath']."'>Proof Of Payment</a></td>";
+                              echo "<td>".$row['Loc_AdminFeePaymentDate']."</td>";
+                              echo "<td><a href='".$row['Loc_ConfirmationLetterFilepath']."'>Bishops Letter Payment Approval</a></td>";
+                            }
+                            else{
+                              echo "<td><a href='".$row['Int_AdminFeeProofFilepath']."'>Proof Of Payment</a></td>";
+                              echo "<td>".$row['Int_AdminFeePaymentDate']."</td>";
+                              echo "<td><a href='".$row['Int_ConfirmationLetterFilepath']."'>Bishops Letter Payment Approval</a></td>";
+                            }
+                            echo "</tr>";
+                          }
+                        ?>
                                             </tbody>
                                         </table>
 
@@ -780,7 +780,6 @@ function show4(){
     </script>  
 
 <!--   <script type="text/javascript">
-
     function submitClick() {
     if (formValidation()) {
       alert("Thank you for your time! Your details have been submitted!");
@@ -789,18 +788,14 @@ function show4(){
       return false;
     }
   }
-
   function formValidation() {
     flag = true;
-
     if ((document.myForm.question21[0].checked == false) && (document.myForm.question21[1].checked == false)) {
       alert("IT WORKS!");
       flag = false;
     }
     return flag;
   }
-
-
   </script> -->
 
   
