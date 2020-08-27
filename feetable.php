@@ -391,7 +391,7 @@ $result = $con->query($query);
 														echo "<tr>";
 														echo "<td>".$row['First_Name']." ".$row['Last_Name']."</td>";
 														echo "<td>".$row['Nationality']."</td>";
-														echo "<td>".$row['First_Name']."</td>";
+														echo "<td>".$row['Reg_Denomination']."</td>";
 														if($row['Nationality'] == "ghanaian"){
 															echo "<td><a href='".$row['Loc_AdminFeeProofFilepath']."'>Proof Of Payment</a></td>";
 															echo "<td>".$row['Loc_AdminFeePaymentDate']."</td>";
