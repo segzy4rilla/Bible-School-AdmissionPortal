@@ -131,8 +131,8 @@ $result = $con->query($query);
                                                     <th style="font-size: 10px;">Name</th>
                                                     <th style="font-size: 10px;">Nationality</th>
                                                     <th style="font-size: 10px;">Denomination</th>
-                                                    <th style="font-size: 10px;">Fee Payment Date</th>
-                                                    <th style="font-size: 10px;">Provided Payment Date</th>
+                                                    <th style="font-size: 10px;">Proof Of Payment</th>
+                                                    <th style="font-size: 10px;">Date Of Full Payment</th>
                                                     <th style="font-size: 10px;">Vouch Letter</th>
                                                 </tr>
                                             </thead>
@@ -146,14 +146,23 @@ $result = $con->query($query);
 														echo "<td>".$row['Nationality']."</td>";
 														echo "<td>".$row['Reg_Denomination']."</td>";
 														if($row['Nationality'] == "ghanaian"){
-															echo "<td><a href='".$row['Loc_AdminFeeProofFilepath']."'>Proof Of Payment</a></td>";
+															$x = "Incomplete";
+															$y = "Incomplete";
+															
+															if($row['Loc_AdminFeeProofFilepath']){
+																$x = "Complete"
+															}
+															if($row['Loc_ConfirmationLetterFilepath']){
+																$y = "Complete"
+															}
+															echo "<td><a href='".$row['Loc_AdminFeeProofFilepath']."'>".$x."</a></td>";
 															echo "<td>".$row['Loc_AdminFeePaymentDate']."</td>";
-															echo "<td><a href='".$row['Loc_ConfirmationLetterFilepath']."'>Bishops Letter Payment Approval</a></td>";
+															echo "<td><a href='".$row['Loc_ConfirmationLetterFilepath']."'>".$y."</a></td>";
 														}
 														else{
-															echo "<td><a href='".$row['Int_AdminFeeProofFilepath']."'>Proof Of Payment</a></td>";
+															echo "<td><a href='".$row['Int_AdminFeeProofFilepath']."'>".$x."</a></td>";
 															echo "<td>".$row['Int_AdminFeePaymentDate']."</td>";
-															echo "<td><a href='".$row['Int_ConfirmationLetterFilepath']."'>Bishops Letter Payment Approval</a></td>";
+															echo "<td><a href='".$row['Int_ConfirmationLetterFilepath']."'>".$y."</a></td>";
 														}
 														echo "</tr>";
 													}
