@@ -148,18 +148,25 @@ $result = $con->query($query);
 														if($row['Nationality'] == "ghanaian"){
 															$x = "Incomplete";
 															$y = "Incomplete";
-															
 															if($row['Loc_AdminFeeProofFilepath']){
-																$x = "Complete"
+																$x = "Complete";
 															}
 															if($row['Loc_ConfirmationLetterFilepath']){
-																$y = "Complete"
+																$y = "Complete";
 															}
 															echo "<td><a href='".$row['Loc_AdminFeeProofFilepath']."'>".$x."</a></td>";
 															echo "<td>".$row['Loc_AdminFeePaymentDate']."</td>";
 															echo "<td><a href='".$row['Loc_ConfirmationLetterFilepath']."'>".$y."</a></td>";
 														}
 														else{
+															$x = "Incomplete";
+															$y = "Incomplete";
+															if($row['Int_AdminFeeProofFilepath']){
+																$x = "Complete";
+															}
+															if($row['Int_ConfirmationLetterFilepath']){
+																$y = "Complete";
+															}
 															echo "<td><a href='".$row['Int_AdminFeeProofFilepath']."'>".$x."</a></td>";
 															echo "<td>".$row['Int_AdminFeePaymentDate']."</td>";
 															echo "<td><a href='".$row['Int_ConfirmationLetterFilepath']."'>".$y."</a></td>";
