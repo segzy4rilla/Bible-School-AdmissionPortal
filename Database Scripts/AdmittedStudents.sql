@@ -9,12 +9,14 @@ CREATE TABLE AdmittedStudents(
 	Loc_PrintedAllDocuments VARCHAR(3),
 	Loc_HasBeddings VARCHAR(3),
 	Loc_HasMTNCard VARCHAR(3),
-	Loc_AdminFeePaymentDate DATE,--
-	Loc_ConfirmationLetterFilepath VARCHAR(255),--
+	Loc_AdminFeePaymentDate DATE,
+	Loc_ConfirmationLetterFilepath VARCHAR(255),
+	Loc_PaymentType VARCHAR(255),
+	Loc_AmountPaid VARCHAR(255),
 	
 	-- International
-	Int_AdminFeePaymentDate DATE,--
-	Int_ConfirmationLetterFilepath VARCHAR(255),--
+	Int_AdminFeePaymentDate DATE,
+	Int_ConfirmationLetterFilepath VARCHAR(255),
 	Int_AdmissionContractFormFilepath VARCHAR(255),
 	Int_StudentResponsibilityFormFilepath VARCHAR(255),
 	Int_AdminFeeProofFilepath VARCHAR(255),
@@ -30,6 +32,8 @@ CREATE TABLE AdmittedStudents(
 	Int_InternationalStudentsHostel VARCHAR(255),
 	Int_DeclarationFormFilepath VARCHAR(255),
 	Int_RoomAssignmentFormFilepath VARCHAR(255),
+	Int_PaymentType VARCHAR(255),
+	Int_AmountPaid VARCHAR(255),
 	
 	-- Registration
 	Reg_Confirmed VARCHAR(3),

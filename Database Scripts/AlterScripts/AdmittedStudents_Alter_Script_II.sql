@@ -1,0 +1,5 @@
+ALTER TABLE AdmittedStudents
+ADD COLUMN Loc_PaymentType VARCHAR(255),
+ADD COLUMN Loc_AmountPaid VARCHAR(255),
+ADD COLUMN Int_PaymentType VARCHAR(255),
+ADD COLUMN Int_AmountPaid VARCHAR(255);

@@ -1,14 +1,14 @@
 <?php
 session_start();
 
-if ($_SESSION['loggedin'] == false) {
+if ($_SESSION['loggedin'] == false || ($_SESSION['IsMedicalAdmin'] == false && !$_SESSION['isAdmin'])) {
     header('Location: loginabmtc.html');
 }
 
 require("dbconfig/config.php");
 require("PHP_Files/getAdminHomeLink.php");
 
-$query = "select First_Name, Last_Name, Nationality, Reg_Denomination, Loc_AdminFeePaymentDate, Loc_AdminFeeProofFilepath, Loc_ConfirmationLetterFilepath, Int_AdminFeePaymentDate, Int_AdminFeeProofFilepath, Int_ConfirmationLetterFilepath FROM AdmittedStudents A JOIN Applicant_Table B ON A.User_ID = B.User_ID";
+$query = "select First_Name, Last_Name, Nationality, Reg_Denomination, Loc_AdminFeePaymentDate, Loc_AdminFeeProofFilepath, Loc_ConfirmationLetterFilepath, Int_AdminFeePaymentDate, Int_AdminFeeProofFilepath, Int_ConfirmationLetterFilepath, Loc_PaymentType, Loc_AmountPaid, Int_PaymentType, Int_AmountPaid FROM AdmittedStudents A JOIN Applicant_Table B ON A.User_ID = B.User_ID";
 $result = $con->query($query);
 
 ?>
@@ -159,6 +159,8 @@ $result = $con->query($query);
                               echo "<td><a href='".$row['Loc_AdminFeeProofFilepath']."'>".$x."</a></td>";
                               echo "<td>".$row['Loc_AdminFeePaymentDate']."</td>";
                               echo "<td><a href='".$row['Loc_ConfirmationLetterFilepath']."'>".$y."</a></td>";
+							  echo "<td>".$row['Loc_PaymentType']."</td>";
+							  echo "<td>".$row['Loc_AmountPaid']."</td>";
                             }
                             else{
                               $x = "Incomplete";
@@ -172,6 +174,8 @@ $result = $con->query($query);
                               echo "<td><a href='".$row['Int_AdminFeeProofFilepath']."'>".$x."</a></td>";
                               echo "<td>".$row['Int_AdminFeePaymentDate']."</td>";
                               echo "<td><a href='".$row['Int_ConfirmationLetterFilepath']."'>".$y."</a></td>";
+							  echo "<td>".$row['Int_PaymentType']."</td>";
+							  echo "<td>".$row['Int_AmountPaid']."</td>";
                             }
                             echo "</tr>";
                           }
