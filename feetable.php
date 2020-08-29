@@ -134,46 +134,55 @@ $result = $con->query($query);
                                                     <th style="font-size: 10px;">Proof Of Payment</th>
                                                     <th style="font-size: 10px;">Date Of Full Payment</th>
                                                     <th style="font-size: 10px;">Vouch Letter</th>
+                                                    <th style="font-size: 10px;">Fully Paid, Part Payment</th>
+                                                    <th style="font-size: 10px;">Amount Paid</th>
                                                 </tr>
                                             </thead>
 
 
                                             <tbody>
-												<?php
-													while ($row = $result->fetch_assoc()) {
-														echo "<tr>";
-														echo "<td>".$row['First_Name']." ".$row['Last_Name']."</td>";
-														echo "<td>".$row['Nationality']."</td>";
-														echo "<td>".$row['Reg_Denomination']."</td>";
-														if($row['Nationality'] == "ghanaian"){
-															$x = "Incomplete";
-															$y = "Incomplete";
-															if($row['Loc_AdminFeeProofFilepath']){
-																$x = "Complete";
-															}
-															if($row['Loc_ConfirmationLetterFilepath']){
-																$y = "Complete";
-															}
-															echo "<td><a href='".$row['Loc_AdminFeeProofFilepath']."'>".$x."</a></td>";
-															echo "<td>".$row['Loc_AdminFeePaymentDate']."</td>";
-															echo "<td><a href='".$row['Loc_ConfirmationLetterFilepath']."'>".$y."</a></td>";
-														}
-														else{
-															$x = "Incomplete";
-															$y = "Incomplete";
-															if($row['Int_AdminFeeProofFilepath']){
-																$x = "Complete";
-															}
-															if($row['Int_ConfirmationLetterFilepath']){
-																$y = "Complete";
-															}
-															echo "<td><a href='".$row['Int_AdminFeeProofFilepath']."'>".$x."</a></td>";
-															echo "<td>".$row['Int_AdminFeePaymentDate']."</td>";
-															echo "<td><a href='".$row['Int_ConfirmationLetterFilepath']."'>".$y."</a></td>";
-														}
-														echo "</tr>";
-													}
-												?>
+                        <?php
+                          while ($row = $result->fetch_assoc()) {
+                            echo "<tr>";
+                            echo "<td>".$row['First_Name']." ".$row['Last_Name']."</td>";
+                            echo "<td>".$row['Nationality']."</td>";
+                            echo "<td>".$row['Reg_Denomination']."</td>";
+                            if($row['Nationality'] == "ghanaian"){
+                              $x = "Incomplete";
+                              $y = "Incomplete";
+                              if($row['Loc_AdminFeeProofFilepath']){
+                                $x = "Complete";
+                              }
+                              if($row['Loc_ConfirmationLetterFilepath']){
+                                $y = "Complete";
+                              }
+                              echo "<td><a href='".$row['Loc_AdminFeeProofFilepath']."'>".$x."</a></td>";
+                              echo "<td>".$row['Loc_AdminFeePaymentDate']."</td>";
+                              echo "<td><a href='".$row['Loc_ConfirmationLetterFilepath']."'>".$y."</a></td>";
+                            }
+                            else{
+                              $x = "Incomplete";
+                              $y = "Incomplete";
+                              if($row['Int_AdminFeeProofFilepath']){
+                                $x = "Complete";
+                              }
+                              if($row['Int_ConfirmationLetterFilepath']){
+                                $y = "Complete";
+                              }
+                              echo "<td><a href='".$row['Int_AdminFeeProofFilepath']."'>".$x."</a></td>";
+                              echo "<td>".$row['Int_AdminFeePaymentDate']."</td>";
+                              echo "<td><a href='".$row['Int_ConfirmationLetterFilepath']."'>".$y."</a></td>";
+                            }
+                            echo "</tr>";
+                          }
+                        ?>
+                        <td></td>
+                        <td><div class="form-group">
+                                                    
+                                                    <input type="text" name="paidamount" class="form-control required"
+                                                           placeholder="" aria-required="true" >
+                                                           
+                                                </div></td>
                                             </tbody>
                                         </table>
 
