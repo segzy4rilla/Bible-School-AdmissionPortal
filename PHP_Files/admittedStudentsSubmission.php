@@ -63,6 +63,8 @@ else {
 	$alertMessage = $alertMessage . " " . sql_upload_doc($conn, "AdmittedStudents", "Loc_DeclarationFormFilepath", $ID, "declarationform", $targetDirectory);
 	$alertMessage = $alertMessage . " " . sql_upload_doc($conn, "AdmittedStudents", "Loc_RoomAssignmentFormFilepath", $ID, "roomasignmentform", $targetDirectory);
 	$alertMessage = $alertMessage . " " . sql_upload_doc($conn, "AdmittedStudents", "Loc_ConfirmationLetterFilepath", $ID, "loc_ConfirmPayment", $targetDirectory);
+	$alertMessage = $alertMessage . " " . sql_update_field($conn, "AdmittedStudents", "Loc_PaymentType", $ID, HandleNullIndex('loc_paymenttype'));
+	$alertMessage = $alertMessage . " " . sql_update_field($conn, "AdmittedStudents", "Loc_AmountPaid", $ID, HandleNullIndex('loc_amountpaid'));
 	
 	//International
 	$alertMessage = $alertMessage . " " . sql_update_field($conn, "AdmittedStudents", "Int_AdminFeePaymentDate", $ID, HandleNullIndex('int_datepayfulladmin'));
@@ -82,6 +84,8 @@ else {
 	$alertMessage = $alertMessage . " " . sql_upload_doc($conn, "AdmittedStudents", "Int_FlightTicketFilepath", $ID, "flightticket", $targetDirectory);
 	$alertMessage = $alertMessage . " " . sql_upload_doc($conn, "AdmittedStudents", "Int_DeclarationFormFilepath", $ID, "intdecform", $targetDirectory);
 	$alertMessage = $alertMessage . " " . sql_upload_doc($conn, "AdmittedStudents", "Int_RoomAssignmentFormFilepath", $ID, "introomassignform", $targetDirectory);
+	$alertMessage = $alertMessage . " " . sql_update_field($conn, "AdmittedStudents", "Int_PaymentType", $ID, HandleNullIndex('int_paymenttype'));
+	$alertMessage = $alertMessage . " " . sql_update_field($conn, "AdmittedStudents", "Int_AmountPaid", $ID, HandleNullIndex('int_amountpaid'));
 	
 	//Registration
 	$alertMessage = $alertMessage . " " . sql_update_field($conn, "AdmittedStudents", "Reg_Confirmed", $ID, BoolToYesNo('confirmregistrationcheck2'));
@@ -122,7 +126,7 @@ else {
 	$alertMessage = $alertMessage . " " . sql_update_field($conn, "AdmittedStudents", "Check_OrphanageTour", $ID, BoolToYesNo('orphancheck'));
 }
 
-if (empty($alertMessage)) {
+if (empty($alertMessage) || ctype_space($alertMessage)) {
     $alertMessage = "Admission Info Update Successful";
 }
 

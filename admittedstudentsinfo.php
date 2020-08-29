@@ -515,20 +515,20 @@ if ($_SESSION['loggedin'] == false) {
                                                         <span class="help-block"><small>(Please note a standard room sleeps 4 people)</small></span>
                                                         <div class="custom-control custom-radio">
                                                     <input type="radio" id="radioaccommodation1" name="local_accommodation" class="custom-control-input"
-														value="Yes">
+                            value="Yes">
                                                     <label class="custom-control-label" for="radioaccommodation1">Yes</label>
                                                 </div>
                                                 <div class="custom-control custom-radio">
                                                     <input type="radio" id="radioaccommodation2" name="local_accommodation" class="custom-control-input"
-														value="No">
+                            value="No">
                                                     <label class="custom-control-label" for="radioaccommodation2">No</label>
                                                 </div>
                                                 <div class="custom-control custom-radio">
                                                     <input type="radio" id="radiolocaccomodation3" name="local_accommodation" class="custom-control-input"
-														value="Will Share A Room With My Spouse">
+                            value="Will Share A Room With My Spouse">
                                                     <label class="custom-control-label" for="radiolocaccomodation3">Will Share A Room With My Spouse</label>
                                                 </div>
-											</div> 
+                      </div> 
 
                                                     <br>
 
@@ -638,7 +638,7 @@ if ($_SESSION['loggedin'] == false) {
 
                                                 <div class="form-group">
                     
-                                            <label>Letter To Confirm For Full Payment </label>
+                                            <label>Vouch Letter From Bishop To Confirm You Will Make Full Payment</label>
                                             <input type="file" name="loc_ConfirmPayment" class="file-upload-default" style="display:none;">
                                             <div class="input-group col-xs-12">
                                                 <input type="text" class="form-control file-upload-info" disabled="" placeholder="Upload Image">
@@ -648,7 +648,25 @@ if ($_SESSION['loggedin'] == false) {
                                             </div>
                                         </div>
 
-                                        <br>                                 
+                                        <br>
+
+                                        <div class="form-group">
+                                                <label for="exampleSelect1">Confirm Type Of Payment</label>
+                                                <select class="form-control rounded-0" id="exampleSelect1" name="loc_paymenttype">
+                                                    <option>--Select Payment Type--</option>
+                                                    <option>Fully Paid</option>
+                                                    <option>Part Payment</option>
+                                                </select>
+                                            </div>
+
+
+                                                <div class="form-group">
+                                                    <label class="control-label">Confirm Amount Paid</label>
+                                                    <input type="text" class="form-control" placeholder="Enter confirmed amount" name="loc_amountpaid">
+                                                </div>
+                                           
+
+                                            <br>                                 
                   </div>
                   <div class="button-row d-flex mt-4">
                     <button class="btn btn-primary ml-auto js-btn-next" type="button" title="Next">Next</button>
@@ -912,7 +930,23 @@ if ($_SESSION['loggedin'] == false) {
                                                     <button class="file-upload-browse btn btn-primary" type="button">Upload</button>
                                                 </span>
                                             </div>
-                                        </div>                                  
+                                        </div>
+
+                                        <div class="form-group">
+                                                <label for="exampleSelect1">Confirm Type Of Payment</label>
+                                                <select class="form-control rounded-0" id="exampleSelect1" name="int_paymenttype">
+                                                    <option>--Select Payment Type--</option>
+                                                    <option>Fully Paid</option>
+                                                    <option>Part Payment</option>
+                                                </select>
+                                            </div>
+
+
+                                                <div class="form-group">
+                                                    <label class="control-label">Confirm Amount Paid</label>
+                                                    <input type="text" class="form-control" placeholder="Enter confirmed amount" name="int_amountpaid">
+                                                </div>
+
                   </div>
                   <div class="button-row d-flex mt-4">
                     <button class="btn btn-primary js-btn-prev" type="button" title="Prev">Prev</button>
