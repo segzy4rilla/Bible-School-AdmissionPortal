@@ -296,7 +296,6 @@ $result = $con->query($query);
                                     </tr>
                                     </thead>
 
-
                                     <tbody>
                                     <?php
                                     $count = 0;
