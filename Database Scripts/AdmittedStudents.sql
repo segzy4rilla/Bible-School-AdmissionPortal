@@ -44,6 +44,7 @@ CREATE TABLE AdmittedStudents(
 	Reg_UDChurch VARCHAR(3),
 	Reg_Denomination VARCHAR(255),
 	Reg_Bishop VARCHAR(255),
+	Reg_Skills VARCHAR(800),
 	
 	-- PastoralPoints
 	PastoralPointsRegistration VARCHAR(3),
