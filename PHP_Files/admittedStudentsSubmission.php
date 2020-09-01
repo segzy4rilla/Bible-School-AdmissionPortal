@@ -96,6 +96,7 @@ else {
 	$alertMessage = $alertMessage . " " . sql_update_field($conn, "AdmittedStudents", "Reg_UDChurch", $ID, HandleNullIndex('UDOLGCCheck'));
 	$alertMessage = $alertMessage . " " . sql_update_field($conn, "AdmittedStudents", "Reg_Denomination", $ID, HandleNullIndex('seldenomreg'));
 	$alertMessage = $alertMessage . " " . sql_update_field($conn, "AdmittedStudents", "Reg_Bishop", $ID, HandleNullIndex('bishopnamereg'));
+	$alertMessage = $alertMessage . " " . sql_update_field($conn, "AdmittedStudents", "Reg_Skills", $ID, HandleNullIndex('skills'));
 	
 	//PastoralPoints
 	$alertMessage = $alertMessage . " " . sql_update_field($conn, "AdmittedStudents", "PastoralPointsRegistration", $ID, BoolToYesNo('UDcheck'));

@@ -1053,108 +1053,109 @@ if ($_SESSION['loggedin'] == false) {
                                                 <input type="text" class="form-control" id="exampleInputEmail111" placeholder="Enter Name Of Bishop" name="bishopnamereg">
                                             </div>
 
-                                            <div class="form-group">
-                                            <label>Select Any Skills You Have</label>
+                                            <div class="form-group" id="skillset">
+                                            <label>Select Any specialSkills[] You Have</label>
                                             <div>
                                                 <div class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input" id="customCheck1" name="specialskills">
+                                                    <input type="checkbox" class="custom-control-input" id="customCheck1" name="specialSkills[]" value="Cooking">
                                                     <label class="custom-control-label" for="customCheck1">Cooking</label>
                                                 </div>
                                                 <div class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input" id="customCheck2" name="specialskills">
+                                                    <input type="checkbox" class="custom-control-input" id="customCheck2" name="specialSkills[]" value="Driving">
                                                     <label class="custom-control-label" for="customCheck2">Driving</label>
                                                 </div>
                                                 <div class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input" id="customCheck3" name="specialskills">
+                                                    <input type="checkbox" class="custom-control-input" id="customCheck3" name="specialSkills[]" value="First Aid and CPR">
                                                     <label class="custom-control-label" for="customCheck3">First Aid and CPR</label>
                                                 </div>
                                                 <div class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input" id="customCheck4" name="specialskills">
+                                                    <input type="checkbox" class="custom-control-input" id="customCheck4" name="specialSkills[]" value="Garden Maintenance">
                                                     <label class="custom-control-label" for="customCheck4">Garden Maintenance</label>
                                                 </div>
                                                 <div class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input" id="customCheck5" name="specialskills">
+                                                    <input type="checkbox" class="custom-control-input" id="customCheck5" name="specialSkills[]" value="Hospitality">
                                                     <label class="custom-control-label" for="customCheck5">Hospitality</label>
                                                 </div>
                                                 <div class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input" id="customCheck6" name="specialskills">
+                                                    <input type="checkbox" class="custom-control-input" id="customCheck6" name="specialSkills[]" value="Painting">
                                                     <label class="custom-control-label" for="customCheck6">Painting</label>
                                                 </div>
                                                 <div class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input" id="customCheck7" name="specialskills">
+                                                    <input type="checkbox" class="custom-control-input" id="customCheck7" name="specialSkills[]" value="Sales">
                                                     <label class="custom-control-label" for="customCheck7">Sales</label>
                                                 </div>
                                                 <div class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input" id="customCheck8" name="specialskills">
+                                                    <input type="checkbox" class="custom-control-input" id="customCheck8" name="specialSkills[]" value="Farming">
                                                     <label class="custom-control-label" for="customCheck8">Farming</label>
                                                 </div>
                                                 <div class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input" id="customCheck9" name="specialskills">
+                                                    <input type="checkbox" class="custom-control-input" id="customCheck9" name="specialSkills[]" value="Plumbing/Electrical/Carpentry">
                                                     <label class="custom-control-label" for="customCheck9">Plumbing/Electrical/Carpentry</label>
                                                 </div>
                                                 <div class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input" id="customCheck10" name="specialskills">
+                                                    <input type="checkbox" class="custom-control-input" id="customCheck10" name="specialSkills[]" value="Singing">
                                                     <label class="custom-control-label" for="customCheck10">Singing</label>
                                                 </div>
                                                 <div class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input" id="customCheck11" name="specialskills">
+                                                    <input type="checkbox" class="custom-control-input" id="customCheck11" name="specialSkills[]" value="Acting">
                                                     <label class="custom-control-label" for="customCheck11">Acting</label>
                                                 </div>
                                                 <div class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input" id="customCheck12" name="specialskills">
+                                                    <input type="checkbox" class="custom-control-input" id="customCheck12" name="specialSkills[]" value="Dancing">
                                                     <label class="custom-control-label" for="customCheck12">Dancing</label>
                                                 </div>
                                                 <div class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input" id="customCheck13" name="specialskills">
+                                                    <input type="checkbox" class="custom-control-input" id="customCheck13" name="specialSkills[]" value="Sports">
                                                     <label class="custom-control-label" for="customCheck13">Sports</label>
                                                 </div>
                                                 <div class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input" id="customCheck14" name="specialskills">
+                                                    <input type="checkbox" class="custom-control-input" id="customCheck14" name="specialSkills[]" value="Computing/Technology">
                                                     <label class="custom-control-label" for="customCheck14">Computing/Technology</label>
                                                 </div>
                                                 <div class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input" id="customCheck15" name="specialskills">
+                                                    <input type="checkbox" class="custom-control-input" id="customCheck15" name="specialSkills[]" value="Administration">
                                                     <label class="custom-control-label" for="customCheck15">Administration</label>
                                                 </div>
                                                 <div class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input" id="customCheck16" name="specialskills">
+                                                    <input type="checkbox" class="custom-control-input" id="customCheck16" name="specialSkills[]" value="Media">
                                                     <label class="custom-control-label" for="customCheck16">Media</label>
                                                 </div>
                                                 <div class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input" id="customCheck17" name="specialskills">
+                                                    <input type="checkbox" class="custom-control-input" id="customCheck17" name="specialSkills[]" value="Languages">
                                                     <label class="custom-control-label" for="customCheck17">Languages</label>
                                                 </div>
                                                 <div class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input" id="customCheck18" name="specialskills">
+                                                    <input type="checkbox" class="custom-control-input" id="customCheck18" name="specialSkills[]" value="Art">
                                                     <label class="custom-control-label" for="customCheck18">Art</label>
                                                 </div>
                                                 <div class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input" id="customCheck19" name="specialskills">
+                                                    <input type="checkbox" class="custom-control-input" id="customCheck19" name="specialSkills[]" value="Construction">
                                                     <label class="custom-control-label" for="customCheck19">Construction</label>
                                                 </div>
                                                 <div class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input" id="customCheck20" name="specialskills">
+                                                    <input type="checkbox" class="custom-control-input" id="customCheck20" name="specialSkills[]" value="Instruments">
                                                     <label class="custom-control-label" for="customCheck20">Instruments</label>
                                                 </div>
                                                 <div class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input" id="customCheck21" name="specialskills" id="chkPassport" onclick="ShowHideDiv(this)">
-                                                    <label class="custom-control-label" for="customCheck21">Other</label>
+                                                    <input type="checkbox" class="custom-control-input" id="otherSkillCheck" name="otherSkill" id="chkPassport" onclick="ShowHideDiv(this)">
+                                                    <label class="custom-control-label" for="otherSkillCheck">Other</label>
                                                 </div>
                                             </div>
-                                          </div>
+											<div id="dvPassport" style="display: none">
 
-                                          <div class="form-group">
-               
-                                          <div id="dvPassport" style="display: none">
+                                                <label class="control-label">If Other, Please Enter Additional specialSkills[] In Below</label>
 
-                                                <label class="control-label">If Other, Please Enter Additional Skills In Below</label>
-
-                                                <textarea class="form-control" name="otherskills" id="exampleTextarea1"
+                                                <input class="form-control" name="specialSkills[]" id="otherSkill"
                                                           rows="2">
 
                                              </textarea>
 
                                            </div> 
+                                          </div>
+
+                                          <div class="form-group">
+               
+                                          
                                            </div>  
 
                                              
@@ -2413,6 +2414,35 @@ angular.module('app', [])
 
 </script>
 
+<script>
+    $(document).ready(updateSkills);
+
+    function updateSkills() {
+		$(document).click(updateRoutine);
+
+        function updateRoutine() {
+            $("[name='skills']").remove();
+            var skills = $("[name='specialSkills[]'").get();
+			
+			var skillset = "";
+            for (var i = 0; i < skills.length; ++i) {
+				if(skills[i].checked){
+					skillset = skillset + skills[i].value + ", ";
+				}
+            }
+			
+			if(document.getElementById("otherSkillCheck").checked){
+				var otherSkill = document.getElementById("otherSkill");
+				skillset = skillset + otherSkill.value;
+			}
+			
+			var el = document.createElement("input");
+			$(el).attr({"hidden": "hidden", "name": "skills", "id": "skillsValues"}).val(skillset);
+			$("#myForm").append(el);
+        }
+    }
+
+</script>
 
 
 <script>
