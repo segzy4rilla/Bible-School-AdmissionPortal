@@ -47,22 +47,22 @@ require("PHP_Files/getAdminHomeLink.php");
             <header class="top-header-area d-flex align-items-center justify-content-between">
 
                 <div class="left-side-content-area d-flex align-items-center">
-					<div class="ecaps-logo" style="width:75px">
+                    <div class="ecaps-logo" style="width:75px">
                         <?php echo "<a href='".GetAdminHomeLink()."'>";?>
-							<img class="desktop-logo" style="min-height:70px; min-width:70px; margin:0px 10px 0px 0px" src="ABTMC.png" alt="Desktop Logo">
-							<img class="small-logo" src="ABTMC.png" alt="Mobile Logo">
-						</a>
-					</div>
-					
-					<div id="google_translate_element"></div>
+                            <img class="desktop-logo" style="min-height:70px; min-width:70px; margin:0px 10px 0px 0px" src="ABTMC.png" alt="Desktop Logo">
+                            <img class="small-logo" src="ABTMC.png" alt="Mobile Logo">
+                        </a>
+                    </div>
+                    
+                    <div id="google_translate_element"></div>
 
-					<script type="text/javascript">
-					function googleTranslateElementInit() {
-					  new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
-					}
-					</script>
+                    <script type="text/javascript">
+                    function googleTranslateElementInit() {
+                      new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+                    }
+                    </script>
 
-					<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+                    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
                     <!-- Mobile Logo -->
                     <div class="mobile-logo mr-3 mr-sm-4">
@@ -72,12 +72,12 @@ require("PHP_Files/getAdminHomeLink.php");
                 </div>
 
                 <div class="right-side-navbar d-flex align-items-center justify-content-end">
-					<!-- Mobile Trigger -->
+                    <!-- Mobile Trigger -->
                     <div class="right-side-trigger" id="rightSideTrigger">
                         <i class="fa fa-reorder"></i>
                     </div>
-			
-					<!-- Three line menu button -->
+            
+                    <!-- Three line menu button -->
                     <div class="ecaps-triggers mr-1 mr-sm-3">
                         <div class="menu-collasped" id="menuCollasped">
                             <i class="zmdi zmdi-menu"></i>
@@ -93,51 +93,51 @@ require("PHP_Files/getAdminHomeLink.php");
             <div style="height:100%">
                 <div class="container-fluid" style="height:100%">
                     <div class="row" style="height:100%">
+
                         <div class="col-lg-12"  style="height:30%">
-                            <a href="summarytable.php">
-								<div class="card" style="margin-bottom:15px;height:100%">
-									<!-- Card body -->
-									<div class="card-body">
-										<div class="row">
-											<div class="col">
-												<h5 class="mb-20">Summary Table</h5>
-												<span class="text-dark mb-0"></span>
-											</div>
-											<div class="col-auto">
-												<div class="clint-icon bg-gradient-danger text-white rounded-circle icon-shape">
-													<i class="fa fa-table"></i>
-												</div>
-											</div>
+                            <a href="abmtcstatistics.php">
+                                <div class="card" style="margin-bottom:15px;height:100%">
+                                    <!-- Card body -->
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col">
+                                                <h5 class="mb-20">ABMTC Statistics</h5>
+                                                <span class="text-dark mb-0"></span>
+                                            </div>
+                                            <div class="col-auto">
+                                                <div class="clint-icon bg-gradient-danger text-white rounded-circle icon-shape">
+                                                    <i class="fa fa-table"></i>
+                                                </div>
+                                            </div>
 
-										</div>
+                                        </div>
                                     </div>
                                 </div>
                             </a>
                         </div>
-						
-						<div class="col-lg-12"  style="height:30%">
-                            <a href="admittedtable.php">
-								<div class="card" style="margin-bottom:15px;height:100%">
-									<!-- Card body -->
-									<div class="card-body">
-										<div class="row">
-											<div class="col">
-												<h5 class="mb-20">Admitted Students Table</h5>
-												<span class="text-dark mb-0"></span>
-											</div>
-											<div class="col-auto">
-												<div class="clint-icon bg-gradient-danger text-white rounded-circle icon-shape">
-													<i class="fa fa-table"></i>
-												</div>
-											</div>
 
-										</div>
+                        <div class="col-lg-12"  style="height:30%">
+                            <a href="UD_Bishops.php">
+                                <div class="card" style="margin-bottom:15px;height:100%">
+                                    <!-- Card body -->
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col">
+                                                <h5 class="mb-20">UD Bishops Statistics</h5>
+                                            </div>
+                                            <div class="col-auto">
+                                                <div class="clint-icon bg-gradient-danger text-white rounded-circle icon-shape">
+                                                    <i class="fa fa-table"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
                                     </div>
                                 </div>
                             </a>
                         </div>
-						
-						<div class="col-lg-12" style="height:30%">
+
+                        <div class="col-lg-12" style="height:30%">
                             <a href="feetable.php">
                                 <div class="card" style="margin-bottom:15px;height:100%">
                                     <!-- Card body -->
@@ -145,6 +145,116 @@ require("PHP_Files/getAdminHomeLink.php");
                                         <div class="row">
                                             <div class="col">
                                                 <h5 class="mb-20">Fee Table</h5>
+                                                <span class="text-dark mb-0"></span>
+                                            </div>
+                                            <div class="col-auto">
+                                                <div class="clint-icon bg-gradient-danger text-white rounded-circle icon-shape">
+                                                    <i class="fa fa-table"></i>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+
+                        <div class="col-lg-12"  style="height:30%">
+                            <a href="admittedtable.php">
+                                <div class="card" style="margin-bottom:15px;height:100%">
+                                    <!-- Card body -->
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col">
+                                                <h5 class="mb-20">Admitted Students Table</h5>
+                                                <span class="text-dark mb-0"></span>
+                                            </div>
+                                            <div class="col-auto">
+                                                <div class="clint-icon bg-gradient-danger text-white rounded-circle icon-shape">
+                                                    <i class="fa fa-table"></i>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+
+                        <div class="col-lg-12"  style="height:30%">
+                            <a href="summarytable.php">
+                                <div class="card" style="margin-bottom:15px;height:100%">
+                                    <!-- Card body -->
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col">
+                                                <h5 class="mb-20">Applicants Table</h5>
+                                                <span class="text-dark mb-0"></span>
+                                            </div>
+                                            <div class="col-auto">
+                                                <div class="clint-icon bg-gradient-danger text-white rounded-circle icon-shape">
+                                                    <i class="fa fa-table"></i>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+
+                        <div class="col-lg-12"  style="height:30%">
+                            <a href="schedulezoom.php">
+                                <div class="card" style="margin-bottom:15px;height:100%">
+                                    <!-- Card body -->
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col">
+                                                <h5 class="mb-20">Schedule a Zoom Interview</h5>
+                                                
+                                            </div>
+                                            <div class="col-auto">
+                                                <div class="clint-icon bg-gradient-danger text-white rounded-circle icon-shape">
+                                                    <i class="fa fa-handshake-o"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+
+                        <div class="col-lg-12" style="height:30%">
+                            <a href="medicalSummary.php">
+                                <div class="card" style="margin-bottom:15px;height:100%">
+                                    <!-- Card body -->
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col">
+                                                <h5 class="mb-20">Medical Summary Table</h5>
+                                                <span class="text-dark mb-0"></span>
+                                            </div>
+                                            <div class="col-auto">
+                                                <div class="clint-icon bg-gradient-danger text-white rounded-circle icon-shape">
+                                                    <i class="fa fa-table"></i>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+
+                        <div class="col-lg-12" style="height:30%">
+                            <a href="medicalResponses.php">
+                                <div class="card" style="margin-bottom:15px;height:100%">
+                                    <!-- Card body -->
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col">
+                                                <h5 class="mb-20">Medical Responses Table</h5>
                                                 <span class="text-dark mb-0"></span>
                                             </div>
                                             <div class="col-auto">
@@ -203,115 +313,9 @@ require("PHP_Files/getAdminHomeLink.php");
                                 </div>
                             </a>
                         </div>
-						
-						<div class="col-lg-12" style="height:30%">
-                            <a href="medicalSummary.php">
-                                <div class="card" style="margin-bottom:15px;height:100%">
-                                    <!-- Card body -->
-                                    <div class="card-body">
-                                        <div class="row">
-                                            <div class="col">
-                                                <h5 class="mb-20">Medical Summary Table</h5>
-                                                <span class="text-dark mb-0"></span>
-                                            </div>
-                                            <div class="col-auto">
-                                                <div class="clint-icon bg-gradient-danger text-white rounded-circle icon-shape">
-                                                    <i class="fa fa-table"></i>
-                                                </div>
-                                            </div>
+                        
+                        
 
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-						
-						<div class="col-lg-12" style="height:30%">
-                            <a href="medicalResponses.php">
-                                <div class="card" style="margin-bottom:15px;height:100%">
-                                    <!-- Card body -->
-                                    <div class="card-body">
-                                        <div class="row">
-                                            <div class="col">
-                                                <h5 class="mb-20">Medical Responses Table</h5>
-                                                <span class="text-dark mb-0"></span>
-                                            </div>
-                                            <div class="col-auto">
-                                                <div class="clint-icon bg-gradient-danger text-white rounded-circle icon-shape">
-                                                    <i class="fa fa-table"></i>
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-
-                        <div class="col-lg-12"  style="height:30%">
-                            <a href="UD_Bishops.php">
-								<div class="card" style="margin-bottom:15px;height:100%">
-									<!-- Card body -->
-									<div class="card-body">
-										<div class="row">
-											<div class="col">
-                                                <h5 class="mb-20">UD Bishops Statistics</h5>
-											</div>
-											<div class="col-auto">
-												<div class="clint-icon bg-gradient-danger text-white rounded-circle icon-shape">
-													<i class="fa fa-table"></i>
-												</div>
-											</div>
-										</div>
-										
-									</div>
-								</div>
-							</a>
-                        </div>
-						
-						<div class="col-lg-12"  style="height:30%">
-                            <a href="abmtcstatistics.php">
-								<div class="card" style="margin-bottom:15px;height:100%">
-									<!-- Card body -->
-									<div class="card-body">
-										<div class="row">
-											<div class="col">
-												<h5 class="mb-20">ABMTC Statistics</h5>
-												<span class="text-dark mb-0"></span>
-											</div>
-											<div class="col-auto">
-												<div class="clint-icon bg-gradient-danger text-white rounded-circle icon-shape">
-													<i class="fa fa-table"></i>
-												</div>
-											</div>
-
-										</div>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-						
-                        <div class="col-lg-12"  style="height:30%">
-                            <a href="schedulezoom.php">
-								<div class="card" style="margin-bottom:15px;height:100%">
-									<!-- Card body -->
-									<div class="card-body">
-										<div class="row">
-											<div class="col">
-                                                <h5 class="mb-20">Schedule a Zoom Interview</h5>
-												
-											</div>
-											<div class="col-auto">
-												<div class="clint-icon bg-gradient-danger text-white rounded-circle icon-shape">
-													<i class="fa fa-handshake-o"></i>
-												</div>
-											</div>
-										</div>
-										
-									</div>
-								</div>
-							</a>
-                        </div>
                     </div>
                     
 
