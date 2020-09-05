@@ -210,7 +210,7 @@ require("PHP_Files/getAdminHomeLink.php");
                                     <div class="card-body">
                                         <div class="row">
                                             <div class="col">
-                                                <h5 class="mb-20">Schedule a Zoom Interview</h5>
+                                                <h5 class="mb-20">Interview</h5>
                                                 
                                             </div>
                                             <div class="col-auto">
