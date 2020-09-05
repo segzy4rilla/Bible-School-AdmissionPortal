@@ -8,22 +8,34 @@ if ($_SESSION['loggedin'] == false || $_SESSION['isStaffAdmin'] == false) {
 require("dbconfig/config.php");
 require("PHP_Files/getAdminHomeLink.php");
 
-$query = $con->query("SELECT * FROM Applicant_Table WHERE Nationality = 'Ghanaian'");
+$query = $con->query("SELECT DISTINCT(A.User_ID) FROM Applicant_Table AS A LEFT JOIN Application_Form AS B ON A.User_ID = B.User_ID WHERE A.Nationality = 'Ghanaian' AND (A.Church_Part_Of_UD = 'Yes' OR B.Church_Part_Of_UD = 'Yes')");
 $localTotal = mysqli_num_rows($query);
 
-$query = $con->query("SELECT * FROM Applicant_Table WHERE Nationality <> 'Ghanaian'");
+$query = $con->query("SELECT DISTINCT(A.User_ID) FROM Applicant_Table AS A LEFT JOIN Application_Form AS B ON A.User_ID = B.User_ID WHERE A.Nationality <> 'Ghanaian' AND (A.Church_Part_Of_UD = 'Yes' OR B.Church_Part_Of_UD = 'Yes')");
 $internationalTotal = mysqli_num_rows($query);
 
-$query = $con->query("SELECT * FROM Applicant_Table as A JOIN ZoomInterview AS Z ON A.User_ID = Z.ID WHERE Z.Admitted = 'Admitted' AND A.Nationality = 'Ghanaian'");
+$query = $con->query("SELECT DISTINCT(A.User_ID) FROM Applicant_Table AS A LEFT JOIN Application_Form AS B ON A.User_ID = B.User_ID WHERE A.Nationality = 'Ghanaian' AND (A.Church_Part_Of_UD = 'No' OR B.Church_Part_Of_UD = 'No')");
+$localTotalNonUD = mysqli_num_rows($query);
+
+$query = $con->query("SELECT DISTINCT(A.User_ID) FROM Applicant_Table AS A LEFT JOIN Application_Form AS B ON A.User_ID = B.User_ID WHERE A.Nationality <> 'Ghanaian' AND (A.Church_Part_Of_UD = 'No' OR B.Church_Part_Of_UD = 'No')");
+$internationalTotalNonUD = mysqli_num_rows($query);
+
+$query = $con->query("SELECT DISTINCT(A.User_ID) FROM ZoomInterview AS Z LEFT JOIN Applicant_Table AS A ON A.User_ID = Z.ID LEFT JOIN Application_Form AS B ON A.User_ID = B.User_ID WHERE Z.Admitted = 'Admitted' AND A.Nationality = 'Ghanaian' AND (A.Church_Part_Of_UD = 'Yes' OR B.Church_Part_Of_UD = 'Yes')");
 $localAdmitted = mysqli_num_rows($query);
 
-$query = $con->query("SELECT * FROM Applicant_Table as A JOIN ZoomInterview AS Z ON A.User_ID = Z.ID WHERE Z.Admitted = 'Admitted' AND A.Nationality <> 'Ghanaian'");
+$query = $con->query("SELECT DISTINCT(A.User_ID) FROM ZoomInterview AS Z LEFT JOIN Applicant_Table AS A ON A.User_ID = Z.ID LEFT JOIN Application_Form AS B ON A.User_ID = B.User_ID WHERE Z.Admitted = 'Admitted' AND A.Nationality <> 'Ghanaian' AND (A.Church_Part_Of_UD = 'Yes' OR B.Church_Part_Of_UD = 'Yes')");
 $internationalAdmitted = mysqli_num_rows($query);
 
-$query = $con->query("SELECT * FROM Applicant_Table WHERE Church_Part_Of_UD = 'Yes'");
+$query = $con->query("SELECT DISTINCT(A.User_ID) FROM ZoomInterview AS Z LEFT JOIN Applicant_Table AS A ON A.User_ID = Z.ID LEFT JOIN Application_Form AS B ON A.User_ID = B.User_ID WHERE Z.Admitted = 'Admitted' AND A.Nationality = 'Ghanaian' AND (A.Church_Part_Of_UD = 'No' OR B.Church_Part_Of_UD = 'No')");
+$localAdmittedNonUD = mysqli_num_rows($query);
+
+$query = $con->query("SELECT DISTINCT(A.User_ID) FROM ZoomInterview AS Z LEFT JOIN Applicant_Table AS A ON A.User_ID = Z.ID LEFT JOIN Application_Form AS B ON A.User_ID = B.User_ID WHERE Z.Admitted = 'Admitted' AND A.Nationality <> 'Ghanaian' AND (A.Church_Part_Of_UD = 'No' OR B.Church_Part_Of_UD = 'No')");
+$internationalAdmittedNonUD = mysqli_num_rows($query);
+
+$query = $con->query("SELECT DISTINCT(A.User_ID) FROM Applicant_Table AS A LEFT JOIN Application_Form AS B ON A.User_ID = B.User_ID WHERE (A.Church_Part_Of_UD = 'Yes' OR B.Church_Part_Of_UD = 'Yes')");
 $udApplicants = mysqli_num_rows($query);
 
-$query = $con->query("SELECT * FROM Applicant_Table WHERE Church_Part_Of_UD = 'No'");
+$query = $con->query("SELECT DISTINCT(A.User_ID) FROM Applicant_Table AS A LEFT JOIN Application_Form AS B ON A.User_ID = B.User_ID WHERE (A.Church_Part_Of_UD = 'No' OR B.Church_Part_Of_UD = 'No')");
 $nonUDApplicants = mysqli_num_rows($query);
 
 $query = $con->query("SELECT * FROM Applicant_Table WHERE Application_Form_Submitted = 1");
@@ -32,11 +44,19 @@ $appCompleted = mysqli_num_rows($query);
 $query = $con->query("SELECT * FROM Applicant_Table WHERE Interview_Form_Submitted = 1");
 $intCompleted = mysqli_num_rows($query);
 
-$query = $con->query("SELECT * FROM Applicant_Table WHERE Document_Uploads_Status = 'Complete'");
+$query = $con->query("SELECT * FROM Documemt_Upload WHERE DocFilepath1 IS NOT NULL OR DocFilepath1 <> '' OR DocFilepath2 IS NOT NULL OR DocFilepath2 OR DocFilepath3 IS NOT NULL OR DocFilepath3 OR DocFilepath4 IS NOT NULL OR DocFilepath4 OR DocFilepath5 IS NOT NULL OR DocFilepath5 OR DocFilepath6 IS NOT NULL OR DocFilepath6 OR DocFilepath7 IS NOT NULL OR DocFilepath7 OR DocFilepath8 IS NOT NULL OR DocFilepath8 OR DocFilepath9 IS NOT NULL OR DocFilepath9 OR DocFilepath10 IS NOT NULL OR DocFilepath10 OR DocFilepath11 IS NOT NULL OR DocFilepath11 OR DocFilepath12 IS NOT NULL OR DocFilepath12 OR DocComment1 IS NOT NULL OR DocComment1 <> '' OR DocComment2 IS NOT NULL OR DocComment2 OR DocComment3 IS NOT NULL OR DocComment3 OR DocComment4 IS NOT NULL OR DocComment4 OR DocComment5 IS NOT NULL OR DocComment5 OR DocComment6 IS NOT NULL OR DocComment6 OR DocComment7 IS NOT NULL OR DocComment7 OR DocComment8 IS NOT NULL OR DocComment8 OR DocComment9 IS NOT NULL OR DocComment9 OR DocComment10 IS NOT NULL OR DocComment10 OR DocComment11 IS NOT NULL OR DocComment11 OR DocComment12 IS NOT NULL OR DocComment12");
 $docCompleted = mysqli_num_rows($query);
 
 $query = $con->query("SELECT * FROM ZoomInterview WHERE Date < NOW()");
 $zoomCompleted = mysqli_num_rows($query);
+
+$query = $con->query("SELECT * FROM Applicant_Table");
+$followUp = mysqli_num_rows($query);
+
+$nationSummary = $con->query("SELECT A.Nationality, Total, Admitted FROM (SELECT COUNT(Nationality) Total, Nationality FROM Applicant_Table GROUP BY Nationality) A JOIN (SELECT COUNT(Nationality) Admitted, Nationality FROM Applicant_Table AS X JOIN ZoomInterview AS Y ON X.User_ID = Y.ID WHERE Admitted = 'Admitted' GROUP BY Nationality) B ON A.Nationality = B.Nationality");
+
+$query = $con->query("SELECT DISTINCT(Nationality) FROM Applicant_Table");
+$totalNations = mysqli_num_rows($query);
 
 ?>
 <!DOCTYPE html>
@@ -272,25 +292,37 @@ $zoomCompleted = mysqli_num_rows($query);
     <br>
   <div class="pie-charts">
     <div class="pieID--micro-skills pie-chart--wrapper">
-      <h2>Total Applicants</h2>
+      <?php
+		echo "<h2>Total Applicants (".($localTotal + $localTotalNonUD + $internationalTotal + $internationalTotalNonUD).")</h2>";
+		echo "<h4>Local (".($localTotal + $localTotalNonUD).")</h4>";
+		echo "<h4>International(".($internationalTotal + $internationalTotalNonUD).")</h4>";
+	  ?>
       <div class="pie-chart">
         <div class="pie-chart__pie"></div>
-        <ul class="pie-chart__legend" style="height: 80px;">
+        <ul class="pie-chart__legend" style="height: 110px; width:300px">
 			<?php
-				echo "<li><em>Local Students</em><span>".$localTotal."</span></li>";
-				echo "<li><em>International Students</em><span>".$internationalTotal."</span></li>";
+				echo "<li><em>Local Applicants (UD)</em><span>".$localTotal."</span></li>";
+				echo "<li><em>International Applicants (UD)</em><span>".$internationalTotal."</span></li>";
+				echo "<li><em>Local Applicants (Non-UD)</em><span>".$localTotalNonUD."</span></li>";
+				echo "<li><em>International Applicants (Non-UD)</em><span>".$internationalTotalNonUD."</span></li>";
 			?>
         </ul>
       </div>
     </div>
     <div class="pieID--categories pie-chart--wrapper">
-      <h2>Admitted Students</h2>
+      <?php
+		echo "<h2>Admitted Students (".($localAdmitted + $localAdmittedNonUD + $internationalAdmitted + $internationalAdmittedNonUD).")</h2>";
+		echo "<h4>Local (".($localAdmitted + $localAdmittedNonUD).")</h4>";
+		echo "<h4>Admitted International (".($internationalAdmitted + $internationalAdmittedNonUD).")</h4>";
+	  ?>
       <div class="pie-chart">
         <div class="pie-chart__pie"></div>
-        <ul class="pie-chart__legend" style="height: 80px;">
+        <ul class="pie-chart__legend" style="height:110px; width:300px">
 			<?php
-				echo "<li><em style='font-size: 9px'>Local Applicants Admitted</em><span>".$localAdmitted."</span></li>";
-				echo "<li><em style='font-size: 9px'>International Applicants Admitted</em><span>".$internationalAdmitted."</span></li>";
+				echo "<li><em>Local Students (UD)</em><span>".$localAdmitted."</span></li>";
+				echo "<li><em>International Students (UD)</em><span>".$internationalAdmitted."</span></li>";
+				echo "<li><em>Local Students (Non-UD)</em><span>".$localAdmittedNonUD."</span></li>";
+				echo "<li><em>International Students (Non-UD)</em><span>".$internationalAdmittedNonUD."</span></li>";
 			?>
 		  <!--<li style="margin-top:25px;"><em style="font-size: 9px">Local Applicants Provisional Admission</em><span>24</span></li>-->
           <!--<li style="margin-top:25px;"><em style="font-size: 9px">International Applicants Provisional Admission</em><span>43</span></li>-->
@@ -301,7 +333,7 @@ $zoomCompleted = mysqli_num_rows($query);
       <h2>Applicant's Denominations</h2>
       <div class="pie-chart">
         <div class="pie-chart__pie"></div>
-        <ul class="pie-chart__legend">
+        <ul class="pie-chart__legend" >
 			<?php
 				echo "<li><em>Non-UD</em><span>".$nonUDApplicants."</span></li>";
 				echo "<li><em>UD</em><span>".$udApplicants."</span></li>";
@@ -346,6 +378,52 @@ $zoomCompleted = mysqli_num_rows($query);
 		echo "<td style='color: white;'>".$zoomCompleted."</td>"
 	  ?>
 	</tr>
+  </tbody>
+</table>
+</div>
+
+<div class="container table-responsive py-5"> 
+<table class="table table-bordered table-hover table-striped table-dark">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Follow Up Info</th>
+      <th scope="col">Total</th>
+      <th scope="col">Means Of Contacting</th>
+    </tr>
+  </thead>
+  <tbody>
+	<tr>
+	  <th scope="row" style="color: white;">Follow Up Effort For The Week</th>
+	  <?php
+		echo "<td style='color: white;'>".$followUp."</td>"
+	  ?>
+	  <td style='color: white;'>Email, Calls And WhatsApp</td>
+	</tr>
+  </tbody>
+</table>
+</div>
+
+<div class="container table-responsive py-5"> 
+<table class="table table-bordered table-hover table-striped table-dark">
+  <thead class="thead-dark">
+    <tr>
+	  <?php
+		echo "<th scope='col'>Nationality (".$totalNations.")</th>";
+	  ?>
+      <th scope="col">Total</th>
+      <th scope="col">Admitted</th>
+    </tr>
+  </thead>
+  <tbody>
+	<?php
+		while ($row = $nationSummary->fetch_assoc()) {
+			echo "<tr>";
+				echo "<th scope='row' style='color: white;'>".$row['Nationality']."</th>";
+				echo "<td style='color: white;'>".$row['Total']."</td>";
+				echo "<td style='color: white;'>".$row['Admitted']."</td>";
+			echo "</tr>";
+		}
+	?>
   </tbody>
 </table>
 </div>
