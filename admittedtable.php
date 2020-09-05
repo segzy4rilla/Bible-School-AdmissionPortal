@@ -11,7 +11,9 @@ require("PHP_Files/getAdminHomeLink.php");
 $query = "SELECT * FROM Applicant_Table as A
 			JOIN ZoomInterview AS Z
 			ON A.User_ID = Z.ID
-			WHERE Admitted = 'Admitted'";
+			LEFT JOIN AdmittedStudents AS X
+			ON A.User_ID = X.User_ID
+			WHERE Z.Admitted = 'Admitted'";
 $result = $con->query($query);
 
 ?>
@@ -122,6 +124,7 @@ $result = $con->query($query);
                                             <th>Applicants Form</th>
                                             <th>Interview Test</th>
                                             <th>Uploaded Documents</th>
+                                            <th>Type Of Payment</th>
 
                                         </tr>
                                         </thead>
@@ -131,6 +134,17 @@ $result = $con->query($query);
                                         <?php
                                         $count = 0;
                                         while ($row = $result->fetch_assoc()) {
+											$payment = "";
+											if($row['Nationality'] == 'ghanaian'){
+												$payment = $row['Loc_PaymentType'];
+											}
+											else{
+												$payment = $row['Int_PaymentType'];
+											}
+											if($payment == "" || $payment == "--Select Payment Type--"){
+												$payment = "None";
+											}
+											
                                             echo "<tr>";
                                             echo "<td>" . ++$count . "</td>";
                                             echo "<td>" . $row['First_Name'] . " " . $row['Last_Name'] . "</td>";
@@ -162,6 +176,7 @@ $result = $con->query($query);
 													echo $row['Document_Uploads_Status'];
 												echo "</a>";
 											echo "</td>";
+											echo "<td>" .$payment. "</td>";
                                             echo "</tr>";
                                         }
 
