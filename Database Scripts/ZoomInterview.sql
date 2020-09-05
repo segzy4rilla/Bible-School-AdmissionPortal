@@ -27,6 +27,7 @@ CREATE TABLE ZoomInterview(
 	`Time` TIME NULL,
 	Link VARCHAR(400) NULL,
 	Comments VARCHAR(500) NULL,
+	PastorsComments VARCHAR(500) NULL,
 	Admitted VARCHAR(15) NULL
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 

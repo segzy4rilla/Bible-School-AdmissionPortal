@@ -9,7 +9,7 @@ require("dbconfig/config.php");
 require("PHP_Files/getAdminHomeLink.php");
 
 $query = "
-    SELECT A.User_ID, A.First_Name, A.Last_Name, A.Nationality, A.Church_Part_Of_UD, A.EmailWhatsapp, B.Date, B.Time, B.Link, B.Comments, B.Admitted
+    SELECT A.User_ID, A.First_Name, A.Last_Name, A.Nationality, A.Church_Part_Of_UD, A.EmailWhatsapp, B.Date, B.Time, B.Link, B.Comments, B.PastorsComments, B.Admitted
     FROM Applicant_Table AS A 
     LEFT JOIN ZoomInterview AS B
     ON A.User_ID = B.ID
@@ -149,6 +149,7 @@ $result = $con->query($query);
                                             <th>Time (Ghana Time)</th>
                                             <th>Zoom Link</th>
                                             <th>Comments</th>
+                                            <th>Pastor's Comments</th>
                                             <th>Admitted</th>
                                             <th>Select Student</th>
                                         </tr>
@@ -168,6 +169,7 @@ $result = $con->query($query);
                                             echo "<td>" . $row['Time'] . "</td>";
                                             echo "<td>" . $row['Link'] . "</td>";
                                             echo "<td>" . $row['Comments'] . "</td>";
+                                            echo "<td>" . $row['PastorsComments'] . "</td>";
                                             echo "<td>" . $row['Admitted'] . "</td>";
                                             echo "<td name='selected'><input type='checkbox'/></td>";
                                             echo "</tr>";
@@ -187,6 +189,12 @@ $result = $con->query($query);
                                     <button class="btn btn-primary md-trigger mr-2 mb-2" data-modal="modal-14"
                                             width="10em"
 											onclick="$('#resModal').addClass('md-show')">Make Response
+                                    </button>
+                                </div>
+								<div style="padding-right: 15px">
+                                    <button class="btn btn-primary md-trigger mr-2 mb-2" data-modal="modal-14"
+                                            width="10em"
+											onclick="$('#pastorsModal').addClass('md-show')">Add Pastors Comments
                                     </button>
                                 </div>
                                 <div class="md-modal md-effect-13" id="modal-13">
@@ -229,7 +237,7 @@ $result = $con->query($query);
                                                 <label>Comments</label>
                                             </div>
                                             <div style="margin-bottom: 5px">
-                                                <input type="text" name="comments" width="200px"/>
+                                                <input type="text" name="comments" width="400px"/>
                                             </div>
                                             <div>
                                                 <label>Response</label>
@@ -245,6 +253,25 @@ $result = $con->query($query);
                                                 <button type="submit" class="btn btn-primary">Submit</button>
                                             </div>
 											<span onclick="$('#resModal').removeClass('md-show')" >close</span>
+                                        </form>
+                                    </div>
+                                </div>
+								
+								<div class="md-modal md-effect-13" id="pastorsModal">
+                                    <div class="md-content">
+                                        <h3 class="bg-info">Add Info From Discussion With Pastor</h3>
+                                        <form id="pastorsForm" action="PHP_Files/pastorsComments.php"
+                                              method="Post">
+                                            <div>
+                                                <label>Pastor's Comments</label>
+                                            </div>
+                                            <div style="margin-bottom: 5px">
+                                                <input type="text" name="pastorsComments" width="400px"/>
+                                            </div>
+                                            <div style="margin-bottom: 5px">
+                                                <button type="submit" class="btn btn-primary">Submit</button>
+                                            </div>
+											<span onclick="$('#pastorsModal').removeClass('md-show')" >close</span>
                                         </form>
                                     </div>
                                 </div>
@@ -4868,10 +4895,13 @@ $result = $con->query($query);
             for (var i = 0; i < applicantIDs.length; ++i) {
 				var el = document.createElement("input");
 				var el2 = document.createElement("input");
+				var el3 = document.createElement("input");
                 $(el).attr({"hidden": "hidden", "name": "applicantID[]"}).val(applicantIDs[i]);
                 $(el2).attr({"hidden": "hidden", "name": "applicantID[]"}).val(applicantIDs[i]);
+                $(el3).attr({"hidden": "hidden", "name": "applicantID[]"}).val(applicantIDs[i]);
 				$("#scheduleMeetingForm").append(el);
 				$("#responseForm").append(el2);
+				$("#pastorsForm").append(el3);
             }
         }
     }

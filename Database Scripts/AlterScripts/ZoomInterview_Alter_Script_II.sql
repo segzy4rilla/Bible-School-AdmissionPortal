@@ -1,0 +1,2 @@
+ALTER TABLE ZoomInterview
+ADD COLUMN PastorsComments VARCHAR(500) NULL;
