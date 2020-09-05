@@ -58,6 +58,35 @@ $nationSummary = $con->query("SELECT A.Nationality, Total, Admitted FROM (SELECT
 $query = $con->query("SELECT DISTINCT(Nationality) FROM Applicant_Table");
 $totalNations = mysqli_num_rows($query);
 
+$query = $con->query("SELECT * FROM AdmittedStudents AS A 
+JOIN Applicant_Table AS B
+ON A.User_ID = B.User_ID
+WHERE A.Loc_PaymentType = 'Fully Paid'
+AND B.Nationality = 'ghanaian';");
+$fullyPaidLocal = mysqli_num_rows($query);
+
+$query = $con->query("SELECT * FROM AdmittedStudents AS A 
+JOIN Applicant_Table AS B
+ON A.User_ID = B.User_ID
+WHERE A.Int_PaymentType = 'Fully Paid'
+AND B.Nationality <> 'ghanaian';");
+$fullyPaidInternational = mysqli_num_rows($query);
+
+$query = $con->query("SELECT * FROM AdmittedStudents AS A 
+JOIN Applicant_Table AS B
+ON A.User_ID = B.User_ID
+WHERE A.Loc_PaymentType = 'Part Payment'
+AND B.Nationality = 'ghanaian';");
+$partPaidLocal = mysqli_num_rows($query);
+
+$query = $con->query("SELECT * FROM AdmittedStudents AS A 
+JOIN Applicant_Table AS B
+ON A.User_ID = B.User_ID
+WHERE A.Int_PaymentType = 'Part Payment'
+AND B.Nationality <> 'ghanaian';");
+$partPaidInternational = mysqli_num_rows($query);
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en" >
@@ -326,6 +355,24 @@ $totalNations = mysqli_num_rows($query);
 			?>
 		  <!--<li style="margin-top:25px;"><em style="font-size: 9px">Local Applicants Provisional Admission</em><span>24</span></li>-->
           <!--<li style="margin-top:25px;"><em style="font-size: 9px">International Applicants Provisional Admission</em><span>43</span></li>-->
+        </ul>
+      </div>
+    </div>
+	<div class="pieA pie-chart--wrapper">
+      <?php
+		echo "<h2>Total Payments (".($fullyPaidLocal + $fullyPaidInternational + $partPaidLocal + $partPaidInternational).")</h2>";
+		echo "<h4>Fully Paid (".($fullyPaidLocal + $fullyPaidInternational).")</h4>";
+		echo "<h4>Partially Paid(".($partPaidLocal + $partPaidInternational).")</h4>";
+	  ?>
+      <div class="pie-chart">
+        <div class="pie-chart__pie"></div>
+        <ul class="pie-chart__legend" style="height: 110px; width:300px">
+			<?php
+				echo "<li><em>Fully Paid Local</em><span>".$fullyPaidLocal."</span></li>";
+				echo "<li><em>Fully Paid International</em><span>".$fullyPaidInternational."</span></li>";
+				echo "<li><em>Partially Paid Local</em><span>".$partPaidLocal."</span></li>";
+				echo "<li><em>Partially Paid International</em><span>".$partPaidInternational."</span></li>";
+			?>
         </ul>
       </div>
     </div>
