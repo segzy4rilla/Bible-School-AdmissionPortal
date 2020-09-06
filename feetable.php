@@ -31,7 +31,7 @@ $result = $con->query($query);
     <!-- These plugins only need for the run this page -->
     <link rel="stylesheet" href="css/default-assets/smartwizard.css">
 
-        <link rel="stylesheet" href="css/default-assets/datatables.bootstrap4.css">
+    <link rel="stylesheet" href="css/default-assets/datatables.bootstrap4.css">
     <link rel="stylesheet" href="css/default-assets/responsive.bootstrap4.css">
     <link rel="stylesheet" href="css/default-assets/buttons.bootstrap4.css">
     <link rel="stylesheet" href="css/default-assets/select.bootstrap4.css">
@@ -40,16 +40,15 @@ $result = $con->query($query);
     <link rel="stylesheet" href="style.css">
 
     <style type="text/css">
-      @import url("https://fonts.googleapis.com/css?family=Roboto:300i,400,400i,500,700,900");
+        @import url("https://fonts.googleapis.com/css?family=Roboto:300i,400,400i,500,700,900");
     </style>
 
 
-
     <style type="text/css">
-    .hide {
-  display: none;
-}
-</style>
+        .hide {
+            display: none;
+        }
+    </style>
 </head>
 
 <body>
@@ -116,78 +115,77 @@ $result = $con->query($query);
         <!-- Main Content Area -->
         <div class="main-content">
             <div class="container-fluid">
-                 <div class="row">
-                            <div class="col-12 box-margin">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h4 class="card-title mb-2">Administration Fee Payments</h4>
-                                        <p class="text-muted font-14 mb-4">
-                                            
-                                        </p>
+                <div class="row">
+                    <div class="col-12 box-margin">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title mb-2">Administration Fee Payments</h4>
+                                <p class="text-muted font-14 mb-4">
 
-                                        <table id="basic-datatable" class="table dt-responsive nowrap w-100">
-                                            <thead>
-                                                <tr>
-                                                    <th style="font-size: 10px;">Name</th>
-                                                    <th style="font-size: 10px;">Nationality</th>
-                                                    <th style="font-size: 10px;">Denomination</th>
-                                                    <th style="font-size: 10px;">Proof Of Payment</th>
-                                                    <th style="font-size: 10px;">Date Of Full Payment</th>
-                                                    <th style="font-size: 10px;">Vouch Letter</th>
-                                                    <th style="font-size: 10px;">Fully Paid, Part Payment</th>
-                                                    <th style="font-size: 10px;">Amount Paid</th>
-                                                </tr>
-                                            </thead>
+                                </p>
+
+                                <table id="basic-datatable" class="table dt-responsive nowrap w-100">
+                                    <thead>
+                                    <tr>
+                                        <th style="font-size: 10px;">Name</th>
+                                        <th style="font-size: 10px;">Nationality</th>
+                                        <th style="font-size: 10px;">Denomination</th>
+                                        <th style="font-size: 10px;">Proof Of Payment</th>
+                                        <th style="font-size: 10px;">Date Of Full Payment</th>
+                                        <th style="font-size: 10px;">Vouch Letter</th>
+                                        <th style="font-size: 10px;">Fully Paid, Part Payment</th>
+                                        <th style="font-size: 10px;">Amount Paid</th>
+                                    </tr>
+                                    </thead>
 
 
-                                            <tbody>
-												<?php
-												  while ($row = $result->fetch_assoc()) {
-													echo "<tr>";
-													echo "<td>".$row['First_Name']." ".$row['Last_Name']."</td>";
-													echo "<td>".$row['Nationality']."</td>";
-													echo "<td>".$row['Reg_Denomination']."</td>";
-													if($row['Nationality'] == "ghanaian"){
-													  $x = "Incomplete";
-													  $y = "Incomplete";
-													  if($row['Loc_AdminFeeProofFilepath']){
-														$x = "Complete";
-													  }
-													  if($row['Loc_ConfirmationLetterFilepath']){
-														$y = "Complete";
-													  }
-													  echo "<td><a href='".$row['Loc_AdminFeeProofFilepath']."'>".$x."</a></td>";
-													  echo "<td>".$row['Loc_AdminFeePaymentDate']."</td>";
-													  echo "<td><a href='".$row['Loc_ConfirmationLetterFilepath']."'>".$y."</a></td>";
-													  echo "<td>".$row['Loc_PaymentType']."</td>";
-													  echo "<td>".$row['Loc_AmountPaid']."</td>";
-													}
-													else{
-													  $x = "Incomplete";
-													  $y = "Incomplete";
-													  if($row['Int_AdminFeeProofFilepath']){
-														$x = "Complete";
-													  }
-													  if($row['Int_ConfirmationLetterFilepath']){
-														$y = "Complete";
-													  }
-													  echo "<td><a href='".$row['Int_AdminFeeProofFilepath']."'>".$x."</a></td>";
-													  echo "<td>".$row['Int_AdminFeePaymentDate']."</td>";
-													  echo "<td><a href='".$row['Int_ConfirmationLetterFilepath']."'>".$y."</a></td>";
-													  echo "<td>".$row['Int_PaymentType']."</td>";
-													  echo "<td>".$row['Int_AmountPaid']."</td>";
-													}
-													echo "</tr>";
-												  }
-												?>
-                                            </tbody>
-                                        </table>
+                                    <tbody>
+                                    <?php
+                                    while ($row = $result->fetch_assoc()) {
+                                        echo "<tr>";
+                                        echo "<td>" . $row['First_Name'] . " " . $row['Last_Name'] . "</td>";
+                                        echo "<td>" . $row['Nationality'] . "</td>";
+                                        echo "<td>" . $row['Reg_Denomination'] . "</td>";
+                                        if ($row['Nationality'] == "ghanaian") {
+                                            $x = "Incomplete";
+                                            $y = "Incomplete";
+                                            if ($row['Loc_AdminFeeProofFilepath']) {
+                                                $x = "Complete";
+                                            }
+                                            if ($row['Loc_ConfirmationLetterFilepath']) {
+                                                $y = "Complete";
+                                            }
+                                            echo "<td><a href='" . $row['Loc_AdminFeeProofFilepath'] . "'>" . $x . "</a></td>";
+                                            echo "<td>" . $row['Loc_AdminFeePaymentDate'] . "</td>";
+                                            echo "<td><a href='" . $row['Loc_ConfirmationLetterFilepath'] . "'>" . $y . "</a></td>";
+                                            echo "<td>" . $row['Loc_PaymentType'] . "</td>";
+                                            echo "<td>" . $row['Loc_AmountPaid'] . "</td>";
+                                        } else {
+                                            $x = "Incomplete";
+                                            $y = "Incomplete";
+                                            if ($row['Int_AdminFeeProofFilepath']) {
+                                                $x = "Complete";
+                                            }
+                                            if ($row['Int_ConfirmationLetterFilepath']) {
+                                                $y = "Complete";
+                                            }
+                                            echo "<td><a href='" . $row['Int_AdminFeeProofFilepath'] . "'>" . $x . "</a></td>";
+                                            echo "<td>" . $row['Int_AdminFeePaymentDate'] . "</td>";
+                                            echo "<td><a href='" . $row['Int_ConfirmationLetterFilepath'] . "'>" . $y . "</a></td>";
+                                            echo "<td>" . $row['Int_PaymentType'] . "</td>";
+                                            echo "<td>" . $row['Int_AmountPaid'] . "</td>";
+                                        }
+                                        echo "</tr>";
+                                    }
+                                    ?>
+                                    </tbody>
+                                </table>
 
-                                    </div> <!-- end card body-->
-                                </div> <!-- end card -->
-                            </div><!-- end col-->
-                        </div>
-                        <!-- end row-->
+                            </div> <!-- end card body-->
+                        </div> <!-- end card -->
+                    </div><!-- end col-->
+                </div>
+                <!-- end row-->
 
 
             </div>
@@ -238,20 +236,19 @@ $result = $con->query($query);
 <script src="js/default-assets/file-upload.js"></script>
 
 
-
-    <!-- These plugins only need for the run this page -->
-    <script src="js/default-assets/jquery.datatables.min.js"></script>
-    <script src="js/default-assets/datatables.bootstrap4.js"></script>
-    <script src="js/default-assets/datatable-responsive.min.js"></script>
-    <script src="js/default-assets/responsive.bootstrap4.min.js"></script>
-    <script src="js/default-assets/datatable-button.min.js"></script>
-    <script src="js/default-assets/button.bootstrap4.min.js"></script>
-    <script src="js/default-assets/button.html5.min.js"></script>
-    <script src="js/default-assets/button.flash.min.js"></script>
-    <script src="js/default-assets/button.print.min.js"></script>
-    <script src="js/default-assets/datatables.keytable.min.js"></script>
-    <script src="js/default-assets/datatables.select.min.js"></script>
-    <script src="js/default-assets/demo.datatable-init.js"></script>
+<!-- These plugins only need for the run this page -->
+<script src="js/default-assets/jquery.datatables.min.js"></script>
+<script src="js/default-assets/datatables.bootstrap4.js"></script>
+<script src="js/default-assets/datatable-responsive.min.js"></script>
+<script src="js/default-assets/responsive.bootstrap4.min.js"></script>
+<script src="js/default-assets/datatable-button.min.js"></script>
+<script src="js/default-assets/button.bootstrap4.min.js"></script>
+<script src="js/default-assets/button.html5.min.js"></script>
+<script src="js/default-assets/button.flash.min.js"></script>
+<script src="js/default-assets/button.print.min.js"></script>
+<script src="js/default-assets/datatables.keytable.min.js"></script>
+<script src="js/default-assets/datatables.select.min.js"></script>
+<script src="js/default-assets/demo.datatable-init.js"></script>
 
 
 <script src='https://rawgit.com/guillaumepotier/Parsley.js/2.2.0-rc4/dist/parsley.js'></script>

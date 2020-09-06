@@ -116,8 +116,8 @@ require("PHP_Files/getAdminHomeLink.php");
                                 </div>
                             </a>
                         </div>
-						
-						<div class="col-lg-12" style="height:30%">
+
+                        <div class="col-lg-12" style="height:30%">
                             <a href="feetable.php">
                                 <div class="card" style="margin-bottom:15px;height:100%">
                                     <!-- Card body -->
