@@ -313,8 +313,29 @@ require("PHP_Files/getAdminHomeLink.php");
                                 </div>
                             </a>
                         </div>
-                        
-                        
+
+                        <div class="col-lg-12" style="height:30%">
+                            <a href="nations_summarytable.php">
+                                <div class="card" style="margin-bottom:15px;height:100%">
+                                    <!-- Card body -->
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col">
+                                                <h5 class="mb-20">190 Nations Summary Table</h5>
+                                                <span class="text-dark mb-0"></span>
+                                            </div>
+                                            <div class="col-auto">
+                                                <div class="clint-icon bg-gradient-danger text-white rounded-circle icon-shape">
+                                                    <i class="fa fa-table"></i>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+
 
                     </div>
                     
