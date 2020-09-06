@@ -292,37 +292,37 @@ $totalNations = mysqli_num_rows($query);
     <br>
   <div class="pie-charts">
     <div class="pieID--micro-skills pie-chart--wrapper">
-      <?php
-		echo "<h2>Total Applicants (".($localTotal + $localTotalNonUD + $internationalTotal + $internationalTotalNonUD).")</h2>";
-		echo "<h4>Local (".($localTotal + $localTotalNonUD).")</h4>";
-		echo "<h4>International(".($internationalTotal + $internationalTotalNonUD).")</h4>";
-	  ?>
+        <?php
+        echo "<h2>Total Applicants (" . ($localTotal + $localTotalNonUD + $internationalTotal + $internationalTotalNonUD) . ")</h2>";
+        echo "<h4>Local (" . ($localTotal + $localTotalNonUD) . ")</h4>";
+        echo "<h4>International(" . ($internationalTotal + $internationalTotalNonUD) . ")</h4>";
+        ?>
       <div class="pie-chart">
         <div class="pie-chart__pie"></div>
-        <ul class="pie-chart__legend" style="height: 110px; width:300px">
+          <ul class="pie-chart__legend" style="height: 110px; width:300px">
 			<?php
-				echo "<li><em>Local Applicants (UD)</em><span>".$localTotal."</span></li>";
-				echo "<li><em>International Applicants (UD)</em><span>".$internationalTotal."</span></li>";
-				echo "<li><em>Local Applicants (Non-UD)</em><span>".$localTotalNonUD."</span></li>";
-				echo "<li><em>International Applicants (Non-UD)</em><span>".$internationalTotalNonUD."</span></li>";
+            echo "<li><em>Local Applicants (UD)</em><span>" . $localTotal . "</span></li>";
+            echo "<li><em>International Applicants (UD)</em><span>" . $internationalTotal . "</span></li>";
+            echo "<li><em>Local Applicants (Non-UD)</em><span>" . $localTotalNonUD . "</span></li>";
+            echo "<li><em>International Applicants (Non-UD)</em><span>" . $internationalTotalNonUD . "</span></li>";
 			?>
         </ul>
       </div>
     </div>
     <div class="pieID--categories pie-chart--wrapper">
-      <?php
-		echo "<h2>Admitted Students (".($localAdmitted + $localAdmittedNonUD + $internationalAdmitted + $internationalAdmittedNonUD).")</h2>";
-		echo "<h4>Local (".($localAdmitted + $localAdmittedNonUD).")</h4>";
-		echo "<h4>Admitted International (".($internationalAdmitted + $internationalAdmittedNonUD).")</h4>";
-	  ?>
+        <?php
+        echo "<h2>Admitted Students (" . ($localAdmitted + $localAdmittedNonUD + $internationalAdmitted + $internationalAdmittedNonUD) . ")</h2>";
+        echo "<h4>Local (" . ($localAdmitted + $localAdmittedNonUD) . ")</h4>";
+        echo "<h4>Admitted International (" . ($internationalAdmitted + $internationalAdmittedNonUD) . ")</h4>";
+        ?>
       <div class="pie-chart">
         <div class="pie-chart__pie"></div>
-        <ul class="pie-chart__legend" style="height:110px; width:300px">
+          <ul class="pie-chart__legend" style="height:110px; width:300px">
 			<?php
-				echo "<li><em>Local Students (UD)</em><span>".$localAdmitted."</span></li>";
-				echo "<li><em>International Students (UD)</em><span>".$internationalAdmitted."</span></li>";
-				echo "<li><em>Local Students (Non-UD)</em><span>".$localAdmittedNonUD."</span></li>";
-				echo "<li><em>International Students (Non-UD)</em><span>".$internationalAdmittedNonUD."</span></li>";
+            echo "<li><em>Local Students (UD)</em><span>" . $localAdmitted . "</span></li>";
+            echo "<li><em>International Students (UD)</em><span>" . $internationalAdmitted . "</span></li>";
+            echo "<li><em>Local Students (Non-UD)</em><span>" . $localAdmittedNonUD . "</span></li>";
+            echo "<li><em>International Students (Non-UD)</em><span>" . $internationalAdmittedNonUD . "</span></li>";
 			?>
 		  <!--<li style="margin-top:25px;"><em style="font-size: 9px">Local Applicants Provisional Admission</em><span>24</span></li>-->
           <!--<li style="margin-top:25px;"><em style="font-size: 9px">International Applicants Provisional Admission</em><span>43</span></li>-->
@@ -333,7 +333,7 @@ $totalNations = mysqli_num_rows($query);
       <h2>Applicant's Denominations</h2>
       <div class="pie-chart">
         <div class="pie-chart__pie"></div>
-        <ul class="pie-chart__legend" >
+          <ul class="pie-chart__legend">
 			<?php
 				echo "<li><em>Non-UD</em><span>".$nonUDApplicants."</span></li>";
 				echo "<li><em>UD</em><span>".$udApplicants."</span></li>";
@@ -382,51 +382,51 @@ $totalNations = mysqli_num_rows($query);
 </table>
 </div>
 
-<div class="container table-responsive py-5"> 
-<table class="table table-bordered table-hover table-striped table-dark">
-  <thead class="thead-dark">
-    <tr>
-      <th scope="col">Follow Up Info</th>
-      <th scope="col">Total</th>
-      <th scope="col">Means Of Contacting</th>
-    </tr>
-  </thead>
-  <tbody>
-	<tr>
-	  <th scope="row" style="color: white;">Follow Up Effort For The Week</th>
-	  <?php
-		echo "<td style='color: white;'>".$followUp."</td>"
-	  ?>
-	  <td style='color: white;'>Email, Calls And WhatsApp</td>
-	</tr>
-  </tbody>
-</table>
-</div>
+    <div class="container table-responsive py-5">
+        <table class="table table-bordered table-hover table-striped table-dark">
+            <thead class="thead-dark">
+            <tr>
+                <th scope="col">Follow Up Info</th>
+                <th scope="col">Total</th>
+                <th scope="col">Means Of Contacting</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <th scope="row" style="color: white;">Follow Up Effort For The Week</th>
+                <?php
+                echo "<td style='color: white;'>" . $followUp . "</td>"
+                ?>
+                <td style='color: white;'>Email, Calls And WhatsApp</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
 
-<div class="container table-responsive py-5"> 
-<table class="table table-bordered table-hover table-striped table-dark">
-  <thead class="thead-dark">
-    <tr>
-	  <?php
-		echo "<th scope='col'>Nationality (".$totalNations.")</th>";
-	  ?>
-      <th scope="col">Total</th>
-      <th scope="col">Admitted</th>
-    </tr>
-  </thead>
-  <tbody>
-	<?php
-		while ($row = $nationSummary->fetch_assoc()) {
-			echo "<tr>";
-				echo "<th scope='row' style='color: white;'>".$row['Nationality']."</th>";
-				echo "<td style='color: white;'>".$row['Total']."</td>";
-				echo "<td style='color: white;'>".$row['Admitted']."</td>";
-			echo "</tr>";
-		}
-	?>
-  </tbody>
-</table>
-</div>
+    <div class="container table-responsive py-5">
+        <table class="table table-bordered table-hover table-striped table-dark">
+            <thead class="thead-dark">
+            <tr>
+                <?php
+                echo "<th scope='col'>Nationality (" . $totalNations . ")</th>";
+                ?>
+                <th scope="col">Total</th>
+                <th scope="col">Admitted</th>
+            </tr>
+            </thead>
+            <tbody>
+            <?php
+            while ($row = $nationSummary->fetch_assoc()) {
+                echo "<tr>";
+                echo "<th scope='row' style='color: white;'>" . $row['Nationality'] . "</th>";
+                echo "<td style='color: white;'>" . $row['Total'] . "</td>";
+                echo "<td style='color: white;'>" . $row['Admitted'] . "</td>";
+                echo "</tr>";
+            }
+            ?>
+            </tbody>
+        </table>
+    </div>
 
 <br>
 <br>

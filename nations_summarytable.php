@@ -1,6 +1,221 @@
 <?php
 session_start();
+$nations_inschool = ["Angolan",
+    "Beninese",
+    "Motswana",
+    "Ivorian",
+    "Congolese",
+    "Ghanaian",
+    "Haitian",
+    "Kenyan",
+    "Liberian",
+    "Malagasy",
+    "Malawian",
+    "Malian",
+    "Namibian",
+    "Nigerien",
+    "Papua New Guinean",
+    "Sierra Leonean",
+    "South African",
+    "Tanzanian",
+    "Ugandan",
+    "British",
+    "Zambian"];
 
+$admitted_nations = [];
+
+$nations = ["Afghan",
+    "Albanian",
+    "Algerian",
+    "American",
+    "Andorran",
+    "Angolan",
+    "Antiguans",
+    "Argentinean",
+    "Armenian",
+    "Australian",
+    "Austrian",
+    "Azerbaijani",
+    "Bahamian",
+    "Bahraini",
+    "Bangladeshi",
+    "Barbadian",
+    "Barbudans",
+    "Batswana",
+    "Belarusian",
+    "Belgian",
+    "Belizean",
+    "Beninese",
+    "Bhutanese",
+    "Bolivian",
+    "Bosnian",
+    "Brazilian",
+    "British",
+    "Bruneian",
+    "Bulgarian",
+    "Burkinabe",
+    "Burmese",
+    "Burundian",
+    "Cambodian",
+    "Cameroonian",
+    "Canadian",
+    "Cape Verdean",
+    "Central African",
+    "Chadian",
+    "Chilean",
+    "Chinese",
+    "Colombian",
+    "Comoran",
+    "Congolese",
+    "Costa Rican",
+    "Croatian",
+    "Cuban",
+    "Cypriot",
+    "Czech",
+    "Danish",
+    "Djibouti",
+    "Dominican",
+    "Dutch",
+    "East Timorese",
+    "Ecuadorean",
+    "Egyptian",
+    "Emirian",
+    "Equatorial Guinean",
+    "Eritrean",
+    "Estonian",
+    "Ethiopian",
+    "Fijian",
+    "Filipino",
+    "Finnish",
+    "French",
+    "Gabonese",
+    "Gambian",
+    "Georgian",
+    "German",
+    "Ghanaian",
+    "Greek",
+    "Grenadian",
+    "Guatemalan",
+    "Guinea-Bissauan",
+    "Guinean",
+    "Guyanese",
+    "Haitian",
+    "Herzegovinian",
+    "Honduran",
+    "Hungarian",
+    "Icelander",
+    "Indian",
+    "Indonesian",
+    "Iranian",
+    "Iraqi",
+    "Irish",
+    "Israeli",
+    "Italian",
+    "Ivorian",
+    "Jamaican",
+    "Japanese",
+    "Jordanian",
+    "Kazakhstani",
+    "Kenyan",
+    "Kittian and Nevisian",
+    "Kuwaiti",
+    "Kyrgyz",
+    "Laotian",
+    "Latvian",
+    "Lebanese",
+    "Liberian",
+    "Libyan",
+    "Liechtensteiner",
+    "Lithuanian",
+    "Luxembourger",
+    "Macedonian",
+    "Malagasy",
+    "Malawian",
+    "Malaysian",
+    "Maldivan",
+    "Malian",
+    "Maltese",
+    "Marshallese",
+    "Mauritanian",
+    "Mauritian",
+    "Mexican",
+    "Micronesian",
+    "Moldovan",
+    "Monacan",
+    "Mongolian",
+    "Moroccan",
+    "Mosotho",
+    "Motswana",
+    "Mozambican",
+    "Namibian",
+    "Nauruan",
+    "Nepalese",
+    "New Zealander",
+    "Ni-Vanuatu",
+    "Nicaraguan",
+    "Nigerien",
+    "North Korean",
+    "Northern Irish",
+    "Norwegian",
+    "Omani",
+    "Pakistani",
+    "Palauan",
+    "Panamanian",
+    "Papua New Guinean",
+    "Paraguayan",
+    "Peruvian",
+    "Polish",
+    "Portuguese",
+    "Qatari",
+    "Romanian",
+    "Russian",
+    "Rwandan",
+    "Saint Lucian",
+    "Salvadoran",
+    "Samoan",
+    "San Marinese",
+    "Sao Tomean",
+    "Saudi",
+    "Scottish",
+    "Senegalese",
+    "Serbian",
+    "Seychellois",
+    "Sierra Leonean",
+    "Singaporean",
+    "Slovakian",
+    "Slovenian",
+    "Solomon Islander",
+    "Somali",
+    "South African",
+    "South Korean",
+    "Spanish",
+    "Sri Lankan",
+    "Sudanese",
+    "Surinamer",
+    "Swazi",
+    "Swedish",
+    "Swiss",
+    "Syrian",
+    "Taiwanese",
+    "Tajik",
+    "Tanzanian",
+    "Thai",
+    "Togolese",
+    "Tongan",
+    "Trinidadian or Tobagonian",
+    "Tunisian",
+    "Turkish",
+    "Tuvaluan",
+    "Ugandan",
+    "Ukrainian",
+    "Uruguayan",
+    "Uzbekistani",
+    "Venezuelan",
+    "Vietnamese",
+    "Welsh",
+    "Yemenite",
+    "Zambian",
+    "Zimbabwean"];
 if ($_SESSION['loggedin'] == false || $_SESSION['isStaffAdmin'] == false) {
     header('Location: loginabmtc.html');
 }
@@ -11,6 +226,11 @@ require("PHP_Files/getAdminHomeLink.php");
 $query = "select * from Applicant_Table";
 $result = $con->query($query);
 
+$nationSummary = $con->query("SELECT A.Nationality, Total, Admitted FROM (SELECT COUNT(Nationality) Total, Nationality FROM Applicant_Table GROUP BY Nationality) A JOIN (SELECT COUNT(Nationality) Admitted, Nationality FROM Applicant_Table AS X JOIN ZoomInterview AS Y ON X.User_ID = Y.ID WHERE Admitted = 'Admitted' GROUP BY Nationality) B ON A.Nationality = B.Nationality");
+
+while ($row = $nationSummary->fetch_assoc()) {
+    array_push($admitted_nations, $row['Nationality']);
+}
 ?>
 <!doctype html>
 <html lang="en">
@@ -23,7 +243,7 @@ $result = $con->query($query);
     <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
     <!-- Title -->
-    <title>ABMTC Summary Table</title>
+    <title>ABMTC 190 Nations Summary Table</title>
 
     <!-- Favicon -->
     <link rel="icon" href="ABTMC.png" s-resize>
@@ -50,156 +270,131 @@ $result = $con->query($query);
 ******* Page Wrapper Area Start **********
 ======================================= -->
 
-    <!-- Page Content -->
-    <div class="ecaps-page-content">
-        <!-- Top Header Area -->
-        <header class="top-header-area d-flex align-items-center justify-content-between">
+<!-- Page Content -->
+<div class="ecaps-page-content">
+    <!-- Top Header Area -->
+    <header class="top-header-area d-flex align-items-center justify-content-between">
 
-            <div class="left-side-content-area d-flex align-items-center">
-                <div class="ecaps-logo" style="width:75px">
-                    <?php echo "<a href='".GetAdminHomeLink()."'>";?>
-                        <img class="desktop-logo" style="min-height:70px; min-width:70px; margin:0px" src="ABTMC.png"
-                             alt="Desktop Logo">
-                        <img class="small-logo" src="ABTMC.png" alt="Mobile Logo">
-                    </a>
-                </div>
-
-                <div id="google_translate_element"></div>
-
-                <script type="text/javascript">
-                    function googleTranslateElementInit() {
-                        new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
-                    }
-                </script>
-
-                <script type="text/javascript"
-                        src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-
-                <!-- Mobile Logo -->
-                <div class="mobile-logo mr-3 mr-sm-4">
-                    <?php echo "<a href='".GetAdminHomeLink()."'><img src='ABTMC.png' alt='Mobile Logo'></a>";?>
-                </div>
-
+        <div class="left-side-content-area d-flex align-items-center">
+            <div class="ecaps-logo" style="width:75px">
+                <?php echo "<a href='" . GetAdminHomeLink() . "'>"; ?>
+                <img class="desktop-logo" style="min-height:70px; min-width:70px; margin:0px" src="ABTMC.png"
+                     alt="Desktop Logo">
+                <img class="small-logo" src="ABTMC.png" alt="Mobile Logo">
+                </a>
             </div>
 
-            <div class="right-side-navbar d-flex align-items-center justify-content-end">
-                <!-- Mobile Trigger -->
-                <div class="right-side-trigger" id="rightSideTrigger">
-                    <i class="fa fa-reorder"></i>
-                </div>
-                <!-- Three line menu button -->
-                <div class="ecaps-triggers mr-1 mr-sm-3">
-                    <div class="menu-collasped" id="menuCollasped">
-                        <i class="zmdi zmdi-menu"></i>
-                    </div>
-                    <div class="mobile-menu-open" id="mobileMenuOpen">
-                        <i class="zmdi zmdi-menu"></i>
-                    </div>
-                </div>
-            </div>
-        </header>
+            <div id="google_translate_element"></div>
 
-        <!-- Main Content Area -->
-        <div class="main-content">
-            <div class="data-table-area">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-12 box-margin">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h4 class="card-title mb-2">Summary Table</h4>
+            <script type="text/javascript">
+                function googleTranslateElementInit() {
+                    new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+                }
+            </script>
 
-                                    <table id="datatable-buttons" class="table table-striped dt-responsive nowrap w-100">
-                                        <thead>
-                                        <tr>
-                                            <th>Index</th>
-                                            <th>Applicants Name</th>
-                                            <th>Nationality</th>
-											<th>Member of UD-OLGC Church</th>
-                                            <th>Applicants Form</th>
-                                            <th>Interview Test</th>
-                                            <th>Uploaded Documents</th>
+            <script type="text/javascript"
+                    src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
-                                        </tr>
-                                        </thead>
-
-
-                                        <tbody>
-                                        <?php
-                                        $count = 0;
-                                        while ($row = $result->fetch_assoc()) {
-                                            echo "<tr>";
-                                            echo "<td>" . ++$count . "</td>";
-                                            echo "<td>" . $row['First_Name'] . " " . $row['Last_Name'] . "</td>";
-                                            echo "<td>" . $row['Nationality'] . "</td>";
-											echo "<td>" . $row['Church_Part_Of_UD'] . "</td>";
-                                            
-											echo "<td>";
-												echo "<a href='adminapplicationform.php?code=".$row['User_ID']."'>";
-													if ($row['Application_Form_Submitted'] == 1) {
-														echo "Completed";
-													} else {
-														echo "Incomplete";
-													}
-												echo "</a>";
-											echo "</td>";
-											
-											echo "<td>";
-												echo "<a href='admininterview.php?code=".$row['User_ID']."'>";
-													if ($row['Interview_Form_Submitted'] == 1) {
-														echo "Completed";
-													} else {
-														echo "Incomplete";
-													}
-												echo "</a>";
-											echo "</td>";
-											
-											echo "<td>";
-												echo "<a href='docResults.php?emailWhatsApp=".$row['EmailWhatsapp']."'>";
-													echo $row['Document_Uploads_Status'];
-												echo "</a>";
-											echo "</td>";
-                                            echo "</tr>";
-                                        }
-
-                                        ?>
-
-
-                                        </tbody>
-                                    </table>
-
-                                </div> <!-- end card body-->
-                            </div> <!-- end card -->
-                        </div><!-- end col-->
-                    </div>
-                    <!-- end row-->
-
-
-                </div>
+            <!-- Mobile Logo -->
+            <div class="mobile-logo mr-3 mr-sm-4">
+                <?php echo "<a href='" . GetAdminHomeLink() . "'><img src='ABTMC.png' alt='Mobile Logo'></a>"; ?>
             </div>
 
-            <!-- Footer Area -->
+        </div>
+
+        <div class="right-side-navbar d-flex align-items-center justify-content-end">
+            <!-- Mobile Trigger -->
+            <div class="right-side-trigger" id="rightSideTrigger">
+                <i class="fa fa-reorder"></i>
+            </div>
+            <!-- Three line menu button -->
+            <div class="ecaps-triggers mr-1 mr-sm-3">
+                <div class="menu-collasped" id="menuCollasped">
+                    <i class="zmdi zmdi-menu"></i>
+                </div>
+                <div class="mobile-menu-open" id="mobileMenuOpen">
+                    <i class="zmdi zmdi-menu"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <div class="main-content">
+        <div class="data-table-area">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-12">
-                        <!-- Footer Area -->
-                        <footer class="footer-area d-flex align-items-center flex-wrap">
-                            <!-- Copywrite Text -->
-                            <div class="copywrite-text">
-                                <p>Created by <a href="#">ABMTC</a></p>
-                            </div>
-                            <!-- Footer Nav -->
-                            <ul class="footer-nav d-flex align-items-center">
-                                <li><a href="#">About</a></li>
-                                <li><a href="#">Privacy</a></li>
-                                <li><a href="#">Purchase</a></li>
-                            </ul>
-                        </footer>
-                    </div>
+                    <div class="col-12 box-margin">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title mb-2">190 Nations Summary Table</h4>
+
+                                <table id="datatable-buttons" class="table table-striped dt-responsive nowrap w-100">
+                                    <thead>
+                                    <tr>
+                                        <th>Index</th>
+                                        <th>Name Of Nation</th>
+                                        <th>Status</th>
+                                    </tr>
+                                    </thead>
+
+
+                                    <tbody>
+                                    <?php
+                                    for ($i = 0; $i < sizeof($nations); $i++) {
+                                        echo "<tr>";
+                                        echo "<td>" . $i . "</td>";
+                                        echo "<td>" . $nations[$i] . "</td>";
+                                        if (in_array($nations[$i], $nations_inschool))
+                                            echo "<td style='background-color: green'>" . "" . "</td>";
+                                        else if (in_array(strtolower($nations[$i]), $admitted_nations)) {
+                                            echo "<td style='background-color: yellow'>" . "" . "</td>";
+                                        } else {
+                                            echo "<td>" . "" . "</td>";
+
+                                        }
+                                        echo "</tr>";
+                                    }
+                                    $count = 0;
+
+                                    ?>
+
+
+                                    </tbody>
+                                </table>
+
+                            </div> <!-- end card body-->
+                        </div> <!-- end card -->
+                    </div><!-- end col-->
+                </div>
+                <!-- end row-->
+
+
+            </div>
+        </div>
+
+        <!-- Footer Area -->
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <!-- Footer Area -->
+                    <footer class="footer-area d-flex align-items-center flex-wrap">
+                        <!-- Copywrite Text -->
+                        <div class="copywrite-text">
+                            <p>Created by <a href="#">ABMTC</a></p>
+                        </div>
+                        <!-- Footer Nav -->
+                        <ul class="footer-nav d-flex align-items-center">
+                            <li><a href="#">About</a></li>
+                            <li><a href="#">Privacy</a></li>
+                            <li><a href="#">Purchase</a></li>
+                        </ul>
+                    </footer>
                 </div>
             </div>
         </div>
     </div>
+</div>
 </div>
 
 <!-- ======================================
