@@ -120,11 +120,11 @@ $result = $con->query($query);
                                             <th>Index</th>
                                             <th>Applicants Name</th>
                                             <th>Nationality</th>
-											<th>Member of UD-OLGC Church</th>
+											<th>UD</th>
                                             <th>Applicants Form</th>
                                             <th>Interview Test</th>
                                             <th>Uploaded Documents</th>
-                                            <th>Type Of Payment</th>
+                                            <th>Payment</th>
 
                                         </tr>
                                         </thead>
