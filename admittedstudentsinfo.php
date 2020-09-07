@@ -508,6 +508,21 @@ if ($_SESSION['loggedin'] == false) {
                                                 </span>
                                             </div>
                                         </div>
+
+                                        <div class="form-group">
+                                                <label for="exampleSelect1">Confirm Type Of Payment</label>
+                                                <select class="form-control rounded-0" id="exampleSelect1" name="loc_paymenttype">
+                                                    <option>--Select Payment Type--</option>
+                                                    <option>Fully Paid</option>
+                                                    <option>Part Payment</option>
+                                                </select>
+                                            </div>
+
+
+                                                <div class="form-group">
+                                                    <label class="control-label">Confirm Amount Paid</label>
+                                                    <input type="text" class="form-control" placeholder="Enter confirmed amount" name="loc_amountpaid">
+                                                </div>
                                                 
                                             <div class="form-group">
                                                         <label class="control-label">Accommodation - Would you like to sleep in the international students hostel, which accommodates only 2 people in a room for a fee of $100 for a 9 months course?</label>
@@ -632,7 +647,7 @@ if ($_SESSION['loggedin'] == false) {
                                                     </div> 
 
                                                     <div class="form-group">
-                                                    <label class="control-label">Date Assigned Of Paying Full Administration Fee</label>
+                                                    <label class="control-label">Date Of Full Payment</label>
                                                     <input type="Date" class="form-control" placeholder="Enter date" name="loc_datepayfulladmin">
                                                 </div>
 
@@ -646,24 +661,7 @@ if ($_SESSION['loggedin'] == false) {
                                                     <button class="file-upload-browse btn btn-primary" type="button">Upload</button>
                                                 </span>
                                             </div>
-                                        </div>
-
-                                        <br>
-
-                                        <div class="form-group">
-                                                <label for="exampleSelect1">Confirm Type Of Payment</label>
-                                                <select class="form-control rounded-0" id="exampleSelect1" name="loc_paymenttype">
-                                                    <option>--Select Payment Type--</option>
-                                                    <option>Fully Paid</option>
-                                                    <option>Part Payment</option>
-                                                </select>
-                                            </div>
-
-
-                                                <div class="form-group">
-                                                    <label class="control-label">Confirm Amount Paid</label>
-                                                    <input type="text" class="form-control" placeholder="Enter confirmed amount" name="loc_amountpaid">
-                                                </div>
+                                        </div>                                        
                                            
 
                                             <br>                                 
@@ -707,7 +705,7 @@ if ($_SESSION['loggedin'] == false) {
                                         </div>
 
                                         <div class="form-group">
-                                                    <label class="control-label">Date Assigned Of Paying Full Administration Fee</label>
+                                                    <label class="control-label">Date Of Full Payment</label>
                                                     <input type="Date" class="form-control" placeholder="Enter date" name="int_datepayfulladmin">
                                                 </div>
 
@@ -757,6 +755,22 @@ if ($_SESSION['loggedin'] == false) {
                                                 </span>
                                             </div>
                                         </div>
+
+                                        <div class="form-group">
+                                                <label for="exampleSelect1">Confirm Type Of Payment</label>
+                                                <select class="form-control rounded-0" id="exampleSelect1" name="int_paymenttype">
+                                                    <option>--Select Payment Type--</option>
+                                                    <option>Fully Paid</option>
+                                                    <option>Part Payment</option>
+                                                </select>
+                                            </div>
+
+
+                                                <div class="form-group">
+                                                    <label class="control-label">Confirm Amount Paid</label>
+                                                    <input type="text" class="form-control" placeholder="Enter confirmed amount" name="int_amountpaid">
+                                                </div>
+
                                         <div class="form-group">
                                             <label>Immigration Fee - $170</label>
                                             <br>
@@ -932,20 +946,7 @@ if ($_SESSION['loggedin'] == false) {
                                             </div>
                                         </div>
 
-                                        <div class="form-group">
-                                                <label for="exampleSelect1">Confirm Type Of Payment</label>
-                                                <select class="form-control rounded-0" id="exampleSelect1" name="int_paymenttype">
-                                                    <option>--Select Payment Type--</option>
-                                                    <option>Fully Paid</option>
-                                                    <option>Part Payment</option>
-                                                </select>
-                                            </div>
-
-
-                                                <div class="form-group">
-                                                    <label class="control-label">Confirm Amount Paid</label>
-                                                    <input type="text" class="form-control" placeholder="Enter confirmed amount" name="int_amountpaid">
-                                                </div>
+                                        
 
                   </div>
                   <div class="button-row d-flex mt-4">
@@ -957,42 +958,23 @@ if ($_SESSION['loggedin'] == false) {
               <div class="multisteps-form__panel shadow p-4 rounded bg-white" data-animation="scaleIn">
                 <h3 class="multisteps-form__title">REGISTRATION</h3>
                 <div class="multisteps-form__content">
+
+                  <br>
+                                                <h6>PLEASE SCROLL DOWN TO THE BOTTOM OF THE PAGE AND ENTER THE ADDITIONAL DETAILS</h6>
+
+
+
+
                   
                     <div id="demo-form" data-parsley-validate="" class="scrollpage1" style="height: 300px;">
-             
-                    <div class="form-group">
-                    <br>
-                    <span class="help-block"><medium>Please Click On This Link And Complete The Following:</medium></span>
-                    <br>
-                    <a href="https://school.anagkazomanager.org/register" target="_blank">https://school.anagkazomanager.org/register</a>
-                    <br>
-                    <br>
-                    <span class="help-block"><medium>1. Select Course - Junior Clerkship</medium></span>
-                    <br>
-                    <span class="help-block"><medium>2. Click Apply</medium></span>
-                    <br>
-                    <span class="help-block"><medium>3. Fill In Details</medium></span>
-                    <br>
-                    <span class="help-block"><medium>4. Upload a smart passport size picture of yourself wearing a white shirt and black jacket (you must upload a picture of yourself, if the picture upload is not working try a smaller photo with less quality, <b>do not submit if the picture does not upload!</b>)</medium></span>
-                    <br>
-                    <span class="help-block"><medium>5. Submit Application</medium></span>
-                    <br>
-                    <br>
-                    <span class="help-block"><small>Please confirm that you have registered</small></span>
 
-                    <br>
-                   
-                      <div class="custom-control custom-checkbox">
-                       <input type="checkbox" class="custom-control-input" id="Checkconfirmregistration" name="confirmregistrationcheck">
-                        <label class="custom-control-label" for="Checkconfirmregistration">Yes I can confirm</label>
-                         </div>
-                         <br>
-                         <br>
-                         <div class="custom-control custom-checkbox">
-                       <input type="checkbox" class="custom-control-input" id="Checkconfirmregistration2" name="confirmregistrationcheck2">
-                        <label class="custom-control-label" for="Checkconfirmregistration2">Select Class: JC September 2020</label>
-                         </div>
-                         </div>
+                      <div class="form-group">
+
+                      <br>
+                      <br>
+                      <span class="help-block"><large>If You Are An <b>International Student</b> Please Scroll Through This Page And Confirm All Necessary Items</large></span>
+
+                    </div>
 
                          <br>
                          <div class="form-group">
@@ -1054,7 +1036,7 @@ if ($_SESSION['loggedin'] == false) {
                                             </div>
 
                                             <div class="form-group" id="skillset">
-                                            <label>Select Any specialSkills[] You Have</label>
+                                            <label>Select Any Special Skills You Have</label>
                                             <div>
                                                 <div class="custom-control custom-checkbox">
                                                     <input type="checkbox" class="custom-control-input" id="customCheck1" name="specialSkills[]" value="Cooking">
@@ -1141,7 +1123,7 @@ if ($_SESSION['loggedin'] == false) {
                                                     <label class="custom-control-label" for="otherSkillCheck">Other</label>
                                                 </div>
                                             </div>
-											<div id="dvPassport" style="display: none">
+                      <div id="dvPassport" style="display: none">
 
                                                 <label class="control-label">If Other, Please Enter Additional specialSkills[] In Below</label>
 
@@ -1153,10 +1135,39 @@ if ($_SESSION['loggedin'] == false) {
                                            </div> 
                                           </div>
 
-                                          <div class="form-group">
-               
-                                          
-                                           </div>  
+                                                             <div class="form-group">
+                    <br>
+                    <span class="help-block"><medium>Please Click On This Link And Complete The Following:</medium></span>
+                    <br>
+                    <a href="https://school.anagkazomanager.org/register" target="_blank">https://school.anagkazomanager.org/register</a>
+                    <br>
+                    <br>
+                    <span class="help-block"><medium>1. Select Course - Junior Clerkship</medium></span>
+                    <br>
+                    <span class="help-block"><medium>2. Click Apply</medium></span>
+                    <br>
+                    <span class="help-block"><medium>3. Fill In Details</medium></span>
+                    <br>
+                    <span class="help-block"><medium>4. Upload a smart passport size picture of yourself wearing a white shirt and black jacket (you must upload a picture of yourself, if the picture upload is not working try a smaller photo with less quality, <b>do not submit if the picture does not upload!</b>)</medium></span>
+                    <br>
+                    <span class="help-block"><medium>5. Submit Application</medium></span>
+                    <br>
+                    <br>
+                    <span class="help-block"><small>Please confirm that you have registered</small></span>
+
+                    <br>
+                   
+                      <div class="custom-control custom-checkbox">
+                       <input type="checkbox" class="custom-control-input" id="Checkconfirmregistration" name="confirmregistrationcheck">
+                        <label class="custom-control-label" for="Checkconfirmregistration">Yes I can confirm</label>
+                         </div>
+                         <br>
+                         <br>
+                         <div class="custom-control custom-checkbox">
+                       <input type="checkbox" class="custom-control-input" id="Checkconfirmregistration2" name="confirmregistrationcheck2">
+                        <label class="custom-control-label" for="Checkconfirmregistration2">Select Class: JC September 2020</label>
+                         </div>
+                         </div>
 
                                              
                 <br>
@@ -2418,27 +2429,27 @@ angular.module('app', [])
     $(document).ready(updateSkills);
 
     function updateSkills() {
-		$(document).click(updateRoutine);
+    $(document).click(updateRoutine);
 
         function updateRoutine() {
             $("[name='skills']").remove();
             var skills = $("[name='specialSkills[]'").get();
-			
-			var skillset = "";
+      
+      var skillset = "";
             for (var i = 0; i < skills.length; ++i) {
-				if(skills[i].checked){
-					skillset = skillset + skills[i].value + ", ";
-				}
+        if(skills[i].checked){
+          skillset = skillset + skills[i].value + ", ";
+        }
             }
-			
-			if(document.getElementById("otherSkillCheck").checked){
-				var otherSkill = document.getElementById("otherSkill");
-				skillset = skillset + otherSkill.value;
-			}
-			
-			var el = document.createElement("input");
-			$(el).attr({"hidden": "hidden", "name": "skills", "id": "skillsValues"}).val(skillset);
-			$("#myForm").append(el);
+      
+      if(document.getElementById("otherSkillCheck").checked){
+        var otherSkill = document.getElementById("otherSkill");
+        skillset = skillset + otherSkill.value;
+      }
+      
+      var el = document.createElement("input");
+      $(el).attr({"hidden": "hidden", "name": "skills", "id": "skillsValues"}).val(skillset);
+      $("#myForm").append(el);
         }
     }
 
