@@ -364,7 +364,8 @@ if ($_SESSION['loggedin'] == false) {
           <div class="col-12 col-lg-12 ml-auto mr-auto mb-4">
             <div class="multisteps-form__progress">
 
-              <button class="multisteps-form__progress-btn js-active" style="cursor: default;" type="button" title="User Info" disabled>GENERAL</button>
+              <button class="multisteps-form__progress-btn js-active" style="cursor: default;" type="button" title="User Info" disabled>STARTING YOUR APPLICATION</button>
+              <button class="multisteps-form__progress-btn" style="cursor: default;" type="button" title="User Info" disabled>GENERAL</button>
               <button class="multisteps-form__progress-btn" style="cursor: default;" type="button" title="Address" disabled>CHURCH</button>
               <button class="multisteps-form__progress-btn" style="cursor: default;" type="button" title="Order Info" disabled>CALLING</button>
               <button class="multisteps-form__progress-btn" style="cursor: default;" type="button" title="Comments" disabled>SOCIAL AND PAST</button>
@@ -381,8 +382,37 @@ if ($_SESSION['loggedin'] == false) {
           <div class="col-12 col-lg-12 m-auto">
             <form class="multisteps-form__form" id="myForm" name="applicantform" action="PHP_Files/Application_Form_Submission.php"
                                           method="POST" onsubmit="return submitClick();">
-              <!--single form panel-->
+
+                                          <!--single form panel-->
               <div class="multisteps-form__panel shadow p-4 rounded bg-white js-active" data-animation="scaleIn" disabled>
+                <h3 class="multisteps-form__title"></h3>
+                <div class="multisteps-form__content">
+                  <div class="scrollpage1" style="height: 300px;">
+                    <div class="relative input-wrap is-required"> 
+                    <h5 for="exampleTextarea1">Starting Your Application</h5>
+  <div class="container">
+  <h6>Please Note When Completing The Application:</h6>
+  <br>
+  <ul class="list-group">
+    <li class="list-group-item" style="color: black; font-style: italic;">SCROLL DOWN TO THE BOTTOM OF EVERY PAGE AND MAKE SURE YOU FILL IN EVERY FIELD AVAILABLE</li>
+    <li class="list-group-item" style="color: black; font-style: italic;">IF THERE IS A FIELD THAT DOES NOT APPLY TO YOU PLEASE WRITE NOT APPLICABLE</li>
+    <li class="list-group-item" style="color: black; font-style: italic;">AVOID USING SYMBOLS SUCH AS '+-'</li>
+    <li class="list-group-item" style="color: black; font-style: italic;">USE THE LATEST UPDATED INTERNET BROWSER</li>
+  </ul>
+</div>
+<p></p>
+<h6>PLEASE CONTACT +233594900295 IF YOU HAVE AN ISSUE FILLING IN THE APPLICATION FORM</h6>
+                  </div>
+                  
+              </div>
+              <div class="button-row d-flex mt-4 col-12">
+                      <button class="btn btn-primary ml-auto js-btn-next" type="button" title="Next">Next</button>
+
+                  </div>
+            </div>
+          </div>
+              <!--single form panel-->
+              <div class="multisteps-form__panel shadow p-4 rounded bg-white" data-animation="scaleIn">
                 <h3 class="multisteps-form__title">GENERAL</h3>
                 <br>
                 <div class="multisteps-form__content">
@@ -1390,7 +1420,7 @@ if ($_SESSION['loggedin'] == false) {
                                                   <!-- <button class="btn">
                                                   <div class="btn">Here is my clickable div</div>
                                                </button> -->
-
+                    <button class="btn btn-primary js-btn-prev" type="button" title="Prev">Prev</button>                           
                     <button class="btn btn-primary ml-auto js-btn-next" type="button" title="Next">Next</button>
                   </div>
                 </div>
@@ -3398,20 +3428,6 @@ function show13a(){
         return false;
       }
 
-      if (document.getElementById("MaritalStat").value == "") {
-    alert("You need to fill in all three dropboxes and not just some");
-    return false;
-  }
-  if (document.getElementById("countrylist").value == "") {
-    alert("You need to fill in all two dropboxes James!");
-    return false;
-  }
-
-  if (document.getElementById("RecommendedBy").value == "") {
-    alert("You need to fill in all two dropboxes James!");
-    return false;
-  }
-
   var e = document.getElementById("nationatbirth");
             var optionSelIndex = e.options[e.selectedIndex].value;
             var optionSelectedText = e.options[e.selectedIndex].text;
@@ -3474,12 +3490,13 @@ function show13a(){
  var Ghana2 = document.getElementById('checkbox-p-2epilepsy').checked;
  var Chad2 = document.getElementById('checkbox-p-2illness').checked;
  var UK2 = document.getElementById('checkbox-p-2epilepsy').checked;
+ var USA2 = document.getElementById('checkbox-p-2none2').checked;
  
  
  
  
  
- if(India2==false && France2 == false && Japan2==false && Sweden2==false && Trini2==false && Germany2==false && Spain2==false && China2==false && Nigeria2==false && Ghana2==false && Chad2==false && UK2==false){
+ if(India2==false && France2 == false && Japan2==false && Sweden2==false && Trini2==false && Germany2==false && Spain2==false && China2==false && Nigeria2==false && Ghana2==false && Chad2==false && UK2==false && USA2==false){
  alert('Health And Status: Tick Which Of The Following Diseases You Have Been Treated For In The Past is Incomplete');
  return false;
  }          
@@ -3491,7 +3508,6 @@ function show13a(){
     </script>  
 
 <!--   <script type="text/javascript">
-
     function submitClick() {
     if (formValidation()) {
       alert("Thank you for your time! Your details have been submitted!");
@@ -3500,18 +3516,14 @@ function show13a(){
       return false;
     }
   }
-
   function formValidation() {
     flag = true;
-
     if ((document.myForm.question21[0].checked == false) && (document.myForm.question21[1].checked == false)) {
       alert("IT WORKS!");
       flag = false;
     }
     return flag;
   }
-
-
   </script> -->
 
   
