@@ -2089,7 +2089,7 @@ School Certificate
 Bible School Medical Checklist 
 Recommendation Letter
 Responsibility Form
-Administration Fee : Local students - 645 cedis. International students - $235.
+Administration Fee : Local students - 700 cedis. International students - $250 USD.
 
 
 International Students
