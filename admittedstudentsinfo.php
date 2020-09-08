@@ -971,8 +971,8 @@ if ($_SESSION['loggedin'] == false) {
                       <div class="form-group">
 
                       <br>
-                      <br>
-                      <span class="help-block"><large>If You Are An <b>International Student</b> Please Scroll Through This Page And Confirm All Necessary Items</large></span>
+                     
+      
 
                     </div>
 
