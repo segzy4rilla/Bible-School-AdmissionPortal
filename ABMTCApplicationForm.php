@@ -396,12 +396,13 @@ if ($_SESSION['loggedin'] == false) {
   <ul class="list-group">
     <li class="list-group-item" style="color: black; font-style: italic;">SCROLL DOWN TO THE BOTTOM OF EVERY PAGE AND MAKE SURE YOU FILL IN EVERY FIELD AVAILABLE</li>
     <li class="list-group-item" style="color: black; font-style: italic;">IF THERE IS A FIELD THAT DOES NOT APPLY TO YOU PLEASE WRITE NOT APPLICABLE</li>
-    <li class="list-group-item" style="color: black; font-style: italic;">AVOID USING SYMBOLS SUCH AS '+-'</li>
+    <li class="list-group-item" style="color: black; font-style: italic;">AVOID USING SYMBOLS SUCH AS '+-' (DO NOT USE APOSTROPHE'S)</li>
     <li class="list-group-item" style="color: black; font-style: italic;">USE THE LATEST UPDATED INTERNET BROWSER</li>
+    <li class="list-group-item" style="color: black; font-style: italic;">CLEAR CACHE (GOOGLE INSTRUCTIONS ON HOW TO CLEAR CACHE)</li>
   </ul>
 </div>
 <p></p>
-<h6>PLEASE CONTACT +233594900295 IF YOU HAVE AN ISSUE FILLING IN THE APPLICATION FORM</h6>
+<h6>PLEASE WHATSAPP +233594900295 IF YOU HAVE AN ISSUE FILLING IN THE APPLICATION FORM</h6>
                   </div>
                   
               </div>
@@ -1245,36 +1246,29 @@ if ($_SESSION['loggedin'] == false) {
                                                                value="9 Months Ordinary Program"
                                                                class="custom-control-input">
                                                         <label class="custom-control-label" for="radiocourse1">9 Months
-                                                            Ordinary Program</label>
+                                                            Junior Clerkship</label>
                                                     </div>
                                                     <div class="custom-control custom-radio">
                                                         <input type="radio" id="radiocourse2" name="question30"
                                                                value="18 Months Standard Program"
                                                                class="custom-control-input">
                                                         <label class="custom-control-label" for="radiocourse2">18 Months
-                                                            Standard Program</label>
-                                                    </div>
-                                                    <div class="custom-control custom-radio">
-                                                        <input type="radio" id="radiocourse3" name="question30"
-                                                               value="27 Months Premium Program"
-                                                               class="custom-control-input">
-                                                        <label class="custom-control-label" for="radiocourse3">27 Months
-                                                            Premium Program</label>
+                                                            Junior Clerkship</label>
                                                     </div>
                                                     <div class="custom-control custom-radio">
                                                         <input type="radio" id="radiocourse4" name="question30"
                                                                value="36 Months Advanced Program"
                                                                class="custom-control-input">
                                                         <label class="custom-control-label" for="radiocourse4">36 Months
-                                                            Advanced Program</label>
+                                                            Junior Clerkship</label>
                                                     </div>
                                                 </div>
                                               </div>
 
                                               <div class="relative input-wrap is-required">
                                                 <div class="form-group">
-                                                    <label class="control-label">What month would you like to start
-                                                        Bible school?</label>
+                                                    <label class="control-label">What Month Would You Like To Start
+                                                        Bible School?</label>
                                                     <div class="custom-control custom-radio">
                                                         <input type="radio" id="radiomonth1" name="question31"
                                                                value="2020 3rd Quarter (July/August/September)"
@@ -1323,7 +1317,7 @@ if ($_SESSION['loggedin'] == false) {
 
                                               <div class="relative input-wrap is-required">
                                                 <div class="form-group">
-                                                    <label class="control-label">How did you hear about the Bible School?</label>
+                                                    <label class="control-label">How Did You Hear About The Bible School?</label>
                                                     <div class="custom-control custom-radio">
                                                         <input type="radio" id="howhear1" name="question75"
                                                                value="Ghana Healing Jesus Campaign"
@@ -1434,7 +1428,7 @@ if ($_SESSION['loggedin'] == false) {
                 <div class="multisteps-form__content">
                   <div id="demo-form2" data-parsley-validate="" class="scrollpage1" style="height: 300px;">
                     <div class="form-group">
-                                                    <label class="control-label">Are you born again?</label>
+                                                    <label class="control-label">Are You Born Again?</label>
                                                     <div class="custom-control custom-radio">
                                                         <input type="radio" id="radioborn1" name="question32"
                                                                value="Yes" class="custom-control-input">
@@ -1447,7 +1441,7 @@ if ($_SESSION['loggedin'] == false) {
                                                     </div>
                                                 </div>
                                                 <div id="bornagain" class="form-group">
-                                                    <label class="control-label">Do you believe you are called?</label>
+                                                    <label class="control-label">Do You Believe You Are Called?</label>
                                                     <div class="custom-control custom-radio">
                                                         <input type="radio" id="radiocall1" name="question33"
                                                                value="Yes" class="custom-control-input">
@@ -1498,7 +1492,7 @@ if ($_SESSION['loggedin'] == false) {
                     <label for="exampleTextarea1">Why Do You Want To Come To The Bible
                                                     School?</label>
                                                 <textarea class="form-control required" id="exampleTextarea1" name="question37"
-                                                          rows="3"></textarea>
+                                                          rows="3" maxlength="300"></textarea>
                                                         </div>
                                                 <br>
 
