@@ -810,7 +810,7 @@ if ($_SESSION['loggedin'] == false) {
                                                 </div>
                                                 
                                         <div class="form-group">
-                                            <label>Flight Ticket To Ghana</label>
+                                            <label>Flight Ticket To Ghana (Must Discuss The Date Of The Ticket With Recruitment Officer Before Buying The Ticket)*</label>
                                             <br>
                                             <span class="help-block"><small>Please try to book a flight that will arrive from to Tuesday to Friday between 6am - 8pm</small></span>
                                             <input type="file" name="flightticket" class="file-upload-default" style="display:none;">
@@ -825,7 +825,14 @@ if ($_SESSION['loggedin'] == false) {
                                                 <label for="example-datetime-local-input">Ghana Airport Arrival Date And Time</label>
                                                     <input class="form-control rounded-0 form-control-md" type="datetime-local" name="airportArrivalDateTime" id="example-datetime-local-input">
                                             </div>
-                                            
+
+                                        <div class="form-group">
+                                                    <label class="control-label">Reasonable Month And Year You Can Come To The Bible School And Your Reason Why</label>
+
+                                                    <textarea class="form-control required" id="exampleTextarea1" name="reasonmonthyear"
+                                                          rows="3"></textarea>
+                                                        </div>
+                                       
                                         <div class="form-group">
                                                 <label for="example-date-input">Please enter a date you would like complimentary lunch and breakfast (excluding Saturday, Sunday and Monday)</label>
                                                 <br>
