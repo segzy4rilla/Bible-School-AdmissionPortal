@@ -627,6 +627,7 @@ if ($_SESSION['loggedin'] == false) {
                                                       <option value="128">New Zealander</option>
                                                       <option value="129">Ni-Vanuatu</option>
                                                       <option value="130">Nicaraguan</option>
+                                                      <option value="194">Nigerian</option>
                                                       <option value="131">Nigerien</option>
                                                       <option value="132">North Korean</option>
                                                       <option value="133">Northern Irish</option>
