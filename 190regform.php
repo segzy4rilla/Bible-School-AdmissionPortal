@@ -103,7 +103,7 @@
                                     </p>
                                    
 
-                                    <form class="forms-sample">
+                                    <form class="forms-sample"  id="myForm" name="form" action="PHP_Files/NationsSubmission.php" method="post" enctype="multipart/form-data">
                                          <div class="form-group">
                                                        <div class="form-group">
                                                     <label class="control-label">First Name</label>
@@ -283,6 +283,7 @@
                                               <option value="new zealander">New Zealander</option>
                                               <option value="ni-vanuatu">Ni-Vanuatu</option>
                                               <option value="nicaraguan">Nicaraguan</option>
+                                              <option value="nigerian">Nigerian</option>
                                               <option value="nigerien">Nigerien</option>
                                               <option value="north korean">North Korean</option>
                                               <option value="northern irish">Northern Irish</option>
@@ -482,6 +483,7 @@
                                               <option value="new zealander">New Zealander</option>
                                               <option value="ni-vanuatu">Ni-Vanuatu</option>
                                               <option value="nicaraguan">Nicaraguan</option>
+                                              <option value="nigerian">Nigerian</option>
                                               <option value="nigerien">Nigerien</option>
                                               <option value="north korean">North Korean</option>
                                               <option value="northern irish">Northern Irish</option>
@@ -550,90 +552,68 @@
                                         
                                                     <div class="form-group">
                                                     <label class="control-label">Education</label>
-                                                    <input type="text" class="form-control" placeholder="Enter education" required>
+                                                    <input type="text" class="form-control" placeholder="Enter education" name="education" required>
                                                 </div>
 
                                                 <div class="form-group">
                                                     <label class="control-label">Role In Church</label>
-                                                    <input type="text" class="form-control" placeholder="Enter your role in church" required>
+                                                    <input type="text" class="form-control" placeholder="Enter your role in church" name="role" required>
                                                 </div>
 
                                                 <div class="form-group">
                                                     <label class="control-label">Number Of Years In Church</label>
-                                                    <input type="number" class="form-control" placeholder="Enter the number of years you have been in church" required>
+                                                    <input type="number" class="form-control" placeholder="Enter the number of years you have been in church" name="years" required>
                                                 </div>
 
                                                 <div class="form-group">
-                                                        <label class="control-label">Do You Have Parental Consent?</label>
-                                                        <div class="custom-control custom-radio">
-                                                    <input type="radio" id="radioparconsent1" name="customRadioparconsent2" class="custom-control-input" required>
-                                                    <label class="custom-control-label" for="radioparconsent1">Yes</label>
-                                                </div>
-                                                <div class="custom-control custom-radio">
-                                                    <input type="radio" id="radioparconsent2" name="customRadioparconsent2" class="custom-control-input">
-                                                    <label class="custom-control-label" for="radioparconsent2">No</label>
-                                                </div>
-                                                
-                                                    </div>
+                                                    <label for="exampleSelectGender">Do You Have Parental Consent?</label>
+                                                    <select class="form-control" id="consent" name="consent" required>
+														<option value="">-- select Response --</option>
+														<option value="Yes">Yes</option>
+														<option value="No">No</option>
+													</select>
+												</div> 
 
                                                 <div class="form-group">
                                                     <label for="exampleSelectGender">Marital Status</label>
-                                                    <select class="form-control" id="SelectNationality" name="190countryres" required>
-                                              <option value="">-- select Marital Status --</option>
-                                              <option value="Single">Single</option>
-                                            <option value="Married">Married</option>
-                                            <option value="Widowed">Widowed</option>
-                                            <option value="Separated">Separated</option>
-                                            <option value="Divorced">Divorced</option>
-                                            </select>
-                                        </div> 
-                                            
-                                            <div class="form-group">
-                                                        <label class="control-label">Are You Currently In ABMTC?</label>
-                                                        <div class="custom-control custom-radio">
-                                                    <input type="radio" id="radiocurabmtc1" name="customRadiocurabmtc2" class="custom-control-input" required>
-                                                    <label class="custom-control-label" for="radiocurabmtc1">Yes</label>
-                                                </div>
-                                                <div class="custom-control custom-radio">
-                                                    <input type="radio" id="radiocurabmtc2" name="customRadiocurabmtc2" class="custom-control-input">
-                                                    <label class="custom-control-label" for="radiocurabmtc2">No</label>
-                                                </div>
-                                                
-                                                    </div>
-
-                                            <div class="form-group">
-                                                        <label class="control-label">Have You Completed ABMTC?</label>
-                                                        <div class="custom-control custom-radio">
-                                                    <input type="radio" id="radiocomabmtc1" name="customRadiocomabmtc2" class="custom-control-input" required>
-                                                    <label class="custom-control-label" for="radiocomabmtc1">Yes</label>
-                                                </div>
-                                                <div class="custom-control custom-radio">
-                                                    <input type="radio" id="radiocomabmtc2" name="customRadiocomabmtc2" class="custom-control-input">
-                                                    <label class="custom-control-label" for="radiocomabmtc2">No</label>
-                                                </div>
-                                                
-                                                    </div>        
-                                                    
-                                                    
-                                                 <div class="form-group">
-                                                        <label class="control-label">When Do You Want To Come To ABMTC For Training?</label>
-                                                        <div class="custom-control custom-radio">
-                                                    <input type="radio" id="radiotrainingdate1" name="customRadiotrainingdate2" class="custom-control-input" required>
-                                                    <label class="custom-control-label" for="radiotrainingdate1">September 2020</label>
-                                                </div>
-                                                <div class="custom-control custom-radio">
-                                                    <input type="radio" id="radiotrainingdate2" name="customRadiotrainingdate2" class="custom-control-input">
-                                                    <label class="custom-control-label" for="radiotrainingdate2">February 2021</label>
-                                                </div>
-                                                <div class="custom-control custom-radio">
-                                                    <input type="radio" id="radiotrainingdate3" name="customRadiotrainingdate2" class="custom-control-input">
-                                                    <label class="custom-control-label" for="radiotrainingdate3">June 2021</label>
-                                                </div>
-                                                 <div class="custom-control custom-radio">
-                                                    <input type="radio" id="radiotrainingdate4" name="customRadiotrainingdate2" class="custom-control-input">
-                                                    <label class="custom-control-label" for="radiotrainingdate4">October 2021</label>
-                                                </div>
-                                                    </div>
+                                                    <select class="form-control" id="SelectNationality" name="marital" required>
+														<option value="">-- select Marital Status --</option>
+														<option value="Single">Single</option>
+														<option value="Married">Married</option>
+														<option value="Widowed">Widowed</option>
+														<option value="Separated">Separated</option>
+														<option value="Divorced">Divorced</option>
+													</select>
+												</div>
+												
+												<div class="form-group">
+                                                    <label for="exampleSelectGender">Are You Currently In ABMTC?</label>
+                                                    <select class="form-control" id="current_ABMTC" name="current_ABMTC" required>
+														<option value="">-- select Response --</option>
+														<option value="Yes">Yes</option>
+														<option value="No">No</option>
+													</select>
+												</div> 
+												
+												<div class="form-group">
+                                                    <label for="exampleSelectGender">Have You Completed ABMTC?</label>
+                                                    <select class="form-control" id="completed_ABMTC" name="completed_ABMTC" required>
+														<option value="">-- select Response --</option>
+														<option value="Yes">Yes</option>
+														<option value="No">No</option>
+													</select>
+												</div>
+												
+												<div class="form-group">
+                                                    <label for="exampleSelectGender">When Do You Want To Come To ABMTC For Training?</label>
+                                                    <select class="form-control" id="startDate" name="startDate" required>
+														<option value="">-- select Response --</option>
+														<option value="September 2020">September 2020</option>
+														<option value="February 2021">February 2021</option>
+														<option value="June 2021">June 2021</option>
+														<option value="October 2021">October 2021</option>
+													</select>
+												</div>
                                         
                                         <button type="submit" class="btn btn-primary mr-2">Submit</button>
                                         <button class="btn btn-light">Cancel</button>
