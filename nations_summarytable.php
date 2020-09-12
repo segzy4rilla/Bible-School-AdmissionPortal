@@ -346,9 +346,9 @@ while ($row = $nationSummary->fetch_assoc()) {
                                         echo "<td>" . $i . "</td>";
                                         echo "<td>" . $nations[$i] . "</td>";
                                         if (in_array($nations[$i], $nations_inschool))
-                                            echo "<td style='background-color: green'>" . "" . "</td>";
+                                            echo "<td style='background-color: green'>" . 'Admitted' . "</td>";
                                         else if (in_array(strtolower($nations[$i]), $admitted_nations)) {
-                                            echo "<td style='background-color: yellow'>" . "" . "</td>";
+                                            echo "<td style='background-color: yellow'>" . 'Applicant' . "</td>";
                                         } else {
                                             echo "<td>" . "" . "</td>";
 

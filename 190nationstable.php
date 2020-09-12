@@ -5,8 +5,13 @@ if ($_SESSION['loggedin'] == false || $_SESSION['IsNationsAdmin'] == false) {
     header('Location: loginabmtc.html');
 }
 
+require("dbconfig/config.php");
 
+
+$query = "select * from Nations";
+$result = $con->query($query);
 ?>
+
 
 <!doctype html>
 <html lang="en">
@@ -124,6 +129,7 @@ if ($_SESSION['loggedin'] == false || $_SESSION['IsNationsAdmin'] == false) {
                                 <table id="scroll-horizontal-datatable" class="table w-100 nowrap">
                                     <thead>
                                     <tr>
+                                        <th>Index</th>
                                         <th>First Name</th>
                                         <th>Last Name</th>
                                         <th>WhatsApp Number</th>
@@ -145,26 +151,34 @@ if ($_SESSION['loggedin'] == false || $_SESSION['IsNationsAdmin'] == false) {
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr>
-                                        <td>Tiger Nixon</td>
-                                        <td>System Architect</td>
-                                        <td>Edinburgh</td>
-                                        <td>61</td>
-                                        <td>2011/04/25</td>
-                                        <td>Tiger Nixon</td>
-                                        <td>System Architect</td>
-                                        <td>Edinburgh</td>
-                                        <td>61</td>
-                                        <td>2011/04/25</td>
-                                        <td>Tiger Nixon</td>
-                                        <td>System Architect</td>
-                                        <td>Edinburgh</td>
-                                        <td>61</td>
-                                        <td>2011/04/25</td>
-                                        <td>Tiger Nixon</td>
-                                        <td>System Architect</td>
-                                        <td>Edinburgh</td>
-                                    </tr>
+                                    <?php
+                                    $count = 0;
+                                    while ($row = $result->fetch_assoc()) {
+                                        echo "<tr>";
+                                        echo "<td>" . ++$count . "</td>";
+                                        echo "<td>" . $row['FirstName'] . "</td>";
+                                        echo "<td>" . $row['LastName'] . "</td>";
+                                        echo "<td>" . $row['WhatsAppNumber'] . "</td>";
+                                        echo "<td>" . $row['Email'] . "</td>";
+                                        echo "<td>" . $row['Denomination'] . "</td>";
+                                        echo "<td>" . $row['Pastor'] . "</td>";
+                                        echo "<td>" . $row['Bishop'] . "</td>";
+                                        echo "<td>" . $row['Age'] . "</td>";
+                                        echo "<td>" . $row['Nationality'] . "</td>";
+                                        echo "<td>" . $row['CountryOfResidence'] . "</td>";
+                                        echo "<td>" . $row['Education'] . "</td>";
+                                        echo "<td>" . $row['RoleInChurch'] . "</td>";
+                                        echo "<td>" . $row['YearsInChurch'] . "</td>";
+                                        echo "<td>" . $row['ParentalConsent'] . "</td>";
+                                        echo "<td>" . $row['MaritalStatus'] . "</td>";
+                                        echo "<td>" . $row['CurrentlyInABMTC'] . "</td>";
+                                        echo "<td>" . $row['CompletedABMTC'] . "</td>";
+                                        echo "<td>" . $row['StartDate'] . "</td>";
+                                        echo "</tr>";
+                                    }
+
+                                    ?>
+
                                     </tbody>
                                 </table>
 
