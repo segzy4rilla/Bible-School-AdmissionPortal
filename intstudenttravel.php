@@ -8,15 +8,18 @@ if ($_SESSION['loggedin'] == false || ($_SESSION['IsMedicalAdmin'] == false && !
 require("dbconfig/config.php");
 require("PHP_Files/getAdminHomeLink.php");
 
-$query = "SELECT A.First_Name, A.Last_Name, C.Nationality, A.Age, A.Sex, B.Loc_InternationalStudentsHostel, B.Int_InternationalStudentsHostel
+$query = "SELECT A.First_Name, A.Last_Name, C.Nationality, Country_Of_Residence, Int_PassportFilepath,
+Int_VisaFilepath, Int_VisaNotRequiredComment, Int_FlightTicketFilepath, Int_ArrivalDateTime 
 FROM Application_form AS A
 JOIN AdmittedStudents AS B
 ON A.User_ID = B.User_ID
 JOIN Applicant_Table AS C
-ON A.User_ID = C.User_ID";
+ON A.User_ID = C.User_ID
+WHERE C.Nationality <> 'ghanaian'";
 $result = $con->query($query);
 
 ?>
+
 <!doctype html>
 <html lang="en">
 
@@ -28,7 +31,7 @@ $result = $con->query($query);
     <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
     <!-- Title -->
-    <title>Accommodation Table</title>
+    <title>International Students Travelling Table</title>
 
     <!-- Favicon -->
     <link rel="icon" href="ABTMC.png">
@@ -135,9 +138,12 @@ $result = $con->query($query);
                                                 <tr>
                                                     <th>Name</th>
                                                     <th>Nationality</th>
-                                                    <th>Age</th>
-                                                    <th>Gender</th>
-                                                    <th>Staying In Internations Students Hostel</th>
+                                                    <th>Country Of Residence</th>
+                                                    <th>Picture Of Passport</th>
+                                                    <th>Visa Entrance And Clearance Letter</th>
+                                                    <th>Comment If Visa Is Not Required</th>
+                                                    <th>Flight Ticket To Ghana</th>
+                                                    <th>Airport Arrival Date And Time</th>
                                                 </tr>
                                             </thead>
 
@@ -145,16 +151,27 @@ $result = $con->query($query);
                                             <tbody>
                                                 <?php
 													while ($row = $result->fetch_assoc()) {
-														$accom = $row['Int_InternationalStudentsHostel'];
-														if($row['Nationality'] == 'ghanaian'){
-															$accom = $row['Loc_InternationalStudentsHostel'];
+														$x = "Missing";
+														if ($row['Int_PassportFilepath']) {
+															$x = "Submitted";
+														}
+														$y = "Missing";
+														if ($row['Int_VisaFilepath']) {
+															$y = "Submitted";
+														}
+														$z = "Missing";
+														if ($row['Int_FlightTicketFilepath']) {
+															$z = "Submitted";
 														}
 														echo "<tr>";
 														echo "<td>" . $row['First_Name'] . " " . $row['Last_Name'] . "</td>";
 														echo "<td>" . $row['Nationality'] . "</td>";
-														echo "<td>" . $row['Age'] . "</td>";
-														echo "<td>" . $row['Sex'] . "</td>";
-														echo "<td>" . $accom. "</td>";
+														echo "<td>" . $row['Country_Of_Residence'] . "</td>";
+														echo "<td><a href='" . $row['Int_PassportFilepath'] . "'>" . $x . "</a></td>";
+														echo "<td><a href='" . $row['Int_VisaFilepath'] . "'>" . $y . "</a></td>";
+														echo "<td>" . $row['Int_VisaNotRequiredComment'] . "</td>";
+														echo "<td><a href='" . $row['Int_FlightTicketFilepath'] . "'>" . $z . "</a></td>";
+														echo "<td>" . $row['Int_ArrivalDateTime'] . "</td>";
 														echo "</tr>";
 													}
 												?>
