@@ -10,7 +10,6 @@ require("PHP_Files/getAdminHomeLink.php");
 
 $query = "select * from Applicant_Table";
 $result = $con->query($query);
-
 ?>
 <!doctype html>
 <html lang="en">
