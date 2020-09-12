@@ -48,12 +48,17 @@ try {
             $_SESSION['loggedin'] = true;
             $_SESSION['isStaffAdmin'] = true;
 			$_SESSION['IsMedicalAdmin'] = false;
-			$_SESSION['Username'] = $result[0][0];
+            $_SESSION['IsNationsAdmin'] = false;
+            $_SESSION['Username'] = $result[0][0];
             if ($result[0][2] == true) {
                 $_SESSION['isAdmin'] = false;
 				$_SESSION['IsMedicalAdmin'] = true;
                 header('Location: ../staffdash.php');
-
+            } else if ($result[0][3] == true) {
+                $_SESSION['isAdmin'] = false;
+                $_SESSION['IsMedicalAdmin'] = false;
+                $_SESSION['IsNationsAdmin'] = true;
+                header('Location: ../nationsdash.php');
             } else {
                 $_SESSION['isAdmin'] = true;
                 header('Location: ../admindash2.php');
