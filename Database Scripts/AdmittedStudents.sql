@@ -34,6 +34,7 @@ CREATE TABLE AdmittedStudents(
 	Int_RoomAssignmentFormFilepath VARCHAR(255),
 	Int_PaymentType VARCHAR(255),
 	Int_AmountPaid VARCHAR(255),
+	Int_ReasonableArrival VARCHAR(5000),
 	
 	-- Registration
 	Reg_Confirmed VARCHAR(3),
