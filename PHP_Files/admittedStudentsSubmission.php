@@ -74,6 +74,7 @@ else {
 	$alertMessage = $alertMessage . " " . sql_update_field($conn, "AdmittedStudents", "Int_LunchDate", $ID, HandleNullIndex('lunchdate'));
 	$alertMessage = $alertMessage . " " . sql_update_field($conn, "AdmittedStudents", "Int_WantsStarterPack", $ID, HandleNullIndex('int_starterPack'));
 	$alertMessage = $alertMessage . " " . sql_update_field($conn, "AdmittedStudents", "Int_InternationalStudentsHostel", $ID, HandleNullIndex('int_accommodation'));
+	$alertMessage = $alertMessage . " " . sql_update_field($conn, "AdmittedStudents", "Int_ReasonableArrival", $ID, HandleNullIndex('reasonmonthyear'));
 	$alertMessage = $alertMessage . " " . sql_upload_doc($conn, "AdmittedStudents", "Int_ConfirmationLetterFilepath", $ID, "int_ConfirmPayment", $targetDirectory);
 	$alertMessage = $alertMessage . " " . sql_upload_doc($conn, "AdmittedStudents", "Int_AdmissionContractFormFilepath", $ID, "admissioncontract", $targetDirectory);
 	$alertMessage = $alertMessage . " " . sql_upload_doc($conn, "AdmittedStudents", "Int_StudentResponsibilityFormFilepath", $ID, "intstudentresponform", $targetDirectory);
