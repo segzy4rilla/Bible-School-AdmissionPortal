@@ -1,0 +1,724 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+    <!-- Title -->
+    <title>ABMTC Help Center</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="ABTMC.png">
+
+    <!-- These plugins only need for the run this page -->
+    <link rel="stylesheet" href="css/default-assets/smartwizard.css">
+
+        <link rel="stylesheet" href="css/default-assets/datatables.bootstrap4.css">
+    <link rel="stylesheet" href="css/default-assets/responsive.bootstrap4.css">
+    <link rel="stylesheet" href="css/default-assets/buttons.bootstrap4.css">
+    <link rel="stylesheet" href="css/default-assets/select.bootstrap4.css">
+
+    <!-- Master Stylesheet [If you remove this CSS file, your file will be broken undoubtedly.] -->
+    <link rel="stylesheet" href="style.css">
+
+    <style type="text/css">
+      @import url("https://fonts.googleapis.com/css?family=Roboto:300i,400,400i,500,700,900");
+    </style>
+
+
+
+    <style type="text/css">
+    .hide {
+  display: none;
+}
+</style>
+
+<style>.embed-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; } .embed-container iframe, .embed-container object, .embed-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }</style>
+
+<style>
+  main{
+  
+  padding:30px;
+  width:100%;
+  max-width:920px;
+  background-color:#fff;
+  margin:0 auto;
+  margin-top:50px;
+  box-shadow:0px 0px 5px rgba(0,0,0,0.1);
+}
+
+.topic{
+  padding:20px;
+  padding-top:0px;
+  padding-bottom:0px;
+  border-bottom:solid 1px #ebebeb;
+}
+.open{
+  cursor:pointer;
+  display:block;
+  padding:0px;
+}
+.open:hover{
+  opacity:0.7;
+}
+.expanded{
+  background-color:#f5f5f5;
+  transition: all .3s ease-in-out;
+}
+.question{
+  padding-top:30px;
+  padding-right: 40px;
+  padding-bottom:20px;
+  font-size: 18px;
+  font-weight:500;
+  color: #526ee4;
+}
+.answer{
+  font-size:16px;
+  line-height:26px;
+  display:none;
+  margin-bottom:30px;
+  text-align:justify;
+  padding-left:20px;
+  padding-right:20px;
+}
+.faq-t{
+  -moz-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+  display: inline-block;
+  float:right;
+  position:relative;
+  top:-55px;
+  right:10px;
+  width: 10px;
+  height: 10px;
+  background: transparent;
+  border-left: 2px solid #ccc;
+  border-bottom: 2px solid #ccc;
+  transition: all .3s ease-in-out;
+}
+.faq-o{
+  top:-50px;
+   -moz-transform: rotate(-224deg);
+  -ms-transform: rotate(-224deg);
+  -webkit-transform: rotate(-224deg);
+  transform: rotate(-224deg);
+}
+@media only screen and (max-width: 480px) {
+  .faq-t{display:none;}
+  .question{
+  padding-right: 0px;
+}
+  main{
+  padding:10px;
+}
+  .answer{
+  margin-bottom:30px;
+  padding-left:0px;
+  padding-right:0px;
+}
+}
+</style>
+
+<style type="text/css">
+    .modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 15px;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.88);
+  -webkit-animation-duration: 0.35s;
+          animation-duration: 0.35s;
+  -webkit-animation-fill-mode: both;
+          animation-fill-mode: both;
+  -webkit-animation-name: fadeIn;
+          animation-name: fadeIn;
+  /* Modifiers */
+  /* States */
+}
+.modal__dialog {
+  position: relative;
+  max-width: 500px;
+  padding: 20px;
+  margin: auto;
+  border-radius: 4px;
+  background-color: #fff;
+}
+.modal__close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  padding: 0;
+  border: none;
+  color: #ccc;
+  background-color: transparent;
+  background-image: none;
+}
+.modal__close:focus {
+  outline: 0;
+}
+.modal__header {
+  border-bottom: 1px solid #e2e2e2;
+}
+.modal__title {
+  margin: 0 0 15px;
+}
+.modal__content {
+  padding: 10px 0;
+  font-size: 13px;
+  line-height: 1.6;
+  color: #555;
+}
+.modal__footer {
+  padding-top: 20px;
+  border-top: 1px solid #e2e2e2;
+  text-align: right;
+}
+.modal--fullscreen {
+  padding: 5px;
+}
+.modal--fullscreen .modal__dialog {
+  width: 100%;
+  max-width: none;
+  height: 100%;
+  border-radius: 0;
+}
+.modal.is-modal-active {
+  display: -webkit-box;
+  display: flex;
+}
+/* Animation */
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.demo {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-align: center;
+          align-items: center;
+ 
+}
+.demo__card {
+  width: 917px;
+  margin: 30px auto;
+  padding: 20px;
+  border: 1px solid #e2e2e2;
+  background-color: #fff;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  color: #444;
+}
+.demo__title {
+  margin-top: 0;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #e2e2e2;
+  font-size: 16px;
+}
+.demo__btn {
+  display: inline-block;
+  width: 100%;
+  padding: 10px 15px;
+  border: 1px solid #333;
+  border-radius: 8px;
+  text-decoration: none;
+  color: #333;
+  background-color: transparent;
+  -webkit-transition: all 0.25s linear;
+  transition: all 0.25s linear;
+  margin-bottom: 10px;
+}
+.demo__btn:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+.demo__btn:focus,
+.demo__btn:active {
+  outline: 0;
+}
+.demo__btn--secondary {
+  border: 1px solid #e2e2e2;
+}
+</style>
+
+
+
+</head>
+
+<body>
+<!-- Preloader -->
+<div id="preloader">
+    <div class="preloader-load"></div>
+</div>
+<!-- Preloader -->
+
+<!-- ======================================
+******* Page Wrapper Area Start **********
+======================================= -->
+<div class="ecaps-page-wrapper">
+
+    <!-- Page Content -->
+    <div class="ecaps-page-content">
+        <!-- Top Header Area -->
+        <header class="top-header-area d-flex align-items-center justify-content-between">
+
+            <div class="left-side-content-area d-flex align-items-center">
+                <div class="ecaps-logo" style="width:75px">
+                    <a href="applicantdash.php">
+                        <img class="desktop-logo" style="min-height:70px; min-width:70px; margin:0px" src="ABTMC.png"
+                             alt="Desktop Logo">
+                        <img class="small-logo" src="ABTMC.png" alt="Mobile Logo">
+                    </a>
+                </div>
+
+                <div id="google_translate_element"></div>
+
+                <script type="text/javascript">
+                    function googleTranslateElementInit() {
+                        new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+                    }
+                </script>
+
+                <script type="text/javascript"
+                        src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+                <!-- Mobile Logo -->
+                <div class="mobile-logo mr-3 mr-sm-4">
+                    <a href="applicantdash.php"><img src="ABTMC.png" alt="Mobile Logo"></a>
+                </div>
+
+            </div>
+
+            <div class="right-side-navbar d-flex align-items-center justify-content-end">
+                <!-- Mobile Trigger -->
+                <div class="right-side-trigger" id="rightSideTrigger">
+                    <i class="fa fa-reorder"></i>
+                </div>
+                <!-- Three line menu button -->
+                <div class="ecaps-triggers mr-1 mr-sm-3">
+                    <div class="menu-collasped" id="menuCollasped">
+                        <i class="zmdi zmdi-menu"></i>
+                    </div>
+                    <div class="mobile-menu-open" id="mobileMenuOpen">
+                        <i class="zmdi zmdi-menu"></i>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content Area -->
+        <div class="main-content">
+            <div class="container-fluid">
+                 <div class="row">
+                            <div class="col-12 box-margin">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h2 class="card-title mb-2">Help Center</h2>
+                                        <p class="text-muted font-14 mb-4">
+                                            
+                                        </p>
+
+                                        <main>
+  <h3>Select a question below for answer guide</h3>
+  <div class="topic">
+    <div class="open">
+      <h2 class="question">1. How Do I Use Clear Scanner?</h2>
+      <span class="faq-t"></span>
+    </div>
+    <div class="container">
+    <p class="answer">How Clear Scanner works
+
+        <br>
+        <br>
+
+When you open the app you'll have two options:
+
+<br>
+
+
+1. To take a picture of the document you want to scan
+
+<br>
+
+2. To select an already existing photo
+
+<br>
+<br>
+
+
+You then scan, choose the format you want it to be saved as (preferably PDF).
+
+<br>
+
+
+If the document you are scanning has two pages or more make sure that you scan each page. Before you save, click on the camera button for another page. You will have two scanned documents.
+<br>
+Choose PDF and automatically those pages will be attached to make one document.
+
+<br>
+<br>
+
+<img src="helpimages/clearscanner.jpeg" style="height: 450px; width: 340px; border-radius: 5px; border-style: solid;
+  border-color: #000000;">
+
+<br>
+<br>
+
+</p>
+
+</div>
+
+
+
+  </div>
+  <div class="topic">
+    <div class="open">
+    <h2 class="question">2. How do I upload my documents?
+</h2><span class="faq-t"></span>
+    </div>
+    <p class="answer"><img src="helpimages/documentsup1.png" style="height: 450px; width: 360px; border-radius: 5px;  border-style: solid;
+  border-color: #000000;">
+        <br>
+
+        <br>
+        <img src="helpimages/documentsup2.png" style="height: 450px; width: 360px; border-radius: 5px; border-style: solid;
+  border-color: #000000;">
+        <br>
+        <br>
+        <img src="helpimages/documentsup3.png" style="height: 450px; width: 360px; border-radius: 5px; border-style: solid;
+  border-color: #000000;">
+        
+    </p>
+
+  </div>
+  <div class="topic">
+    <div class="open">
+    <h2 class="question">3. How do I complete my application form?
+</h2><span class="faq-t"></span>
+    </div>
+    <p class="answer"><img src="helpimages/applicationg1.png" style="height: 400px; width: 260px; border-radius: 5px;  border-style: solid;
+  border-color: #000000;">
+        <br>
+        <br>
+        <img src="helpimages/applicationg2.png" style="height: 400px; width: 260px; border-radius: 5px; border-style: solid;
+  border-color: #000000;">
+        <br>
+        <br>
+        <img src="helpimages/applicationg3.png" style="height: 400px; width: 260px; border-radius: 5px; border-style: solid;
+  border-color: #000000;"></p>
+  </div>
+  <div class="topic">
+    <div class="open">
+    <h2 class="question">4. How do I complete my application form? (Part two)
+</h2><span class="faq-t"></span>
+    </div>
+    <p class="answer"><img src="helpimages/applicationg4.png" style="height: 400px; width: 260px; border-radius: 5px; border-style: solid;
+  border-color: #000000;"></p>
+  <br>
+  <br>
+    <p class="answer"><img src="helpimages/applicationg5.png" style="height: 400px; width: 260px; border-radius: 5px;  border-style: solid;
+  border-color: #000000;">
+</p>
+  </div>
+  <div class="topic">
+    <div class="open">
+    <h2 class="question">5. Tips
+</h2><span class="faq-t"></span>
+    </div>
+    <p class="answer">- A laptop/computer gives the best view of the website 
+<br><br>- Use the latest upgraded internet browser (chrome is recommended)
+<br><br>- Clear Cache (google instructions on how to clear cache)
+<br><br>- Scroll to the bottom of every page
+<br><br>- Fill in every field and write Not Applicable if it doesn’t apply to you 
+<br><br>- Avoid using symbols such as + or ‘ or -
+<br><br>- Convert pictures of documents to pdf before you upload </p>
+  </div>
+  <div class="topic">
+    <div class="open">
+    <h2 class="question">6. Contact Support
+</h2><span class="faq-t"></span>
+    </div>
+    <p class="answer">For any issues or system performance issues when completing your application please contact +233594900295
+  </div>
+</main>
+
+
+
+<section class="demo">
+    <div class="demo__card">
+        <h2 class="demo__title">Select a title to open video tutorial</h2>
+        <button data-modal-trigger="sample-modal" class="demo__btn demo__btn--secondary">Video Walkthrough - Scan Your Documents</button>
+        <button data-modal-trigger="sample-modalv2" class="demo__btn demo__btn--secondary">Video Walkthrough - Change Language On The ABMTC Site</button>
+        <button data-modal-trigger="sample-modalv3" class="demo__btn demo__btn--secondary">Video Walkthrough - How To Upload Documents To ABMTC</button>
+        <button data-modal-trigger="sample-modalv4" class="demo__btn demo__btn--secondary">Video Walkthrough - How To Login/Sign Up To ABMTC</button>
+        <button data-modal-trigger="sample-modalv5" class="demo__btn demo__btn--secondary">Video Walkthrough - How To Complete Your ABMTC Application Form</button>
+    </div>
+</section>
+
+<!-- Sample Modal -->
+<div class="modal" data-modal-name="sample-modal">
+    <div class="modal__dialog">
+        <button class="modal__close" data-modal-dismiss>×</button>
+        <header class="modal__header">
+            <h3 class="modal__title">Scan Your ABMTC Documents</h3>
+        </header>
+        <div class="modal__content">
+            <p>In this video we will walk through how you can scan your documents to your application</p>
+            <style>.embed-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; } .embed-container iframe, .embed-container object, .embed-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }</style><div class='embed-container'><iframe src='https://www.youtube.com/embed/CDk3m92H9YI' frameborder='0' allowfullscreen></iframe></div>
+        </div>
+        <footer class="modal__footer">
+            <button  data-modal-dismiss class="demo__btn">Dismiss</button>
+        </footer>
+    </div>
+</div>
+
+<div class="modal" data-modal-name="sample-modalv2">
+    <div class="modal__dialog">
+        <button class="modal__close" data-modal-dismiss>×</button>
+        <header class="modal__header">
+            <h3 class="modal__title">Change Language On The ABMTC Site </h3>
+        </header>
+        <div class="modal__content">
+            <p>In this video we will walk through how can change the language on the ABMTC site</p>
+            <style>.embed-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; } .embed-container iframe, .embed-container object, .embed-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }</style><div class='embed-container'><iframe src='https://www.youtube.com/embed/Xz3qT76INaU' frameborder='0' allowfullscreen></iframe></div>
+        </div>
+        <footer class="modal__footer">
+            <button  data-modal-dismiss class="demo__btn">Dismiss</button>
+        </footer>
+    </div>
+</div>
+
+<div class="modal" data-modal-name="sample-modalv3">
+    <div class="modal__dialog">
+        <button class="modal__close" data-modal-dismiss>×</button>
+        <header class="modal__header">
+            <h3 class="modal__title">How To Upload Documents To ABMTC</h3>
+        </header>
+        <div class="modal__content">
+            <p>In this video we will walk through how you can upload your documents to ABMTC upload document form. We will go over each field required demonstrating how the information should entered in.</p>
+            <style>.embed-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; } .embed-container iframe, .embed-container object, .embed-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }</style><div class='embed-container'><iframe src='https://www.youtube.com/embed/MswJxsiNh2E' frameborder='0' allowfullscreen></iframe></div>
+        </div>
+        <footer class="modal__footer">
+            <button  data-modal-dismiss class="demo__btn">Dismiss</button>
+        </footer>
+    </div>
+</div>
+
+<div class="modal" data-modal-name="sample-modalv4">
+    <div class="modal__dialog">
+        <button class="modal__close" data-modal-dismiss>×</button>
+        <header class="modal__header">
+            <h3 class="modal__title">How To Login/Sign Up To ABMTC</h3>
+        </header>
+        <div class="modal__content">
+            <p>In this video we will walk through how you can register to ABMTC and login to your dashboard  
+
+<br>PLEASE NOTE: This walkthrough is a mobile recording of the ABMTC site, using an android device. 
+
+<br>DESKTOP BROWSERS & MOBILE BROWSERS
+
+<br>- Please use the most up to date browser available</p>
+            <style>.embed-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; } .embed-container iframe, .embed-container object, .embed-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }</style><div class='embed-container'><iframe src='https://www.youtube.com/embed/p8PpfT10p6o' frameborder='0' allowfullscreen></iframe></div>
+        </div>
+        <footer class="modal__footer">
+            <button  data-modal-dismiss class="demo__btn">Dismiss</button>
+        </footer>
+    </div>
+</div>
+
+<div class="modal" data-modal-name="sample-modalv5">
+    <div class="modal__dialog">
+        <button class="modal__close" data-modal-dismiss>×</button>
+        <header class="modal__header">
+            <h3 class="modal__title">How To Complete Your ABMTC Application Form</h3>
+        </header>
+        <div class="modal__content">
+            <p>In this video we will walk through how you can register to ABMTC and login to your dashboard  
+
+<br>PLEASE NOTE: This walkthrough is a mobile recording of the ABMTC site, using an android device. 
+
+<br>DESKTOP BROWSERS & MOBILE BROWSERS
+
+<br>- Please use the most up to date browser available</p>
+            <style>.embed-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; } .embed-container iframe, .embed-container object, .embed-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }</style><div class='embed-container'><iframe src='https://www.youtube.com/embed/dlBVf2xPZdY' frameborder='0' allowfullscreen></iframe></div>
+        </div>
+        <footer class="modal__footer">
+            <button  data-modal-dismiss class="demo__btn">Dismiss</button>
+        </footer>
+    </div>
+</div>
+
+
+                                    </div> <!-- end card body-->
+                                </div> <!-- end card -->
+                            </div><!-- end col-->
+                        </div>
+                        <!-- end row-->
+
+
+            </div>
+
+            <!-- Footer Area -->
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12">
+                        <!-- Footer Area -->
+                        <footer class="footer-area d-flex align-items-center flex-wrap">
+                            <!-- Copywrite Text -->
+                            <div class="copywrite-text">
+                                <p>Created by <a href="#">ABTMC</a></p>
+                            </div>
+                            <!-- Footer Nav -->
+                            <ul class="footer-nav d-flex align-items-center">
+                                
+                            </ul>
+                        </footer>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ======================================
+********* Page Wrapper Area End ***********
+======================================= -->
+
+<!-- Must needed plugins to the run this Template -->
+<script src="js/jquery.min.js"></script>
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/bundle.js"></script>
+<script src="js/default-assets/setting.js"></script>
+<script src="js/default-assets/fullscreen.js"></script>
+
+<!-- Active JS -->
+<script src="js/default-assets/active.js"></script>
+
+<!-- These plugins only need for the run this page -->
+<script src="js/jquery.steps.min.js"></script>
+<script src="js/jquery.form-validator.min.js"></script>
+<script src="js/default-assets/wizard-form.js"></script>
+<script src="js/default-assets/file-upload.js"></script>
+
+
+
+    <!-- These plugins only need for the run this page -->
+    <script src="js/default-assets/jquery.datatables.min.js"></script>
+    <script src="js/default-assets/datatables.bootstrap4.js"></script>
+    <script src="js/default-assets/datatable-responsive.min.js"></script>
+    <script src="js/default-assets/responsive.bootstrap4.min.js"></script>
+    <script src="js/default-assets/datatable-button.min.js"></script>
+    <script src="js/default-assets/button.bootstrap4.min.js"></script>
+    <script src="js/default-assets/button.html5.min.js"></script>
+    <script src="js/default-assets/button.flash.min.js"></script>
+    <script src="js/default-assets/button.print.min.js"></script>
+    <script src="js/default-assets/datatables.keytable.min.js"></script>
+    <script src="js/default-assets/datatables.select.min.js"></script>
+    <script src="js/default-assets/demo.datatable-init.js"></script>
+
+
+<script src='https://rawgit.com/guillaumepotier/Parsley.js/2.2.0-rc4/dist/parsley.js'></script>
+
+<script type="text/javascript">
+    $(".open").click( function () {
+  var container = $(this).parents(".topic");
+  var answer = container.find(".answer");
+  var trigger = container.find(".faq-t");
+  
+  answer.slideToggle(200);
+  
+  if (trigger.hasClass("faq-o")) {
+    trigger.removeClass("faq-o");
+  }
+  else {
+    trigger.addClass("faq-o");
+  }
+  
+  if (container.hasClass("expanded")) {
+    container.removeClass("expanded");
+  }
+  else {
+    container.addClass("expanded");
+  }
+});
+  </script>
+
+  <script>
+  function resizeIframe(obj) {
+    obj.style.height = obj.contentWindow.document.documentElement.scrollHeight + 'px';
+  }
+</script>
+
+<script type="text/javascript">
+    var _targettedModal,
+    _triggers = document.querySelectorAll('[data-modal-trigger]'),
+    _dismiss = document.querySelectorAll('[data-modal-dismiss]'),
+    modalActiveClass = "is-modal-active";
+
+function showModal(el){
+    _targettedModal = document.querySelector('[data-modal-name="'+ el + '"]');
+    _targettedModal.classList.add(modalActiveClass);
+}
+
+function hideModal(event){
+    if(event === undefined || event.target.hasAttribute('data-modal-dismiss')) {
+        _targettedModal.classList.remove(modalActiveClass);
+    }
+}
+
+function bindEvents(el, callback){
+    for (i = 0; i < el.length; i++) {
+        (function(i) {
+            el[i].addEventListener('click', function(event) {
+                callback(this, event);
+            });
+        })(i);
+    }   
+}
+
+function triggerModal(){
+    bindEvents(_triggers, function(that){
+        showModal(that.dataset.modalTrigger);
+    });
+}
+
+function dismissModal(){
+    bindEvents(_dismiss, function(that){
+        hideModal(event);
+    });
+}
+
+function initModal(){
+    triggerModal();
+    dismissModal();
+}
+
+initModal();
+</script>
+
+</body>
+
+</html>
