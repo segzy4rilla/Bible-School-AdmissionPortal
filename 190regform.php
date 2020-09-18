@@ -131,11 +131,39 @@
                                                     </div> 
 
                                             <div class="form-group">
-                                                    <label class="control-label">Name Of Church/Denomination</label>
+                                                <label class="control-label">Name Of Church Branch</label>
                                                     <input type="text" class="form-control" placeholder="Enter church/denomination" name="190churchden" required>
                                                 </div>
 
-                                            <div class="form-group">
+                                        <div class="form-group">
+                                            <label for="exampleSelect1">Name Of Denomination</label>
+                                            <select class="form-control rounded-0" id="denominationsel"
+                                                    name="seldenomreg">
+                                                <option value="">-- Select Denomination --</option>
+                                                <option>Anagkazo Assemblies</option>
+                                                <option>Catch The Anointing Centre</option>
+                                                <option>Evangelical Lighthouse Chapel Int</option>
+                                                <option>Greater Love Church Ghana</option>
+                                                <option>Healing Jesus Mission Int</option>
+                                                <option>Igreja Do Primiero Amor</option>
+                                                <option>Jesus Is The Answer Church</option>
+                                                <option>LCI Kenya</option>
+                                                <option>LCI Sa</option>
+                                                <option>Lighthouse Chapel Int</option>
+                                                <option>Loyalty House Int</option>
+                                                <option>Mustard Seed Chapel</option>
+                                                <option>QFC Ghana</option>
+                                                <option>QFC USA</option>
+                                                <option>The Machaneh Church</option>
+                                                <option>The Makarios Church</option>
+                                                <option>The Mega Church</option>
+                                                <option>First Love</option>
+                                                <option>Other</option>
+                                            </select>
+                                        </div>
+
+
+                                        <div class="form-group">
                                                     <label class="control-label">Name Of Pastor</label>
                                                     <input type="text" class="form-control" placeholder="Enter pastor's name" name="190pastorname" required>
                                                 </div>
@@ -612,7 +640,13 @@
 														<option value="February 2021">February 2021</option>
 														<option value="June 2021">June 2021</option>
 														<option value="October 2021">October 2021</option>
-													</select>
+                                                        <option value="Currently In ABMTC">Currently In ABMTC</option>
+                                                        <option value="Completed ABMTC">Completed ABMTC</option>
+                                                        <option value="Not Planning On Coming To ABMTC">Not Planning On
+                                                            Coming To ABMTC
+                                                        </option>
+
+                                                    </select>
 												</div>
                                         
                                         <button type="submit" class="btn btn-primary mr-2">Submit</button>

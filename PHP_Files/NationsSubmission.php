@@ -46,7 +46,7 @@ else {
 	$alertMessage = $alertMessage . " " . sql_update_field_II($conn, "Nations", "FirstName", $ID, HandleNullIndex('190fname'), "WhatsAppNumber");
 	$alertMessage = $alertMessage . " " . sql_update_field_II($conn, "Nations", "LastName", $ID, HandleNullIndex('190lname'), "WhatsAppNumber");
 	$alertMessage = $alertMessage . " " . sql_update_field_II($conn, "Nations", "Email", $ID, HandleNullIndex('190emailaddress'), "WhatsAppNumber");
-	$alertMessage = $alertMessage . " " . sql_update_field_II($conn, "Nations", "Denomination", $ID, HandleNullIndex('190churchden'), "WhatsAppNumber");
+    $alertMessage = $alertMessage . " " . sql_update_field_II($conn, "Nations", "Branch", $ID, HandleNullIndex('190churchden'), "WhatsAppNumber");
 	$alertMessage = $alertMessage . " " . sql_update_field_II($conn, "Nations", "Pastor", $ID, HandleNullIndex('190pastorname'), "WhatsAppNumber");
 	$alertMessage = $alertMessage . " " . sql_update_field_II($conn, "Nations", "Bishop", $ID, HandleNullIndex('190bishopname'), "WhatsAppNumber");
 	$alertMessage = $alertMessage . " " . sql_update_field_II($conn, "Nations", "Age", $ID, HandleNullIndex('190age'), "WhatsAppNumber");
@@ -60,6 +60,7 @@ else {
 	$alertMessage = $alertMessage . " " . sql_update_field_II($conn, "Nations", "CurrentlyInABMTC", $ID, HandleNullIndex('current_ABMTC'), "WhatsAppNumber");
 	$alertMessage = $alertMessage . " " . sql_update_field_II($conn, "Nations", "CompletedABMTC", $ID, HandleNullIndex('completed_ABMTC'), "WhatsAppNumber");
 	$alertMessage = $alertMessage . " " . sql_update_field_II($conn, "Nations", "StartDate", $ID, HandleNullIndex('startDate'), "WhatsAppNumber");
+    $alertMessage = $alertMessage . " " . sql_update_field_II($conn, "Nations", "Denomination", $ID, HandleNullIndex('seldenomreg'), "WhatsAppNumber");
 }
 
 if (empty($alertMessage) || ctype_space($alertMessage)) {
