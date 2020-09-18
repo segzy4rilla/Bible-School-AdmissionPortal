@@ -6,10 +6,13 @@ if ($_SESSION['loggedin'] == false || $_SESSION['IsNationsAdmin'] == false) {
 }
 
 require("dbconfig/config.php");
+require("PHP_Files/Update-Nations-Table.php");
 
 
 $query = "select * from Nations";
 $result = $con->query($query);
+
+
 ?>
 
 
@@ -148,6 +151,9 @@ $result = $con->query($query);
                                         <th>Are You Currently In ABMTC?</th>
                                         <th>Have You Completed ABMTC?</th>
                                         <th>When Do You Want To Come To ABMTC For Training?</th>
+                                        <th>Created An ABMTC Account</th>
+                                        <th>Payment Type</th>
+
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -174,6 +180,8 @@ $result = $con->query($query);
                                         echo "<td>" . $row['CurrentlyInABMTC'] . "</td>";
                                         echo "<td>" . $row['CompletedABMTC'] . "</td>";
                                         echo "<td>" . $row['StartDate'] . "</td>";
+                                        echo "<td>" . $row['Created_an_ABMTC_Account'] . "</td>";
+                                        echo "<td>" . $row['Payment_Type'] . "</td>";
                                         echo "</tr>";
                                     }
 
