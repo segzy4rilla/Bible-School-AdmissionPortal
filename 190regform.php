@@ -132,13 +132,13 @@
 
                                             <div class="form-group">
                                                 <label class="control-label">Name Of Church Branch</label>
-                                                    <input type="text" class="form-control" placeholder="Enter church/denomination" name="190churchden" required>
+                                                    <input type="text" class="form-control" placeholder="Enter church/denomination" name="branch" required>
                                                 </div>
 
                                         <div class="form-group">
                                             <label for="exampleSelect1">Name Of Denomination</label>
-                                            <select class="form-control rounded-0" id="denominationsel"
-                                                    name="seldenomreg">
+                                            <select class="form-control rounded-0" id="denomination"
+                                                    name="denomination">
                                                 <option value="">-- Select Denomination --</option>
                                                 <option>Anagkazo Assemblies</option>
                                                 <option>Catch The Anointing Centre</option>
