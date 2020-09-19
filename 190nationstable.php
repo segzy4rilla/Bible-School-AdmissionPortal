@@ -1,15 +1,28 @@
 <?php
 session_start();
 
-if ($_SESSION['loggedin'] == false || $_SESSION['IsNationsAdmin'] == false) {
+if ($_SESSION['loggedin'] == false) {
     header('Location: loginabmtc.html');
 }
 
 require("dbconfig/config.php");
-require("PHP_Files/Update-Nations-Table.php");
-
-
-$query = "select * from Nations";
+$query = "SELECT *,
+			CASE	
+				WHEN B.User_ID IS NULL
+				THEN 'No'
+				ELSE 'Yes'
+			END AS CreatedAccount,
+			CASE 
+				WHEN A.Nationality = 'ghanaian'
+				THEN C.Loc_PaymentType
+				ELSE C.Int_PaymentType
+			END AS PType
+		FROM Nations AS A
+		LEFT JOIN Applicant_Table AS B
+		ON A.FirstName = B.First_Name
+		AND A.LastName = B.Last_Name
+        LEFT JOIN AdmittedStudents AS C
+        ON B.User_ID = C.User_ID";
 $result = $con->query($query);
 
 
@@ -151,7 +164,7 @@ $result = $con->query($query);
                                         <th>Are You Currently In ABMTC?</th>
                                         <th>Have You Completed ABMTC?</th>
                                         <th>When Do You Want To Come To ABMTC For Training?</th>
-                                        <th>Created An ABMTC Account</th>
+                                        <!--<th>Created An ABMTC Account</th>-->
                                         <th>Payment Type</th>
 
                                     </tr>
@@ -180,8 +193,8 @@ $result = $con->query($query);
                                         echo "<td>" . $row['CurrentlyInABMTC'] . "</td>";
                                         echo "<td>" . $row['CompletedABMTC'] . "</td>";
                                         echo "<td>" . $row['StartDate'] . "</td>";
-                                        echo "<td>" . $row['Created_an_ABMTC_Account'] . "</td>";
-                                        echo "<td>" . $row['Payment_Type'] . "</td>";
+                                        //echo "<td>" . $row['CreatedAccount'] . "</td>";
+                                        echo "<td>" . $row['PType'] . "</td>";
                                         echo "</tr>";
                                     }
 

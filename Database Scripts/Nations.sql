@@ -13,7 +13,7 @@ CREATE TABLE Nations(
 	Education VARCHAR(255),
 	RoleInChurch VARCHAR(255),
 	YearsInChurch INT,
-	ParentalConsent VARCHAR(255)
+	ParentalConsent VARCHAR(255),
 	MaritalStatus VARCHAR(255),
 	CurrentlyInABMTC VARCHAR(255),
 	CompletedABMTC VARCHAR(255),

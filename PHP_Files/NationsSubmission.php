@@ -62,8 +62,8 @@ else {
 	$alertMessage = $alertMessage . " " . sql_update_field_II($conn, "Nations", "CompletedABMTC", $ID, HandleNullIndex('completed_ABMTC'), "WhatsAppNumber");
 	$alertMessage = $alertMessage . " " . sql_update_field_II($conn, "Nations", "StartDate", $ID, HandleNullIndex('startDate'), "WhatsAppNumber");
 
-	//UPDATE PAYMENT TYPE
-	$idInsert = $conn->prepare("UPDATE NATIONS
+	//UPDATE PAYMENT TYPE - This is no longer used A join is used on the 190 nations page instead
+	$query = $conn->prepare("UPDATE NATIONS
 								SET PaymentType = 
 								(
 									SELECT
@@ -80,7 +80,7 @@ else {
 									AND A.Last_Name = '".HandleNullIndex('190lname')."'
 								)
 								WHERE WhatsAppNumber = '".$ID."'");
-	$idInserted = $idInsert->execute();
+	$success = $query->execute();
 }
 
 if (empty($alertMessage) || ctype_space($alertMessage)) {
