@@ -164,7 +164,7 @@ $result = $con->query($query);
                                         <th>Are You Currently In ABMTC?</th>
                                         <th>Have You Completed ABMTC?</th>
                                         <th>When Do You Want To Come To ABMTC For Training?</th>
-                                        <th>Created An ABMTC Account</th>
+                                        <!--<th>Created An ABMTC Account</th>-->
                                         <th>Payment Type</th>
 
                                     </tr>
@@ -193,7 +193,7 @@ $result = $con->query($query);
                                         echo "<td>" . $row['CurrentlyInABMTC'] . "</td>";
                                         echo "<td>" . $row['CompletedABMTC'] . "</td>";
                                         echo "<td>" . $row['StartDate'] . "</td>";
-                                        echo "<td>" . $row['CreatedAccount'] . "</td>";
+                                        //echo "<td>" . $row['CreatedAccount'] . "</td>";
                                         echo "<td>" . $row['PType'] . "</td>";
                                         echo "</tr>";
                                     }
