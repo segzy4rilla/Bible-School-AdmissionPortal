@@ -9,7 +9,7 @@ require("dbconfig/config.php");
 require("PHP_Files/getAdminHomeLink.php");
 
 $query = "SELECT A.First_Name, A.Last_Name, C.Nationality, A.Age, A.Sex, B.Loc_InternationalStudentsHostel, B.Int_InternationalStudentsHostel
-FROM Application_form AS A
+FROM Application_Form AS A
 JOIN AdmittedStudents AS B
 ON A.User_ID = B.User_ID
 JOIN Applicant_Table AS C
