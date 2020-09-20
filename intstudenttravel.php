@@ -10,7 +10,7 @@ require("PHP_Files/getAdminHomeLink.php");
 
 $query = "SELECT A.First_Name, A.Last_Name, C.Nationality, Country_Of_Residence, Int_PassportFilepath,
 Int_VisaFilepath, Int_VisaNotRequiredComment, Int_FlightTicketFilepath, Int_ArrivalDateTime 
-FROM Application_form AS A
+FROM Application_Form AS A
 JOIN AdmittedStudents AS B
 ON A.User_ID = B.User_ID
 JOIN Applicant_Table AS C
