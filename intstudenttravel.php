@@ -128,7 +128,7 @@ $result = $con->query($query);
                             <div class="col-12 box-margin">
                                 <div class="card">
                                     <div class="card-body">
-                                        <h4 class="card-title mb-2">Accommodation Table</h4>
+                                        <h4 class="card-title mb-2">International Students Travelling Table</h4>
                                         <p class="text-muted font-14 mb-4">
                                             
                                         </p>
