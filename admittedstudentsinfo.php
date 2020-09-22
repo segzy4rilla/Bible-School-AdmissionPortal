@@ -460,7 +460,8 @@ if ($_SESSION['loggedin'] == false) {
         <!--form panels-->
         <div class="row">
           <div class="col-12 col-lg-12 m-auto">
-            <form class="multisteps-form__form" id="myForm" name="admittedform" action="PHP_Files/AdmittedStudentsSubmission.php" method="post" enctype="multipart/form-data">
+              <form class="multisteps-form__form" id="myForm" name="admittedform"
+                    action="PHP_Files/admittedStudentsSubmission.php" method="post" enctype="multipart/form-data">
                 <br>
 
                 <!--single form panel-->
@@ -1982,12 +1983,12 @@ animationSelect.addEventListener('change', () => {
    let Disabled = true;
     $(".required").each(function() {
 
-      let value = this.value
+        let value = this.value;
       if ((value)&&(value.trim() !=''))
           {
             Disabled = false
           }else{
-            Disabled = true
+          Disabled = true;
             return false
           }
     });
@@ -2665,11 +2666,11 @@ img.onclick = function() {
   modal.style.display = "block";
   img1.src = this.src;
   caption.innerHTML = this.alt;
-}
+};
 
 close.onclick = function() {
   modal.style.display = "none";
-}
+};
 
 window.onclick = function(e) {
   if(e.target == modal) {
