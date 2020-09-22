@@ -8,7 +8,7 @@ if ($_SESSION['loggedin'] == false || ($_SESSION['IsMedicalAdmin'] == false && !
 require("dbconfig/config.php");
 require("PHP_Files/getAdminHomeLink.php");
 
-$query = "select First_Name, Last_Name, Nationality, Reg_Denomination, Loc_AdminFeePaymentDate, Loc_AdminFeeProofFilepath, Loc_ConfirmationLetterFilepath, Int_AdminFeePaymentDate, Int_AdminFeeProofFilepath, Int_ConfirmationLetterFilepath, Loc_PaymentType, Loc_AmountPaid, Int_PaymentType, Int_AmountPaid FROM AdmittedStudents A JOIN Applicant_Table B ON A.User_ID = B.User_ID";
+$query = "select First_Name, Last_Name, Nationality,EmailWhatsapp, Reg_Denomination,Loc_Means_Of_Payment,Loc_Reference,Int_Means_Of_Payment,Int_Reference,Loc_AdminFeePaymentDate, Loc_AdminFeeProofFilepath, Loc_ConfirmationLetterFilepath, Int_AdminFeePaymentDate, Int_AdminFeeProofFilepath, Int_ConfirmationLetterFilepath, Loc_PaymentType, Loc_AmountPaid, Int_PaymentType, Int_AmountPaid FROM AdmittedStudents A JOIN Applicant_Table B ON A.User_ID = B.User_ID";
 $result = $con->query($query);
 
 ?>
@@ -129,12 +129,15 @@ $result = $con->query($query);
                                     <tr>
                                         <th style="font-size: 10px;">Name</th>
                                         <th style="font-size: 10px;">Nationality</th>
-                                        <th style="font-size: 10px;">Denomination</th>
+                                        <th style="font-size: 10px;">Type of Payment</th>
+                                        <th style="font-size: 10px;">Means of Payment</th>
+                                        <th style="font-size: 10px;">Reference</th>
+                                        <th style="font-size: 10px;">Amount Paid</th>
+                                        <th style="font-size: 10px;">Email Address</th>
                                         <th style="font-size: 10px;">Proof Of Payment</th>
                                         <th style="font-size: 10px;">Date Of Full Payment</th>
+                                        <th style="font-size: 10px;">Denomination</th>
                                         <th style="font-size: 10px;">Vouch Letter</th>
-                                        <th style="font-size: 10px;">Fully Paid, Part Payment</th>
-                                        <th style="font-size: 10px;">Amount Paid</th>
                                     </tr>
                                     </thead>
 
@@ -145,7 +148,6 @@ $result = $con->query($query);
                                         echo "<tr>";
                                         echo "<td>" . $row['First_Name'] . " " . $row['Last_Name'] . "</td>";
                                         echo "<td>" . $row['Nationality'] . "</td>";
-                                        echo "<td>" . $row['Reg_Denomination'] . "</td>";
                                         if ($row['Nationality'] == "ghanaian") {
                                             $x = "Incomplete";
                                             $y = "Incomplete";
@@ -155,11 +157,15 @@ $result = $con->query($query);
                                             if ($row['Loc_ConfirmationLetterFilepath']) {
                                                 $y = "Complete";
                                             }
+                                            echo "<td>" . $row['Loc_PaymentType'] . "</td>";
+                                            echo "<td>" . $row['Loc_Means_Of_Payment'] . "</td>";
+                                            echo "<td>" . $row['Loc_Reference'] . "</td>";
+                                            echo "<td>" . $row['Loc_AmountPaid'] . "</td>";
+                                            echo "<td>" . $row['EmailWhatsapp'] . "</td>";
                                             echo "<td><a href='" . $row['Loc_AdminFeeProofFilepath'] . "'>" . $x . "</a></td>";
                                             echo "<td>" . $row['Loc_AdminFeePaymentDate'] . "</td>";
+                                            echo "<td>" . $row['Reg_Denomination'] . "</td>";
                                             echo "<td><a href='" . $row['Loc_ConfirmationLetterFilepath'] . "'>" . $y . "</a></td>";
-                                            echo "<td>" . $row['Loc_PaymentType'] . "</td>";
-                                            echo "<td>" . $row['Loc_AmountPaid'] . "</td>";
                                         } else {
                                             $x = "Incomplete";
                                             $y = "Incomplete";
@@ -169,11 +175,15 @@ $result = $con->query($query);
                                             if ($row['Int_ConfirmationLetterFilepath']) {
                                                 $y = "Complete";
                                             }
+                                            echo "<td>" . $row['Int_PaymentType'] . "</td>";
+                                            echo "<td>" . $row['Int_Means_Of_Payment'] . "</td>";
+                                            echo "<td>" . $row['Int_Reference'] . "</td>";
+                                            echo "<td>" . $row['Int_AmountPaid'] . "</td>";
+                                            echo "<td>" . $row['EmailWhatsapp'] . "</td>";
                                             echo "<td><a href='" . $row['Int_AdminFeeProofFilepath'] . "'>" . $x . "</a></td>";
                                             echo "<td>" . $row['Int_AdminFeePaymentDate'] . "</td>";
+                                            echo "<td>" . $row['Reg_Denomination'] . "</td>";
                                             echo "<td><a href='" . $row['Int_ConfirmationLetterFilepath'] . "'>" . $y . "</a></td>";
-                                            echo "<td>" . $row['Int_PaymentType'] . "</td>";
-                                            echo "<td>" . $row['Int_AmountPaid'] . "</td>";
                                         }
                                         echo "</tr>";
                                     }
