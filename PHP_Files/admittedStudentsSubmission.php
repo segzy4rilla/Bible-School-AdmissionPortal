@@ -65,7 +65,9 @@ else {
 	$alertMessage = $alertMessage . " " . sql_upload_doc($conn, "AdmittedStudents", "Loc_ConfirmationLetterFilepath", $ID, "loc_ConfirmPayment", $targetDirectory);
 	$alertMessage = $alertMessage . " " . sql_update_field($conn, "AdmittedStudents", "Loc_PaymentType", $ID, HandleNullIndex('loc_paymenttype'));
 	$alertMessage = $alertMessage . " " . sql_update_field($conn, "AdmittedStudents", "Loc_AmountPaid", $ID, HandleNullIndex('loc_amountpaid'));
-	
+    $alertMessage = $alertMessage . " " . sql_update_field($conn, "AdmittedStudents", "Loc_Means_Of_Payment", $ID, HandleNullIndex('locmeanpay'));
+    $alertMessage = $alertMessage . " " . sql_update_field($conn, "AdmittedStudents", "Loc_Reference", $ID, HandleNullIndex('locreference'));
+
 	//International
 	$alertMessage = $alertMessage . " " . sql_update_field($conn, "AdmittedStudents", "Int_AdminFeePaymentDate", $ID, HandleNullIndex('int_datepayfulladmin'));
 	$alertMessage = $alertMessage . " " . sql_update_field($conn, "AdmittedStudents", "Int_VisaNotRequiredComment", $ID, HandleNullIndex('visacomment'));
@@ -87,8 +89,10 @@ else {
 	$alertMessage = $alertMessage . " " . sql_upload_doc($conn, "AdmittedStudents", "Int_RoomAssignmentFormFilepath", $ID, "introomassignform", $targetDirectory);
 	$alertMessage = $alertMessage . " " . sql_update_field($conn, "AdmittedStudents", "Int_PaymentType", $ID, HandleNullIndex('int_paymenttype'));
 	$alertMessage = $alertMessage . " " . sql_update_field($conn, "AdmittedStudents", "Int_AmountPaid", $ID, HandleNullIndex('int_amountpaid'));
-	
-	//Registration
+    $alertMessage = $alertMessage . " " . sql_update_field($conn, "AdmittedStudents", "Int_Means_Of_Payment", $ID, HandleNullIndex('intmeanpay'));
+    $alertMessage = $alertMessage . " " . sql_update_field($conn, "AdmittedStudents", "Int_Reference", $ID, HandleNullIndex('intreference'));
+
+    //Registration
 	$alertMessage = $alertMessage . " " . sql_update_field($conn, "AdmittedStudents", "Reg_Confirmed", $ID, BoolToYesNo('confirmregistrationcheck2'));
 	$alertMessage = $alertMessage . " " . sql_update_field($conn, "AdmittedStudents", "Reg_SelectedSeptember2020Admission", $ID, BoolToYesNo('confirmregistrationcheck2'));
 	$alertMessage = $alertMessage . " " . sql_update_field($conn, "AdmittedStudents", "Reg_ChurchBranch", $ID, HandleNullIndex('churchbranchreg'));
