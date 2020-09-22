@@ -661,7 +661,24 @@ if ($_SESSION['loggedin'] == false) {
                                                     <button class="file-upload-browse btn btn-primary" type="button">Upload</button>
                                                 </span>
                                             </div>
-                                        </div>                                        
+                                        </div>  
+
+                                        <div class="form-group">
+                                                <label for="exampleSelect1">Means Of Payment</label>
+                                                <select class="form-control" id="exampleSelect1" name="locmeanpay">
+                                                    <option>-- Select One --</option>
+                                                    <option>Zenith Bank Acoount</option>
+                                                    <option>GCB Bank Account</option>
+                                                    <option>Mobile Money ABMTC Ruth Sayki</option>
+                                                    <option>Mobile Money Sendy ABMTC</option>
+                                                    <option>Cash</option>
+                                                </select>
+                                            </div> 
+
+                                            <div class="form-group">
+                                                    <label class="control-label">Reference</label>
+                                                    <input type="text" class="form-control" placeholder="Enter reference" name="locreference">
+                                                </div>                                     
                                            
 
                                             <br>                                 
@@ -952,6 +969,23 @@ if ($_SESSION['loggedin'] == false) {
                                                 </span>
                                             </div>
                                         </div>
+
+                                        <div class="form-group">
+                                                <label for="exampleSelect1">Means Of Payment</label>
+                                                <select class="form-control" id="exampleSelect1" name="intmeanpay">
+                                                    <option>-- Select One --</option>
+                                                    <option>Zenith Bank Acoount</option>
+                                                    <option>GCB Bank Account</option>
+                                                    <option>Mobile Money ABMTC Ruth Sayki</option>
+                                                    <option>Mobile Money Sendy ABMTC</option>
+                                                    <option>Cash</option>
+                                                </select>
+                                            </div> 
+
+                                            <div class="form-group">
+                                                    <label class="control-label">Reference</label>
+                                                    <input type="text" class="form-control" placeholder="Enter reference" name="intreference">
+                                                </div>
 
                                         
 
