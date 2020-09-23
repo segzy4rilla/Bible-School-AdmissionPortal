@@ -450,6 +450,7 @@ if ($_SESSION['loggedin'] == false) {
               <button class="multisteps-form__progress-btn" style="cursor: default;" type="button" title="Order Info" disabled>SPONSOR AGREEMENT PLAN</button>
               <button class="multisteps-form__progress-btn" style="cursor: default; font-size: 13px;" type="button" title="Comments" disabled>INTERNATIONAL STUDENT CONFIRMATIONS</button>
               <button class="multisteps-form__progress-btn" style="cursor: default; font-size: 13px;" type="button" title="Comments" disabled>INTERNATIONAL STUDENT ARRIVAL</button>
+              <button class="multisteps-form__progress-btn" style="cursor: default;" type="button" title="Comments" disabled>STUDENT AMBASSADORS DIRECTORY</button>
               <button class="multisteps-form__progress-btn" style="cursor: default;" type="button" title="Comments" disabled>HELPFUL LINKS</button>
               <button class="multisteps-form__progress-btn" style="cursor: default;" type="button" title="Comments" disabled>SOFT LANDING CHECKLIST</button>
               <button class="multisteps-form__progress-btn" style="cursor: default;" type="button" title="Comments" disabled>UNIVERSITY ITEMS CHECKLIST</button>
@@ -1448,6 +1449,158 @@ if ($_SESSION['loggedin'] == false) {
 
                                              
                                               
+                  </div>
+                    <div class="button-row d-flex mt-4 col-12">
+                      <button class="btn btn-primary js-btn-prev" type="button" title="Prev">Prev</button>
+                      <button class="btn btn-primary ml-auto js-btn-next" type="button" title="Next">Next</button>
+                  </div>
+                </div>
+
+                <div class="multisteps-form__panel shadow p-4 rounded bg-white" data-animation="scaleIn">
+                <h3 class="multisteps-form__title">STUDENT AMBASSADORS DIRECTORY</h3>
+                <div class="scrollpage1" style="height: 300px;">
+                  <div class="form-group">
+                    <!-- <span class="help-block"><medium>Please read the recommended items you should bring to ABMTC on the school website: <a href="https://school.anagkazomanager.org/register" target="_blank">www.abmtc.org/studentlife</a></medium></span> -->
+                    <br>
+                  
+                    <span class="help-block"><medium>This is a list of students currently in the Bible School. Please choose a country rep that you would like to WhatsApp to ask questions about the school, for example what items are in the school, what items they recommend you should bring, what food is on/around campus etc.</medium></span>
+                    <br>
+      <br>
+
+      Country Rep: Belize<br>
+WhatsApp Number: +2336023343
+<br>
+<br>
+Country Rep: Benin<br>
+WhatsApp Number: +22967548831
+<br>
+<br>
+
+Country Rep: Botswana<br>
+WhatsApp Number: +233 552128982
+<br>
+<br>
+Country Rep: Burkina Faso<br>
+WhatsApp Number: +22666359444
+<br>
+<br>
+Country Rep: DR Congo<br>
+WhatsApp Number: +233547900090
+<br>
+<br>
+Country Rep: DR Congo<br>
+WhatsApp Number: +233545553291
+<br>
+<br>
+Country Rep: Fiji (Pacific)<br>
+WhatsApp Number: +233549571289
+<br>
+<br>
+Country Rep: Ghana<br>
+WhatsApp number: +233244536768
+<br>
+<br>
+Country Rep: Ghana<br>
+WhatsApp Number: +233548884598
+<br>
+<br>
+Country Rep: Ghana<br>
+WhatsApp Number: +233543406468
+<br>
+<br>
+Country Rep: Ghana<br>
+WhatsApp Number: +233242744886
+<br>
+<br>
+Country Rep: Guinea (Conakry)<br>
+WhatsApp Number: +224662453560
+<br>
+<br>
+Country Rep: Guyana<br>
+WhatsApp Number: +233559655678
+<br>
+<br>
+Country Rep: Haiti<br>
+WhatsApp Number: +233272928638
+<br>
+<br>
+Country Rep Jamaica<br>
+WhatsApp Number: +233556656682
+<br>
+<br>
+Country Rep: Jamaica<br>
+WhatsApp Number: +233203014681
+<br>
+<br>
+Country Rep: Kenya<br>
+WhatsApp Number: +254706311459
+<br>
+<br>
+Country Rep: Kenya<br>
+WhatsApp Number: +254741445566
+<br>
+<br>
+Country Rep: Liberia<br>
+WhatsApp Number: +233246024208
+<br>
+<br>
+Country Rep: Liberia<br>
+WhatsApp Number: +233246026114
+<br>
+<br>
+Country Rep: Nigeria<br>
+WhatsApp Number: +233594188617
+<br>
+<br>
+Country Rep: Nigeria<br>
+WhatsApp Number: +2348124009736
+<br>
+<br>
+Country Rep: South Africa<br>
+WhatsApp Number: +27844793819
+<br>
+<br>
+Country Rep: South Africa<br>
+WhatsApp Number: +27833309492
+<br>
+<br>
+Country Rep: South Africa<br>
+WhatsApp Number: +233 553677150
+<br>
+<br>
+Country Rep: Togo<br>
+WhatsApp Number: +233549839511
+<br>
+<br>
+Country Rep: Uganda<br>
+WhatsApp Number: +233558365634
+<br>
+<br>
+Country Rep: UK<br>
+WhatsApp Number: +447403461490
+<br>
+<br>
+Country Rep: UK<br>
+WhatsApp Number: +447415266143
+<br>
+<br>
+Country Rep: USA<br>
+WhatsApp Number: +233592497698
+<br>
+<br>
+Country Rep: Zambia<br>
+WhatsApp Number: +233553078285
+<br>
+<br>
+Country Rep: Zimbabwe<br>
+WhatsApp Number: +233557431391
+<br>
+<br>
+Country Rep: Zimbabwe<br>
+WhatsApp Number: +233560552256
+
+                                           
+                                          </div>
                   </div>
                     <div class="button-row d-flex mt-4 col-12">
                       <button class="btn btn-primary js-btn-prev" type="button" title="Prev">Prev</button>
