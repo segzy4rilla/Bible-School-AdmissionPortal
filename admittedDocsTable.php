@@ -8,16 +8,8 @@ if ($_SESSION['loggedin'] == false || $_SESSION['isStaffAdmin'] == false) {
 require("dbconfig/config.php");
 require("PHP_Files/getAdminHomeLink.php");
 
-$query = "SELECT * FROM Applicant_Table as A
-			JOIN ZoomInterview AS Z
-			ON A.User_ID = Z.ID
-			LEFT JOIN AdmittedStudents AS X
-			ON A.User_ID = X.User_ID
-			JOIN Application_Form AS J
-            ON J.User_ID = A.User_ID
-			WHERE Z.Admitted = 'Admitted'";
+$query = "SELECT * FROM Applicant_Table";
 $result = $con->query($query);
-
 ?>
 <!doctype html>
 <html lang="en">
@@ -30,7 +22,7 @@ $result = $con->query($query);
     <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
     <!-- Title -->
-    <title>ABMTC Admitted Students</title>
+    <title>ABMTC Summary Table</title>
 
     <!-- Favicon -->
     <link rel="icon" href="ABTMC.png" s-resize>
@@ -114,7 +106,7 @@ $result = $con->query($query);
                         <div class="col-12 box-margin">
                             <div class="card">
                                 <div class="card-body">
-                                    <h4 class="card-title mb-2">Admitted Students</h4>
+                                    <h4 class="card-title mb-2">Summary Table</h4>
 
                                     <table id="datatable-buttons" class="table table-striped dt-responsive nowrap w-100">
                                         <thead>
@@ -122,13 +114,8 @@ $result = $con->query($query);
                                             <th>Index</th>
                                             <th>Applicants Name</th>
                                             <th>Nationality</th>
-											<th>UD</th>
-											<th>Admission Date</th>
-                                            <th>Applicants Form</th>
-                                            <th>Interview Test</th>
-                                            <th>Uploaded Documents</th>
-                                            <th>Payment</th>
-
+											<th>Member of UD-OLGC Church</th>
+                                            <th>Documents</th>
                                         </tr>
                                         </thead>
 
@@ -137,50 +124,21 @@ $result = $con->query($query);
                                         <?php
                                         $count = 0;
                                         while ($row = $result->fetch_assoc()) {
-											$payment = "";
-											if($row['Nationality'] == 'ghanaian'){
-												$payment = $row['Loc_PaymentType'];
+											$link = "admittedDocsLoc";
+											if($row['Nationality'] != "ghanaian"){
+												$link = "admittedDocsInt";
 											}
-											else{
-												$payment = $row['Int_PaymentType'];
-											}
-											if($payment == "" || $payment == "--Select Payment Type--"){
-												$payment = "None";
-											}
-											
                                             echo "<tr>";
                                             echo "<td>" . ++$count . "</td>";
                                             echo "<td>" . $row['First_Name'] . " " . $row['Last_Name'] . "</td>";
                                             echo "<td>" . $row['Nationality'] . "</td>";
 											echo "<td>" . $row['Church_Part_Of_UD'] . "</td>";
-											echo "<td>" . $row['Start_Month'] . "</td>";
-                                            
-											echo "<td>";
-												echo "<a href='adminapplicationform.php?code=".$row['User_ID']."'>";
-													if ($row['Application_Form_Submitted'] == 1) {
-														echo "Completed";
-													} else {
-														echo "Incomplete";
-													}
-												echo "</a>";
-											echo "</td>";
 											
 											echo "<td>";
-												echo "<a href='admininterview.php?code=".$row['User_ID']."'>";
-													if ($row['Interview_Form_Submitted'] == 1) {
-														echo "Completed";
-													} else {
-														echo "Incomplete";
-													}
+												echo "<a href='".$link.".php?User=".$row['User_ID']."'>";
+													echo "See Documents";
 												echo "</a>";
 											echo "</td>";
-											
-											echo "<td>";
-												echo "<a href='docResults.php?emailWhatsApp=".$row['EmailWhatsapp']."'>";
-													echo $row['Document_Uploads_Status'];
-												echo "</a>";
-											echo "</td>";
-											echo "<td>" .$payment. "</td>";
                                             echo "</tr>";
                                         }
 
