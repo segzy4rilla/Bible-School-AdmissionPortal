@@ -166,6 +166,8 @@ $result = $con->query($query);
                                         <th>When Do You Want To Come To ABMTC For Training?</th>
                                         <!--<th>Created An ABMTC Account</th>-->
                                         <th>Payment Type</th>
+                                        <th>Application Form</th>
+                                        <th>Documents</th>
 
                                     </tr>
                                     </thead>
@@ -195,6 +197,21 @@ $result = $con->query($query);
                                         echo "<td>" . $row['StartDate'] . "</td>";
                                         //echo "<td>" . $row['CreatedAccount'] . "</td>";
                                         echo "<td>" . $row['PType'] . "</td>";
+										echo "<td>";
+												echo "<a href='adminapplicationform.php?code=".$row['User_ID']."'>";
+													if ($row['Application_Form_Submitted'] == 1) {
+														echo "Completed";
+													} else {
+														echo "Incomplete";
+													}
+												echo "</a>";
+											echo "</td>";
+											
+											echo "<td>";
+												echo "<a href='docResults.php?emailWhatsApp=".$row['EmailWhatsapp']."'>";
+													echo $row['Document_Uploads_Status'];
+												echo "</a>";
+											echo "</td>";
                                         echo "</tr>";
                                     }
 
