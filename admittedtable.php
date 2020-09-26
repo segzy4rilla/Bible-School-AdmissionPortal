@@ -13,6 +13,8 @@ $query = "SELECT * FROM Applicant_Table as A
 			ON A.User_ID = Z.ID
 			LEFT JOIN AdmittedStudents AS X
 			ON A.User_ID = X.User_ID
+			JOIN Application_Form AS J
+            ON J.User_ID = A.User_ID
 			WHERE Z.Admitted = 'Admitted'";
 $result = $con->query($query);
 
@@ -121,6 +123,7 @@ $result = $con->query($query);
                                             <th>Applicants Name</th>
                                             <th>Nationality</th>
 											<th>UD</th>
+											<th>Admission Date</th>
                                             <th>Applicants Form</th>
                                             <th>Interview Test</th>
                                             <th>Uploaded Documents</th>
@@ -150,6 +153,7 @@ $result = $con->query($query);
                                             echo "<td>" . $row['First_Name'] . " " . $row['Last_Name'] . "</td>";
                                             echo "<td>" . $row['Nationality'] . "</td>";
 											echo "<td>" . $row['Church_Part_Of_UD'] . "</td>";
+											echo "<td>" . $row['Start_Month'] . "</td>";
                                             
 											echo "<td>";
 												echo "<a href='adminapplicationform.php?code=".$row['User_ID']."'>";
