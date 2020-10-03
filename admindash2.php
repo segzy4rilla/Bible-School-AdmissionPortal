@@ -243,6 +243,136 @@ require("PHP_Files/getAdminHomeLink.php");
                                 </div>
                             </a>
                         </div>
+						
+						<div class="col-lg-12"  style="height:30%">
+                            <a href="intstudenttravel.php">
+                                <div class="card" style="margin-bottom:15px;height:100%">
+                                    <!-- Card body -->
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col">
+                                                <h5 class="mb-20">Travel Table</h5>
+                                                <span class="text-dark mb-0"></span>
+                                            </div>
+                                            <div class="col-auto">
+                                                <div class="clint-icon bg-gradient-danger text-white rounded-circle icon-shape">
+                                                    <i class="fa fa-table"></i>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+
+                        <div class="col-lg-12"  style="height:30%">
+                            <a href="intcompmealtable.php">
+                                <div class="card" style="margin-bottom:15px;height:100%">
+                                    <!-- Card body -->
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col">
+                                                <h5 class="mb-20">Complementary Meals Table</h5>
+                                            </div>
+                                            <div class="col-auto">
+                                                <div class="clint-icon bg-gradient-danger text-white rounded-circle icon-shape">
+                                                    <i class="fa fa-table"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+
+                        <div class="col-lg-12" style="height:30%">
+                            <a href="softchecklisttable.php">
+                                <div class="card" style="margin-bottom:15px;height:100%">
+                                    <!-- Card body -->
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col">
+                                                <h5 class="mb-20">Soft Checklist Table</h5>
+                                                <span class="text-dark mb-0"></span>
+                                            </div>
+                                            <div class="col-auto">
+                                                <div class="clint-icon bg-gradient-danger text-white rounded-circle icon-shape">
+                                                    <i class="fa fa-table"></i>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+						
+						<div class="col-lg-12"  style="height:30%">
+                            <a href="intstudentconfirmtable.php">
+                                <div class="card" style="margin-bottom:15px;height:100%">
+                                    <!-- Card body -->
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col">
+                                                <h5 class="mb-20">International Students Confirmation Table</h5>
+                                                <span class="text-dark mb-0"></span>
+                                            </div>
+                                            <div class="col-auto">
+                                                <div class="clint-icon bg-gradient-danger text-white rounded-circle icon-shape">
+                                                    <i class="fa fa-table"></i>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+
+                        <div class="col-lg-12"  style="height:30%">
+                            <a href="roomstable.php">
+                                <div class="card" style="margin-bottom:15px;height:100%">
+                                    <!-- Card body -->
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col">
+                                                <h5 class="mb-20">Room Comments Table</h5>
+                                            </div>
+                                            <div class="col-auto">
+                                                <div class="clint-icon bg-gradient-danger text-white rounded-circle icon-shape">
+                                                    <i class="fa fa-table"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+
+                        <div class="col-lg-12" style="height:30%">
+                            <a href="starterpacktable.php">
+                                <div class="card" style="margin-bottom:15px;height:100%">
+                                    <!-- Card body -->
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col">
+                                                <h5 class="mb-20">Starter Pack Table</h5>
+                                                <span class="text-dark mb-0"></span>
+                                            </div>
+                                            <div class="col-auto">
+                                                <div class="clint-icon bg-gradient-danger text-white rounded-circle icon-shape">
+                                                    <i class="fa fa-table"></i>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
 
                         <div class="col-lg-12"  style="height:30%">
                             <a href="summarytable.php">
