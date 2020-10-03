@@ -8,14 +8,17 @@ if ($_SESSION['loggedin'] == false || ($_SESSION['IsMedicalAdmin'] == false && !
 require("dbconfig/config.php");
 require("PHP_Files/getAdminHomeLink.php");
 
-$query = "SELECT A.First_Name, A.Last_Name, C.Nationality, Country_Of_Residence, Int_PassportFilepath,
-Int_VisaFilepath, Int_VisaNotRequiredComment, Int_FlightTicketFilepath, Int_ArrivalDateTime 
-FROM Application_Form AS A
-JOIN AdmittedStudents AS B
-ON A.User_ID = B.User_ID
-JOIN Applicant_Table AS C
-ON A.User_ID = C.User_ID
-WHERE C.Nationality <> 'ghanaian'";
+$query = "SELECT A.First_Name, A.Last_Name, C.Nationality, B.Check_AirportPickup,
+			B.Check_ChangedMoneyAt, B.Check_StarterPack, B.Check_MTNSimCard,
+			B.Check_CollectTag, B.Check_RoomNumber, B.Check_IssuesInTheRoomDescription,
+			B.Check_IssuesInTheRoomSolved, B.Check_PaidAdminFeesAndCollectedTextbooks,
+			B.Check_GalleryTour, B.Check_OrphanageTour
+			FROM Application_Form AS A
+			JOIN AdmittedStudents AS B
+			ON A.User_ID = B.User_ID
+			JOIN Applicant_Table AS C
+			ON A.User_ID = C.User_ID
+			WHERE C.Nationality <> 'ghanaian'";
 $result = $con->query($query);
 
 ?>
@@ -31,7 +34,7 @@ $result = $con->query($query);
     <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
     <!-- Title -->
-    <title>International Students Travelling Table</title>
+    <title>Soft Landing Checklist Table</title>
 
     <!-- Favicon -->
     <link rel="icon" href="ABTMC.png">
@@ -99,7 +102,9 @@ $result = $con->query($query);
 
                 <!-- Mobile Logo -->
                 <div class="mobile-logo mr-3 mr-sm-4">
-                    <?php echo "<a href='".GetAdminHomeLink()."'>";?><img src="ABTMC.png" alt="Mobile Logo"></a>
+                    <?php echo "<a href='".GetAdminHomeLink()."'>";?>
+					<img src="ABTMC.png" alt="Mobile Logo">
+					</a>
                 </div>
 
             </div>
@@ -124,54 +129,51 @@ $result = $con->query($query);
         <!-- Main Content Area -->
         <div class="main-content">
             <div class="container-fluid">
-                 <div class="row">
+
+                        <div class="row">
                             <div class="col-12 box-margin">
                                 <div class="card">
                                     <div class="card-body">
-                                        <h4 class="card-title mb-2">International Students Travelling Table</h4>
-                                        <p class="text-muted font-14 mb-4">
-                                            
+                                        <h4 class="card-title mb-2">Soft Landing Checklist Table</h4>
+                                        <p class="text-muted font-13 mb-4">
+                                            Results of completed soft landing checklist
                                         </p>
 
-                                        <table id="basic-datatable" class="table dt-responsive nowrap w-100">
+                                        <table id="scroll-horizontal-datatable" class="table w-100 nowrap">
                                             <thead>
                                                 <tr>
                                                     <th>Name</th>
                                                     <th>Nationality</th>
-                                                    <th>Country Of Residence</th>
-                                                    <th>Picture Of Passport</th>
-                                                    <th>Visa Entrance And Clearance Letter</th>
-                                                    <th>Comment If Visa Is Not Required</th>
-                                                    <th>Flight Ticket To Ghana</th>
-                                                    <th>Airport Arrival Date And Time</th>
+                                                    <th>Airport Pick-Up (International Students Only)</th>
+                                                    <th>Changed Money At The Airport (International Students Only)</th>
+                                                    <th>Starter Pack (International Students Only)</th>
+                                                    <th>Set Up MTN Sim Card And Credit</th>
+                                                    <th>Collected Tag</th>
+                                                    <th>Room Number</th>
+                                                    <th>Are There Any Issues In The Room?</th>
+                                                    <th>Have The Issues In Your Room Been Solved?</th>
+                                                    <th>Paid Admin Fee And Collected Textbooks</th>
+                                                    <th>Gallery Tour</th>
+                                                    <th>Orphanage Tour</th>
                                                 </tr>
                                             </thead>
-
-
                                             <tbody>
                                                 <?php
 													while ($row = $result->fetch_assoc()) {
-														$x = "Missing";
-														if ($row['Int_PassportFilepath']) {
-															$x = "Submitted";
-														}
-														$y = "Missing";
-														if ($row['Int_VisaFilepath']) {
-															$y = "Submitted";
-														}
-														$z = "Missing";
-														if ($row['Int_FlightTicketFilepath']) {
-															$z = "Submitted";
-														}
 														echo "<tr>";
 														echo "<td>" . $row['First_Name'] . " " . $row['Last_Name'] . "</td>";
 														echo "<td>" . $row['Nationality'] . "</td>";
-														echo "<td>" . $row['Country_Of_Residence'] . "</td>";
-														echo "<td><a href='" . $row['Int_PassportFilepath'] . "'>" . $x . "</a></td>";
-														echo "<td><a href='" . $row['Int_VisaFilepath'] . "'>" . $y . "</a></td>";
-														echo "<td>" . $row['Int_VisaNotRequiredComment'] . "</td>";
-														echo "<td><a href='" . $row['Int_FlightTicketFilepath'] . "'>" . $z . "</a></td>";
-														echo "<td>" . $row['Int_ArrivalDateTime'] . "</td>";
+														echo "<td>" . $row['Check_AirportPickup'] . "</td>";
+														echo "<td>" . $row['Check_ChangedMoneyAt'] . "</td>";
+														echo "<td>" . $row['Check_StarterPack'] . "</td>";
+														echo "<td>" . $row['Check_MTNSimCard'] . "</td>";
+														echo "<td>" . $row['Check_CollectTag'] . "</td>";
+														echo "<td>" . $row['Check_RoomNumber'] . "</td>";
+														echo "<td>" . $row['Check_IssuesInTheRoomDescription'] . "</td>";
+														echo "<td>" . $row['Check_IssuesInTheRoomSolved'] . "</td>";
+														echo "<td>" . $row['Check_PaidAdminFeesAndCollectedTextbooks'] . "</td>";
+														echo "<td>" . $row['Check_GalleryTour'] . "</td>";
+														echo "<td>" . $row['Check_OrphanageTour'] . "</td>";
 														echo "</tr>";
 													}
 												?>
@@ -183,7 +185,6 @@ $result = $con->query($query);
                             </div><!-- end col-->
                         </div>
                         <!-- end row-->
-
 
             </div>
 

@@ -57,8 +57,15 @@ try {
             } else if ($result[0][3] == true) {
                 $_SESSION['isAdmin'] = false;
                 $_SESSION['IsMedicalAdmin'] = false;
-                $_SESSION['IsNationsAdmin'] = true;
+                $_SESSION['IsNationsAdmin'] = false;
                 header('Location: ../nationsdash.php');
+            }else if ($result[0][4] == true) {
+                $_SESSION['isAdmin'] = false;
+                $_SESSION['isStaffAdmin'] = false;
+                $_SESSION['IsMedicalAdmin'] = false;
+                $_SESSION['IsNationsAdmin'] = false;
+				$_SESSION['IsAmbassador'] = true;
+                header('Location: ../ambassadorDash.php');
             } else {
                 $_SESSION['isAdmin'] = true;
                 header('Location: ../admindash2.php');
