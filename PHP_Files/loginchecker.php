@@ -74,7 +74,7 @@ try {
                 $_SESSION['IsMedicalAdmin'] = false;
                 $_SESSION['IsNationsAdmin'] = false;
                 $_SESSION['isFlowAdmin'] = true;
-                header('Location: ../ambassadorDash.php');
+                header('Location: ../flcflow_church.php');
             } else {
                 $_SESSION['isAdmin'] = true;
                 header('Location: ../admindash2.php');
