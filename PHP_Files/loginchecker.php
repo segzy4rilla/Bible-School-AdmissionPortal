@@ -49,6 +49,8 @@ try {
             $_SESSION['isStaffAdmin'] = true;
 			$_SESSION['IsMedicalAdmin'] = false;
             $_SESSION['IsNationsAdmin'] = false;
+            $_SESSION['isFlowAdmin'] = false;
+
             $_SESSION['Username'] = $result[0][0];
             if ($result[0][2] == true) {
                 $_SESSION['isAdmin'] = false;
@@ -65,6 +67,13 @@ try {
                 $_SESSION['IsMedicalAdmin'] = false;
                 $_SESSION['IsNationsAdmin'] = false;
 				$_SESSION['IsAmbassador'] = true;
+                header('Location: ../ambassadorDash.php');
+            } else if ($result[0][5] == true) {
+                $_SESSION['isAdmin'] = false;
+                $_SESSION['isStaffAdmin'] = false;
+                $_SESSION['IsMedicalAdmin'] = false;
+                $_SESSION['IsNationsAdmin'] = false;
+                $_SESSION['isFlowAdmin'] = true;
                 header('Location: ../ambassadorDash.php');
             } else {
                 $_SESSION['isAdmin'] = true;
