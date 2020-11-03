@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-if ($_SESSION['loggedin'] == false || $_SESSION['isAdmin'] == false) {
+if (!$_SESSION['isFlowAdmin']) {
     header('Location: loginabmtc.html');
 }
 require("PHP_Files/Update_Tables.php");

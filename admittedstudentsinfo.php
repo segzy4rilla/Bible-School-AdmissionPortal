@@ -451,6 +451,8 @@ if ($_SESSION['loggedin'] == false) {
               <button class="multisteps-form__progress-btn" style="cursor: default; font-size: 13px;" type="button" title="Comments" disabled>INTERNATIONAL STUDENT CONFIRMATIONS</button>
               <button class="multisteps-form__progress-btn" style="cursor: default; font-size: 13px;" type="button" title="Comments" disabled>INTERNATIONAL STUDENT ARRIVAL</button>
               <button class="multisteps-form__progress-btn" style="cursor: default;" type="button" title="Comments" disabled>CAMPUS MAP</button>
+              <button class="multisteps-form__progress-btn" style="cursor: default;" type="button" title="Comments" disabled>STUDENT AMBASSADORS DIRECTORY</button>
+
               <button class="multisteps-form__progress-btn" style="cursor: default;" type="button" title="Comments" disabled>SOFT LANDING CHECKLIST</button>
               <button class="multisteps-form__progress-btn" style="cursor: default;" type="button" title="Comments" disabled>UNIVERSITY ITEMS CHECKLIST</button>
               <button class="multisteps-form__progress-btn" style="cursor: default;" type="button" title="Comments" disabled>FINISH</button>
@@ -1449,6 +1451,161 @@ if ($_SESSION['loggedin'] == false) {
                       <button class="btn btn-primary ml-auto js-btn-next" type="button" title="Next">Next</button>
                   </div>
                 </div>
+
+                <div class="multisteps-form__panel shadow p-4 rounded bg-white" data-animation="scaleIn">
+                <h3 class="multisteps-form__title">STUDENT AMBASSADORS DIRECTORY</h3>
+                <div class="multisteps-form__content">
+                  <div class="scrollpage1" style="height: 300px;">
+                    <div class="relative input-wrap is-required">
+                      <br>
+                    <div class="form-group"> 
+                      <br>
+                      <span class="help-block"><medium>This is a list of students currently in the Bible School. Please choose a country rep that you would like to WhatsApp to ask questions concerning your stay at the school, for example, what items are in the school, what items they recommend you should bring, what food is on/around campus, etc.</medium></span>
+                      <br>
+                      <br> 
+
+                      <span class="help-block"><medium>- Country Rep: Belize 
+                        <br>
+                      WhatsApp Number: +2336023343</medium></span>
+                      <br><br>
+                      <span class="help-block"><medium>- Country: Benin
+                        <br>
+                      WhatsApp Number: +22967548831</medium></span>
+                      <br><br>
+                      <span class="help-block"><medium>- Country Rep: Botswana
+                      <br>
+                      Whatsapp Number: +233 552128982</medium></span>
+                      <br><br>
+                      <span class="help-block"><medium>- Country Rep: Burkina Faso
+                      <br>
+                      WhatsApp Number: +22666359444</medium></span>
+                      <br><br>
+                      <span class="help-block"><medium>- Country Rep: DR Congo
+                        <br>
+                      WhatsApp Number: +233547900090</medium></span>
+                      <br><br>
+                      <span class="help-block"><medium>- Country Rep: DR Congo
+                        <br>
+                      WhatsApp Number: +233545553291</medium></span>
+                      <br><br>
+                      <span class="help-block"><medium>- Country Rep: Fiji (Pacific)
+                      <br>
+                      WhatsApp Number: +233549571289</medium></span>
+                      <br><br>
+                      <span class="help-block"><medium>- Country Rep: Ghana
+                        <br>
+                      WhatsApp Number: +233244536768</medium></span>
+                      <br><br>
+                      <span class="help-block"><medium>- Country Rep: Ghana
+                        <br>
+                      WhatsApp Number: +233548884598</medium></span>
+                      <br><br>
+                      <span class="help-block"><medium>- Country Rep: Ghana
+                        <br>
+                      WhatsApp Number: +233543406468</medium></span>
+                      <br><br>
+                      <span class="help-block"><medium>- Country Rep: Ghana
+                        <br>
+                      WhatsApp Number: +233242744886</medium></span>
+                      <br><br>
+                      <span class="help-block"><medium>- Country Rep: Guinea (Conakry)
+                        <br>
+                      WhatsApp Number: +224662453560</medium></span>
+                      <br><br>
+                      <span class="help-block"><medium>- Country Rep: Guyana
+                        <br>
+                      WhatsApp Number: +233559655678</medium></span>
+                      <br><br>
+                      <span class="help-block"><medium>- Country Rep: Haiti
+                      <br> 
+                      WhatsApp Number: +233272928638</medium></span>
+                      <br><br>
+                      <span class="help-block"><medium>- Country Rep Jamaica
+                      <br> 
+                      WhatsApp Number: +233556656682</medium></span>
+                      <br><br>
+                      <span class="help-block"><medium>- Country Rep: Jamaica
+                        <br>
+                      WhatsApp Number: +233203014681</medium></span>
+                      <br><br>
+                      <span class="help-block"><medium>- Country: Kenya
+                        <br>
+                      WhatsApp Number: +254706311459</medium></span>
+                      <br><br>
+                      <span class="help-block"><medium>- Country Rep: Kenya
+                        <br>
+                      WhatsApp Number: +254741445566</medium></span>
+                      <br><br>
+                      <span class="help-block"><medium>- Country Rep: Liberia
+                      <br> 
+                      WhatsApp Number: +233246024208</medium></span>
+                      <br><br>
+                      <span class="help-block"><medium>- Country Rep: Liberia
+                        <br>
+                      Whatsapp Number: +233246026114</medium></span>
+                      <br><br>
+                      <span class="help-block"><medium>- Country Rep: Nigeria 
+                        <br>
+                      WhatsApp Number: +233594188617</medium></span>
+                      <br><br>
+                      <span class="help-block"><medium>- Country Rep: Nigeria
+                        <br>
+                      WhatsApp Number: +2348124009736</medium></span>
+                      <br><br>
+                      <span class="help-block"><medium>- Country Rep: South Africa
+                        <br>
+                      WhatsApp Number: +27844793819</medium></span>
+                      <br><br>
+                      <span class="help-block"><medium>- Country Rep: South Africa
+                        <br>
+                      WhatsApp Number: +27833309492</medium></span>
+                      <br><br>
+                      <span class="help-block"><medium>- Country Rep: South Africa
+                        <br>
+                      WhatsApp Number: +233 553677150</medium></span>
+                      <br><br>
+                      <span class="help-block"><medium>- Country Rep: Togo
+                        <br>
+                      WhatsApp Number: +233549839511</medium></span>
+                      <br><br>
+                      <span class="help-block"><medium>- Country Rep: Uganda
+                        <br>
+                      WhatsApp Number:+233558365634</medium></span>
+                      <br><br>
+                      <span class="help-block"><medium>- Country Rep: UK
+                        <br>
+                      WhatsApp Number: +447403461490</medium></span>
+                      <br><br>
+                      <span class="help-block"><medium>- Country Rep: UK
+                        <br>
+                      WhatsApp Number: +447415266143</medium></span>
+                      <br><br>
+                      <span class="help-block"><medium>- Country Rep: USA
+                        <br>
+                      WhatsApp Number: +233592497698</medium></span>
+                      <br><br>
+                      <span class="help-block"><medium>- Country Rep: Zambia
+                        <br>
+                      WhatsApp Number: +233553078285</medium></span>
+                      <br><br>
+                      <span class="help-block"><medium>- Country Rep: Zimbabwe 
+                        <br>
+                      WhatsApp Number: +233557431391</medium></span>
+                      <br><br>
+                      <span class="help-block"><medium>- Country Rep: Zimbabwe
+                        <br>
+                      WhatsApp Number: +233560552256</medium></span>
+                      <br>
+                      </div>                   
+                    
+                                           </div>
+                  </div>
+                  <div class="button-row d-flex mt-4">
+                    <button class="btn btn-primary js-btn-prev" type="button" title="Prev">Prev</button>
+                    <button class="btn btn-primary ml-auto js-btn-next" type="button" title="Next">Next</button>
+                  </div>
+                </div>
+              </div>
 
                 <!--single form panel-->
               <div class="multisteps-form__panel shadow p-4 rounded bg-white" data-animation="scaleIn">
