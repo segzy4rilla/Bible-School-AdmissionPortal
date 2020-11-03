@@ -281,17 +281,17 @@ $result = $con->query($query);
                                 <table id="datatable-buttons" class="table table-striped dt-responsive nowrap w-100">
                                     <thead>
                                     <tr>
-                                        <th>Index</th>
+                                        <!--<th>Index</th>-->
                                         <th>Applicants Name</th>
                                         <th>Country</th>
                                         <th>Phone Number</th>
-                                        <th>Email Address</th>
+                                        <!--<th>Email Address</th>
                                         <th>Created Account</th>
                                         <th>Sent Email</th>
                                         <th>Sent Whatsapp Message</th>
                                         <th>Response</th>
                                         <th>Reason</th>
-                                        <th>Online Course</th>
+                                        <th>Online Course</th>-->
 
                                     </tr>
                                     </thead>
@@ -301,11 +301,11 @@ $result = $con->query($query);
                                     $count = 0;
                                     while ($row = $result->fetch_assoc()) {
                                         echo "<tr>";
-                                        echo "<td>" . ++$count . "</td>";
+                                        //echo "<td>" . ++$count . "</td>";
                                         echo "<td>" . $row['First Name'] . " " . $row['Last Name'] . "</td>";
                                         echo "<td>" . $row['Country'] . "</td>";
                                         echo "<td>" . $row['Phone_Number'] . "</td>";
-                                        echo "<td>" . $row['Email_Address'] . "</td>";
+                                        /*echo "<td>" . $row['Email_Address'] . "</td>";
 
                                         if ($row['Created_an_ABMTC_Account'] == 1) {
                                             echo "<td>" . "Completed" . "</td>";
@@ -316,7 +316,7 @@ $result = $con->query($query);
                                         echo "<td>" . $row['Sent_Whatsapp_Message'] . "</td>";
                                         echo "<td>" . $row['Response'] . "</td>";
                                         echo "<td>" . $row['Reason'] . "</td>";
-                                        echo "<td>" . $row['Online_Course'] . "</td>";
+                                        echo "<td>" . $row['Online_Course'] . "</td>";*/
                                         echo "</tr>";
                                     }
                                     ?>
