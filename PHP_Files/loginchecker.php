@@ -47,14 +47,14 @@ try {
         if ($result) {
             $_SESSION['loggedin'] = true;
             $_SESSION['isStaffAdmin'] = true;
-			      $_SESSION['IsMedicalAdmin'] = false;
+			$_SESSION['IsMedicalAdmin'] = false;
             $_SESSION['IsNationsAdmin'] = false;
-			      $_SESSION['IsAmbassador'] = false;
+			$_SESSION['IsAmbassador'] = false;
             $_SESSION['isFlowAdmin'] = false;
             $_SESSION['Username'] = $result[0][0];
             if ($result[0][2] == true) {
                 $_SESSION['isAdmin'] = false;
-				        $_SESSION['IsMedicalAdmin'] = true;
+				$_SESSION['IsMedicalAdmin'] = true;
                 header('Location: ../staffdash.php');
             } else if ($result[0][3] == true) {
                 $_SESSION['isAdmin'] = false;
@@ -66,7 +66,7 @@ try {
                 $_SESSION['isStaffAdmin'] = false;
                 $_SESSION['IsMedicalAdmin'] = false;
                 $_SESSION['IsNationsAdmin'] = false;
-				        $_SESSION['IsAmbassador'] = true;
+				$_SESSION['IsAmbassador'] = true;
                 header('Location: ../ambassadorDash.php');
             } else if ($result[0][5] == true) {
                 $_SESSION['isAdmin'] = false;
