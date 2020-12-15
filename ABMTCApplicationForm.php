@@ -402,7 +402,7 @@ if ($_SESSION['loggedin'] == false) {
   </ul>
 </div>
 <p></p>
-<h6>PLEASE WHATSAPP +233594900295 IF YOU HAVE AN ISSUE FILLING IN THE APPLICATION FORM</h6>
+<h6>PLEASE WHATSAPP +233557467460 IF YOU HAVE AN ISSUE FILLING IN THE APPLICATION FORM</h6>
                   </div>
                   
               </div>
