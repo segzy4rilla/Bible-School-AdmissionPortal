@@ -395,7 +395,7 @@ if ($_SESSION['loggedin'] == false) {
   <br>
   <ul class="list-group">
     <li class="list-group-item" style="color: black; font-style: italic;">SCROLL DOWN TO THE BOTTOM OF EVERY PAGE AND MAKE SURE YOU FILL IN EVERY FIELD AVAILABLE</li>
-    <li class="list-group-item" style="color: black; font-style: italic;">IF THERE IS A FIELD THAT DOES NOT APPLY TO YOU PLEASE WRITE NOT APPLICABLE, DO NOT LEAVE ANY FIELD EMPTY</li>
+    <li class="list-group-item" style="color: black; font-style: italic;">IF THERE IS A FIELD THAT DOES NOT APPLY TO YOU PLEASE WRITE NOT APPLICABLE</li>
     <li class="list-group-item" style="color: black; font-style: italic;">AVOID USING SYMBOLS SUCH AS '+-' (DO NOT USE APOSTROPHE'S)</li>
     <li class="list-group-item" style="color: black; font-style: italic;">USE THE LATEST UPDATED INTERNET BROWSER</li>
     <li class="list-group-item" style="color: black; font-style: italic;">CLEAR CACHE (GOOGLE INSTRUCTIONS ON HOW TO CLEAR CACHE)</li>
