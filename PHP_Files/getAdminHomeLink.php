@@ -3,7 +3,7 @@
 		if($_SESSION['IsMedicalAdmin']){
 			$link = 'staffdash.php';
 		}
-		elseif($_SESSION['IsAmbassador']){
+		else if($_SESSION['IsAmbassador']){
 			$link = 'ambassadorDash.php';
 		}
 		else{
