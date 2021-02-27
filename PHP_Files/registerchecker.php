@@ -1,6 +1,7 @@
 <?php
 
 include "dbconfig.php";
+include "../send_email.php";
 $uniqueid = uniqid();
 
 
@@ -21,6 +22,7 @@ try {
   VALUES ('$uniqueid','$firstname', '$lastname','$emailwhatsapp','$password','$nationality')";
     // use exec() because no results are returned
     $conn->exec($sql);
+    send_email($firstname . " " . $lastname, $nationality, $emailwhatsapp, $username, $emailwhatsapp);
     header('Location: ../loginabmtc.html');
 } catch(PDOException $e) {
     echo $sql . "<br>" . $e->getMessage();
