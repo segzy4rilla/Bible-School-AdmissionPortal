@@ -579,6 +579,32 @@ require("PHP_Files/getAdminHomeLink.php");
                                                     <textarea class="form-control" name="comment[]" form="example-form" rows="5" name="polreportdescrip"></textarea>
                                                 </div>
                                             </section>
+											
+											<h3>EMPLOYMENT RECOMMENDATION</h3>
+                                            <section class="overflow-auto">
+                                                <h3>Employment Recommendation</h3>
+                                                <div class="form-group">
+                                                    <label>Letter Of Recommendation From Your Employer</label>
+                                                    <br>
+                                                    <h6><b>Please note:</b></h6>
+                                                    <br>
+                                                    <p>Recommendation Letter must state the role of the writer of the letter and inlcude a signature</p>
+                                                    <input type="file" name="img1[]" class="file-upload-default"
+                                                           style="display:none;">
+                                                    <div class="input-group col-xs-12">
+                                                        <input type="text" class="form-control file-upload-info"
+                                                               disabled="" placeholder="Upload Image">
+                                                        <span class="input-group-append">
+															<button class="file-upload-browse btn btn-primary" type="button">Upload</button>
+														</span>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="example-textarea">Please comment if there is difficulty
+                                                        in getting this document and explain why</label>
+                                                    <textarea class="form-control" name="comment[]" form="example-form" rows="5" name="recommenddescrip"></textarea>
+                                                </div>
+                                            </section>
 
                                             <h3>FINISH</h3>
                                             <section class="overflow-auto">

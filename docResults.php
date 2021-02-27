@@ -364,6 +364,23 @@
 										?>
 									</div>
 									
+									<div>
+										<div>
+											<h3>Employer Recommendation</h3>
+											<label>Letter Of Recommendation From Employer</label>
+										</div>
+										<?php
+											$path = trim($uploads['DocFilepath13']);
+											if(!empty($path)){
+												$path = str_replace('../../', '../', $path);
+												echo "<embed src='".$path."' width='90%' height='1000em'/>";
+											}
+											else{
+												echo "<textarea type='text' class='form-control' readonly>".$uploads['DocComment13']."</textarea>";
+											}
+										?>
+									</div>
+									
 									<br/>
 									<br/>
 									<form id="responseForm" name="responseForm" action="PHP_Files/docResponse.php" method="post">
