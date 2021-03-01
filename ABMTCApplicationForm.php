@@ -1272,46 +1272,35 @@ if ($_SESSION['loggedin'] == false) {
                                                         Bible School?</label>
                                                     <div class="custom-control custom-radio">
                                                         <input type="radio" id="radiomonth1" name="question31"
-                                                               value="2020 3rd Quarter (July/August/September)"
+                                                               value="June 2021"
                                                                class="custom-control-input">
-                                                        <label class="custom-control-label" for="radiomonth1">2020 3rd
-                                                            Quarter (July/August/September)</label>
+                                                        <label class="custom-control-label" for="radiomonth1">June 2021</label>
                                                     </div>
                                                     <div class="custom-control custom-radio">
                                                         <input type="radio" id="radiomonth2" name="question31"
-                                                               value="2020 4th Quarter (October/November/December)"
+                                                               value="October 2021"
                                                                class="custom-control-input">
-                                                        <label class="custom-control-label" for="radiomonth2">2020 4th
-                                                            Quarter (October/November/December)</label>
+                                                        <label class="custom-control-label" for="radiomonth2">October 2021</label>
                                                     </div>
                                                     <div class="custom-control custom-radio">
                                                         <input type="radio" id="radiomonth3" name="question31"
-                                                               value="2021 1st Quarter (January/Feburary/March)"
+                                                               value="February 2022"
                                                                class="custom-control-input">
-                                                        <label class="custom-control-label" for="radiomonth3">2021 1st
-                                                            Quarter (January/Feburary/March)</label>
+                                                        <label class="custom-control-label" for="radiomonth3">February 2022</label>
                                                     </div>
                                                     <div class="custom-control custom-radio">
                                                         <input type="radio" id="radiomonth4" name="question31"
-                                                               value="2021 2nd Quarter (April/May/June)"
+                                                               value="June 2022"
                                                                class="custom-control-input">
-                                                        <label class="custom-control-label" for="radiomonth4">2021 2nd
-                                                            Quarter (April/May/June)</label>
+                                                        <label class="custom-control-label" for="radiomonth4">June 2022</label>
                                                     </div>
                                                     <div class="custom-control custom-radio">
                                                         <input type="radio" id="radiomonth5" name="question31"
-                                                               value="2021 3rd Quarter (July/August/September)"
+                                                               value="October 2022"
                                                                class="custom-control-input">
-                                                        <label class="custom-control-label" for="radiomonth5">2021 3rd
-                                                            Quarter (July/August/September)</label>
+                                                        <label class="custom-control-label" for="radiomonth5">October 2022</label>
                                                     </div>
-                                                    <div class="custom-control custom-radio">
-                                                        <input type="radio" id="radiomonth6" name="question31"
-                                                               value="2021 4th Quarter (October/November/December)"
-                                                               class="custom-control-input">
-                                                        <label class="custom-control-label" for="radiomonth6">2021 4th
-                                                            Quarter (October/November/December)</label>
-                                                    </div>
+                                                    
 
                                                 </div>
                                               </div>
@@ -2070,11 +2059,10 @@ if ($_SESSION['loggedin'] == false) {
 
                 <!--single form panel-->
               <div class="multisteps-form__panel shadow p-4 rounded bg-white" data-animation="scaleIn">
-                <h3 class="multisteps-form__title">NATIONALITY</h3>
+                <h3 class="multisteps-form__title">REQUIREMENTS</h3>
                 <div class="scrollpage1" style="height: 300px;">
                   <div class="form-group">
-                                                    <label for="exampleTextarea1">Scroll Through Requirements For International
-                                                        Students</label>
+                                                    
                                                     <textarea class="form-control" id="exampleTextarea1" rows="11"
                                                               disabled>
 

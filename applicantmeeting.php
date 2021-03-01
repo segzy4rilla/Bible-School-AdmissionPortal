@@ -14,7 +14,7 @@ $query = "
     FROM Applicant_Table AS A 
     JOIN ZoomInterview AS B
     ON A.User_ID = B.ID
-	WHERE A.User_ID = ".$userID;
+    WHERE A.User_ID = ".$userID;
 
 $result = $con->query($query);
 
@@ -133,52 +133,52 @@ $result = $con->query($query);
                                 <div class="card-body">
                                     <h4 class="card-title mb-2">Zoom Interview Details</h4>
                                     <br>
-                                    <b><medium id="fileHelp" class="form-text text-muted">Please note the following:</medium>
+                                    <b style="color: black;"><medium id="fileHelp" class="form-text">Please note the following:</medium>
 
                                     <br><br>
 
-                                    <small id="fileHelp" style="font-weight: 1000;" class="form-text text-muted">TIME ZONE CHECK: Make sure you check what the Ghana Time is for the interview. Please refer to the world clock at the bottom of the page where you can check the time difference.</small>
+                                    <small id="fileHelp" style="font-weight: 1000; color: black;" class="form-text">TIME ZONE CHECK: Make sure you check what the Ghana Time is for the interview. Please refer to the world clock at the bottom of the page where you can check the time difference.</small>
 
                                     <br>
 
-                                    <small id="fileHelp" style="font-weight: 1000;" class="form-text text-muted">INTERVIEW ATTIRE: Dress smartly for the interview.</small>
+                                    <small id="fileHelp" style="font-weight: 1000; color: black;" class="form-text">INTERVIEW ATTIRE: Dress smartly for the interview.</small>
 
                                     <br>
 
-                                    <small id="fileHelp" style="font-weight: 1000;" class="form-text text-muted">TEST YOUR CONNECTION: Ensure you have a good internet connection. Internet connectivity varies based on what you’re using and is also influenced by what else you have running.</small>
+                                    <small id="fileHelp" style="font-weight: 1000; color: black;" class="form-text">TEST YOUR CONNECTION: Ensure you have a good internet connection. Internet connectivity varies based on what you’re using and is also influenced by what else you have running.</small>
 
                                     <br>
 
-                                    <small id="fileHelp" style="font-weight: 1000;" class="form-text text-muted">LINK PRIVACY: Please do not attempt to share the zoom link with anyone.</small>
+                                    <small id="fileHelp" style="font-weight: 1000; color: black;" class="form-text">LINK PRIVACY: Please do not attempt to share the zoom link with anyone.</small>
 
                                     <br>
 
-                                    <small id="fileHelp" style="font-weight: 1000;" class="form-text text-muted">COMMUNICATING: Mute your microphone. To help keep background noise to a minimum, make sure you mute your microphone when you are not speaking.</small>
+                                    <small id="fileHelp" style="font-weight: 1000; color: black;" class="form-text">COMMUNICATING: Mute your microphone. To help keep background noise to a minimum, make sure you mute your microphone when you are not speaking.</small>
 
                                     <br>
 
 
-                                    <small id="fileHelp" style="font-weight: 1000;" class="form-text text-muted">SETTING UP AN AUDIO DISTRACTION FREE ZONE: Be mindful of background noise. Pick a setting that is quiet to eliminate and avoid audio distractions.</small>
+                                    <small id="fileHelp" style="font-weight: 1000; color: black;" class="form-text">SETTING UP AN AUDIO DISTRACTION FREE ZONE: Be mindful of background noise. Pick a setting that is quiet to eliminate and avoid audio distractions.</small>
 
                                     <br>
 
-                                    <small id="fileHelp" style="font-weight: 1000;" class="form-text text-muted">YOUR WEBCAM AND DISPLAY PLACEMENTS: Position your camera properly and ensure you are looking directly at your camera. Please make sure that you are in a medium shot.</small>
+                                    <small id="fileHelp" style="font-weight: 1000; color: black;" class="form-text">YOUR WEBCAM AND DISPLAY PLACEMENTS: Position your camera properly and ensure you are looking directly at your camera. Please make sure that you are in a medium shot.</small>
 
                                     <br>
 
-                                    <small id="fileHelp" style="font-weight: 1000;" class="form-text text-muted">SETTING UP A BACKGROUND DISTRACTION FREE ZONE: Be mindful of background movement. Pick a setting that has no other person around in order to eliminate distractions.</small>
+                                    <small id="fileHelp" style="font-weight: 1000; color: black;" class="form-text">SETTING UP A BACKGROUND DISTRACTION FREE ZONE: Be mindful of background movement. Pick a setting that has no other person around in order to eliminate distractions.</small>
 
                                     <br>
 
-                                    <small id="fileHelp" style="font-weight: 1000;" class="form-text text-muted">YOUR WEBCAM AND DISPLAY PLACEMENTS: Position your camera properly and ensure you are looking directly at your camera. Please make sure you are in a medium shot.</small>
+                                    <small id="fileHelp" style="font-weight: 1000; color: black;" class="form-text">YOUR WEBCAM AND DISPLAY PLACEMENTS: Position your camera properly and ensure you are looking directly at your camera. Please make sure you are in a medium shot.</small>
 
                                     <br>
 
-                                    <small id="fileHelp" style="font-weight: 1000;" class="form-text text-muted">LIGHTING: Please be in an area where the lighting is clear. Avoid dark areas.</small>
+                                    <small id="fileHelp" style="font-weight: 1000; color: black;" class="form-text ">LIGHTING: Please be in an area where the lighting is clear. Avoid dark areas.</small>
 
                                     <br>
 
-                                    <small id="fileHelp" style="font-weight: 1000;" class="form-text text-muted">OTHER INTERFERENCES: Avoid multi-tasking and other audio/visual triggers.</small>
+                                    <small id="fileHelp" style="font-weight: 1000; color: black;" class="form-text">OTHER INTERFERENCES: Avoid multi-tasking and other audio/visual triggers.</small>
 
 
                                     </b>
@@ -202,17 +202,17 @@ $result = $con->query($query);
                                                 </tr>
                                             </thead>
                                             <tbody>
-												<?php
-													while ($row = $result->fetch_assoc()) {
-														if (!empty($row['Link'])){
-															echo '<tr>';
-																echo "<td>" . $row['Date'] . "</td>";
-																echo "<td>" . $row['Time'] . "</td>";
-																echo "<td><a href='" . $row['Link'] . "'>".$row['Link']."</a></td>";
-															echo '</tr>';
-														}
-													}
-												?>                                 
+                                                <?php
+                                                    while ($row = $result->fetch_assoc()) {
+                                                        if (!empty($row['Link'])){
+                                                            echo '<tr>';
+                                                                echo "<td>" . $row['Date'] . "</td>";
+                                                                echo "<td>" . $row['Time'] . "</td>";
+                                                                echo "<td><a href='" . $row['Link'] . "'>".$row['Link']."</a></td>";
+                                                            echo '</tr>';
+                                                        }
+                                                    }
+                                                ?>                                 
                                             </tbody>
 
                                         </table>
